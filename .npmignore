@@ -1,0 +1,12 @@
+# NPM
+node_modules
+.git
+.vscode
+.eslintrc.json
+.jsdoc.json
+.prettierrc.json
+.gitattributes
+.gitignore
+npm-debug.log
+test/
+docs/

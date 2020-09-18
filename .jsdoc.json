@@ -1,0 +1,53 @@
+{
+	"tags": {
+		"allowUnknownTags": true,
+		"dictionaries": ["jsdoc"]
+	},
+	"source": {
+		"include": ["src"],
+		"includePattern": ".js$",
+		"excludePattern": "(node_modules/|docs)"
+	},
+	"plugins": ["plugins/markdown"],
+	"templates": {
+		"cleverLinks": false,
+		"monospaceLinks": true,
+		"useLongnameInNav": false,
+		"showInheritedInNav": true
+	},
+	"opts": {
+		"readme": "readme.md",
+		"destination": "docs/",
+		"encoding": "utf8",
+		"private": true,
+		"recurse": true,
+		"sort": true,
+		"template": "node_modules/docdash"
+	},
+	"docdash": {
+		"sort": true,
+		"openGraph": {
+			"title": "clickup.js Documentation",
+			"type": "website",
+			"site_name": "clickupjs",
+			"url": "https://github.com/ComfortablyCoding.github.io/clickup.js"
+		},
+		"meta": {
+			"title": "clickup.js",
+			"description": "A Node.js wrapper for the Clickup API",
+			"keyword": "clickup clickup-js clickup.js api wrapper"
+		},
+		"search": true,
+		"collapse": true,
+		"wrap": true,
+		"private": false,
+		"menu": {
+			"Github Repo": {
+				"href": "https://github.com/ComfortablyCoding/clickup.js",
+				"target": "_blank",
+				"class": "menu-item",
+				"id": "website_link"
+			}
+		}
+	}
+}

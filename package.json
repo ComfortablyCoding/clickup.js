@@ -1,0 +1,44 @@
+{
+	"name": "clickup.js",
+	"version": "1.0.0",
+	"description": "A Node.js wrapper for the Clickup API",
+	"main": "./src/index.js",
+	"dependencies": {
+		"form-data": "^3.0.0",
+		"got": "^11.6.2"
+	},
+	"keywords": [
+		"clickup",
+		"clickup-js",
+		"clickup.js",
+		"api",
+		"wrapper"
+	],
+	"devDependencies": {
+		"chai": "^4.2.0",
+		"docdash": "^1.2.0",
+		"eslint": "^7.9.0",
+		"eslint-config-airbnb-base": "^14.2.0",
+		"eslint-config-prettier": "^6.11.0",
+		"eslint-plugin-import": "^2.22.0",
+		"eslint-plugin-prettier": "^3.1.4",
+		"jsdoc": "^3.6.5",
+		"mocha": "^8.1.3",
+		"prettier": "^2.1.2"
+	},
+	"scripts": {
+		"test": "mocha",
+		"lint": "eslint src test --fix",
+		"generate-docs": "node_modules/.bin/jsdoc --configure .jsdoc.json"
+	},
+	"author": "jj",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ComfortablyCoding/clickup.js.git"
+	},
+	"homepage": "https://github.com/ComfortablyCoding/clickup.js#readme",
+	"bugs": {
+		"url": "https://github.com/ComfortablyCoding/clickup.js/issues"
+	},
+	"license": "MIT"
+}
