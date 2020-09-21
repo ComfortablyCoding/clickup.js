@@ -28,7 +28,7 @@ class Views {
 	async update(viewId, data) {
 		return this._client.put({
 			endpoint: `${this.route}/${viewId}`,
-			body: data,
+			json: data,
 		});
 	}
 
@@ -52,7 +52,7 @@ class Views {
 	async addComment(viewId, data) {
 		return this._client.post({
 			endpoint: `${this.route}/${viewId}/comment`,
-			body: data,
+			json: data,
 		});
 	}
 
