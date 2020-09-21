@@ -76,13 +76,21 @@ class Clickup {
 	 * @param {Object} options.body The data to send in the body of the request
 	 * @param {Object} options.headers The headers to send along with the request
 	 */
-	async post({ endpoint, params = {}, body = {}, headers = {} }) {
+	async post({ endpoint, params = {}, json = {}, body = {}, headers = {} }) {
 		const searchParams = this._buildSearchParams(params);
-		return this._service.post(endpoint, {
+
+		const options = {
 			searchParams,
-			body,
 			headers,
-		});
+		};
+
+		if (Object.getOwnPropertyNames(json).length) {
+			options.json = json;
+		} else {
+			options.body = body;
+		}
+
+		return this._service.post(endpoint, options);
 	}
 
 	/**
@@ -93,8 +101,19 @@ class Clickup {
 	 * @param {Object} options.params The parameters to add to the endpoint
 	 * @param {Object} options.body The data to send in the body of the request
 	 */
-	async put({ endpoint, params = {}, body = {} }) {
+	async put({ endpoint, params = {}, json = {}, body = {} }) {
 		const searchParams = this._buildSearchParams(params);
+
+		const options = {
+			searchParams,
+		};
+
+		if (Object.getOwnPropertyNames(json).length) {
+			options.json = json;
+		} else {
+			options.body = body;
+		}
+
 		return this._service.put(endpoint, { searchParams, body });
 	}
 

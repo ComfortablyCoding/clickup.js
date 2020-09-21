@@ -35,7 +35,7 @@ class Tasks {
 		return this.client.put({
 			endpoint: `${this.route}/${taskId}`,
 			params: options,
-			body: data,
+			json: data,
 		});
 	}
 
@@ -89,7 +89,7 @@ class Tasks {
 		return this.client.post({
 			endpoint: `${this.route}/${taskId}/comment`,
 			params: options,
-			body: data,
+			json: data,
 		});
 	}
 
@@ -117,7 +117,7 @@ class Tasks {
 		return this.client.post({
 			endpoint: `${this.route}/${taskId}/checklist`,
 			params: options,
-			body: data,
+			json: data,
 		});
 	}
 
@@ -133,7 +133,7 @@ class Tasks {
 		return this.client.post({
 			endpoint: `${this.route}/${taskId}/field/${fieldId}`,
 			params: options,
-			body: data,
+			json: data,
 		});
 	}
 
@@ -162,7 +162,7 @@ class Tasks {
 		return this.client.post({
 			endpoint: `${this.route}/${taskId}/dependency`,
 			params: options,
-			body: data,
+			json: data,
 		});
 	}
 
@@ -177,7 +177,7 @@ class Tasks {
 		return this.client.delete({
 			endpoint: `${this.route}/${taskId}/dependency`,
 			params: options,
-			body: data,
+			json: data,
 		});
 	}
 
@@ -221,7 +221,7 @@ class Tasks {
 		return this.client.post({
 			endpoint: `${this.route}/${taskId}/guest/${guestId}`,
 			params: options,
-			body: data,
+			json: data,
 		});
 	}
 
@@ -289,7 +289,7 @@ class Tasks {
 		return this.client.post({
 			endpoint: `${this.route}/${taskId}/time`,
 			params: options,
-			body: data,
+			json: data,
 		});
 	}
 
@@ -318,7 +318,7 @@ class Tasks {
 		return this.client.put({
 			endpoint: `${this.route}/${taskId}/time/${intervalId}`,
 			params: options,
-			body: data,
+			json: data,
 		});
 	}
 

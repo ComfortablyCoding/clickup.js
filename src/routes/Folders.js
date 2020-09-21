@@ -28,7 +28,7 @@ class Folders {
 	async update(folderId, data) {
 		return this._client.put({
 			endpoint: `${this.route}/${folderId}`,
-			body: data,
+			json: data,
 		});
 	}
 
@@ -53,7 +53,7 @@ class Folders {
 	async addGuest(folderId, guestId, data) {
 		return this._client.post({
 			endpoint: `${this.route}/${folderId}/guest/${guestId}`,
-			body: data,
+			json: data,
 		});
 	}
 
@@ -78,7 +78,7 @@ class Folders {
 	async createList(folderId, data) {
 		return this._client.post({
 			endpoint: `${this.route}/${folderId}/list`,
-			body: data,
+			json: data,
 		});
 	}
 
@@ -106,7 +106,7 @@ class Folders {
 	async createView(folderId, data) {
 		return this._client.post({
 			endpoint: `${this.route}/${folderId}/view`,
-			body: data,
+			json: data,
 		});
 	}
 

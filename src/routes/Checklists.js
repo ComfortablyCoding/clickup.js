@@ -17,7 +17,7 @@ class Checklists {
 	async update(checklistId, data) {
 		return this._client.put({
 			endpoint: `${this.route}/${checklistId}`,
-			body: data,
+			json: data,
 		});
 	}
 
@@ -41,7 +41,7 @@ class Checklists {
 	async createChecklistItem(checklistId, data) {
 		return this._client.post({
 			endpoint: `${this.route}/${checklistId}/checklist_item`,
-			body: data,
+			json: data,
 		});
 	}
 
@@ -55,7 +55,7 @@ class Checklists {
 	async updateChecklistItem(checklistId, checklistItemId, data) {
 		return this._client.put({
 			endpoint: `${this.route}/${checklistId}/checklist_item/${checklistItemId}`,
-			body: data,
+			json: data,
 		});
 	}
 

@@ -17,7 +17,7 @@ class KeyResults {
 	updateKeyResult(keyResultId, data) {
 		return this._client.put({
 			endpoint: `${this.route}/${keyResultId}`,
-			body: data,
+			json: data,
 		});
 	}
 
