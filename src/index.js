@@ -114,7 +114,7 @@ class Clickup {
 			options.body = body;
 		}
 
-		return this._service.put(endpoint, { searchParams, body });
+		return this._service.put(endpoint, options);
 	}
 
 	/**
