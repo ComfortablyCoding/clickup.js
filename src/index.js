@@ -7,6 +7,7 @@ class Clickup {
 	 *
 	 * @constructor
 	 * @param {String} token Clickup API Access Token
+	 * @param {Object} gotOptions Options for the created got instance. All options can be found [here](https://github.com/sindresorhus/got#options)
 	 */
 	constructor(token, gotOptions) {
 		// create service instance
@@ -97,7 +98,7 @@ class Clickup {
 	 * @param {Object} options  Options to pass to the api call
 	 * @param {String} options.endpoint The endpoint to make a request to
 	 * @param {Object} options.params The parameters to add to the endpoint
-	 * @param {Object} options.body The data to send in the body of the request
+	 * @param {Object} options.data The data to send in the body of the request
 	 * @param {Object} options.headers The headers to send along with the request
 	 */
 	async post({ endpoint, params, data = {}, headers }) {
@@ -129,7 +130,7 @@ class Clickup {
 	 * @param {Object} options  Options to pass to the api call
 	 * @param {String} options.endpoint The endpoint to make a request to
 	 * @param {Object} options.params The parameters to add to the endpoint
-	 * @param {Object} options.body The data to send in the body of the request
+	 * @param {Object} options.data The data to send in the body of the request
 	 */
 	async put({ endpoint, params, data = {} }) {
 		const options = {};
