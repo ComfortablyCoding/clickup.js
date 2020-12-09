@@ -8,14 +8,14 @@ class Clickup {
 	 * @constructor
 	 * @param {String} token Clickup API Access Token
 	 */
-	constructor(token) {
+	constructor(token, gotOptions) {
 		this._baseUrl = 'https://api.clickup.com/api/v2';
 		this._token = token;
 		this._headers = {
 			authorization: this._token,
 			'content-type': 'application/json',
 		};
-		this._service = this._createGotInstance();
+		this._service = this._createGotInstance(gotOptions);
 
 		// pull in all routes
 		this.authorization = new routes.Authorization(this);
@@ -35,13 +35,34 @@ class Clickup {
 	/**
 	 * Creates a got instance with clickup default config
 	 * @private
+	 * @param {Object} gotOptions Options for the created got instance. All options can be found [here](https://github.com/sindresorhus/got#options)
 	 */
-	_createGotInstance() {
-		return got.extend({
-			prefixUrl: this._baseUrl,
-			headers: this._headers,
-			responseType: 'json',
-		});
+	_createGotInstance(gotOptions = {}) {
+		const gotInstance = gotOptions;
+
+		// validate required Got properties
+		if (gotInstance.headers) {
+			if (!gotInstance.headers.authorization) {
+				gotInstance.headers.authorization = this._token;
+			}
+			if (!gotInstance.headers['content-type']) {
+				gotInstance.headers['content-type'] = 'application/json';
+			}
+		} else {
+			gotInstance.headers = {
+				authorization: this._token,
+				'content-type': 'application/json',
+			};
+		}
+		if (!gotInstance.responseType) {
+			gotInstance.responseType = 'json';
+		}
+
+		if (!gotInstance.prefixUrl) {
+			gotInstance.prefixUrl = 'https://api.clickup.com/api/v2';
+		}
+
+		return got.extend(gotInstance);
 	}
 
 	/**
