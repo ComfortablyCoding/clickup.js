@@ -107,14 +107,18 @@ class Clickup {
 			options.searchParams = this._buildSearchParams(params);
 		}
 
-		// json data must be sent via json property, all others are sent via body
-		const contentType = this._service.defaults.options.headers['content-type'];
-		const dataType = contentType === 'application/json' ? 'json' : 'body';
-		options[dataType] = data;
+		let contentType = this._service.defaults.options.headers['content-type'];
 
 		if (headers) {
 			options.headers = headers;
+			if (headers['content-type']) {
+				contentType = headers['content-type'];
+			}
 		}
+
+		// json data must be sent via json property, all others are sent via body
+		const dataType = contentType === 'application/json' ? 'json' : 'body';
+		options[dataType] = data;
 
 		return this._service.post(endpoint, options);
 	}
