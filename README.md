@@ -2,6 +2,11 @@
 
 A Node.js wrapper for the [Clickup API](https://clickup.com/api).
 
+[![Downloads](https://img.shields.io/npm/dm/clickup.js.svg?style=for-the-badge)](https://www.npmjs.com/package/clickup.js)
+[![Install size](https://img.shields.io/bundlephobia/min/clickup.js?style=for-the-badge)](https://packagephobia.now.sh/result?p=clickup.js)
+![GitHub package.json version](https://img.shields.io/github/package-json/v/ComfortablyCoding/clickup.js?style=for-the-badge) ![Dependancies](https://img.shields.io/david/ComfortablyCoding/clickup.js?style=for-the-badge)
+![NPM](https://img.shields.io/npm/l/clickup.js?style=for-the-badge)
+
 ## Install
 
 ```sh
