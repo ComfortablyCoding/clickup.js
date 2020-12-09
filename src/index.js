@@ -72,7 +72,7 @@ class Clickup {
 	 * @private
 	 */
 	// eslint-disable-next-line class-methods-use-this
-	_buildSearchParams(params) {
+	_buildSearchParams(params = {}) {
 		return new URLSearchParams(Object.entries(params));
 	}
 
@@ -83,9 +83,12 @@ class Clickup {
 	 * @param {String} options.endpoint The endpoint to make a request to
 	 * @param {Object} options.params The parameters to add to the endpoint
 	 */
-	async get({ endpoint, params = {} }) {
-		const searchParams = this._buildSearchParams(params);
-		return this._service.get(endpoint, { searchParams });
+	async get({ endpoint, params }) {
+		const options = {};
+		if (params) {
+			options.searchParams = this._buildSearchParams(params);
+		}
+		return this._service.get(endpoint, options);
 	}
 
 	/**
@@ -97,18 +100,20 @@ class Clickup {
 	 * @param {Object} options.body The data to send in the body of the request
 	 * @param {Object} options.headers The headers to send along with the request
 	 */
-	async post({ endpoint, params = {}, json = {}, body = {}, headers = {} }) {
-		const searchParams = this._buildSearchParams(params);
+	async post({ endpoint, params, data = {}, headers }) {
+		const options = {};
 
-		const options = {
-			searchParams,
-			headers,
-		};
+		if (params) {
+			options.searchParams = this._buildSearchParams(params);
+		}
 
-		if (Object.getOwnPropertyNames(json).length) {
-			options.json = json;
-		} else {
-			options.body = body;
+		// json data must be sent via json property, all others are sent via body
+		const contentType = this._service.defaults.options.headers['content-type'];
+		const dataType = contentType === 'application/json' ? 'json' : 'body';
+		options[dataType] = data;
+
+		if (headers) {
+			options.headers = headers;
 		}
 
 		return this._service.post(endpoint, options);
@@ -122,18 +127,17 @@ class Clickup {
 	 * @param {Object} options.params The parameters to add to the endpoint
 	 * @param {Object} options.body The data to send in the body of the request
 	 */
-	async put({ endpoint, params = {}, json = {}, body = {} }) {
-		const searchParams = this._buildSearchParams(params);
+	async put({ endpoint, params, data = {} }) {
+		const options = {};
 
-		const options = {
-			searchParams,
-		};
-
-		if (Object.getOwnPropertyNames(json).length) {
-			options.json = json;
-		} else {
-			options.body = body;
+		if (params) {
+			options.searchParams = this._buildSearchParams(params);
 		}
+
+		// json data must be sent via json property, all others are sent via body
+		const contentType = this._service.defaults.options.headers['content-type'];
+		const dataType = contentType === 'application/json' ? 'json' : 'body';
+		options[dataType] = data;
 
 		return this._service.put(endpoint, options);
 	}
@@ -145,9 +149,12 @@ class Clickup {
 	 * @param {String} options.endpoint The endpoint to make a request to
 	 * @param {Object} options.params The parameters to add to the endpoint
 	 */
-	async delete({ endpoint, params = {} }) {
-		const searchParams = this._buildSearchParams(params);
-		return this._service.delete(endpoint, { searchParams });
+	async delete({ endpoint, params }) {
+		const options = {};
+		if (params) {
+			options.searchParams = this._buildSearchParams(params);
+		}
+		return this._service.delete(endpoint, options);
 	}
 }
 
