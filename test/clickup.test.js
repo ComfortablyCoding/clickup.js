@@ -83,3 +83,57 @@ describe('Testing Client Got Options', () => {
 		expect(clickup._service.defaults.options.hooks.beforeRequest.length).gt(0);
 	});
 });
+
+describe('Testing Client HTTP methods', () => {
+	let clickup;
+	before(async () => {
+		clickup = new Clickup(token, {
+			prefixUrl: 'https://jsonplaceholder.typicode.com',
+			headers: {
+				'content-type': 'application/json',
+			},
+		});
+	});
+
+	it('should make a GET request', async () => {
+		const { statusCode, body } = await clickup.get({
+			endpoint: 'comments',
+			params: {
+				postId: 1,
+			},
+		});
+		expect(statusCode).eq(200);
+		expect(body.length).be.gt(0);
+	});
+
+	it('should make a POST request', async () => {
+		const recordData = { title: 'foo', body: 'bar', userId: 1 };
+		const { statusCode, body } = await clickup.post({
+			endpoint: 'posts',
+			data: recordData,
+		});
+
+		expect(statusCode).eq(201);
+		expect(Object.keys(body).length).be.gt(0);
+	});
+
+	it('should make a PUT request', async () => {
+		const recordData = { id: 1, title: 'foo', body: 'bar', userId: 1 };
+		const { statusCode, body } = await clickup.put({
+			endpoint: 'posts/1',
+			data: recordData,
+		});
+
+		expect(statusCode).eq(200);
+		expect(body).to.deep.eq(recordData);
+	});
+
+	it('should make a DELETE request', async () => {
+		const { statusCode, body } = await clickup.delete({
+			endpoint: 'posts/1',
+		});
+
+		expect(statusCode).eq(200);
+		expect(body).to.deep.eq({});
+	});
+});
