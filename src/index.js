@@ -9,13 +9,13 @@ class Clickup {
 	 * @param {String} token Clickup API Access Token
 	 */
 	constructor(token, gotOptions) {
-		this._baseUrl = 'https://api.clickup.com/api/v2';
+		// create service instance
 		this._token = token;
-		this._headers = {
-			authorization: this._token,
-			'content-type': 'application/json',
-		};
 		this._service = this._createGotInstance(gotOptions);
+
+		// convenience properties
+		this._baseUrl = this._service.defaults.prefixUrl;
+		this._headers = this._service.defaults.headers;
 
 		// pull in all routes
 		this.authorization = new routes.Authorization(this);
