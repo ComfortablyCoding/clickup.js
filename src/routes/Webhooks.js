@@ -17,7 +17,7 @@ class Webhooks {
 	async update(webhookId, data) {
 		return this._client.put({
 			endpoint: `${this.route}/${webhookId}`,
-			json: data,
+			data,
 		});
 	}
 

@@ -28,7 +28,7 @@ class Goals {
 	async update(goalId, data) {
 		return this._client.put({
 			endpoint: `${this.route}/${goalId}`,
-			json: data,
+			data,
 		});
 	}
 
@@ -52,7 +52,7 @@ class Goals {
 	async createKeyResult(goalId, data) {
 		return this._client.post({
 			endpoint: `${this.route}/${goalId}/key_result`,
-			json: data,
+			data,
 		});
 	}
 }
