@@ -64,3 +64,22 @@ describe('Testing Clickup Class Methods', () => {
 		expect(clickup._buildSearchParams(params)).deep.equal(expectedOutput);
 	});
 });
+
+describe('Testing Client Got Options', () => {
+	let clickup;
+	before(() => {
+		clickup = new Clickup('token', {
+			hooks: {
+				beforeRequest: [
+					(options) => {
+						options.headers.foo = 'bar';
+					},
+				],
+			},
+		});
+	});
+
+	it('should have beforeRequest hook(s)', () => {
+		expect(clickup._service.defaults.options.hooks.beforeRequest.length).gt(0);
+	});
+});
