@@ -28,7 +28,7 @@ class Lists {
 	async update(listId, data) {
 		return this._client.put({
 			endpoint: `${this.route}/${listId}`,
-			json: data,
+			data,
 		});
 	}
 
@@ -52,7 +52,7 @@ class Lists {
 	async addComment(listId, data) {
 		return this._client.post({
 			endpoint: `${this.route}/${listId}/comment`,
-			json: data,
+			data,
 		});
 	}
 
@@ -88,7 +88,7 @@ class Lists {
 	async addGuest(listId, guestId, data) {
 		return this._client.post({
 			endpoint: `${this.route}/${listId}/guest/${guestId}`,
-			json: data,
+			data,
 		});
 	}
 
@@ -124,7 +124,7 @@ class Lists {
 	async createTask(listId, data) {
 		return this._client.post({
 			endpoint: `${this.route}/${listId}/task`,
-			json: data,
+			data,
 		});
 	}
 
@@ -153,7 +153,7 @@ class Lists {
 	async createTaskFromTemplate(listId, templateId, data) {
 		return this._client.post({
 			endpoint: `${this.route}/${listId}/taskTemplate/${templateId}`,
-			json: data,
+			data,
 		});
 	}
 
@@ -166,7 +166,7 @@ class Lists {
 	async createView(listId, data) {
 		return this._client.post({
 			endpoint: `${this.route}/${listId}/view`,
-			json: data,
+			data,
 		});
 	}
 

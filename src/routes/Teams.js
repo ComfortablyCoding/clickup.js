@@ -26,7 +26,7 @@ class Teams {
 	async createGoal(teamId, data) {
 		return this._client.post({
 			endpoint: `${this.route}/${teamId}/goal`,
-			json: data,
+			data,
 		});
 	}
 
@@ -50,7 +50,7 @@ class Teams {
 	async inviteGuest(teamId, data) {
 		return this._client.post({
 			endpoint: `${this.route}/${teamId}/guest`,
-			json: data,
+			data,
 		});
 	}
 
@@ -75,7 +75,7 @@ class Teams {
 	async editGuest(teamId, guestId, data) {
 		return this._client.put({
 			endpoint: `${this.route}/${teamId}/guest/${guestId}`,
-			json: data,
+			data,
 		});
 	}
 
@@ -111,7 +111,7 @@ class Teams {
 	async createSpace(teamId, data) {
 		return this._client.post({
 			endpoint: `${this.route}/${teamId}/space`,
-			json: data,
+			data,
 		});
 	}
 
@@ -181,7 +181,7 @@ class Teams {
 	async inviteUser(teamId, data) {
 		return this._client.post({
 			endpoint: `${this.route}/${teamId}/user`,
-			json: data,
+			data,
 		});
 	}
 
@@ -195,7 +195,7 @@ class Teams {
 	async editUser(teamId, userId, data) {
 		return this._client.put({
 			endpoint: `${this.route}/${teamId}/user/${userId}`,
-			json: data,
+			data,
 		});
 	}
 
@@ -220,7 +220,7 @@ class Teams {
 	async createView(teamId, data) {
 		return this._client.post({
 			endpoint: `${this.route}/${teamId}/view`,
-			json: data,
+			data,
 		});
 	}
 
@@ -244,7 +244,7 @@ class Teams {
 	async createWebhook(teamId, data) {
 		return this._client.post({
 			endpoint: `${this.route}/${teamId}/webhook`,
-			json: data,
+			data,
 		});
 	}
 
@@ -310,7 +310,7 @@ class Teams {
 		return this._client.post({
 			endpoint: `${this.route}/${teamId}/time_entries`,
 			params: options,
-			json: data,
+			data,
 		});
 	}
 
@@ -323,7 +323,7 @@ class Teams {
 	async removeTagsFromTimeEntries(teamId, data) {
 		return this._client.delete({
 			endpoint: `${this.route}/${teamId}/time_entries/tags`,
-			json: data,
+			data,
 		});
 	}
 
@@ -347,7 +347,7 @@ class Teams {
 	async addTagsFromTimeEntries(teamId, data) {
 		return this._client.post({
 			endpoint: `${this.route}/${teamId}/time_entries/tags`,
-			json: data,
+			data,
 		});
 	}
 
@@ -360,7 +360,7 @@ class Teams {
 	async changeTagsFromTimeEntries(teamId, data) {
 		return this._client.put({
 			endpoint: `${this.route}/${teamId}/time_entries/tags`,
-			json: data,
+			data,
 		});
 	}
 
@@ -376,7 +376,7 @@ class Teams {
 		return this._client.post({
 			endpoint: `${this.route}/${teamId}/time_entries/start/${timerId}`,
 			params: options,
-			json: data,
+			data,
 		});
 	}
 
@@ -415,7 +415,7 @@ class Teams {
 		return this._client.put({
 			endpoint: `${this.route}/${teamId}/time_entries/${timerId}`,
 			params: options,
-			json: data,
+			data,
 		});
 	}
 }

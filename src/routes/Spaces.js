@@ -28,7 +28,7 @@ class Spaces {
 	async update(spaceId, data) {
 		return this._client.put({
 			endpoint: `${this.route}/${spaceId}`,
-			json: data,
+			data,
 		});
 	}
 
@@ -52,7 +52,7 @@ class Spaces {
 	async createFolder(spaceId, data) {
 		return this._client.post({
 			endpoint: `${this.route}/${spaceId}/folder`,
-			json: data,
+			data,
 		});
 	}
 
@@ -80,7 +80,7 @@ class Spaces {
 	async createFolderlessList(spaceId, data) {
 		return this._client.post({
 			endpoint: `${this.route}/${spaceId}/list`,
-			json: data,
+			data,
 		});
 	}
 
@@ -119,7 +119,7 @@ class Spaces {
 	async createTag(spaceId, data) {
 		return this._client.post({
 			endpoint: `${this.route}/${spaceId}/tag`,
-			json: data,
+			data,
 		});
 	}
 
@@ -156,7 +156,7 @@ class Spaces {
 	async createView(spaceId, data) {
 		return this._client.post({
 			endpoint: `${this.route}/${spaceId}/view`,
-			json: data,
+			data,
 		});
 	}
 

@@ -17,7 +17,7 @@ class Comments {
 	async update(commentId, data) {
 		return this._client.put({
 			endpoint: `${this.route}/${commentId}`,
-			json: data,
+			data,
 		});
 	}
 
