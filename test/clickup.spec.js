@@ -2,10 +2,12 @@ const { expect } = require('chai');
 const Clickup = require('../src/index');
 const routes = require('../src/routes');
 
+const token = process.env.CLICKUP_ACCESS_TOKEN || 'token';
+
 describe('Testing Clickup Client Instance', () => {
 	let clickup;
 	before(() => {
-		clickup = new Clickup('token');
+		clickup = new Clickup(token);
 	});
 
 	it('should construct a clickup instance', () => {
@@ -19,7 +21,7 @@ describe('Testing Clickup Client Instance', () => {
 	it('should have default headers', () => {
 		expect(clickup._service.defaults.options.headers).have.property('authorization');
 		expect(clickup._service.defaults.options.headers).have.property('content-type');
-		expect(clickup._service.defaults.options.headers.authorization).equal('token');
+		expect(clickup._service.defaults.options.headers.authorization).equal(token);
 		expect(clickup._service.defaults.options.headers['content-type']).equal('application/json');
 	});
 
@@ -46,7 +48,7 @@ describe('Testing Clickup Client Instance', () => {
 describe('Testing Clickup Class Methods', () => {
 	let clickup;
 	before(() => {
-		clickup = new Clickup('token');
+		clickup = new Clickup(token);
 	});
 
 	it('should return an instance of URLSearchParams', () => {
@@ -68,7 +70,7 @@ describe('Testing Clickup Class Methods', () => {
 describe('Testing Client Got Options', () => {
 	let clickup;
 	before(() => {
-		clickup = new Clickup('token', {
+		clickup = new Clickup(token, {
 			hooks: {
 				beforeRequest: [
 					(options) => {
