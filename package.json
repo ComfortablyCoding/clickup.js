@@ -9,10 +9,12 @@
 	},
 	"keywords": [
 		"clickup",
+		"clickupjs",
 		"clickup-js",
 		"clickup.js",
 		"api",
-		"wrapper"
+		"wrapper",
+		"wrapper-api"
 	],
 	"devDependencies": {
 		"chai": "^4.2.0",
