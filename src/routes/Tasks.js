@@ -183,14 +183,12 @@ class Tasks {
 	 * Delete a dependancy for a task
 	 *
 	 * @param {String} taskId The task id
-	 * @param {Object} data The dependency data
-	 * @param {Object} [options] The parameter options to pass in
+	 * @param {Object} options The parameter options to pass in
 	 */
-	async deleteDependency(taskId, data, options) {
+	async deleteDependency(taskId, options) {
 		return this.client.delete({
 			endpoint: `${this.route}/${taskId}/dependency`,
 			params: options,
-			data,
 		});
 	}
 
