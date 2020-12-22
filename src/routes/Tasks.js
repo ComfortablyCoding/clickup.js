@@ -348,6 +348,31 @@ class Tasks {
 			params: options,
 		});
 	}
+
+	/**
+	 * Get tasks time in status
+	 *
+	 * @param {String} taskId The task id
+	 * @param {Object} options The parameter options to pass in
+	 */
+	async getTimeInStatus(taskId, options) {
+		return this.client.get({
+			endpoint: `${this.route}/${taskId}/time_in_status`,
+			params: options,
+		});
+	}
+
+	/**
+	 * Get bulk tasks time in status
+	 *
+	 * @param {Object} options The parameter options to pass in
+	 */
+	async getBulkTimeInStatus(options) {
+		return this.client.get({
+			endpoint: `${this.route}/bulk_time_in_status/task_ids`,
+			params: options,
+		});
+	}
 }
 
 module.exports = Tasks;
