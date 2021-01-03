@@ -180,6 +180,41 @@ class Lists {
 			endpoint: `${this.route}/${listId}/view`,
 		});
 	}
+
+	/**
+	 * Add task to a list
+	 *
+	 * @param {String} listId The list id
+	 * @param {String} taskId The task id
+	 */
+	async addTaskToList(listId, taskId) {
+		return this._client.post({
+			endpoint: `${this.route}/${listId}/task/${taskId}`,
+		});
+	}
+
+	/**
+	 * Remove a task from a list
+	 *
+	 * @param {Sting} listId The list id
+	 * @param {String} taskId The task id
+	 */
+	async removeTaskFromList(listId, taskId) {
+		return this._client.delete({
+			endpoint: `${this.route}/${listId}/task/${taskId}`,
+		});
+	}
+
+	/**
+	 * Get list members
+	 *
+	 * @param {String} listId The list id
+	 */
+	async getListMembers(listId) {
+		return this._client.get({
+			endpoint: `${this.route}/${listId}/member`,
+		});
+	}
 }
 
 module.exports = Lists;
