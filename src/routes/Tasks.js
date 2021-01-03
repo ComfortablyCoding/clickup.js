@@ -7,7 +7,7 @@ class Tasks {
 	 * @param {Client} client A client instance
 	 */
 	constructor(client) {
-		this.client = client;
+		this._client = client;
 		this.route = 'task';
 	}
 
@@ -18,7 +18,7 @@ class Tasks {
 	 * @param {Object} [options] The parameter options to pass in
 	 */
 	async get(taskId, options) {
-		return this.client.get({
+		return this._client.get({
 			endpoint: `${this.route}/${taskId}`,
 			params: options,
 		});
@@ -32,7 +32,7 @@ class Tasks {
 	 * @param {Object} [options] The parameter options to pass in
 	 */
 	async update(taskId, data, options) {
-		return this.client.put({
+		return this._client.put({
 			endpoint: `${this.route}/${taskId}`,
 			params: options,
 			data,
@@ -46,7 +46,7 @@ class Tasks {
 	 * @param {Object} [options] The parameter options to pass in
 	 */
 	async delete(taskId, options) {
-		return this.client.delete({
+		return this._client.delete({
 			endpoint: `${this.route}/${taskId}`,
 			params: options,
 		});
@@ -81,9 +81,9 @@ class Tasks {
 
 		// setting headers
 		const headers = form.getHeaders();
-		headers.authorization = this.client._token;
+		headers.authorization = this._client._token;
 
-		return this.client.post({
+		return this._client.post({
 			endpoint: `${this.route}/${taskId}/attachment`,
 			params: options,
 			data: form,
@@ -99,7 +99,7 @@ class Tasks {
 	 * @param {Object} [options] The parameter options to pass in
 	 */
 	async addComment(taskId, data, options) {
-		return this.client.post({
+		return this._client.post({
 			endpoint: `${this.route}/${taskId}/comment`,
 			params: options,
 			data,
@@ -113,7 +113,7 @@ class Tasks {
 	 * @param {Object} [options] The parameter options to pass in
 	 */
 	async getComments(taskId, options) {
-		return this.client.get({
+		return this._client.get({
 			endpoint: `${this.route}/${taskId}/comment`,
 			params: options,
 		});
@@ -127,7 +127,7 @@ class Tasks {
 	 * @param {Object} [options] The parameter options to pass in
 	 */
 	async createChecklist(taskId, data, options) {
-		return this.client.post({
+		return this._client.post({
 			endpoint: `${this.route}/${taskId}/checklist`,
 			params: options,
 			data,
@@ -143,7 +143,7 @@ class Tasks {
 	 * @param {Object} [options] The parameter options to pass in
 	 */
 	async setCustomFieldValue(taskId, fieldId, data, options) {
-		return this.client.post({
+		return this._client.post({
 			endpoint: `${this.route}/${taskId}/field/${fieldId}`,
 			params: options,
 			data,
@@ -158,7 +158,7 @@ class Tasks {
 	 * @param {Object} [options] The parameter options to pass in
 	 */
 	async deleteCustomFieldValue(taskId, fieldId, options) {
-		return this.client.delete({
+		return this._client.delete({
 			endpoint: `${this.route}/${taskId}/field/${fieldId}`,
 			params: options,
 		});
@@ -172,7 +172,7 @@ class Tasks {
 	 * @param {Object} [options] The parameter options to pass in
 	 */
 	async addDependency(taskId, data, options) {
-		return this.client.post({
+		return this._client.post({
 			endpoint: `${this.route}/${taskId}/dependency`,
 			params: options,
 			data,
@@ -186,7 +186,7 @@ class Tasks {
 	 * @param {Object} options The parameter options to pass in
 	 */
 	async deleteDependency(taskId, options) {
-		return this.client.delete({
+		return this._client.delete({
 			endpoint: `${this.route}/${taskId}/dependency`,
 			params: options,
 		});
@@ -200,7 +200,7 @@ class Tasks {
 	 * @param {Object} [options] The parameter options to pass in
 	 */
 	async addTaskLink(taskId, linksTo, options) {
-		return this.client.post({
+		return this._client.post({
 			endpoint: `${this.route}/${taskId}/link/${linksTo}`,
 			params: options,
 		});
@@ -214,7 +214,7 @@ class Tasks {
 	 * @param {String} [options] The parameter options to pass in
 	 */
 	async deleteTaskLink(taskId, linksTo, options) {
-		return this.client.delete({
+		return this._client.delete({
 			endpoint: `${this.route}/${taskId}/link/${linksTo}`,
 			params: options,
 		});
@@ -229,7 +229,7 @@ class Tasks {
 	 * @param {Object} [options] The parameter options to pass in
 	 */
 	async addGuest(taskId, guestId, data, options) {
-		return this.client.post({
+		return this._client.post({
 			endpoint: `${this.route}/${taskId}/guest/${guestId}`,
 			params: options,
 			data,
@@ -244,7 +244,7 @@ class Tasks {
 	 * @param {Object} [options] The parameter options to pass in
 	 */
 	async removeGuest(taskId, guestId, options) {
-		return this.client.delete({
+		return this._client.delete({
 			endpoint: `${this.route}/${taskId}/guest/${guestId}`,
 			params: options,
 		});
@@ -256,7 +256,7 @@ class Tasks {
 	 * @param {String} taskId The task id
 	 */
 	async getMembers(taskId) {
-		return this.client.get({
+		return this._client.get({
 			endpoint: `${this.route}/${taskId}/member`,
 		});
 	}
@@ -269,7 +269,7 @@ class Tasks {
 	 * @param {Object} [options] The parameter options to pass in
 	 */
 	async addTag(taskId, tagName, options) {
-		return this.client.post({
+		return this._client.post({
 			endpoint: `${this.route}/${taskId}/tag/${tagName}`,
 			params: options,
 		});
@@ -283,7 +283,7 @@ class Tasks {
 	 * @param {Object} [options] The parameter options to pass in
 	 */
 	async removeTag(taskId, tagName, options) {
-		return this.client.delete({
+		return this._client.delete({
 			endpoint: `${this.route}/${taskId}/tag/${tagName}`,
 			params: options,
 		});
@@ -297,7 +297,7 @@ class Tasks {
 	 * @param {Object} [options] The parameter options to pass in
 	 */
 	async trackTime(taskId, data, options) {
-		return this.client.post({
+		return this._client.post({
 			endpoint: `${this.route}/${taskId}/time`,
 			params: options,
 			data,
@@ -311,7 +311,7 @@ class Tasks {
 	 * @param {Object} [options] The parameter options to pass in
 	 */
 	async getTrackedTime(taskId, options) {
-		return this.client.get({
+		return this._client.get({
 			endpoint: `${this.route}/${taskId}/time`,
 			params: options,
 		});
@@ -326,7 +326,7 @@ class Tasks {
 	 * @param {Object} [options] The parameter options to pass in
 	 */
 	async editTrackedTime(taskId, intervalId, data, options) {
-		return this.client.put({
+		return this._client.put({
 			endpoint: `${this.route}/${taskId}/time/${intervalId}`,
 			params: options,
 			data,
@@ -341,7 +341,7 @@ class Tasks {
 	 * @param {Object} [options] The parameter options to pass in
 	 */
 	async deleteTrackedTime(taskId, intervalId, options) {
-		return this.client.delete({
+		return this._client.delete({
 			endpoint: `${this.route}/${taskId}/time/${intervalId}`,
 			params: options,
 		});
@@ -354,7 +354,7 @@ class Tasks {
 	 * @param {Object} options The parameter options to pass in
 	 */
 	async getTimeInStatus(taskId, options) {
-		return this.client.get({
+		return this._client.get({
 			endpoint: `${this.route}/${taskId}/time_in_status`,
 			params: options,
 		});
@@ -366,7 +366,7 @@ class Tasks {
 	 * @param {Object} options The parameter options to pass in
 	 */
 	async getBulkTimeInStatus(options) {
-		return this.client.get({
+		return this._client.get({
 			endpoint: `${this.route}/bulk_time_in_status/task_ids`,
 			params: options,
 		});
