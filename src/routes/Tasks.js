@@ -56,15 +56,28 @@ class Tasks {
 	 * Add an attachment to a task
 	 *
 	 * @param {String} taskId The task id
-	 * @param {String} pathToFile The path to the file
-	 * @param {String} [fileName='attachment'] The file name
+	 * @param {Object} fileSettings The file settings
+	 * @param {String} fileSettings.filePath The path to the file
+	 * @param {String} fileSettings.fileName The name of the attachment file along with its extension type. Example: 'notes.txt'
 	 * @param {Object} [options] The parameter options to pass in
 	 */
-	async addAttachment(taskId, pathToFile, fileName = 'attachment', options) {
+	async addAttachment(taskId, fileSettings, options) {
+		// ensure fileSettings are provided
+		if (fileSettings) {
+			if (!fileSettings.filePath) {
+				throw new Error('A file path must be provided');
+			}
+			if (!fileSettings.fileName) {
+				throw new Error('A file name must be provided');
+			}
+		} else {
+			throw new Error('File settings must be provided');
+		}
+
 		// building form-data
 		const form = new FormData();
-		form.append('filename', fileName);
-		form.append('attachment', createReadStream(pathToFile));
+		form.append('filename', fileSettings.fileName);
+		form.append('attachment', createReadStream(fileSettings.filePath));
 
 		// setting headers
 		const headers = form.getHeaders();
@@ -170,14 +183,12 @@ class Tasks {
 	 * Delete a dependancy for a task
 	 *
 	 * @param {String} taskId The task id
-	 * @param {Object} data The dependency data
-	 * @param {Object} [options] The parameter options to pass in
+	 * @param {Object} options The parameter options to pass in
 	 */
-	async deleteDependency(taskId, data, options) {
+	async deleteDependency(taskId, options) {
 		return this.client.delete({
 			endpoint: `${this.route}/${taskId}/dependency`,
 			params: options,
-			data,
 		});
 	}
 
@@ -332,6 +343,31 @@ class Tasks {
 	async deleteTrackedTime(taskId, intervalId, options) {
 		return this.client.delete({
 			endpoint: `${this.route}/${taskId}/time/${intervalId}`,
+			params: options,
+		});
+	}
+
+	/**
+	 * Get tasks time in status
+	 *
+	 * @param {String} taskId The task id
+	 * @param {Object} options The parameter options to pass in
+	 */
+	async getTimeInStatus(taskId, options) {
+		return this.client.get({
+			endpoint: `${this.route}/${taskId}/time_in_status`,
+			params: options,
+		});
+	}
+
+	/**
+	 * Get bulk tasks time in status
+	 *
+	 * @param {Object} options The parameter options to pass in
+	 */
+	async getBulkTimeInStatus(options) {
+		return this.client.get({
+			endpoint: `${this.route}/bulk_time_in_status/task_ids`,
 			params: options,
 		});
 	}
