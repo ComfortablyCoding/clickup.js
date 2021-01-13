@@ -64,7 +64,7 @@ class Spaces {
 	 */
 	async getFolders(spaceId, archived = false) {
 		return this._client.get({
-			endpoint: `${this.route}/${spaceId}`,
+			endpoint: `${this.route}/${spaceId}/folder`,
 			params: {
 				archived,
 			},
