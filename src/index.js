@@ -74,7 +74,9 @@ class Clickup {
 	 */
 	// eslint-disable-next-line class-methods-use-this
 	_buildSearchParams(params = {}) {
-		return new URLSearchParams(Object.entries(params));
+		return new URLSearchParams(
+			Object.entries(params).flatMap(([k, v]) => (Array.isArray(v) ? v.map((e) => [k, e]) : [[k, v]]))
+		);
 	}
 
 	/**
