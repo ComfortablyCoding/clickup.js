@@ -45,25 +45,26 @@ describe('Testing Clickup Client Instance', () => {
 	});
 });
 
-describe('Testing Clickup Class Methods', () => {
-	let clickup;
-	before(() => {
-		clickup = new Clickup(token);
-	});
-
+describe('Testing Clickup buildSearchParams Method', () => {
 	it('should return an instance of URLSearchParams', () => {
-		expect(clickup._buildSearchParams({})).instanceOf(URLSearchParams);
+		expect(Clickup._buildSearchParams({})).instanceOf(URLSearchParams);
 	});
 
 	it('should construct URLSearchParams properly from an object', () => {
 		const params = {
-			param1: 'value1',
-			param2: 'value2',
+			archive: false,
+			order_by: 'due_date',
+			'statuses[]': ['in progress', 'completed'],
 		};
 
-		const expectedOutput = new URLSearchParams({ param1: 'value1', param2: 'value2' });
+		const expectedOutput = new URLSearchParams([
+			['archived', 'false'],
+			['order_by', 'due_date'],
+			['statuses[]', 'in progress'],
+			['statuses[]', 'completed'],
+		]);
 
-		expect(clickup._buildSearchParams(params)).deep.equal(expectedOutput);
+		expect(Clickup._buildSearchParams(params)).deep.equal(expectedOutput);
 	});
 });
 
