@@ -72,9 +72,10 @@ class Clickup {
 	 * @param {Object} params parameters to be converted
 	 * @private
 	 */
-	// eslint-disable-next-line class-methods-use-this
-	_buildSearchParams(params = {}) {
-		return new URLSearchParams(Object.entries(params));
+	static _buildSearchParams(params = {}) {
+		return new URLSearchParams(
+			Object.entries(params).flatMap(([k, v]) => (Array.isArray(v) ? v.map((e) => [k, e]) : [[k, v]]))
+		);
 	}
 
 	/**
@@ -87,7 +88,7 @@ class Clickup {
 	async get({ endpoint, params }) {
 		const options = {};
 		if (params) {
-			options.searchParams = this._buildSearchParams(params);
+			options.searchParams = Clickup._buildSearchParams(params);
 		}
 		return this._service.get(endpoint, options);
 	}
@@ -105,7 +106,7 @@ class Clickup {
 		const options = {};
 
 		if (params) {
-			options.searchParams = this._buildSearchParams(params);
+			options.searchParams = Clickup._buildSearchParams(params);
 		}
 
 		let contentType = this._service.defaults.options.headers['content-type'];
@@ -136,7 +137,7 @@ class Clickup {
 		const options = {};
 
 		if (params) {
-			options.searchParams = this._buildSearchParams(params);
+			options.searchParams = Clickup._buildSearchParams(params);
 		}
 
 		// json data must be sent via json property, all others are sent via body
@@ -157,7 +158,7 @@ class Clickup {
 	async delete({ endpoint, params }) {
 		const options = {};
 		if (params) {
-			options.searchParams = this._buildSearchParams(params);
+			options.searchParams = Clickup._buildSearchParams(params);
 		}
 		return this._service.delete(endpoint, options);
 	}
