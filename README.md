@@ -107,3 +107,7 @@ The available features are:
 - `Teams`
 - `Views`
 - `Webhooks`
+
+## Disclaimer
+
+The [clickup.js](https://github.com/ComfortablyCoding/clickup.js) package is **unofficial** and therefor not endorsed or affiliated with ClickUp or it's subsidaries.
