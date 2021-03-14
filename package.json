@@ -1,11 +1,11 @@
 {
 	"name": "clickup.js",
-	"version": "2.0.2",
+	"version": "2.1.0",
 	"description": "A Node.js wrapper for the Clickup API",
 	"main": "./src/index.js",
 	"dependencies": {
-		"form-data": "^3.0.0",
-		"got": "^11.8.1"
+		"form-data": "^4.0.0",
+		"got": "^11.8.2"
 	},
 	"keywords": [
 		"clickup",
@@ -17,15 +17,15 @@
 		"wrapper-api"
 	],
 	"devDependencies": {
-		"chai": "^4.2.0",
+		"chai": "^4.3.4",
 		"docdash": "^1.2.0",
-		"eslint": "^7.16.0",
+		"eslint": "^7.22.0",
 		"eslint-config-airbnb-base": "^14.2.1",
-		"eslint-config-prettier": "^7.1.0",
+		"eslint-config-prettier": "^8.1.0",
 		"eslint-plugin-import": "^2.22.1",
-		"eslint-plugin-prettier": "^3.3.0",
+		"eslint-plugin-prettier": "^3.3.1",
 		"jsdoc": "^3.6.6",
-		"mocha": "^8.2.1",
+		"mocha": "^8.3.2",
 		"prettier": "^2.2.1",
 		"sinon": "^9.2.4"
 	},
