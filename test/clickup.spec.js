@@ -1,8 +1,9 @@
 const { expect } = require('chai');
+const sinon = require('sinon');
 const Clickup = require('../src/index');
 const routes = require('../src/routes');
 
-const token = process.env.CLICKUP_ACCESS_TOKEN || 'token';
+const token = 'token';
 
 describe('Testing Clickup Client Instance', () => {
 	let clickup;
@@ -90,53 +91,68 @@ describe('Testing Client Got Options', () => {
 describe('Testing Client HTTP methods', () => {
 	let clickup;
 	before(async () => {
-		clickup = new Clickup(token, {
-			prefixUrl: 'https://jsonplaceholder.typicode.com',
-			headers: {
-				'content-type': 'application/json',
-			},
-		});
+		clickup = new Clickup(token);
 	});
 
 	it('should make a GET request', async () => {
-		const { statusCode, body } = await clickup.get({
-			endpoint: 'comments',
-			params: {
-				postId: 1,
-			},
-		});
+		const getStub = sinon.stub(clickup._service, 'get').resolves({ statusCode: 200, body: { id: '9hz' } });
+
+		const { statusCode } = await clickup.tasks.get('9hz');
+
+		const [endpoint, params] = getStub.args[0];
+
 		expect(statusCode).eq(200);
-		expect(body.length).be.gt(0);
+		expect(endpoint).to.equal('task/9hz');
+		expect(params).to.deep.equal({});
 	});
 
 	it('should make a POST request', async () => {
-		const recordData = { title: 'foo', body: 'bar', userId: 1 };
-		const { statusCode, body } = await clickup.post({
-			endpoint: 'posts',
-			data: recordData,
-		});
+		const taskData = {
+			name: 'New Task Name',
+			description: 'New Task Description',
+			assignees: [183],
+			status: 'open',
+		};
 
-		expect(statusCode).eq(201);
-		expect(Object.keys(body).length).be.gt(0);
+		const postStub = sinon
+			.stub(clickup._service, 'post')
+			.resolves({ statusCode: 200, body: { id: '9hz', ...taskData } });
+
+		const { statusCode } = await clickup.lists.createTask('123', taskData);
+
+		const [endpoint, body] = postStub.args[0];
+
+		expect(statusCode).eq(200);
+		expect(endpoint).to.equal('list/123/task');
+		expect(body.json).to.deep.equal(taskData);
 	});
 
 	it('should make a PUT request', async () => {
-		const recordData = { id: 1, title: 'foo', body: 'bar', userId: 1 };
-		const { statusCode, body } = await clickup.put({
-			endpoint: 'posts/1',
-			data: recordData,
-		});
+		const taskData = {
+			name: 'Updated Task Name',
+			description: 'Updated Task Content',
+			status: 'in progress',
+		};
+		const putStub = sinon.stub(clickup._service, 'put').resolves({ statusCode: 200, body: { id: '9hz', ...taskData } });
+
+		const { statusCode } = await clickup.tasks.update('9hz', taskData);
+
+		const [endpoint, body] = putStub.args[0];
 
 		expect(statusCode).eq(200);
-		expect(body).to.deep.eq(recordData);
+		expect(endpoint).to.deep.equal('task/9hz');
+		expect(body.json).to.deep.equal(taskData);
 	});
 
 	it('should make a DELETE request', async () => {
-		const { statusCode, body } = await clickup.delete({
-			endpoint: 'posts/1',
-		});
+		const deleteStub = sinon.stub(clickup._service, 'delete').resolves({ statusCode: 200, body: {} });
+
+		const { statusCode } = await clickup.tasks.delete('9hz');
+
+		const [endpoint, body] = deleteStub.args[0];
 
 		expect(statusCode).eq(200);
-		expect(body).to.deep.eq({});
+		expect(endpoint).to.deep.equal('task/9hz');
+		expect(body).to.deep.equal({});
 	});
 });
