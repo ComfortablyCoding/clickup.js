@@ -26,7 +26,8 @@
 		"eslint-plugin-prettier": "^3.3.0",
 		"jsdoc": "^3.6.6",
 		"mocha": "^8.2.1",
-		"prettier": "^2.2.1"
+		"prettier": "^2.2.1",
+		"sinon": "^9.2.4"
 	},
 	"scripts": {
 		"test": "mocha",
