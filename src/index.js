@@ -38,30 +38,17 @@ class Clickup {
 	 * @private
 	 * @param {Object} gotOptions Options for the created got instance. All options can be found [here](https://github.com/sindresorhus/got#options)
 	 */
-	_createGotInstance(gotOptions = {}) {
-		const gotInstance = gotOptions;
-
-		// validate required Got properties
-		if (gotInstance.headers) {
-			if (!gotInstance.headers.authorization) {
-				gotInstance.headers.authorization = this._token;
-			}
-			if (!gotInstance.headers['content-type']) {
-				gotInstance.headers['content-type'] = 'application/json';
-			}
-		} else {
-			gotInstance.headers = {
+	 _createGotInstance(gotOptions = {}) {
+		// apply defaults where necessary
+		const instanceDefaults = {
+			headers: {
 				authorization: this._token,
 				'content-type': 'application/json',
-			};
-		}
-		if (!gotInstance.responseType) {
-			gotInstance.responseType = 'json';
-		}
-
-		if (!gotInstance.prefixUrl) {
-			gotInstance.prefixUrl = 'https://api.clickup.com/api/v2';
-		}
+			},
+			responseType: 'json',
+			prefixUrl: 'https://api.clickup.com/api/v2',
+		};
+		const gotInstance = Object.assign(instanceDefaults, gotOptions);
 
 		return got.extend(gotInstance);
 	}
