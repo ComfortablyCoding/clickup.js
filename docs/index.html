@@ -89,56 +89,56 @@ const clickup = new Clickup(token);
 </code></pre>
 <p>Once you've created an instance, you can use it to access all the features provided by the wrapper, the following example fetches a task by id and displays the response to the console:</p>
 <pre class="prettyprint source lang-js"><code>(async () => {
- try {
-  // get a specific task
-  const { body } = await clickup.tasks.get('9hz');
-  console.log(body);
- } catch (error) {
-  if (error.response) {
-   // The request was made and the server responded with a status code
-   // that falls out of the range of 2xx
-   console.log(error.response.body);
-   console.log(error.response.statusCode);
-   console.log(error.response.headers);
-  } else if (error.request) {
-   // The request was made but no response was received
-   console.log(error.request);
-  } else {
-   // Something happened in setting up the request that triggered an Error
-   console.log('Error', error.message);
-  }
-  console.log(error.options);
- }
+	try {
+		// get a specific task
+		const { body } = await clickup.tasks.get('9hz');
+		console.log(body);
+	} catch (error) {
+		if (error.response) {
+			// The request was made and the server responded with a status code
+			// that falls out of the range of 2xx
+			console.log(error.response.body);
+			console.log(error.response.statusCode);
+			console.log(error.response.headers);
+		} else if (error.request) {
+			// The request was made but no response was received
+			console.log(error.request);
+		} else {
+			// Something happened in setting up the request that triggered an Error
+			console.log('Error', error.message);
+		}
+		console.log(error.options);
+	}
 })();
 </code></pre>
 <p><strong>Note:</strong> Due to the HTTP request library being used each error contains an <code>options</code> property which are the options Got used to create a request - just to make debugging easier. Additionaly, the errors may have <code>request</code> (Got Stream) and <code>response</code> (Got Response) properties depending on which phase of the request failed. Read more about HTTP request library Got <a href="https://github.com/sindresorhus/got">here</a>.</p>
 <h2>Important Note</h2>
 <p>The library is structured to match classes with their respective routes, <strong>NOT</strong> how they are sectioned in the Clickup API docs. For example adding a guest to a task is under the <code>Tasks</code> class instead of the <code>Guests</code> class as its route is via <code>task</code> and not <code>guest</code>. Due to this a request to add a guest to a task will look like so:</p>
 <pre class="prettyprint source lang-js"><code>(async () => {
- try {
-  // guest data
-  const guestData = {
-   permission_level: 'read',
-  };
-  // add guest to task
-  const { body } = await clickup.tasks.addGuest('c04', 403, guestData);
-  console.log(body);
- } catch (error) {
-  if (error.response) {
-   // The request was made and the server responded with a status code
-   // that falls out of the range of 2xx
-   console.log(error.response.body);
-   console.log(error.response.statusCode);
-   console.log(error.response.headers);
-  } else if (error.request) {
-   // The request was made but no response was received
-   console.log(error.request);
-  } else {
-   // Something happened in setting up the request that triggered an Error
-   console.log('Error', error.message);
-  }
-  console.log(error.options);
- }
+	try {
+		// guest data
+		const guestData = {
+			permission_level: 'read',
+		};
+		// add guest to task
+		const { body } = await clickup.tasks.addGuest('c04', 403, guestData);
+		console.log(body);
+	} catch (error) {
+		if (error.response) {
+			// The request was made and the server responded with a status code
+			// that falls out of the range of 2xx
+			console.log(error.response.body);
+			console.log(error.response.statusCode);
+			console.log(error.response.headers);
+		} else if (error.request) {
+			// The request was made but no response was received
+			console.log(error.request);
+		} else {
+			// Something happened in setting up the request that triggered an Error
+			console.log('Error', error.message);
+		}
+		console.log(error.options);
+	}
 })();
 </code></pre>
 <h2>Documentation</h2>
@@ -159,24 +159,8 @@ const clickup = new Clickup(token);
 <li><code>Views</code></li>
 <li><code>Webhooks</code></li>
 </ul>
-<h2>License</h2>
-<p>MIT License</p>
-<p>Copyright (c) 2020 jj</p>
-<p>Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the &quot;Software&quot;), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:</p>
-<p>The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.</p>
-<p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.</p></article>
+<h2>Disclaimer</h2>
+<p>The <a href="https://github.com/ComfortablyCoding/clickup.js">clickup.js</a> package is <strong>unofficial</strong> and therefor not endorsed or affiliated with ClickUp or it's subsidaries.</p></article>
     </section>
 
 
@@ -191,7 +175,7 @@ SOFTWARE.</p></article>
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> on Sun Jan 03 2021 11:39:40 GMT-0500 (Eastern Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Sun Apr 18 2021 21:54:10 GMT-0400 (Eastern Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
