@@ -29,26 +29,26 @@ Once you've created an instance, you can use it to access all the features provi
 
 ```js
 (async () => {
- try {
-  // get a specific task
-  const { body } = await clickup.tasks.get('9hz');
-  console.log(body);
- } catch (error) {
-  if (error.response) {
-   // The request was made and the server responded with a status code
-   // that falls out of the range of 2xx
-   console.log(error.response.body);
-   console.log(error.response.statusCode);
-   console.log(error.response.headers);
-  } else if (error.request) {
-   // The request was made but no response was received
-   console.log(error.request);
-  } else {
-   // Something happened in setting up the request that triggered an Error
-   console.log('Error', error.message);
-  }
-  console.log(error.options);
- }
+	try {
+		// get a specific task
+		const { body } = await clickup.tasks.get('9hz');
+		console.log(body);
+	} catch (error) {
+		if (error.response) {
+			// The request was made and the server responded with a status code
+			// that falls out of the range of 2xx
+			console.log(error.response.body);
+			console.log(error.response.statusCode);
+			console.log(error.response.headers);
+		} else if (error.request) {
+			// The request was made but no response was received
+			console.log(error.request);
+		} else {
+			// Something happened in setting up the request that triggered an Error
+			console.log('Error', error.message);
+		}
+		console.log(error.options);
+	}
 })();
 ```
 
@@ -60,30 +60,30 @@ The library is structured to match classes with their respective routes, **NOT**
 
 ```js
 (async () => {
- try {
-  // guest data
-  const guestData = {
-   permission_level: 'read',
-  };
-  // add guest to task
-  const { body } = await clickup.tasks.addGuest('c04', 403, guestData);
-  console.log(body);
- } catch (error) {
-  if (error.response) {
-   // The request was made and the server responded with a status code
-   // that falls out of the range of 2xx
-   console.log(error.response.body);
-   console.log(error.response.statusCode);
-   console.log(error.response.headers);
-  } else if (error.request) {
-   // The request was made but no response was received
-   console.log(error.request);
-  } else {
-   // Something happened in setting up the request that triggered an Error
-   console.log('Error', error.message);
-  }
-  console.log(error.options);
- }
+	try {
+		// guest data
+		const guestData = {
+			permission_level: 'read',
+		};
+		// add guest to task
+		const { body } = await clickup.tasks.addGuest('c04', 403, guestData);
+		console.log(body);
+	} catch (error) {
+		if (error.response) {
+			// The request was made and the server responded with a status code
+			// that falls out of the range of 2xx
+			console.log(error.response.body);
+			console.log(error.response.statusCode);
+			console.log(error.response.headers);
+		} else if (error.request) {
+			// The request was made but no response was received
+			console.log(error.request);
+		} else {
+			// Something happened in setting up the request that triggered an Error
+			console.log('Error', error.message);
+		}
+		console.log(error.options);
+	}
 })();
 ```
 

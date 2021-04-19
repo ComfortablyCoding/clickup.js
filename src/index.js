@@ -38,7 +38,7 @@ class Clickup {
 	 * @private
 	 * @param {Object} gotOptions Options for the created got instance. All options can be found [here](https://github.com/sindresorhus/got#options)
 	 */
-	 _createGotInstance(gotOptions = {}) {
+	_createGotInstance(gotOptions = {}) {
 		// apply defaults where necessary
 		const instanceDefaults = {
 			headers: {
