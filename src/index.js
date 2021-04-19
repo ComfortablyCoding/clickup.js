@@ -40,17 +40,13 @@ class Clickup {
 	 */
 	_createGotInstance(gotOptions = {}) {
 		// apply defaults where necessary
-		const instanceDefaults = {
-			headers: {
-				authorization: this._token,
-				'content-type': 'application/json',
-			},
-			responseType: 'json',
-			prefixUrl: 'https://api.clickup.com/api/v2',
-		};
-		const gotInstance = Object.assign(instanceDefaults, gotOptions);
-
-		return got.extend(gotInstance);
+		const gotConfig = gotOptions;
+		gotConfig.headers = gotConfig.headers || {};
+		gotConfig.headers.authorization = gotConfig.headers.authorization || this._token;
+		gotConfig.headers['content-type'] = gotConfig.headers['content-type'] || 'application/json';
+		gotConfig.responseType = gotConfig.responseType || 'json';
+		gotConfig.prefixUrl = gotConfig.prefixUrl || 'https://api.clickup.com/api/v2';
+		return got.extend(gotConfig);
 	}
 
 	/**
