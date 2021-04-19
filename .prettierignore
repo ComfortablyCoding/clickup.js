@@ -1,0 +1,11 @@
+# Prettier
+node_modules
+.git
+.vscode
+.eslintrc.json
+.prettierrc.json
+.gitattributes
+.gitignore
+npm-debug.log
+test/
+docs/
