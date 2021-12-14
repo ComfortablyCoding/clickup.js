@@ -4,13 +4,18 @@ A Node.js wrapper for the [Clickup API](https://clickup.com/api).
 
 [![Downloads](https://img.shields.io/npm/dm/clickup.js.svg?style=for-the-badge)](https://www.npmjs.com/package/clickup.js)
 [![Install size](https://img.shields.io/bundlephobia/min/clickup.js?style=for-the-badge)](https://packagephobia.now.sh/result?p=clickup.js)
-![GitHub package.json version](https://img.shields.io/github/package-json/v/ComfortablyCoding/clickup.js?style=for-the-badge) ![Dependancies](https://img.shields.io/david/ComfortablyCoding/clickup.js?style=for-the-badge)
-![NPM](https://img.shields.io/npm/l/clickup.js?style=for-the-badge)
+![Package version](https://img.shields.io/github/package-json/v/ComfortablyCoding/clickup.js?style=for-the-badge)
 
 ## Install
 
 ```sh
 npm install clickup.js
+```
+
+or
+
+```sh
+yarn add clickup.js
 ```
 
 ## Usage
@@ -52,7 +57,7 @@ Once you've created an instance, you can use it to access all the features provi
 })();
 ```
 
-**Note:** Due to the HTTP request library being used each error contains an `options` property which are the options Got used to create a request - just to make debugging easier. Additionaly, the errors may have `request` (Got Stream) and `response` (Got Response) properties depending on which phase of the request failed. Read more about HTTP request library Got [here](https://github.com/sindresorhus/got).
+**Note:** Due to the HTTP request library being used each error contains an `options` property which are the options Got used to create a request - just to make debugging easier. Additionally, the errors may have `request` (Got Stream) and `response` (Got Response) properties depending on which phase of the request failed. Read more about HTTP request library Got [here](https://github.com/sindresorhus/got).
 
 ## Important Note
 
