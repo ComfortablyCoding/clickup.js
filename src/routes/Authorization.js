@@ -1,10 +1,15 @@
 class Authorization {
 	/**
 	 * @constructor
-	 * @param {Client} client A client instance
+	 * @param {Request} request A request instance
 	 */
-	constructor(client) {
-		this._client = client;
+	constructor(request) {
+		/**
+		 * A request instance
+		 * @type {Request}
+		 * @private
+		 */
+		this._request = request;
 	}
 
 	/**
@@ -15,7 +20,7 @@ class Authorization {
 	 * @param {String} code Code given in redirect url
 	 */
 	async accessToken(clientId, clientSecret, code) {
-		return this._client.post({
+		return this._request.post({
 			endpoint: 'oauth/token',
 			params: {
 				client_id: clientId,
@@ -29,7 +34,7 @@ class Authorization {
 	 * Get the user that this token belongs to
 	 */
 	async getAuthorizedUser() {
-		return this._client.get({
+		return this._request.get({
 			endpoint: 'user',
 		});
 	}
@@ -38,7 +43,7 @@ class Authorization {
 	 * Get the authorized teams for this token
 	 */
 	async getAuthorizedTeams() {
-		return this._client.get({
+		return this._request.get({
 			endpoint: 'team',
 		});
 	}

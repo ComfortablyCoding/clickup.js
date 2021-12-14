@@ -1,10 +1,19 @@
 class Views {
 	/**
 	 * @constructor
-	 * @param {Client} client A client instance
+	 * @param {Request} request A request instance
 	 */
-	constructor(client) {
-		this._client = client;
+	constructor(request) {
+		/**
+		 * A request instance
+		 * @type {Request}
+		 * @private
+		 */
+		this._request = request;
+		/**
+		 * The main route for the collection
+		 * @type {String}
+		 */
 		this.route = 'view';
 	}
 
@@ -14,7 +23,7 @@ class Views {
 	 * @param {String} viewId The view id
 	 */
 	async get(viewId) {
-		return this._client.get({
+		return this._request.get({
 			endpoint: `${this.route}/${viewId}`,
 		});
 	}
@@ -26,7 +35,7 @@ class Views {
 	 * @param {Object} data The view data
 	 */
 	async update(viewId, data) {
-		return this._client.put({
+		return this._request.put({
 			endpoint: `${this.route}/${viewId}`,
 			data,
 		});
@@ -38,7 +47,7 @@ class Views {
 	 * @param {String} viewId The view id
 	 */
 	async delete(viewId) {
-		return this._client.delete({
+		return this._request.delete({
 			endpoint: `${this.route}/${viewId}`,
 		});
 	}
@@ -50,7 +59,7 @@ class Views {
 	 * @param {Object} data The comment data
 	 */
 	async addComment(viewId, data) {
-		return this._client.post({
+		return this._request.post({
 			endpoint: `${this.route}/${viewId}/comment`,
 			data,
 		});
@@ -62,7 +71,7 @@ class Views {
 	 * @param {String} viewId The view id
 	 */
 	async getComments(viewId) {
-		return this._client.get({
+		return this._request.get({
 			endpoint: `${this.route}/${viewId}/comment`,
 		});
 	}
@@ -74,7 +83,7 @@ class Views {
 	 * @param {Integer} [page=0] The page to get
 	 */
 	async getTasks(viewId, page = 0) {
-		return this._client.get({
+		return this._request.get({
 			endpoint: `${this.route}/${viewId}/task`,
 			params: {
 				page,

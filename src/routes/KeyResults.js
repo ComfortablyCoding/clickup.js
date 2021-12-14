@@ -1,10 +1,19 @@
 class KeyResults {
 	/**
 	 * @constructor
-	 * @param {Client} client A client instance
+	 * @param {Request} request A request instance
 	 */
-	constructor(client) {
-		this._client = client;
+	constructor(request) {
+		/**
+		 * A request instance
+		 * @type {Request}
+		 * @private
+		 */
+		this._request = request;
+		/**
+		 * The main route for the collection
+		 * @type {String}
+		 */
 		this.route = 'key_result';
 	}
 
@@ -15,7 +24,7 @@ class KeyResults {
 	 * @param {Object} data The key result data
 	 */
 	updateKeyResult(keyResultId, data) {
-		return this._client.put({
+		return this._request.put({
 			endpoint: `${this.route}/${keyResultId}`,
 			data,
 		});
@@ -27,7 +36,7 @@ class KeyResults {
 	 * @param {String} keyResultId The key result id
 	 */
 	deleteKeyResult(keyResultId) {
-		return this._client.delete({
+		return this._request.delete({
 			endpoint: `${this.route}/${keyResultId}`,
 		});
 	}

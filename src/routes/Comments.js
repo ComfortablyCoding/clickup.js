@@ -1,10 +1,19 @@
 class Comments {
 	/**
 	 * @constructor
-	 * @param {Client} client A client instance
+	 * @param {Request} request A request instance
 	 */
-	constructor(client) {
-		this._client = client;
+	constructor(request) {
+		/**
+		 * A request instance
+		 * @type {Request}
+		 * @private
+		 */
+		this._request = request;
+		/**
+		 * The main route for the collection
+		 * @type {String}
+		 */
 		this.route = 'comment';
 	}
 
@@ -15,7 +24,7 @@ class Comments {
 	 * @param {Object} data The comment data
 	 */
 	async update(commentId, data) {
-		return this._client.put({
+		return this._request.put({
 			endpoint: `${this.route}/${commentId}`,
 			data,
 		});
@@ -27,7 +36,7 @@ class Comments {
 	 * @param {Number} commentId The comment id
 	 */
 	async delete(commentId) {
-		return this._client.delete({
+		return this._request.delete({
 			endpoint: `${this.route}/${commentId}`,
 		});
 	}

@@ -1,10 +1,19 @@
 class Spaces {
 	/**
 	 * @constructor
-	 * @param {Client} client A client instance
+	 * @param {Request} request A request instance
 	 */
-	constructor(client) {
-		this._client = client;
+	constructor(request) {
+		/**
+		 * A request instance
+		 * @type {Request}
+		 * @private
+		 */
+		this._request = request;
+		/**
+		 * The main route for the collection
+		 * @type {String}
+		 */
 		this.route = 'space';
 	}
 
@@ -14,7 +23,7 @@ class Spaces {
 	 * @param {Number} spaceId The space id
 	 */
 	async get(spaceId) {
-		return this._client.get({
+		return this._request.get({
 			endpoint: `${this.route}/${spaceId}`,
 		});
 	}
@@ -26,7 +35,7 @@ class Spaces {
 	 * @param {Object} data The space data
 	 */
 	async update(spaceId, data) {
-		return this._client.put({
+		return this._request.put({
 			endpoint: `${this.route}/${spaceId}`,
 			data,
 		});
@@ -38,7 +47,7 @@ class Spaces {
 	 * @param {Numnber} spaceId The space id
 	 */
 	async delete(spaceId) {
-		return this._client.delete({
+		return this._request.delete({
 			endpoint: `${this.route}${spaceId}`,
 		});
 	}
@@ -50,7 +59,7 @@ class Spaces {
 	 * @param {Object} data The folder data
 	 */
 	async createFolder(spaceId, data) {
-		return this._client.post({
+		return this._request.post({
 			endpoint: `${this.route}/${spaceId}/folder`,
 			data,
 		});
@@ -63,7 +72,7 @@ class Spaces {
 	 * @param {Boolean} [archived=false] If archived folders should be returned or not
 	 */
 	async getFolders(spaceId, archived = false) {
-		return this._client.get({
+		return this._request.get({
 			endpoint: `${this.route}/${spaceId}/folder`,
 			params: {
 				archived,
@@ -78,7 +87,7 @@ class Spaces {
 	 * @param {Object} data The folderless list data
 	 */
 	async createFolderlessList(spaceId, data) {
-		return this._client.post({
+		return this._request.post({
 			endpoint: `${this.route}/${spaceId}/list`,
 			data,
 		});
@@ -91,7 +100,7 @@ class Spaces {
 	 * @param {Boolean} [archived=false] If archived folderless lists should be returned or not
 	 */
 	async getFolderlessLists(spaceId, archived = false) {
-		return this._client.get({
+		return this._request.get({
 			endpoint: `${this.route}/${spaceId}/list`,
 			params: {
 				archived,
@@ -105,7 +114,7 @@ class Spaces {
 	 * @param {Number} spaceId The space id
 	 */
 	async getTags(spaceId) {
-		return this._client.get({
+		return this._request.get({
 			endpoint: `${this.route}/${spaceId}/tag`,
 		});
 	}
@@ -117,7 +126,7 @@ class Spaces {
 	 * @param {Object} data The space tag data
 	 */
 	async createTag(spaceId, data) {
-		return this._client.post({
+		return this._request.post({
 			endpoint: `${this.route}/${spaceId}/tag`,
 			data,
 		});
@@ -130,7 +139,7 @@ class Spaces {
 	 * @param {String} tagName The tag name
 	 */
 	async updateTag(spaceId, tagName) {
-		return this._client.put({
+		return this._request.put({
 			endpoint: `${this.route}/${spaceId}/tag/${tagName}`,
 		});
 	}
@@ -142,7 +151,7 @@ class Spaces {
 	 * @param {String} tagName The tag name
 	 */
 	async deleteTag(spaceId, tagName) {
-		return this._client.delete({
+		return this._request.delete({
 			endpoint: `${this.route}/${spaceId}/tag/${tagName}`,
 		});
 	}
@@ -154,7 +163,7 @@ class Spaces {
 	 * @param {Object} data The view data
 	 */
 	async createView(spaceId, data) {
-		return this._client.post({
+		return this._request.post({
 			endpoint: `${this.route}/${spaceId}/view`,
 			data,
 		});
@@ -166,7 +175,7 @@ class Spaces {
 	 * @param {Number} spaceId The space id
 	 */
 	async getViews(spaceId) {
-		return this._client.get({
+		return this._request.get({
 			endpoint: `${this.route}/${spaceId}/view`,
 		});
 	}
