@@ -90,7 +90,7 @@ class Tasks {
 
 		// setting headers
 		const headers = form.getHeaders();
-		headers.authorization = this._request._token;
+		headers.authorization = this._request.getToken();
 
 		return this._request.post({
 			endpoint: `${this.route}/${taskId}/attachment`,

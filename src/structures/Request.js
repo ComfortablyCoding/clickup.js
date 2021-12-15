@@ -9,12 +9,16 @@ class Request {
 	 * @param {import('got/dist/source').ExtendOptions} requestOptions Options for the created request instance.
 	 */
 	constructor(token, requestOptions) {
+		/**
+		 * The access token
+		 */
+		this._token = token;
 		// create service instance
 		/**
 		 * The request instance
 		 * @private
 		 */
-		this._request = createRequestInstance(token, requestOptions);
+		this._service = createRequestInstance(token, requestOptions);
 	}
 
 	/**
@@ -25,11 +29,7 @@ class Request {
 	 * @param {Object} options.params The parameters to add to the endpoint
 	 */
 	async get({ endpoint, params }) {
-		const options = {};
-		if (params) {
-			options.searchParams = buildSearchParams(params);
-		}
-		return this._request.get(endpoint, options);
+		return this._request({ endpoint, method: 'GET', params });
 	}
 
 	/**
@@ -41,27 +41,8 @@ class Request {
 	 * @param {Object} options.data The data to send in the body of the request
 	 * @param {Object} options.headers The headers to send along with the request
 	 */
-	async post({ endpoint, params, data = {}, headers }) {
-		const options = {};
-
-		if (params) {
-			options.searchParams = buildSearchParams(params);
-		}
-
-		let contentType = this._request.defaults.options.headers['content-type'];
-
-		if (headers) {
-			options.headers = headers;
-			if (headers['content-type']) {
-				contentType = headers['content-type'];
-			}
-		}
-
-		// json data must be sent via json property, all others are sent via body
-		const dataType = contentType === 'application/json' ? 'json' : 'body';
-		options[dataType] = data;
-
-		return this._request.post(endpoint, options);
+	async post({ endpoint, params, data, headers }) {
+		return this._request({ endpoint, method: 'POST', params, data, headers });
 	}
 
 	/**
@@ -72,19 +53,8 @@ class Request {
 	 * @param {Object} options.params The query parameters to add to the request
 	 * @param {Object} options.data The data to send in the body of the request
 	 */
-	async put({ endpoint, params, data = {} }) {
-		const options = {};
-
-		if (params) {
-			options.searchParams = buildSearchParams(params);
-		}
-
-		// json data must be sent via json property, all others are sent via body
-		const contentType = this._request.defaults.options.headers['content-type'];
-		const dataType = contentType === 'application/json' ? 'json' : 'body';
-		options[dataType] = data;
-
-		return this._request.put(endpoint, options);
+	async put({ endpoint, params, data }) {
+		return this._request({ endpoint, method: 'PUT', params, data });
 	}
 
 	/**
@@ -95,11 +65,74 @@ class Request {
 	 * @param {Object} options.params The query parameters to add to the request
 	 */
 	async delete({ endpoint, params }) {
-		const options = {};
+		return this._request({ endpoint, method: 'DELETE', params });
+	}
+
+	/**
+	 * Makes an HTTP request
+	 *
+	 * @param {Object} options  Options to pass to the api call
+	 * @param {String} options.endpoint The endpoint to make a request to
+	 * @param {String} options.method The request method to use in the request
+	 * @param {Object} options.params The query parameters to add to the request
+	 * @param {Object} options.data The data to send in the body of the request
+	 * @param {Object} options.headers The headers to send along with the request
+	 */
+	async _request({ endpoint, method = 'GET', params, data = {}, headers }) {
+		const options = {
+			method,
+		};
+
 		if (params) {
 			options.searchParams = buildSearchParams(params);
 		}
-		return this._request.delete(endpoint, options);
+
+		let contentType = this.getHeader('content-type');
+
+		if (headers) {
+			options.headers = headers;
+			if (headers['content-type']) {
+				contentType = headers['content-type'];
+			}
+		}
+
+		if (method !== 'GET') {
+			// json data must be sent via json property, all others are sent via body
+			const dataType = contentType === 'application/json' ? 'json' : 'body';
+			options[dataType] = data;
+		}
+
+		return this._service(endpoint, options);
+	}
+
+	/**
+	 * Helper to obtain the instance headers
+	 */
+	getHeaders() {
+		const options = this.getOptions();
+		return options.headers;
+	}
+
+	/**
+	 * Helper to obtain a specific header
+	 */
+	getHeader(name) {
+		const options = this.getOptions();
+		return options.headers[name];
+	}
+
+	/**
+	 * Helper to obtain the access token
+	 */
+	getToken() {
+		return this._token;
+	}
+
+	/**
+	 * Helper to obtain the options
+	 */
+	getOptions() {
+		return this._service.defaults.options;
 	}
 }
 

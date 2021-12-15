@@ -14,7 +14,7 @@ const createRequestInstance = (token, requestOptions = {}) => {
 			'Content-Type': 'application/json',
 		},
 		responseType: 'json',
-		prefixUrl: "'https://api.clickup.com/api/v2'",
+		prefixUrl: 'https://api.clickup.com/api/v2',
 	};
 	// apply defaults where necessary
 	const requestConfig = merge(requestOptions, requestDefaultOptions);
