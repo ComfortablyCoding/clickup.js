@@ -18,7 +18,7 @@ class Request {
 		 * The request instance
 		 * @private
 		 */
-		this._service = createRequestInstance(token, requestOptions);
+		this._instance = createRequestInstance(token, requestOptions);
 	}
 
 	/**
@@ -102,7 +102,7 @@ class Request {
 			options[dataType] = data;
 		}
 
-		return this._service(endpoint, options);
+		return this._instance(endpoint, options);
 	}
 
 	/**
@@ -132,7 +132,7 @@ class Request {
 	 * Helper to obtain the options
 	 */
 	getOptions() {
-		return this._service.defaults.options;
+		return this._instance.defaults.options;
 	}
 }
 
