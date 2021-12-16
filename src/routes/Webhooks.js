@@ -1,10 +1,19 @@
 class Webhooks {
 	/**
 	 * @constructor
-	 * @param {Client} client A client instance
+	 * @param {Request} request A request instance
 	 */
-	constructor(client) {
-		this._client = client;
+	constructor(request) {
+		/**
+		 * A request instance
+		 * @type {Request}
+		 * @private
+		 */
+		this._request = request;
+		/**
+		 * The main route for the collection
+		 * @type {String}
+		 */
 		this.route = 'webhook';
 	}
 
@@ -15,7 +24,7 @@ class Webhooks {
 	 * @param {Object} data The webhook data
 	 */
 	async update(webhookId, data) {
-		return this._client.put({
+		return this._request.put({
 			endpoint: `${this.route}/${webhookId}`,
 			data,
 		});
@@ -27,7 +36,7 @@ class Webhooks {
 	 * @param {String} webhookId The webhook id
 	 */
 	async delete(webhookId) {
-		return this._client.delete({
+		return this._request.delete({
 			endpoint: `${this.route}/${webhookId}`,
 		});
 	}

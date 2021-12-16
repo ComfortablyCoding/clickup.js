@@ -1,10 +1,19 @@
 class Checklists {
 	/**
 	 * @constructor
-	 * @param {Client} client A client instance
+	 * @param {Request} request A request instance
 	 */
-	constructor(client) {
-		this._client = client;
+	constructor(request) {
+		/**
+		 * A request instance
+		 * @type {Request}
+		 * @private
+		 */
+		this._request = request;
+		/**
+		 * The main route for the collection
+		 * @type {String}
+		 */
 		this.route = 'checklist';
 	}
 
@@ -15,7 +24,7 @@ class Checklists {
 	 * @param {Object} data The checklist data
 	 */
 	async update(checklistId, data) {
-		return this._client.put({
+		return this._request.put({
 			endpoint: `${this.route}/${checklistId}`,
 			data,
 		});
@@ -27,7 +36,7 @@ class Checklists {
 	 * @param {String} checklistId The checklist id
 	 */
 	async delete(checklistId) {
-		return this._client.delete({
+		return this._request.delete({
 			endpoint: `${this.route}/${checklistId}`,
 		});
 	}
@@ -39,7 +48,7 @@ class Checklists {
 	 * @param {Object} data The checklist item data
 	 */
 	async createChecklistItem(checklistId, data) {
-		return this._client.post({
+		return this._request.post({
 			endpoint: `${this.route}/${checklistId}/checklist_item`,
 			data,
 		});
@@ -53,7 +62,7 @@ class Checklists {
 	 * @param {Object} data The checklist item data
 	 */
 	async updateChecklistItem(checklistId, checklistItemId, data) {
-		return this._client.put({
+		return this._request.put({
 			endpoint: `${this.route}/${checklistId}/checklist_item/${checklistItemId}`,
 			data,
 		});
@@ -66,7 +75,7 @@ class Checklists {
 	 * @param {String} checklistItemId The checklist item id
 	 */
 	async deleteChecklistItem(checklistId, checklistItemId) {
-		return this._client.delete({
+		return this._request.delete({
 			endpoint: `${this.route}/${checklistId}/checklist_item/${checklistItemId}`,
 		});
 	}

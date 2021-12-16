@@ -1,10 +1,19 @@
 class Lists {
 	/**
 	 * @constructor
-	 * @param {Client} client A client instance
+	 * @param {Request} request A request instance
 	 */
-	constructor(client) {
-		this._client = client;
+	constructor(request) {
+		/**
+		 * A request instance
+		 * @type {Request}
+		 * @private
+		 */
+		this._request = request;
+		/**
+		 * The main route for the collection
+		 * @type {String}
+		 */
 		this.route = 'list';
 	}
 
@@ -14,7 +23,7 @@ class Lists {
 	 * @param {Number} listId The list id
 	 */
 	async get(listId) {
-		return this._client.get({
+		return this._request.get({
 			endpoint: `${this.route}/${listId}`,
 		});
 	}
@@ -26,7 +35,7 @@ class Lists {
 	 * @param {Object} data The list data
 	 */
 	async update(listId, data) {
-		return this._client.put({
+		return this._request.put({
 			endpoint: `${this.route}/${listId}`,
 			data,
 		});
@@ -38,7 +47,7 @@ class Lists {
 	 * @param {Number} listId The list id
 	 */
 	async delete(listId) {
-		return this._client.delete({
+		return this._request.delete({
 			endpoint: `${this.route}/${listId}`,
 		});
 	}
@@ -50,7 +59,7 @@ class Lists {
 	 * @param {Object} data The comment data
 	 */
 	async addComment(listId, data) {
-		return this._client.post({
+		return this._request.post({
 			endpoint: `${this.route}/${listId}/comment`,
 			data,
 		});
@@ -62,7 +71,7 @@ class Lists {
 	 * @param {Number} listId The list id
 	 */
 	async getComments(listId) {
-		return this._client.get({
+		return this._request.get({
 			endpoint: `${this.route}/${listId}/comment`,
 		});
 	}
@@ -73,7 +82,7 @@ class Lists {
 	 * @param {Number} listId The list id
 	 */
 	async getAccessibleCustomFields(listId) {
-		return this._client.get({
+		return this._request.get({
 			endpoint: `${this.route}/${listId}/field`,
 		});
 	}
@@ -86,7 +95,7 @@ class Lists {
 	 * @param {Object} data The guest data
 	 */
 	async addGuest(listId, guestId, data) {
-		return this._client.post({
+		return this._request.post({
 			endpoint: `${this.route}/${listId}/guest/${guestId}`,
 			data,
 		});
@@ -99,7 +108,7 @@ class Lists {
 	 * @param {Number} guestId The guest id
 	 */
 	async removeGuest(listId, guestId) {
-		return this._client.delete({
+		return this._request.delete({
 			endpoint: `${this.route}/${listId}/guest/${guestId}`,
 		});
 	}
@@ -110,7 +119,7 @@ class Lists {
 	 * @param {Number} listId The list id
 	 */
 	async getMembers(listId) {
-		return this._client.get({
+		return this._request.get({
 			endpoint: `${this.route}/${listId}/member`,
 		});
 	}
@@ -122,7 +131,7 @@ class Lists {
 	 * @param {Object} data The task data
 	 */
 	async createTask(listId, data) {
-		return this._client.post({
+		return this._request.post({
 			endpoint: `${this.route}/${listId}/task`,
 			data,
 		});
@@ -137,7 +146,7 @@ class Lists {
 	async getTasks(listId, options = {}) {
 		// eslint-disable-next-line no-param-reassign
 		options.archived = options.archived || false;
-		return this._client.get({
+		return this._request.get({
 			endpoint: `${this.route}/${listId}/task`,
 			params: options,
 		});
@@ -151,7 +160,7 @@ class Lists {
 	 * @param {Object} data The task data
 	 */
 	async createTaskFromTemplate(listId, templateId, data) {
-		return this._client.post({
+		return this._request.post({
 			endpoint: `${this.route}/${listId}/taskTemplate/${templateId}`,
 			data,
 		});
@@ -164,7 +173,7 @@ class Lists {
 	 * @param {Object} data The view data
 	 */
 	async createView(listId, data) {
-		return this._client.post({
+		return this._request.post({
 			endpoint: `${this.route}/${listId}/view`,
 			data,
 		});
@@ -176,7 +185,7 @@ class Lists {
 	 * @param {Number} listId The list id
 	 */
 	async getViews(listId) {
-		return this._client.get({
+		return this._request.get({
 			endpoint: `${this.route}/${listId}/view`,
 		});
 	}
@@ -188,7 +197,7 @@ class Lists {
 	 * @param {String} taskId The task id
 	 */
 	async addTaskToList(listId, taskId) {
-		return this._client.post({
+		return this._request.post({
 			endpoint: `${this.route}/${listId}/task/${taskId}`,
 		});
 	}
@@ -200,7 +209,7 @@ class Lists {
 	 * @param {String} taskId The task id
 	 */
 	async removeTaskFromList(listId, taskId) {
-		return this._client.delete({
+		return this._request.delete({
 			endpoint: `${this.route}/${listId}/task/${taskId}`,
 		});
 	}
@@ -211,7 +220,7 @@ class Lists {
 	 * @param {String} listId The list id
 	 */
 	async getListMembers(listId) {
-		return this._client.get({
+		return this._request.get({
 			endpoint: `${this.route}/${listId}/member`,
 		});
 	}

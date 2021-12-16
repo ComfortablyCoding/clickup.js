@@ -8,13 +8,13 @@
 	},
 	"extends": ["airbnb-base", "prettier"],
 	"plugins": ["prettier"],
-	"ignorePatterns": ["node_modules/**/*.js"],
 	"parserOptions": {
 		"ecmaVersion": 11
 	},
 	"rules": {
 		"prettier/prettier": "error",
 		"no-underscore-dangle": 0,
-		"no-param-reassign": "off"
+		"no-param-reassign": "off",
+		"no-restricted-syntax": "off"
 	}
 }

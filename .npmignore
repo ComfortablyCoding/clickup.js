@@ -1,13 +1,28 @@
 # NPM
+
+# node
 node_modules
+
+# git
 .git
-.vscode
-.eslintrc.json
-.jsdoc.json
-.prettierrc.json
 .gitattributes
 .gitignore
-npm-debug.log
+
+# vscode
+.vscode
+
+# ESLint
+.eslintrc.json
+.eslintignore
+
+# prettier
+.prettierrc.json
+.prettierignore
+
+# project
+*.log
 test/
 docs/
+
+# github
 .github/
