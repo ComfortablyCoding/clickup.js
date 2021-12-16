@@ -94,7 +94,7 @@ The library is structured to match classes with their respective routes, **NOT**
 
 ## Documentation
 
-You can read the library documentation at the [clickup.js docs](https://comfortablycoding.github.io/clickup.js)
+You can read the library documentation at the [clickup.js docs](https://clickup-js.netlify.app)
 
 ## Features
 
