@@ -25,7 +25,7 @@ Before you can use this library you will need to first authenticate with the Cli
 In your project, initialize an instance of clickup.js:
 
 ```js
-const Clickup = require('clickup.js');
+const { Clickup } = require('clickup.js');
 const token = '...'; // API access token
 const clickup = new Clickup(token);
 ```
@@ -34,30 +34,30 @@ Once you've created an instance, you can use it to access all the features provi
 
 ```js
 (async () => {
-	try {
-		// get a specific task
-		const { body } = await clickup.tasks.get('9hz');
-		console.log(body);
-	} catch (error) {
-		if (error.response) {
-			// The request was made and the server responded with a status code
-			// that falls out of the range of 2xx
-			console.log(error.response.body);
-			console.log(error.response.statusCode);
-			console.log(error.response.headers);
-		} else if (error.request) {
-			// The request was made but no response was received
-			console.log(error.request);
-		} else {
-			// Something happened in setting up the request that triggered an Error
-			console.log('Error', error.message);
-		}
-		console.log(error.options);
-	}
+ try {
+  // get a specific task
+  const { body } = await clickup.tasks.get('9hz');
+  console.log(body);
+ } catch (error) {
+  if (error.response) {
+   // The request was made and the server responded with a status code
+   // that falls out of the range of 2xx
+   console.log(error.response.body);
+   console.log(error.response.statusCode);
+   console.log(error.response.headers);
+  } else if (error.request) {
+   // The request was made but no response was received
+   console.log(error.request);
+  } else {
+   // Something happened in setting up the request that triggered an Error
+   console.log('Error', error.message);
+  }
+  console.log(error.options);
+ }
 })();
 ```
 
-**Note:** Due to the HTTP request library being used each error contains an `options` property which are the options Got used to create a request - just to make debugging easier. Additionally, the errors may have `request` (Got Stream) and `response` (Got Response) properties depending on which phase of the request failed. Read more about HTTP request library Got [here](https://github.com/sindresorhus/got).
+**Note:** Due to the HTTP request library being used each error contains an `options` property which are the options Got used to create a request - just to make debugging easier. Additionally, the errors may have `request` and `response` properties depending on which phase of the request failed. Read more about HTTP request library [Got](https://github.com/sindresorhus/got).
 
 ## Important Note
 
@@ -65,30 +65,30 @@ The library is structured to match classes with their respective routes, **NOT**
 
 ```js
 (async () => {
-	try {
-		// guest data
-		const guestData = {
-			permission_level: 'read',
-		};
-		// add guest to task
-		const { body } = await clickup.tasks.addGuest('c04', 403, guestData);
-		console.log(body);
-	} catch (error) {
-		if (error.response) {
-			// The request was made and the server responded with a status code
-			// that falls out of the range of 2xx
-			console.log(error.response.body);
-			console.log(error.response.statusCode);
-			console.log(error.response.headers);
-		} else if (error.request) {
-			// The request was made but no response was received
-			console.log(error.request);
-		} else {
-			// Something happened in setting up the request that triggered an Error
-			console.log('Error', error.message);
-		}
-		console.log(error.options);
-	}
+ try {
+  // guest data
+  const guestData = {
+   permission_level: 'read',
+  };
+  // add guest to task
+  const { body } = await clickup.tasks.addGuest('c04', 403, guestData);
+  console.log(body);
+ } catch (error) {
+  if (error.response) {
+   // The request was made and the server responded with a status code
+   // that falls out of the range of 2xx
+   console.log(error.response.body);
+   console.log(error.response.statusCode);
+   console.log(error.response.headers);
+  } else if (error.request) {
+   // The request was made but no response was received
+   console.log(error.request);
+  } else {
+   // Something happened in setting up the request that triggered an Error
+   console.log('Error', error.message);
+  }
+  console.log(error.options);
+ }
 })();
 ```
 
@@ -115,4 +115,4 @@ The available features are:
 
 ## Disclaimer
 
-The [clickup.js](https://github.com/ComfortablyCoding/clickup.js) package is **unofficial** and therefor not endorsed or affiliated with ClickUp or it's subsidaries.
+The [clickup.js](https://github.com/ComfortablyCoding/clickup.js) package is **unofficial** and therefor not endorsed or affiliated with ClickUp or it's subsidiaries.
