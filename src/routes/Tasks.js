@@ -144,14 +144,14 @@ class Tasks {
 	}
 
 	/**
-	 * Set a custom field value for a task
+	 * Add a custom field value for a task
 	 *
 	 * @param {String} taskId The task id
 	 * @param {String} fieldId The custom field id
 	 * @param {Object} data The custom field data
 	 * @param {Object} [options] The parameter options to pass in
 	 */
-	async setCustomFieldValue(taskId, fieldId, data, options) {
+	async addCustomFieldValue(taskId, fieldId, data, options) {
 		return this._request.post({
 			endpoint: `${this.route}/${taskId}/field/${fieldId}`,
 			params: options,
