@@ -48,7 +48,7 @@ class Spaces {
 	 */
 	async delete(spaceId) {
 		return this._request.delete({
-			endpoint: `${this.route}${spaceId}`,
+			endpoint: `${this.route}/${spaceId}`,
 		});
 	}
 
