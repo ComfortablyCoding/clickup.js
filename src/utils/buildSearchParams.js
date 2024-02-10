@@ -10,7 +10,7 @@ const buildSearchParams = (query) => {
 	for (const key in query) {
 		if (typeof query[key] === 'object') {
 			let rectifiedKey = key;
-			if (!editedKey.endsWith('[]')) {
+			if (!rectifiedKey.endsWith('[]')) {
 				rectifiedKey = `${key}[]`;
 			}
 			query[key].forEach((entry) => {
