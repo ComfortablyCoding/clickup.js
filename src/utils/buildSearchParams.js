@@ -8,15 +8,18 @@ const buildSearchParams = (query) => {
 	const params = new URLSearchParams();
 
 	for (const key in query) {
-		if (key.endsWith('[]')) {
+		if (typeof query[key] === 'object') {
+			let rectifiedKey = key;
+			if (!editedKey.endsWith('[]')) {
+				rectifiedKey = `${key}[]`;
+			}
 			query[key].forEach((entry) => {
-				params.append(key, entry);
+				params.append(rectifiedKey, entry);
 			});
 		} else {
 			params.set(key, query[key]);
 		}
 	}
-
 	return params;
 };
 
