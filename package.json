@@ -1,6 +1,6 @@
 {
 	"name": "clickup.js",
-	"version": "3.0.1",
+	"version": "3.0.2",
 	"description": "A Node.js wrapper for the Clickup API",
 	"main": "src/index.js",
 	"keywords": [
