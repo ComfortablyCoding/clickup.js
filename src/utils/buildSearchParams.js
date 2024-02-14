@@ -7,16 +7,25 @@
 const buildSearchParams = (query) => {
 	const params = new URLSearchParams();
 
-	for (const key in query) {
-		if (key.endsWith('[]')) {
-			query[key].forEach((entry) => {
-				params.append(key, entry);
-			});
-		} else {
-			params.set(key, query[key]);
+	for (let key in query) {
+		if (Object.hasOwnProperty.call(query, key)) {
+			const value = query[key];
+
+			// LHS requires array variables to be added ones per item in array
+			if (Array.isArray(value)) {
+				// LHS bracket notiation requires array keys to end with []
+				if (!key.endsWith('[]')) {
+					key += '[]';
+				}
+
+				for (const entry of value) {
+					params.append(key, entry);
+				}
+			} else {
+				params.set(key, value);
+			}
 		}
 	}
-
 	return params;
 };
 

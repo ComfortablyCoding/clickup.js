@@ -13,6 +13,7 @@ describe('Testing buildSearchParams util', () => {
 			archive: false,
 			order_by: 'due_date',
 			'statuses[]': ['in progress', 'completed'],
+			assignees: [1, 2],
 		};
 
 		const expectedOutput = new URLSearchParams([
@@ -20,6 +21,8 @@ describe('Testing buildSearchParams util', () => {
 			['order_by', 'due_date'],
 			['statuses[]', 'in progress'],
 			['statuses[]', 'completed'],
+			['assignees[]', 1],
+			['assignees[]', 2],
 		]);
 
 		assert.deepEqual(buildSearchParams(params), expectedOutput);
