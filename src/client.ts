@@ -23,7 +23,7 @@ const defaultOptions: Partial<ClientOptions> = {
 		URL: globalThis.URL,
 	},
 	request: {
-		baseURL: 'https://api.clickup.com/api/v2',
+		baseURL: 'https://api.clickup.com/api/v2/',
 	},
 };
 
@@ -171,7 +171,7 @@ export class Clickup {
 					const value = params[key];
 
 					if (Array.isArray(value)) {
-						// LHS array values should have a key value pair per element.
+						// LHS bracket notation requires array values to have a key value pair per element.
 						// Each key must be suffixed by []
 						if (!key.endsWith('[]')) {
 							key += '[]';
