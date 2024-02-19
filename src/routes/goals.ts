@@ -17,7 +17,7 @@ export class Goals {
 	 *
 	 * @param goalId The goal id
 	 */
-	async get(goalId: string) {
+	get(goalId: string) {
 		return this.client.request({
 			path: `${this.route}/${goalId}`,
 		});
@@ -29,7 +29,7 @@ export class Goals {
 	 * @param goalId The goal id
 	 * @param data The goal data
 	 */
-	async update(goalId: string, data: Record<string, unknown>) {
+	update(goalId: string, data: Record<string, unknown>) {
 		return this.client.request({
 			method: 'PUT',
 			path: `${this.route}/${goalId}`,
@@ -42,7 +42,7 @@ export class Goals {
 	 *
 	 * @param goalId The goal id
 	 */
-	async delete(goalId: string) {
+	delete(goalId: string) {
 		return this.client.request({
 			method: 'DELETE',
 			path: `${this.route}/${goalId}`,
@@ -55,7 +55,7 @@ export class Goals {
 	 * @param goalId The goal id
 	 * @param data The key result data
 	 */
-	async createKeyResult(goalId: string, data: Record<string, unknown>) {
+	createKeyResult(goalId: string, data: Record<string, unknown>) {
 		return this.client.request({
 			method: 'POST',
 			path: `${this.route}/${goalId}/key_result`,

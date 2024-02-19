@@ -17,7 +17,7 @@ export class Views {
 	 *
 	 * @param viewId The view id
 	 */
-	async get(viewId: string) {
+	get(viewId: string) {
 		return this.client.request({
 			path: `${this.route}/${viewId}`,
 		});
@@ -29,7 +29,7 @@ export class Views {
 	 * @param viewId The view id
 	 * @param data The view data
 	 */
-	async update(viewId: string, data: Record<string, unknown>) {
+	update(viewId: string, data: Record<string, unknown>) {
 		return this.client.request({
 			method: 'PUT',
 			path: `${this.route}/${viewId}`,
@@ -42,7 +42,7 @@ export class Views {
 	 *
 	 * @param viewId The view id
 	 */
-	async delete(viewId: string) {
+	delete(viewId: string) {
 		return this.client.request({
 			method: 'DELETE',
 			path: `${this.route}/${viewId}`,
@@ -55,7 +55,7 @@ export class Views {
 	 * @param viewId The view id
 	 * @param data The comment data
 	 */
-	async addComment(viewId: string, data: Record<string, unknown>) {
+	addComment(viewId: string, data: Record<string, unknown>) {
 		return this.client.request({
 			method: 'POST',
 			path: `${this.route}/${viewId}/comment`,
@@ -68,7 +68,7 @@ export class Views {
 	 *
 	 * @param viewId The view id
 	 */
-	async getComments(viewId: string) {
+	getComments(viewId: string) {
 		return this.client.request({
 			path: `${this.route}/${viewId}/comment`,
 		});
@@ -81,10 +81,10 @@ export class Views {
 	 * @param params The query parameters to pass
 	 * @param params.page The page to get
 	 */
-	async getTasks(viewId: string, params: Record<string, unknown> = { page: 0 }) {
+	getTasks(viewId: string, params?: Record<string, unknown>) {
 		return this.client.request({
 			path: `${this.route}/${viewId}/task`,
-			params,
+			params: { page: 0, ...params },
 		});
 	}
 }

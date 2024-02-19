@@ -18,7 +18,7 @@ export class Checklists {
 	 * @param checklistId The checklist id
 	 * @param data The checklist data
 	 */
-	async update(checklistId: string, data: Record<string, unknown>) {
+	update(checklistId: string, data: Record<string, unknown>) {
 		return this.client.request({
 			method: 'PUT',
 			path: `${this.route}/${checklistId}`,
@@ -31,7 +31,7 @@ export class Checklists {
 	 *
 	 * @param checklistId The checklist id
 	 */
-	async delete(checklistId: string) {
+	delete(checklistId: string) {
 		return this.client.request({
 			method: 'DELETE',
 			path: `${this.route}/${checklistId}`,
@@ -44,7 +44,7 @@ export class Checklists {
 	 * @param checklistId The checklist id
 	 * @param data The checklist item data
 	 */
-	async createChecklistItem(checklistId: string, data: Record<string, unknown>) {
+	createChecklistItem(checklistId: string, data: Record<string, unknown>) {
 		return this.client.request({
 			method: 'POST',
 			path: `${this.route}/${checklistId}/checklist_item`,
@@ -59,7 +59,7 @@ export class Checklists {
 	 * @param checklistItemId The checklist item id
 	 * @param data The checklist item data
 	 */
-	async updateChecklistItem(checklistId: string, checklistItemId: string, data: Record<string, unknown>) {
+	updateChecklistItem(checklistId: string, checklistItemId: string, data: Record<string, unknown>) {
 		return this.client.request({
 			method: 'PUT',
 			path: `${this.route}/${checklistId}/checklist_item/${checklistItemId}`,
@@ -73,7 +73,7 @@ export class Checklists {
 	 * @param checklistId The checklist id
 	 * @param checklistItemId The checklist item id
 	 */
-	async deleteChecklistItem(checklistId: string, checklistItemId: string) {
+	deleteChecklistItem(checklistId: string, checklistItemId: string) {
 		return this.client.request({
 			method: 'DELETE',
 			path: `${this.route}/${checklistId}/checklist_item/${checklistItemId}`,

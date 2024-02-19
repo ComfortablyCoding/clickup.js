@@ -13,7 +13,7 @@ export class Authorization {
 	 * @param clientSecret Oauth app client secret
 	 * @param code Code given in redirect url
 	 */
-	async accessToken(clientId: string, clientSecret: string, code: string) {
+	accessToken(clientId: string, clientSecret: string, code: string) {
 		return this.client.request({
 			method: 'POST',
 			path: 'oauth/token',
@@ -28,7 +28,7 @@ export class Authorization {
 	/**
 	 * Get the user that this token belongs to
 	 */
-	async getAuthorizedUser() {
+	getAuthorizedUser() {
 		return this.client.request({
 			path: 'user',
 		});
@@ -37,7 +37,7 @@ export class Authorization {
 	/**
 	 * Get the authorized teams for this token
 	 */
-	async getAuthorizedTeams() {
+	getAuthorizedTeams() {
 		return this.client.request({
 			path: 'team',
 		});

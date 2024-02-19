@@ -18,7 +18,7 @@ export class Webhooks {
 	 * @param webhookId The webhook id
 	 * @param data The webhook data
 	 */
-	async update(webhookId: string, data: Record<string, unknown>) {
+	update(webhookId: string, data: Record<string, unknown>) {
 		return this.client.request({
 			method: 'PUT',
 			path: `${this.route}/${webhookId}`,
@@ -31,7 +31,7 @@ export class Webhooks {
 	 *
 	 * @param webhookId The webhook id
 	 */
-	async delete(webhookId: string) {
+	delete(webhookId: string) {
 		return this.client.request({
 			method: 'DELETE',
 			path: `${this.route}/${webhookId}`,

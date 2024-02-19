@@ -118,18 +118,18 @@ export class Clickup {
 		}
 
 		if (this.access_token) {
-			options.headers['Authorization'] = `Bearer ${this.access_token}`;
+			options.headers.Authorization = `Bearer ${this.access_token}`;
 		}
 
-		let requestURL = this.getRequestURL(options.path, options.params);
+		const requestURL = this.getRequestURL(options.path, options.params);
 
-		let fetchOptions: RequestInit = {
+		const fetchOptions: RequestInit = {
 			method: options.method ?? 'GET',
 			headers: options.headers ?? {},
 		};
 
 		if (options.body) {
-			fetchOptions['body'] = options.body;
+			fetchOptions.body = options.body;
 		}
 
 		// apply onRequest hooks
@@ -141,13 +141,13 @@ export class Clickup {
 			await this.options.request.onRequest(requestURL, fetchOptions);
 		}
 
-		let response = await this.options.globals.fetch(requestURL, fetchOptions);
+		const response = await this.options.globals.fetch(requestURL, fetchOptions);
 
 		if (!response.ok) {
 			throw response;
 		}
 
-		let result = response.json();
+		const result = response.json();
 
 		// apply onResponse hooks
 		if (options.onResponse) {

@@ -17,7 +17,7 @@ export class Folders {
 	 *
 	 * @param folderId The folder id
 	 */
-	async get(folderId: number) {
+	get(folderId: number) {
 		return this.client.request({
 			path: `${this.route}/${folderId}`,
 		});
@@ -29,7 +29,7 @@ export class Folders {
 	 * @param folderId The folder id
 	 * @param data The folder data
 	 */
-	async update(folderId: number, data: Record<string, unknown>) {
+	update(folderId: number, data: Record<string, unknown>) {
 		return this.client.request({
 			method: 'PUT',
 			path: `${this.route}/${folderId}`,
@@ -42,7 +42,7 @@ export class Folders {
 	 *
 	 * @param folderId The folder id
 	 */
-	async delete(folderId: number) {
+	delete(folderId: number) {
 		return this.client.request({
 			method: 'DELETE',
 			path: `${this.route}/${folderId}`,
@@ -56,7 +56,7 @@ export class Folders {
 	 * @param guestId The guest id
 	 * @param data The guest data
 	 */
-	async addGuest(folderId: number, guestId: number, data: Record<string, unknown>) {
+	addGuest(folderId: number, guestId: number, data: Record<string, unknown>) {
 		return this.client.request({
 			method: 'POST',
 			path: `${this.route}/${folderId}/guest/${guestId}`,
@@ -70,7 +70,7 @@ export class Folders {
 	 * @param folderId The folder id
 	 * @param guestId The guest id
 	 */
-	async removeGuest(folderId: number, guestId: number) {
+	removeGuest(folderId: number, guestId: number) {
 		return this.client.request({
 			method: 'DELETE',
 			path: `${this.route}/${folderId}/guest/${guestId}`,
@@ -83,7 +83,7 @@ export class Folders {
 	 * @param folderId The folder id
 	 * @param data The list data
 	 */
-	async createList(folderId: number, data: Record<string, unknown>) {
+	createList(folderId: number, data: Record<string, unknown>) {
 		return this.client.request({
 			method: 'POST',
 			path: `${this.route}/${folderId}/list`,
@@ -98,7 +98,7 @@ export class Folders {
 	 * @param params The query parameters to pass
 	 * @param params.archived If archived lists should be returned or not
 	 */
-	async getLists(folderId: number, params?: Record<string, unknown>) {
+	getLists(folderId: number, params?: Record<string, unknown>) {
 		return this.client.request({
 			path: `${this.route}/${folderId}/list`,
 			params,
@@ -111,7 +111,7 @@ export class Folders {
 	 * @param folderId The folder id
 	 * @param data The view data
 	 */
-	async createView(folderId: string, data: Record<string, unknown>) {
+	createView(folderId: string, data: Record<string, unknown>) {
 		return this.client.request({
 			method: 'POST',
 			path: `${this.route}/${folderId}/view`,
@@ -124,7 +124,7 @@ export class Folders {
 	 *
 	 * @param folderId The folder id
 	 */
-	async getViews(folderId: number) {
+	getViews(folderId: number) {
 		return this.client.request({
 			path: `${this.route}/${folderId}/view`,
 		});

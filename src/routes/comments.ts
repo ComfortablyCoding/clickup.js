@@ -18,7 +18,7 @@ export class Comments {
 	 * @param commentId The comment id
 	 * @param data The comment data
 	 */
-	async update(commentId: number, data: Record<string, unknown>) {
+	update(commentId: number, data: Record<string, unknown>) {
 		return this.client.request({
 			method: 'PUT',
 			path: `${this.route}/${commentId}`,
@@ -31,7 +31,7 @@ export class Comments {
 	 *
 	 * @param commentId The comment id
 	 */
-	async delete(commentId: number) {
+	delete(commentId: number) {
 		return this.client.request({
 			method: 'DELETE',
 			path: `${this.route}/${commentId}`,

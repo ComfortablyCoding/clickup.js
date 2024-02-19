@@ -18,7 +18,7 @@ export class Tasks {
 	 * @param taskId The task id
 	 * @param params The parameter options to pass in
 	 */
-	async get(taskId: string, params?: Record<string, unknown>) {
+	get(taskId: string, params?: Record<string, unknown>) {
 		return this.client.request({
 			path: `${this.route}/${taskId}`,
 			params,
@@ -32,7 +32,7 @@ export class Tasks {
 	 * @param data The task data
 	 * @param params The parameter options to pass in
 	 */
-	async update(taskId: string, data: Record<string, unknown>, params?: Record<string, unknown>) {
+	update(taskId: string, data: Record<string, unknown>, params?: Record<string, unknown>) {
 		return this.client.request({
 			method: 'PUT',
 			path: `${this.route}/${taskId}`,
@@ -47,7 +47,7 @@ export class Tasks {
 	 * @param taskId The task id
 	 * @param params The parameter options to pass in
 	 */
-	async delete(taskId: string, params?: Record<string, unknown>) {
+	delete(taskId: string, params?: Record<string, unknown>) {
 		return this.client.request({
 			method: 'DELETE',
 			path: `${this.route}/${taskId}`,
@@ -62,7 +62,7 @@ export class Tasks {
 	 * @param attachment The attachments to add
 	 * @param params The parameter options to pass in
 	 */
-	async addAttachment(taskId: string, attachment: FormData, params?: Record<string, unknown>) {
+	addAttachment(taskId: string, attachment: FormData, params?: Record<string, unknown>) {
 		return this.client.request({
 			method: 'POST',
 			path: `${this.route}/${taskId}/attachment`,
@@ -78,7 +78,7 @@ export class Tasks {
 	 * @param data The comment data
 	 * @param params The parameter options to pass in
 	 */
-	async addComment(taskId: string, data: Record<string, unknown>, params?: Record<string, unknown>) {
+	addComment(taskId: string, data: Record<string, unknown>, params?: Record<string, unknown>) {
 		return this.client.request({
 			method: 'POST',
 			path: `${this.route}/${taskId}/comment`,
@@ -93,7 +93,7 @@ export class Tasks {
 	 * @param taskId The task id
 	 * @param params The parameter options to pass in
 	 */
-	async getComments(taskId: string, params?: Record<string, unknown>) {
+	getComments(taskId: string, params?: Record<string, unknown>) {
 		return this.client.request({
 			path: `${this.route}/${taskId}/comment`,
 			params,
@@ -107,7 +107,7 @@ export class Tasks {
 	 * @param data The checklist data
 	 * @param params The parameter options to pass in
 	 */
-	async createChecklist(taskId: string, data: Record<string, unknown>, params?: Record<string, unknown>) {
+	createChecklist(taskId: string, data: Record<string, unknown>, params?: Record<string, unknown>) {
 		return this.client.request({
 			method: 'POST',
 			path: `${this.route}/${taskId}/checklist`,
@@ -124,11 +124,11 @@ export class Tasks {
 	 * @param data The custom field data
 	 * @param params The parameter options to pass in
 	 */
-	async addCustomFieldValue(
+	addCustomFieldValue(
 		taskId: string,
 		fieldId: string,
 		data: Record<string, unknown>,
-		params?: Record<string, unknown>
+		params?: Record<string, unknown>,
 	) {
 		return this.client.request({
 			method: 'POST',
@@ -145,7 +145,7 @@ export class Tasks {
 	 * @param fieldId The custom field id
 	 * @param params The parameter options to pass in
 	 */
-	async deleteCustomFieldValue(taskId: string, fieldId: string, params?: Record<string, unknown>) {
+	deleteCustomFieldValue(taskId: string, fieldId: string, params?: Record<string, unknown>) {
 		return this.client.request({
 			method: 'DELETE',
 			path: `${this.route}/${taskId}/field/${fieldId}`,
@@ -160,7 +160,7 @@ export class Tasks {
 	 * @param data The dependency data
 	 * @param params The parameter options to pass in
 	 */
-	async addDependency(taskId: string, data: Record<string, unknown>, params?: Record<string, unknown>) {
+	addDependency(taskId: string, data: Record<string, unknown>, params?: Record<string, unknown>) {
 		return this.client.request({
 			method: 'POST',
 			path: `${this.route}/${taskId}/dependency`,
@@ -175,7 +175,7 @@ export class Tasks {
 	 * @param taskId The task id
 	 * @param options The parameter options to pass in
 	 */
-	async deleteDependency(taskId: string, params?: Record<string, unknown>) {
+	deleteDependency(taskId: string, params?: Record<string, unknown>) {
 		return this.client.request({
 			method: 'DELETE',
 			path: `${this.route}/${taskId}/dependency`,
@@ -190,7 +190,7 @@ export class Tasks {
 	 * @param linksTo The id of the task to link to
 	 * @param params The parameter options to pass in
 	 */
-	async addTaskLink(taskId: string, linksTo: string, params?: Record<string, unknown>) {
+	addTaskLink(taskId: string, linksTo: string, params?: Record<string, unknown>) {
 		return this.client.request({
 			method: 'POST',
 			path: `${this.route}/${taskId}/link/${linksTo}`,
@@ -205,7 +205,7 @@ export class Tasks {
 	 * @param linksTo The id of the task to link to
 	 * @param params The parameter options to pass in
 	 */
-	async deleteTaskLink(taskId: string, linksTo: string, params?: Record<string, unknown>) {
+	deleteTaskLink(taskId: string, linksTo: string, params?: Record<string, unknown>) {
 		return this.client.request({
 			method: 'DELETE',
 			path: `${this.route}/${taskId}/link/${linksTo}`,
@@ -221,7 +221,7 @@ export class Tasks {
 	 * @param data The guest data
 	 * @param params The parameter options to pass in
 	 */
-	async addGuest(taskId: string, guestId: number, data: Record<string, unknown>, params?: Record<string, unknown>) {
+	addGuest(taskId: string, guestId: number, data: Record<string, unknown>, params?: Record<string, unknown>) {
 		return this.client.request({
 			method: 'POST',
 			path: `${this.route}/${taskId}/guest/${guestId}`,
@@ -237,7 +237,7 @@ export class Tasks {
 	 * @param guestId The guest id
 	 * @param params The parameter options to pass in
 	 */
-	async removeGuest(taskId: string, guestId: number, params?: Record<string, unknown>) {
+	removeGuest(taskId: string, guestId: number, params?: Record<string, unknown>) {
 		return this.client.request({
 			method: 'DELETE',
 			path: `${this.route}/${taskId}/guest/${guestId}`,
@@ -250,7 +250,7 @@ export class Tasks {
 	 *
 	 * @param taskId The task id
 	 */
-	async getMembers(taskId: string) {
+	getMembers(taskId: string) {
 		return this.client.request({
 			path: `${this.route}/${taskId}/member`,
 		});
@@ -263,7 +263,7 @@ export class Tasks {
 	 * @param tagName The tag name
 	 * @param params The parameter options to pass in
 	 */
-	async addTag(taskId: string, tagName: string, params?: Record<string, unknown>) {
+	addTag(taskId: string, tagName: string, params?: Record<string, unknown>) {
 		return this.client.request({
 			method: 'POST',
 			path: `${this.route}/${taskId}/tag/${tagName}`,
@@ -278,7 +278,7 @@ export class Tasks {
 	 * @param tagName The tag name
 	 * @param params The parameter options to pass in
 	 */
-	async removeTag(taskId: string, tagName: string, params?: Record<string, unknown>) {
+	removeTag(taskId: string, tagName: string, params?: Record<string, unknown>) {
 		return this.client.request({
 			method: 'DELETE',
 			path: `${this.route}/${taskId}/tag/${tagName}`,
@@ -293,7 +293,7 @@ export class Tasks {
 	 * @param data The time tracking data
 	 * @param params The parameter options to pass in
 	 */
-	async trackTime(taskId: string, data: Record<string, unknown>, params?: Record<string, unknown>) {
+	trackTime(taskId: string, data: Record<string, unknown>, params?: Record<string, unknown>) {
 		return this.client.request({
 			method: 'POST',
 			path: `${this.route}/${taskId}/time`,
@@ -308,7 +308,7 @@ export class Tasks {
 	 * @param taskId The task id
 	 * @param params The parameter options to pass in
 	 */
-	async getTrackedTime(taskId: string, params?: Record<string, unknown>) {
+	getTrackedTime(taskId: string, params?: Record<string, unknown>) {
 		return this.client.request({
 			path: `${this.route}/${taskId}/time`,
 			params,
@@ -323,12 +323,7 @@ export class Tasks {
 	 * @param data The time tracking data
 	 * @param params The parameter options to pass in
 	 */
-	async editTrackedTime(
-		taskId: string,
-		intervalId: string,
-		data: Record<string, unknown>,
-		params?: Record<string, unknown>
-	) {
+	editTrackedTime(taskId: string, intervalId: string, data: Record<string, unknown>, params?: Record<string, unknown>) {
 		return this.client.request({
 			method: 'PUT',
 			path: `${this.route}/${taskId}/time/${intervalId}`,
@@ -344,7 +339,7 @@ export class Tasks {
 	 * @param intervalId The interval id
 	 * @param params The parameter options to pass in
 	 */
-	async deleteTrackedTime(taskId: string, intervalId: string, params?: Record<string, unknown>) {
+	deleteTrackedTime(taskId: string, intervalId: string, params?: Record<string, unknown>) {
 		return this.client.request({
 			method: 'DELETE',
 			path: `${this.route}/${taskId}/time/${intervalId}`,
@@ -358,7 +353,7 @@ export class Tasks {
 	 * @param taskId The task id
 	 * @param options The parameter options to pass in
 	 */
-	async getTimeInStatus(taskId: string, params?: Record<string, unknown>) {
+	getTimeInStatus(taskId: string, params?: Record<string, unknown>) {
 		return this.client.request({
 			path: `${this.route}/${taskId}/time_in_status`,
 			params,
@@ -370,7 +365,7 @@ export class Tasks {
 	 *
 	 * @param options The parameter options to pass in
 	 */
-	async getBulkTimeInStatus(params?: Record<string, unknown>) {
+	getBulkTimeInStatus(params?: Record<string, unknown>) {
 		return this.client.request({
 			path: `${this.route}/bulk_time_in_status/task_ids`,
 			params,

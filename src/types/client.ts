@@ -5,7 +5,7 @@ export interface ClientGlobals {
 
 export type RequestInterceptor = (url: URL, options: RequestInit) => void | Promise<void>;
 
-export type ResponseInterceptor<Output = any> = (data: any, request: RequestInit) => void | Promise<void>;
+export type ResponseInterceptor = (data: any, request: RequestInit) => void | Promise<void>;
 
 export interface ClientRequest {
 	baseURL: string;

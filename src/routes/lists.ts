@@ -17,7 +17,7 @@ export class Lists {
 	 *
 	 * @param listId The list id
 	 */
-	async get(listId: number) {
+	get(listId: number) {
 		return this.client.request({
 			path: `${this.route}/${listId}`,
 		});
@@ -29,7 +29,7 @@ export class Lists {
 	 * @param listId The list id
 	 * @param data The list data
 	 */
-	async update(listId: number, data: Record<string, unknown>) {
+	update(listId: number, data: Record<string, unknown>) {
 		return this.client.request({
 			method: 'PUT',
 			path: `${this.route}/${listId}`,
@@ -42,7 +42,7 @@ export class Lists {
 	 *
 	 * @param listId The list id
 	 */
-	async delete(listId: number) {
+	delete(listId: number) {
 		return this.client.request({
 			method: 'DELETE',
 			path: `${this.route}/${listId}`,
@@ -55,7 +55,7 @@ export class Lists {
 	 * @param listId The list id
 	 * @param data The comment data
 	 */
-	async addComment(listId: number, data: Record<string, unknown>) {
+	addComment(listId: number, data: Record<string, unknown>) {
 		return this.client.request({
 			method: 'POST',
 			path: `${this.route}/${listId}/comment`,
@@ -68,7 +68,7 @@ export class Lists {
 	 *
 	 * @param listId The list id
 	 */
-	async getComments(listId: number) {
+	getComments(listId: number) {
 		return this.client.request({
 			path: `${this.route}/${listId}/comment`,
 		});
@@ -79,7 +79,7 @@ export class Lists {
 	 *
 	 * @param listId The list id
 	 */
-	async getAccessibleCustomFields(listId: number) {
+	getAccessibleCustomFields(listId: number) {
 		return this.client.request({
 			path: `${this.route}/${listId}/field`,
 		});
@@ -92,7 +92,7 @@ export class Lists {
 	 * @param guestId The guest id
 	 * @param data The guest data
 	 */
-	async addGuest(listId: number, guestId: number, data: Record<string, unknown>) {
+	addGuest(listId: number, guestId: number, data: Record<string, unknown>) {
 		return this.client.request({
 			method: 'POST',
 			path: `${this.route}/${listId}/guest/${guestId}`,
@@ -106,7 +106,7 @@ export class Lists {
 	 * @param listId The list id
 	 * @param guestId The guest id
 	 */
-	async removeGuest(listId: number, guestId: number) {
+	removeGuest(listId: number, guestId: number) {
 		return this.client.request({
 			method: 'DELETE',
 			path: `${this.route}/${listId}/guest/${guestId}`,
@@ -118,7 +118,7 @@ export class Lists {
 	 *
 	 * @param listId The list id
 	 */
-	async getMembers(listId: number) {
+	getMembers(listId: number) {
 		return this.client.request({
 			path: `${this.route}/${listId}/member`,
 		});
@@ -130,7 +130,7 @@ export class Lists {
 	 * @param listId The list id
 	 * @param data The task data
 	 */
-	async createTask(listId: number, data: Record<string, unknown>) {
+	createTask(listId: number, data: Record<string, unknown>) {
 		return this.client.request({
 			method: 'POST',
 			path: `${this.route}/${listId}/task`,
@@ -144,7 +144,7 @@ export class Lists {
 	 * @param {Number} listId The list id
 	 * @param {Object} [options] The parameter options to pass in
 	 */
-	async getTasks(listId: number, options?: Record<string, unknown>) {
+	getTasks(listId: number, options?: Record<string, unknown>) {
 		return this.client.request({
 			path: `${this.route}/${listId}/task`,
 			params: options,
@@ -158,7 +158,7 @@ export class Lists {
 	 * @param templateId The template id
 	 * @param data The task data
 	 */
-	async createTaskFromTemplate(listId: number, templateId: string, data: Record<string, unknown>) {
+	createTaskFromTemplate(listId: number, templateId: string, data: Record<string, unknown>) {
 		return this.client.request({
 			method: 'POST',
 			path: `${this.route}/${listId}/taskTemplate/${templateId}`,
@@ -172,7 +172,7 @@ export class Lists {
 	 * @param listId The list id
 	 * @param data The view data
 	 */
-	async createView(listId: number, data: Record<string, unknown>) {
+	createView(listId: number, data: Record<string, unknown>) {
 		return this.client.request({
 			method: 'POST',
 			path: `${this.route}/${listId}/view`,
@@ -185,7 +185,7 @@ export class Lists {
 	 *
 	 * @param listId The list id
 	 */
-	async getViews(listId: number) {
+	getViews(listId: number) {
 		return this.client.request({
 			path: `${this.route}/${listId}/view`,
 		});
@@ -197,7 +197,7 @@ export class Lists {
 	 * @param listId The list id
 	 * @param taskId The task id
 	 */
-	async addTaskToList(listId: number, taskId: string) {
+	addTaskToList(listId: number, taskId: string) {
 		return this.client.request({
 			method: 'POST',
 			path: `${this.route}/${listId}/task/${taskId}`,
@@ -210,7 +210,7 @@ export class Lists {
 	 * @param listId The list id
 	 * @param taskId The task id
 	 */
-	async removeTaskFromList(listId: number, taskId: string) {
+	removeTaskFromList(listId: number, taskId: string) {
 		return this.client.request({
 			method: 'DELETE',
 			path: `${this.route}/${listId}/task/${taskId}`,
@@ -222,7 +222,7 @@ export class Lists {
 	 *
 	 * @param listId The list id
 	 */
-	async getListMembers(listId: number) {
+	getListMembers(listId: number) {
 		return this.client.request({
 			path: `${this.route}/${listId}/member`,
 		});

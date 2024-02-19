@@ -28,9 +28,11 @@
 	},
 	"scripts": {
 		"build": "unbuild",
-		"test": "mocha",
-		"lint": "eslint src test --fix",
-		"format": "prettier --write ."
+		"lint": "eslint --cache --ext .ts .",
+		"lint:fix": "eslint --cache --ext .ts . --fix",
+		"format": "prettier -c src test",
+		"format:fix": "prettier -c src test -w",
+		"test": "mocha"
 	},
 	"keywords": [
 		"clickup",
@@ -42,15 +44,12 @@
 		"wrapper-api"
 	],
 	"devDependencies": {
-		"chai": "^4.3.4",
-		"eslint": "^8.4.1",
-		"eslint-config-airbnb-base": "^15.0.0",
-		"eslint-config-prettier": "^8.3.0",
-		"eslint-plugin-import": "^2.25.3",
-		"eslint-plugin-prettier": "^4.0.0",
-		"mocha": "^9.1.3",
-		"prettier": "^2.5.1",
-		"sinon": "^12.0.1",
+		"chai": "^5.1.0",
+		"eslint": "^8.56.0",
+		"eslint-config-unjs": "^0.2.1",
+		"mocha": "^10.3.0",
+		"prettier": "^3.2.5",
+		"sinon": "^17.0.1",
 		"typescript": "^5.3.3",
 		"unbuild": "^2.0.0"
 	}

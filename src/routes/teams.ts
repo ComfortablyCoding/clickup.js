@@ -15,7 +15,7 @@ export class Teams {
 	/**
 	 * Get teams
 	 */
-	async get() {
+	get() {
 		return this.client.request({
 			path: `${this.route}`,
 		});
@@ -27,7 +27,7 @@ export class Teams {
 	 * @param teamId The team id
 	 * @param data Goal data
 	 */
-	async createGoal(teamId: number, data: Record<string, unknown>) {
+	createGoal(teamId: number, data: Record<string, unknown>) {
 		return this.client.request({
 			method: 'POST',
 			path: `${this.route}/${teamId}/goal`,
@@ -40,7 +40,7 @@ export class Teams {
 	 *
 	 * @param teamId The team id
 	 */
-	async getGoals(teamId: number) {
+	getGoals(teamId: number) {
 		return this.client.request({
 			path: `${this.route}/${teamId}/goal`,
 		});
@@ -52,7 +52,7 @@ export class Teams {
 	 * @param teamId The team id
 	 * @param data The guest data
 	 */
-	async inviteGuest(teamId: number, data: Record<string, unknown>) {
+	inviteGuest(teamId: number, data: Record<string, unknown>) {
 		return this.client.request({
 			method: 'POST',
 			path: `${this.route}/${teamId}/guest`,
@@ -66,7 +66,7 @@ export class Teams {
 	 * @param teamId The team id
 	 * @param guestId The guest id
 	 */
-	async getGuest(teamId: number, guestId: number) {
+	getGuest(teamId: number, guestId: number) {
 		return this.client.request({
 			path: `${this.route}/${teamId}/guest/${guestId}`,
 		});
@@ -79,7 +79,7 @@ export class Teams {
 	 * @param guestId The guest id
 	 * @param data The guest data
 	 */
-	async editGuest(teamId: number, guestId: number, data: Record<string, unknown>) {
+	editGuest(teamId: number, guestId: number, data: Record<string, unknown>) {
 		return this.client.request({
 			method: 'PUT',
 			path: `${this.route}/${teamId}/guest/${guestId}`,
@@ -93,7 +93,7 @@ export class Teams {
 	 * @param teamId The team id
 	 * @param guestId The guest id
 	 */
-	async removeGuest(teamId: number, guestId: number) {
+	removeGuest(teamId: number, guestId: number) {
 		return this.client.request({
 			method: 'DELETE',
 			path: `${this.route}/${teamId}/guest/${guestId}`,
@@ -105,7 +105,7 @@ export class Teams {
 	 *
 	 * @param teamId The team id
 	 */
-	async sharedHierarchy(teamId: number) {
+	sharedHierarchy(teamId: number) {
 		return this.client.request({
 			path: `${this.route}/${teamId}/shared`,
 		});
@@ -117,7 +117,7 @@ export class Teams {
 	 * @param teamId The team id
 	 * @param data The space data
 	 */
-	async createSpace(teamId: number, data: Record<string, unknown>) {
+	createSpace(teamId: number, data: Record<string, unknown>) {
 		return this.client.request({
 			method: 'POST',
 			path: `${this.route}/${teamId}/space`,
@@ -132,7 +132,7 @@ export class Teams {
 	 * @param params The query parameters to pass
 	 * @param params.archived If archived lists should be returned or not
 	 */
-	async getSpaces(teamId: number, params?: Record<string, unknown>) {
+	getSpaces(teamId: number, params?: Record<string, unknown>) {
 		return this.client.request({
 			path: `${this.route}/${teamId}/space`,
 			params,
@@ -146,10 +146,10 @@ export class Teams {
 	 * @param params The query parameters to pass
 	 * @param params.page The page to get
 	 */
-	async getFilteredTasks(teamId: number, params: Record<string, unknown> = { page: 0 }) {
+	getFilteredTasks(teamId: number, params?: Record<string, unknown>) {
 		return this.client.request({
 			path: `${this.route}/${teamId}/task`,
-			params,
+			params: { page: 0, ...params },
 		});
 	}
 
@@ -160,10 +160,10 @@ export class Teams {
 	 * @param params The query parameters to pass
 	 * @param params.page The page to get
 	 */
-	async getTaskTemplates(teamId: number, params: Record<string, unknown> = { page: 0 }) {
+	getTaskTemplates(teamId: number, params?: Record<string, unknown>) {
 		return this.client.request({
 			path: `${this.route}/${teamId}/taskTemplate`,
-			params,
+			params: { page: 0, ...params },
 		});
 	}
 
@@ -173,7 +173,7 @@ export class Teams {
 	 * @param teamId The team id
 	 * @param userId The user id
 	 */
-	async getUser(teamId: number, userId: number) {
+	getUser(teamId: number, userId: number) {
 		return this.client.request({
 			path: `${this.route}/${teamId}/user/${userId}`,
 		});
@@ -185,7 +185,7 @@ export class Teams {
 	 * @param teamId The team id
 	 * @param data The user data
 	 */
-	async inviteUser(teamId: number, data: Record<string, unknown>) {
+	inviteUser(teamId: number, data: Record<string, unknown>) {
 		return this.client.request({
 			method: 'POST',
 			path: `${this.route}/${teamId}/user`,
@@ -200,7 +200,7 @@ export class Teams {
 	 * @param userId The user id
 	 * @param data The user data
 	 */
-	async editUser(teamId: number, userId: number, data: Record<string, unknown>) {
+	editUser(teamId: number, userId: number, data: Record<string, unknown>) {
 		return this.client.request({
 			method: 'PUT',
 			path: `${this.route}/${teamId}/user/${userId}`,
@@ -214,7 +214,7 @@ export class Teams {
 	 * @param teamId The team id
 	 * @param userId The team id
 	 */
-	async removeUser(teamId: number, userId: number) {
+	removeUser(teamId: number, userId: number) {
 		return this.client.request({
 			method: 'DELETE',
 			path: `${this.route}/${teamId}/user/${userId}`,
@@ -227,7 +227,7 @@ export class Teams {
 	 * @param teamId The team id
 	 * @param data The view data
 	 */
-	async createView(teamId: number, data: Record<string, unknown>) {
+	createView(teamId: number, data: Record<string, unknown>) {
 		return this.client.request({
 			method: 'POST',
 			path: `${this.route}/${teamId}/view`,
@@ -240,7 +240,7 @@ export class Teams {
 	 *
 	 * @param teamId The team id
 	 */
-	async getViews(teamId: number) {
+	getViews(teamId: number) {
 		return this.client.request({
 			path: `${this.route}/${teamId}/view`,
 		});
@@ -252,7 +252,7 @@ export class Teams {
 	 * @param teamId The team id
 	 * @param data The webhook data
 	 */
-	async createWebhook(teamId: number, data: Record<string, unknown>) {
+	createWebhook(teamId: number, data: Record<string, unknown>) {
 		return this.client.request({
 			method: 'POST',
 			path: `${this.route}/${teamId}/webhook`,
@@ -265,7 +265,7 @@ export class Teams {
 	 *
 	 * @param teamId the team id
 	 */
-	async getWebhooks(teamId: number) {
+	getWebhooks(teamId: number) {
 		return this.client.request({
 			path: `${this.route}/${teamId}/webhook`,
 		});
@@ -277,7 +277,7 @@ export class Teams {
 	 * @param teamId The team id
 	 * @param params The parameter options to pass in
 	 */
-	async getTimeEntries(teamId: number, params?: Record<string, unknown>) {
+	getTimeEntries(teamId: number, params?: Record<string, unknown>) {
 		return this.client.request({
 			path: `${this.route}/${teamId}/time_entries`,
 			params,
@@ -291,7 +291,7 @@ export class Teams {
 	 * @param timerId The timer id
 	 * @param params The parameter options to pass in
 	 */
-	async getSingleTimeEntry(teamId: number, timerId: number, params?: Record<string, unknown>) {
+	getSingleTimeEntry(teamId: number, timerId: number, params?: Record<string, unknown>) {
 		return this.client.request({
 			path: `${this.route}/${teamId}/time_entries/${timerId}`,
 			params,
@@ -304,7 +304,7 @@ export class Teams {
 	 * @param teamId The team id
 	 * @param params The parameter options to pass in
 	 */
-	async getRunningTimeEntry(teamId: number, params?: Record<string, unknown>) {
+	getRunningTimeEntry(teamId: number, params?: Record<string, unknown>) {
 		return this.client.request({
 			path: `${this.route}/${teamId}/time_entries/current`,
 			params,
@@ -318,7 +318,7 @@ export class Teams {
 	 * @param data The time entry data
 	 * @param params The parameter options to pass in
 	 */
-	async createTimeEntry(teamId: number, data: Record<string, unknown>, params?: Record<string, unknown>) {
+	createTimeEntry(teamId: number, data: Record<string, unknown>, params?: Record<string, unknown>) {
 		return this.client.request({
 			method: 'POST',
 			path: `${this.route}/${teamId}/time_entries`,
@@ -333,7 +333,7 @@ export class Teams {
 	 * @param teamId The team id
 	 * @param data The time entries data
 	 */
-	async removeTagsFromTimeEntries(teamId: number, data: Record<string, unknown>) {
+	removeTagsFromTimeEntries(teamId: number, data: Record<string, unknown>) {
 		return this.client.request({
 			method: 'DELETE',
 			path: `${this.route}/${teamId}/time_entries/tags`,
@@ -346,7 +346,7 @@ export class Teams {
 	 *
 	 * @param teamId The team id
 	 */
-	async getAllTagsFromTimeEntries(teamId: number) {
+	getAllTagsFromTimeEntries(teamId: number) {
 		return this.client.request({
 			path: `${this.route}/${teamId}/time_entries/tags`,
 		});
@@ -358,7 +358,7 @@ export class Teams {
 	 * @param teamId The team id
 	 * @param data The time entries and tag data
 	 */
-	async addTagsFromTimeEntries(teamId: number, data: Record<string, unknown>) {
+	addTagsFromTimeEntries(teamId: number, data: Record<string, unknown>) {
 		return this.client.request({
 			method: 'POST',
 			path: `${this.route}/${teamId}/time_entries/tags`,
@@ -372,7 +372,7 @@ export class Teams {
 	 * @param teamId The team id
 	 * @param data The tag data
 	 */
-	async changeTagsFromTimeEntries(teamId: number, data: Record<string, unknown>) {
+	changeTagsFromTimeEntries(teamId: number, data: Record<string, unknown>) {
 		return this.client.request({
 			method: 'PUT',
 			path: `${this.route}/${teamId}/time_entries/tags`,
@@ -388,12 +388,7 @@ export class Teams {
 	 * @param data The time entry data
 	 * @param params The parameter options to pass in
 	 */
-	async startTimeEntry(
-		teamId: number,
-		timerId: number,
-		data: Record<string, unknown>,
-		params?: Record<string, unknown>
-	) {
+	startTimeEntry(teamId: number, timerId: number, data: Record<string, unknown>, params?: Record<string, unknown>) {
 		return this.client.request({
 			method: 'POST',
 			path: `${this.route}/${teamId}/time_entries/start/${timerId}`,
@@ -407,7 +402,7 @@ export class Teams {
 	 *
 	 * @param teamId The team id
 	 */
-	async stopTimeEntry(teamId: number) {
+	stopTimeEntry(teamId: number) {
 		return this.client.request({
 			method: 'POST',
 			path: `${this.route}/${teamId}/time_entries/stop`,
@@ -420,7 +415,7 @@ export class Teams {
 	 * @param teamId The team id
 	 * @param timerId The timer id
 	 */
-	async deleteTimeEntry(teamId: number, timerId: number) {
+	deleteTimeEntry(teamId: number, timerId: number) {
 		return this.client.request({
 			method: 'DELETE',
 			path: `${this.route}/${teamId}/time_entries/${timerId}`,
@@ -435,12 +430,7 @@ export class Teams {
 	 * @param data The time entry data
 	 * @param params The parameter options to pass in
 	 */
-	async updateTimeEntry(
-		teamId: number,
-		timerId: number,
-		data: Record<string, unknown>,
-		params?: Record<string, unknown>
-	) {
+	updateTimeEntry(teamId: number, timerId: number, data: Record<string, unknown>, params?: Record<string, unknown>) {
 		return this.client.request({
 			method: 'PUT',
 			path: `${this.route}/${teamId}/time_entries/${timerId}`,
