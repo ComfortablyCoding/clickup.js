@@ -32,7 +32,7 @@
 		"lint:fix": "eslint --cache --ext .ts . --fix",
 		"format": "prettier -c src test",
 		"format:fix": "prettier -c src test -w",
-		"test": "vitest && test:types",
+		"test": "vitest",
 		"test:types": "tsc --noEmit --skipLibCheck"
 	},
 	"keywords": [
