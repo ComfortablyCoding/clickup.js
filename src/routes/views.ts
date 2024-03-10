@@ -64,13 +64,14 @@ export class Views {
 	}
 
 	/**
-	 * Get all comments on a view
+	 * Get all comments from a Chat view
 	 *
 	 * @param viewId The view id
 	 */
-	getComments(viewId: string) {
+	getComments(viewId: string, params?: Record<string, unknown>) {
 		return this.client.request({
 			path: `${this.route}/${viewId}/comment`,
+			params,
 		});
 	}
 

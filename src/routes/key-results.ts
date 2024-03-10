@@ -13,7 +13,7 @@ export class KeyResults {
 	}
 
 	/**
-	 * Update a key result
+	 * Update a key result (target)
 	 *
 	 * @param keyResultId The key result id
 	 * @param data The key result data
@@ -27,7 +27,7 @@ export class KeyResults {
 	}
 
 	/**
-	 * Delete a key result
+	 * Delete a key result (target)
 	 *
 	 * @param keyResultId The key result id
 	 */

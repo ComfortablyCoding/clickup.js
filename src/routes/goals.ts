@@ -24,7 +24,7 @@ export class Goals {
 	}
 
 	/**
-	 * Update a goal
+	 * Update the goal name, set the due date, replace the description, add or remove owners, and set the Goal color
 	 *
 	 * @param goalId The goal id
 	 * @param data The goal data
@@ -38,7 +38,7 @@ export class Goals {
 	}
 
 	/**
-	 * Delete a goal
+	 * Delete a goal from your team
 	 *
 	 * @param goalId The goal id
 	 */
@@ -50,7 +50,7 @@ export class Goals {
 	}
 
 	/**
-	 * Create a key result
+	 * Create a key result (target)
 	 *
 	 * @param goalId The goal id
 	 * @param data The key result data

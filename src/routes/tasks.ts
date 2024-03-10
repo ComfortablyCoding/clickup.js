@@ -16,7 +16,7 @@ export class Tasks {
 	 * Get a task
 	 *
 	 * @param taskId The task id
-	 * @param params The parameter options to pass in
+	 * @param params The query parameters to use
 	 */
 	get(taskId: string, params?: Record<string, unknown>) {
 		return this.client.request({
@@ -30,7 +30,7 @@ export class Tasks {
 	 *
 	 * @param taskId The task id
 	 * @param data The task data
-	 * @param params The parameter options to pass in
+	 * @param params The query parameters to use
 	 */
 	update(taskId: string, data: Record<string, unknown>, params?: Record<string, unknown>) {
 		return this.client.request({
@@ -45,7 +45,7 @@ export class Tasks {
 	 * Delete a task
 	 *
 	 * @param taskId The task id
-	 * @param params The parameter options to pass in
+	 * @param params The query parameters to use
 	 */
 	delete(taskId: string, params?: Record<string, unknown>) {
 		return this.client.request({
@@ -56,11 +56,11 @@ export class Tasks {
 	}
 
 	/**
-	 * Add an attachment to a task
+	 * Upload a file to a task as an attachment.
 	 *
 	 * @param taskId The task id
 	 * @param attachment The attachments to add
-	 * @param params The parameter options to pass in
+	 * @param params The query parameters to use
 	 */
 	addAttachment(taskId: string, attachment: FormData, params?: Record<string, unknown>) {
 		return this.client.request({
@@ -76,7 +76,7 @@ export class Tasks {
 	 *
 	 * @param taskId The task id
 	 * @param data The comment data
-	 * @param params The parameter options to pass in
+	 * @param params The query parameters to use
 	 */
 	addComment(taskId: string, data: Record<string, unknown>, params?: Record<string, unknown>) {
 		return this.client.request({
@@ -88,10 +88,10 @@ export class Tasks {
 	}
 
 	/**
-	 * Get all comments on a task
+	 * Get all task comments
 	 *
 	 * @param taskId The task id
-	 * @param params The parameter options to pass in
+	 * @param params The query parameters to use
 	 */
 	getComments(taskId: string, params?: Record<string, unknown>) {
 		return this.client.request({
@@ -105,7 +105,7 @@ export class Tasks {
 	 *
 	 * @param taskId The task id
 	 * @param data The checklist data
-	 * @param params The parameter options to pass in
+	 * @param params The query parameters to use
 	 */
 	createChecklist(taskId: string, data: Record<string, unknown>, params?: Record<string, unknown>) {
 		return this.client.request({
@@ -117,12 +117,12 @@ export class Tasks {
 	}
 
 	/**
-	 * Add a custom field value for a task
+	 * Add data to a custom field on a task
 	 *
 	 * @param taskId The task id
-	 * @param fieldId The custom field id
+	 * @param fieldId The uuid of the custom field
 	 * @param data The custom field data
-	 * @param params The parameter options to pass in
+	 * @param params The query parameters to use
 	 */
 	addCustomFieldValue(
 		taskId: string,
@@ -139,11 +139,11 @@ export class Tasks {
 	}
 
 	/**
-	 * Delete a custom field value for a task
+	 * Remove a custom field value on a task
 	 *
 	 * @param taskId The task id
-	 * @param fieldId The custom field id
-	 * @param params The parameter options to pass in
+	 * @param fieldId The uuid of the custom field
+	 * @param params The query parameters to use
 	 */
 	deleteCustomFieldValue(taskId: string, fieldId: string, params?: Record<string, unknown>) {
 		return this.client.request({
@@ -158,7 +158,7 @@ export class Tasks {
 	 *
 	 * @param taskId The task id
 	 * @param data The dependency data
-	 * @param params The parameter options to pass in
+	 * @param params The query parameters to use
 	 */
 	addDependency(taskId: string, data: Record<string, unknown>, params?: Record<string, unknown>) {
 		return this.client.request({
@@ -188,7 +188,7 @@ export class Tasks {
 	 *
 	 * @param taskId The task id
 	 * @param linksTo The id of the task to link to
-	 * @param params The parameter options to pass in
+	 * @param params The query parameters to use
 	 */
 	addTaskLink(taskId: string, linksTo: string, params?: Record<string, unknown>) {
 		return this.client.request({
@@ -203,7 +203,7 @@ export class Tasks {
 	 *
 	 * @param taskId The task id
 	 * @param linksTo The id of the task to link to
-	 * @param params The parameter options to pass in
+	 * @param params The query parameters to use
 	 */
 	deleteTaskLink(taskId: string, linksTo: string, params?: Record<string, unknown>) {
 		return this.client.request({
@@ -214,12 +214,12 @@ export class Tasks {
 	}
 
 	/**
-	 * Add a guest to a task
+	 * Share a task with a guest
 	 *
 	 * @param taskId The task id
 	 * @param guestId The guest id
 	 * @param data The guest data
-	 * @param params The parameter options to pass in
+	 * @param params The query parameters to use
 	 */
 	addGuest(taskId: string, guestId: number, data: Record<string, unknown>, params?: Record<string, unknown>) {
 		return this.client.request({
@@ -231,11 +231,11 @@ export class Tasks {
 	}
 
 	/**
-	 * Remove a guest from a task
+	 * Remove a guest's access to a task
 	 *
 	 * @param taskId The task id
 	 * @param guestId The guest id
-	 * @param params The parameter options to pass in
+	 * @param params The query parameters to use
 	 */
 	removeGuest(taskId: string, guestId: number, params?: Record<string, unknown>) {
 		return this.client.request({
@@ -246,7 +246,7 @@ export class Tasks {
 	}
 
 	/**
-	 * Get all members of a task
+	 * Get all members who have access to a task
 	 *
 	 * @param taskId The task id
 	 */
@@ -261,7 +261,7 @@ export class Tasks {
 	 *
 	 * @param taskId The task id
 	 * @param tagName The tag name
-	 * @param params The parameter options to pass in
+	 * @param params The query parameters to use
 	 */
 	addTag(taskId: string, tagName: string, params?: Record<string, unknown>) {
 		return this.client.request({
@@ -276,7 +276,7 @@ export class Tasks {
 	 *
 	 * @param taskId The task id
 	 * @param tagName The tag name
-	 * @param params The parameter options to pass in
+	 * @param params The query parameters to use
 	 */
 	removeTag(taskId: string, tagName: string, params?: Record<string, unknown>) {
 		return this.client.request({
@@ -291,7 +291,7 @@ export class Tasks {
 	 *
 	 * @param taskId The task id
 	 * @param data The time tracking data
-	 * @param params The parameter options to pass in
+	 * @param params The query parameters to use
 	 */
 	trackTime(taskId: string, data: Record<string, unknown>, params?: Record<string, unknown>) {
 		return this.client.request({
@@ -306,7 +306,7 @@ export class Tasks {
 	 * Get tracked time for a task (Time Tracking Legacy API)
 	 *
 	 * @param taskId The task id
-	 * @param params The parameter options to pass in
+	 * @param params The query parameters to use
 	 */
 	getTrackedTime(taskId: string, params?: Record<string, unknown>) {
 		return this.client.request({
@@ -321,7 +321,7 @@ export class Tasks {
 	 * @param taskId The task id
 	 * @param intervalId The interval id
 	 * @param data The time tracking data
-	 * @param params The parameter options to pass in
+	 * @param params The query parameters to use
 	 */
 	editTrackedTime(taskId: string, intervalId: string, data: Record<string, unknown>, params?: Record<string, unknown>) {
 		return this.client.request({
@@ -337,7 +337,7 @@ export class Tasks {
 	 *
 	 * @param taskId The task id
 	 * @param intervalId The interval id
-	 * @param params The parameter options to pass in
+	 * @param params The query parameters to use
 	 */
 	deleteTrackedTime(taskId: string, intervalId: string, params?: Record<string, unknown>) {
 		return this.client.request({

@@ -26,7 +26,7 @@ export class Authorization {
 	}
 
 	/**
-	 * Get the user that this token belongs to
+	 * Get the details of the authenticated user's ClickUp account
 	 */
 	getAuthorizedUser() {
 		return this.client.request({
@@ -35,7 +35,7 @@ export class Authorization {
 	}
 
 	/**
-	 * Get the authorized teams for this token
+	 * Get the teams (workspaces) available to the authenticated user
 	 */
 	getAuthorizedTeams() {
 		return this.client.request({

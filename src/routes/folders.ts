@@ -55,22 +55,25 @@ export class Folders {
 	 * @param folderId The folder id
 	 * @param guestId The guest id
 	 * @param data The guest data
+	 * @param params The query parameters to use
 	 */
-	addGuest(folderId: number, guestId: number, data: Record<string, unknown>) {
+	addGuest(folderId: number, guestId: number, data: Record<string, unknown>, params?: Record<string, unknown>) {
 		return this.client.request({
 			method: 'POST',
 			path: `${this.route}/${folderId}/guest/${guestId}`,
+			params,
 			body: JSON.stringify(data),
 		});
 	}
 
 	/**
-	 * Remove a guest from a folder
+	 * Remove a guest's access to a folder
 	 *
 	 * @param folderId The folder id
 	 * @param guestId The guest id
+	 * @param params The query parameters to use
 	 */
-	removeGuest(folderId: number, guestId: number) {
+	removeGuest(folderId: number, guestId: number, params?: Record<string, unknown>) {
 		return this.client.request({
 			method: 'DELETE',
 			path: `${this.route}/${folderId}/guest/${guestId}`,
@@ -92,7 +95,7 @@ export class Folders {
 	}
 
 	/**
-	 * Get all lists in a folder
+	 * Get all lists within a folder
 	 *
 	 * @param folderId The folder id
 	 * @param params The query parameters to pass

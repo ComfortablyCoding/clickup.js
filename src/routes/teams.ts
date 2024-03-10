@@ -39,15 +39,17 @@ export class Teams {
 	 * Get all goals for a team
 	 *
 	 * @param teamId The team id
+	 * @param params The query parameters to use
 	 */
-	getGoals(teamId: number) {
+	getGoals(teamId: number, params: Record<string, unknown>) {
 		return this.client.request({
 			path: `${this.route}/${teamId}/goal`,
+			params,
 		});
 	}
 
 	/**
-	 * Invite a guest to a workspace/team
+	 * Invite a guest to a team (workspace)
 	 *
 	 * @param teamId The team id
 	 * @param data The guest data
@@ -61,7 +63,7 @@ export class Teams {
 	}
 
 	/**
-	 * Get a guest in a workspace/team
+	 * Get information about a team (workspace) guest
 	 *
 	 * @param teamId The team id
 	 * @param guestId The guest id
@@ -73,7 +75,7 @@ export class Teams {
 	}
 
 	/**
-	 * Edit a guest in a workspace/team
+	 * Edit a guest in a team (workspace)
 	 *
 	 * @param teamId The team id
 	 * @param guestId The guest id
@@ -88,7 +90,7 @@ export class Teams {
 	}
 
 	/**
-	 * Remove a guest from a workspace/team
+	 * Remove a guest from a team (workspace)
 	 *
 	 * @param teamId The team id
 	 * @param guestId The guest id
@@ -101,7 +103,7 @@ export class Teams {
 	}
 
 	/**
-	 * Returns all resources you have access to where you don't have access to its parent.
+	 * Get the tasks, lists, and folders that have been shared with the authenticated user
 	 *
 	 * @param teamId The team id
 	 */
@@ -112,7 +114,7 @@ export class Teams {
 	}
 
 	/**
-	 * Create a space for a team
+	 * Create a space for a team (workspace)
 	 *
 	 * @param teamId The team id
 	 * @param data The space data
@@ -126,7 +128,7 @@ export class Teams {
 	}
 
 	/**
-	 * Get spaces for a team
+	 * Get available spaces for a team (workspace)
 	 *
 	 * @param teamId The team id
 	 * @param params The query parameters to pass
@@ -275,7 +277,7 @@ export class Teams {
 	 * Get time entries within a data range
 	 *
 	 * @param teamId The team id
-	 * @param params The parameter options to pass in
+	 * @param params The query parameters to use
 	 */
 	getTimeEntries(teamId: number, params?: Record<string, unknown>) {
 		return this.client.request({
@@ -289,7 +291,7 @@ export class Teams {
 	 *
 	 * @param teamId The team id
 	 * @param timerId The timer id
-	 * @param params The parameter options to pass in
+	 * @param params The query parameters to use
 	 */
 	getSingleTimeEntry(teamId: number, timerId: number, params?: Record<string, unknown>) {
 		return this.client.request({
@@ -302,7 +304,7 @@ export class Teams {
 	 * Get running time entry
 	 *
 	 * @param teamId The team id
-	 * @param params The parameter options to pass in
+	 * @param params The query parameters to use
 	 */
 	getRunningTimeEntry(teamId: number, params?: Record<string, unknown>) {
 		return this.client.request({
@@ -316,7 +318,7 @@ export class Teams {
 	 *
 	 * @param teamId The team id
 	 * @param data The time entry data
-	 * @param params The parameter options to pass in
+	 * @param params The query parameters to use
 	 */
 	createTimeEntry(teamId: number, data: Record<string, unknown>, params?: Record<string, unknown>) {
 		return this.client.request({
@@ -386,7 +388,7 @@ export class Teams {
 	 * @param teamId The team id
 	 * @param timerId The timer id
 	 * @param data The time entry data
-	 * @param params The parameter options to pass in
+	 * @param params The query parameters to use
 	 */
 	startTimeEntry(teamId: number, timerId: number, data: Record<string, unknown>, params?: Record<string, unknown>) {
 		return this.client.request({
@@ -428,7 +430,7 @@ export class Teams {
 	 * @param teamId The team id
 	 * @param timerId The timer id
 	 * @param data The time entry data
-	 * @param params The parameter options to pass in
+	 * @param params The query parameters to use
 	 */
 	updateTimeEntry(teamId: number, timerId: number, data: Record<string, unknown>, params?: Record<string, unknown>) {
 		return this.client.request({
@@ -436,6 +438,51 @@ export class Teams {
 			path: `${this.route}/${teamId}/time_entries/${timerId}`,
 			params,
 			body: JSON.stringify(data),
+		});
+	}
+
+	/**
+	 * Retrieve the used, total, and available member and guest seats for a Workspace.
+	 *
+	 * @param teamId The team id
+	 */
+	getWorkspaceSeats(teamId: string) {
+		return this.client.request({
+			path: `${this.route}/${teamId}/seats`,
+		});
+	}
+
+	/**
+	 * Retrieve the current Plan for the specified Workspace.
+	 *
+	 * @param teamId The team id
+	 */
+	getWorkspacePlan(teamId: string) {
+		return this.client.request({
+			path: `${this.route}/${teamId}/plan`,
+		});
+	}
+
+	/**
+	 * Get the custom task types available in a team (workspace).
+	 *
+	 * @param teamId The team id
+	 */
+	getCustomTaskTypes(teamId: number) {
+		return this.client.request({
+			path: `${this.route}/${teamId}/custom_item`,
+		});
+	}
+
+	/**
+	 * Get the custom roles available in a team (workspace).
+	 *
+	 * @param teamId The team id
+	 * @param params The query parameters to use
+	 */
+	getCustomRoles(teamId: number) {
+		return this.client.request({
+			path: `${this.route}/${teamId}/customroles`,
 		});
 	}
 }

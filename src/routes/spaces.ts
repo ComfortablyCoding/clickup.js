@@ -24,7 +24,7 @@ export class Spaces {
 	}
 
 	/**
-	 * Update a space
+	 * Update a spaces name, set the space color, and enable ClickApps for a space.
 	 *
 	 * @param spaceId The space id
 	 * @param data The space data
@@ -50,7 +50,7 @@ export class Spaces {
 	}
 
 	/**
-	 * Create a folder
+	 * Create a folder in a space
 	 *
 	 * @param spaceId The space id
 	 * @param data The folder data

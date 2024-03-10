@@ -29,7 +29,7 @@ export class Lists {
 	 * @param listId The list id
 	 * @param data The list data
 	 */
-	update(listId: number, data: Record<string, unknown>) {
+	update(listId: string, data: Record<string, unknown>) {
 		return this.client.request({
 			method: 'PUT',
 			path: `${this.route}/${listId}`,
@@ -50,7 +50,7 @@ export class Lists {
 	}
 
 	/**
-	 * Add a list comment
+	 * Add a comment to a list
 	 *
 	 * @param listId The list id
 	 * @param data The comment data
@@ -64,18 +64,19 @@ export class Lists {
 	}
 
 	/**
-	 * Get all comments on a list
+	 * Get all comments added to a list
 	 *
 	 * @param listId The list id
 	 */
-	getComments(listId: number) {
+	getComments(listId: number, params?: Record<string, unknown>) {
 		return this.client.request({
 			path: `${this.route}/${listId}/comment`,
+			params,
 		});
 	}
 
 	/**
-	 * Get all accessible custom fields of a list
+	 * Get all Custom Fields available on tasks in a specific list
 	 *
 	 * @param listId The list id
 	 */
@@ -86,30 +87,34 @@ export class Lists {
 	}
 
 	/**
-	 * Add a guest to a list
+	 * Share a lit with a guest
 	 *
 	 * @param listId The list id
 	 * @param guestId The guest id
 	 * @param data The guest data
+	 * @param params The query parameters to use
 	 */
-	addGuest(listId: number, guestId: number, data: Record<string, unknown>) {
+	addGuest(listId: number, guestId: number, data: Record<string, unknown>, params?: Record<string, unknown>) {
 		return this.client.request({
 			method: 'POST',
 			path: `${this.route}/${listId}/guest/${guestId}`,
+			params,
 			body: JSON.stringify(data),
 		});
 	}
 
 	/**
-	 * Remove a guest from a list
+	 * Remove a guest's access to a list
 	 *
 	 * @param listId The list id
 	 * @param guestId The guest id
+	 * @param params The query parameters to use
 	 */
-	removeGuest(listId: number, guestId: number) {
+	removeGuest(listId: number, guestId: number, params?: Record<string, unknown>) {
 		return this.client.request({
 			method: 'DELETE',
 			path: `${this.route}/${listId}/guest/${guestId}`,
+			params
 		});
 	}
 
