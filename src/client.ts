@@ -1,17 +1,18 @@
 import { ClientOptions, RequestOptions } from './types';
 import {
 	Authorization,
-	Checklists,
-	Comments,
-	Folders,
-	Goals,
-	KeyResults,
-	Lists,
-	Spaces,
-	Tasks,
-	Teams,
-	Views,
-	Webhooks,
+	Checklist,
+	Comment,
+	Folder,
+	Group,
+	Goal,
+	KeyResult,
+	List,
+	Space,
+	Task,
+	Team,
+	View,
+	Webhook,
 } from './routes/index.js';
 
 /**
@@ -31,17 +32,18 @@ export class Clickup {
 	private options: ClientOptions;
 	private access_token?: string;
 	authorization: Authorization;
-	checklists: Checklists;
-	comments: Comments;
-	folders: Folders;
-	goals: Goals;
-	keyResults: KeyResults;
-	lists: Lists;
-	spaces: Spaces;
-	tasks: Tasks;
-	teams: Teams;
-	views: Views;
-	webhooks: Webhooks;
+	checklist: Checklist;
+	comment: Comment;
+	folder: Folder;
+	group: Group;
+	goal: Goal;
+	keyResult: KeyResult;
+	list: List;
+	space: Space;
+	task: Task;
+	team: Team;
+	view: View;
+	webhook: Webhook;
 
 	/**
 	 *  Creates a client instance that connects to the Clickup API
@@ -55,49 +57,53 @@ export class Clickup {
 		 */
 		this.authorization = new Authorization(this);
 		/**
-		 * checklists
+		 * checklist
 		 */
-		this.checklists = new Checklists(this);
+		this.checklist = new Checklist(this);
 		/**
-		 * comments
+		 * comment
 		 */
-		this.comments = new Comments(this);
+		this.comment = new Comment(this);
 		/**
-		 * folders
+		 * folder
 		 */
-		this.folders = new Folders(this);
+		this.folder = new Folder(this);
 		/**
-		 * goals
+		 * group
 		 */
-		this.goals = new Goals(this);
+		this.group = new Group(this);
 		/**
-		 * keyResults
+		 * goal
 		 */
-		this.keyResults = new KeyResults(this);
+		this.goal = new Goal(this);
 		/**
-		 * lists
+		 * keyResult
 		 */
-		this.lists = new Lists(this);
+		this.keyResult = new KeyResult(this);
 		/**
-		 * spaces
+		 * list
 		 */
-		this.spaces = new Spaces(this);
+		this.list = new List(this);
 		/**
-		 * tasks
+		 * space
 		 */
-		this.tasks = new Tasks(this);
+		this.space = new Space(this);
 		/**
-		 * teams
+		 * task
 		 */
-		this.teams = new Teams(this);
+		this.task = new Task(this);
 		/**
-		 * views
+		 * team
 		 */
-		this.views = new Views(this);
+		this.team = new Team(this);
 		/**
-		 * webhooks
+		 * view
 		 */
-		this.webhooks = new Webhooks(this);
+		this.view = new View(this);
+		/**
+		 * webhook
+		 */
+		this.webhook = new Webhook(this);
 	}
 
 	get token(): string | undefined {

@@ -1,6 +1,6 @@
 ---
-title: Teams
-description: 'Examples on using the Teams endpoints'
+title: Team
+description: 'Examples on using the Team endpoints'
 position: 02
 category: 'Examples'
 ---
@@ -16,7 +16,7 @@ category: 'Examples'
    'list_ids[]': [123],
    'statuses[]': ['active', 'in progress'],
   };
-  const { body } = await clickup.teams.getFilteredTasks(543, filterData);
+  const { body } = await clickup.team.getFilteredTasks(543, filterData);
   console.log(body);
  } catch (error) {
   if (error.response) {

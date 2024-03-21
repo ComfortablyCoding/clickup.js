@@ -36,7 +36,7 @@ Once you've created an instance, you can use it to access all the features provi
 (async () => {
  try {
   // get a specific task
-  const { body } = await clickup.tasks.get('9hz');
+  const { body } = await clickup.task.get('9hz');
   console.log(body);
  } catch (error) {
   if (error.response) {
@@ -61,7 +61,7 @@ Once you've created an instance, you can use it to access all the features provi
 
 ## Important Note
 
-The library is structured to match classes with their respective routes, **NOT** how they are sectioned in the Clickup API docs. For example adding a guest to a task is under the `Tasks` class instead of the `Guests` class as its route is via `task` and not `guest`. Due to this a request to add a guest to a task will look like so:
+The library is structured to match classes with their respective routes, **NOT** how they are sectioned in the Clickup API docs. For example adding a guest to a task is under the `Task` class instead of the `Guests` class as its route is via `task` and not `guest`. Due to this a request to add a guest to a task will look like so:
 
 ```js
 (async () => {
@@ -71,7 +71,7 @@ The library is structured to match classes with their respective routes, **NOT**
    permission_level: 'read',
   };
   // add guest to task
-  const { body } = await clickup.tasks.addGuest('c04', 403, guestData);
+  const { body } = await clickup.task.addGuest('c04', 403, guestData);
   console.log(body);
  } catch (error) {
   if (error.response) {
@@ -101,17 +101,17 @@ You can read the library documentation at the [clickup.js docs](https://clickup-
 The available features are:
 
 - `Authorization`
-- `Checklists`
-- `Comments`
-- `Folders`
-- `Goals`
-- `KeyResults`
-- `Lists`
-- `Spaces`
-- `Tasks`
-- `Teams`
-- `Views`
-- `Webhooks`
+- `Checklist`
+- `Comment`
+- `Folder`
+- `Goal`
+- `KeyResult`
+- `List`
+- `Space`
+- `Task`
+- `Team`
+- `View`
+- `Webhook`
 
 ## Disclaimer
 

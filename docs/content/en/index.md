@@ -5,17 +5,17 @@ position: 00
 category: 'Getting Started'
 features:
   - Authorization
-  - Checklists
-  - Comments
-  - Folders
-  - Goals
-  - KeyResults
-  - Lists
-  - Spaces
-  - Tasks
-  - Teams
-  - Views
-  - Webhooks
+  - Checklist
+  - Comment
+  - Folder
+  - Goal
+  - KeyResult
+  - List
+  - Space
+  - Task
+  - Team
+  - View
+  - Webhook
 ---
 
 # clickup.js

@@ -1,6 +1,6 @@
 import { Clickup } from '../client';
 
-export class Goals {
+export class Goal {
 	private client: Clickup;
 	route: string;
 	constructor(client: Clickup) {

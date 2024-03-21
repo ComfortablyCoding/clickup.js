@@ -1,6 +1,6 @@
 ---
-title: Tasks
-description: 'Examples on using the Tasks endpoints'
+title: Task
+description: 'Examples on using the Task endpoints'
 position: 01
 category: 'Examples'
 ---
@@ -39,7 +39,7 @@ category: 'Examples'
    ],
   };
 
-  const { body } = await clickup.lists.createTask(1234, taskData);
+  const { body } = await clickup.list.createTask(1234, taskData);
   console.log(body);
  } catch (error) {
   if (error.response) {
@@ -66,7 +66,7 @@ category: 'Examples'
 (async () => {
  try {
   // get a specific task
-  const { body } = await clickup.tasks.get('9hz');
+  const { body } = await clickup.task.get('9hz');
   console.log(body);
  } catch (error) {
   if (error.response) {

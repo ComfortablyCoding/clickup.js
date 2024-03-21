@@ -19,7 +19,7 @@ Once you've created an instance, you can use it to access all the features provi
 (async () => {
  try {
   // get a specific task
-  const { body } = await clickup.tasks.get('9hz');
+  const { body } = await clickup.task.get('9hz');
   console.log(body);
  } catch (error) {
   if (error.response) {
@@ -56,7 +56,7 @@ The library is structured to match classes with their respective routes, **NOT**
 
 </alert>
 
-For example adding a guest to a task is under the `Tasks` class instead of the `Guests` class as its route is via `task` and not `guest`. Due to this a request to add a guest to a task will look like so:
+For example adding a guest to a task is under the `Task` class instead of the `Guests` class as its route is via `task` and not `guest`. Due to this a request to add a guest to a task will look like so:
 
 ```js
 (async () => {
@@ -66,7 +66,7 @@ For example adding a guest to a task is under the `Tasks` class instead of the `
    permission_level: 'read',
   };
   // add guest to task
-  const { body } = await clickup.tasks.addGuest('c04', 403, guestData);
+  const { body } = await clickup.task.addGuest('c04', 403, guestData);
   console.log(body);
  } catch (error) {
   if (error.response) {

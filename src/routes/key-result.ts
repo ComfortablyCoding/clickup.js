@@ -1,6 +1,6 @@
 import { Clickup } from '../client';
 
-export class KeyResults {
+export class KeyResult {
 	private client: Clickup;
 	route: string;
 	constructor(client: Clickup) {

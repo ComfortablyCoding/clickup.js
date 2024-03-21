@@ -1,6 +1,6 @@
 import { Clickup } from '../client';
 
-export class Teams {
+export class Team {
 	private client: Clickup;
 	route: string;
 	constructor(client: Clickup) {

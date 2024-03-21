@@ -1,6 +1,6 @@
 import { Clickup } from '../client';
 
-export class Webhooks {
+export class Webhook {
 	private client: Clickup;
 	route: string;
 	constructor(client: Clickup) {
