@@ -1,4 +1,16 @@
 import { Clickup } from '../client';
+import {
+	AddTaskAttachmentQuery,
+	AddTaskAttachmentResult,
+	AddTaskCommentData,
+	AddTaskCommentQuery,
+	AddTaskCommentResult,
+	AddTaskCustomFieldValueData,
+	AddTaskCustomFieldValueQuery,
+	GetTaskCommentsQuery,
+	GetTaskCommentsResult,
+	RemoveTaskCustomFieldValueQuery,
+} from '../types';
 import { Route } from './route';
 
 export class Task extends Route {
@@ -59,8 +71,8 @@ export class Task extends Route {
 	 * @param attachment The attachments to add
 	 * @param params The query parameters to use
 	 */
-	addAttachment(taskId: string, attachment: FormData, params?: Record<string, unknown>) {
-		return this.client.request({
+	addAttachment(taskId: string, attachment: FormData, params?: AddTaskAttachmentQuery) {
+		return this.client.request<AddTaskAttachmentResult>({
 			method: 'POST',
 			path: `${this.route}/${taskId}/attachment`,
 			params,
@@ -75,8 +87,8 @@ export class Task extends Route {
 	 * @param data The comment data
 	 * @param params The query parameters to use
 	 */
-	addComment(taskId: string, data: Record<string, unknown>, params?: Record<string, unknown>) {
-		return this.client.request({
+	addComment(taskId: string, data: AddTaskCommentData, params?: AddTaskCommentQuery) {
+		return this.client.request<AddTaskCommentResult>({
 			method: 'POST',
 			path: `${this.route}/${taskId}/comment`,
 			params,
@@ -90,8 +102,8 @@ export class Task extends Route {
 	 * @param taskId The task id
 	 * @param params The query parameters to use
 	 */
-	comments(taskId: string, params?: Record<string, unknown>) {
-		return this.client.request({
+	comments(taskId: string, params?: GetTaskCommentsQuery) {
+		return this.client.request<GetTaskCommentsResult>({
 			path: `${this.route}/${taskId}/comment`,
 			params,
 		});
@@ -124,10 +136,10 @@ export class Task extends Route {
 	addCustomFieldValue(
 		taskId: string,
 		fieldId: string,
-		data: Record<string, unknown>,
-		params?: Record<string, unknown>,
+		data: AddTaskCustomFieldValueData,
+		params?: AddTaskCustomFieldValueQuery,
 	) {
-		return this.client.request({
+		return this.client.request<object>({
 			method: 'POST',
 			path: `${this.route}/${taskId}/field/${fieldId}`,
 			params,
@@ -142,7 +154,7 @@ export class Task extends Route {
 	 * @param fieldId The uuid of the custom field
 	 * @param params The query parameters to use
 	 */
-	removeCustomFieldValue(taskId: string, fieldId: string, params?: Record<string, unknown>) {
+	removeCustomFieldValue(taskId: string, fieldId: string, params?: RemoveTaskCustomFieldValueQuery) {
 		return this.client.request({
 			method: 'DELETE',
 			path: `${this.route}/${taskId}/field/${fieldId}`,

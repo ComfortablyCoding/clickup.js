@@ -1,4 +1,5 @@
 import { Clickup } from '../client';
+import { GetTeamCustomTaskTypesResult } from '../types';
 import { Route } from './route';
 
 export class Team extends Route {
@@ -475,7 +476,7 @@ export class Team extends Route {
 	 * @param teamId The team id
 	 */
 	customTaskTypes(teamId: number) {
-		return this.client.request({
+		return this.client.request<GetTeamCustomTaskTypesResult>({
 			path: `${this.route}/${teamId}/custom_item`,
 		});
 	}

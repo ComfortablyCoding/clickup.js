@@ -1,4 +1,11 @@
 import { Clickup } from '../client';
+import {
+	AddListCommentData,
+	AddListCommentResult,
+	GetListCommentsQuery,
+	GetListCommentsResult,
+	GetListCustomFieldsResult,
+} from '../types';
 import { Route } from './route';
 
 export class List extends Route {
@@ -52,8 +59,8 @@ export class List extends Route {
 	 * @param listId The list id
 	 * @param data The comment data
 	 */
-	addComment(listId: number, data: Record<string, unknown>) {
-		return this.client.request({
+	addComment(listId: number, data: AddListCommentData) {
+		return this.client.request<AddListCommentResult>({
 			method: 'POST',
 			path: `${this.route}/${listId}/comment`,
 			body: JSON.stringify(data),
@@ -65,8 +72,8 @@ export class List extends Route {
 	 *
 	 * @param listId The list id
 	 */
-	comments(listId: number, params?: Record<string, unknown>) {
-		return this.client.request({
+	comments(listId: number, params?: GetListCommentsQuery) {
+		return this.client.request<GetListCommentsResult>({
 			path: `${this.route}/${listId}/comment`,
 			params,
 		});
@@ -78,7 +85,7 @@ export class List extends Route {
 	 * @param listId The list id
 	 */
 	customFields(listId: number) {
-		return this.client.request({
+		return this.client.request<GetListCustomFieldsResult>({
 			path: `${this.route}/${listId}/field`,
 		});
 	}

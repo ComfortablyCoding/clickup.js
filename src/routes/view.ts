@@ -1,4 +1,5 @@
 import { Clickup } from '../client';
+import { AddViewCommentData, AddViewCommentResult, GetViewCommentsQuery, GetViewCommentsResult } from '../types';
 import { Route } from './route';
 
 export class View extends Route {
@@ -52,8 +53,8 @@ export class View extends Route {
 	 * @param viewId The view id
 	 * @param data The comment data
 	 */
-	addComment(viewId: string, data: Record<string, unknown>) {
-		return this.client.request({
+	addComment(viewId: string, data: AddViewCommentData) {
+		return this.client.request<AddViewCommentResult>({
 			method: 'POST',
 			path: `${this.route}/${viewId}/comment`,
 			body: JSON.stringify(data),
@@ -64,9 +65,10 @@ export class View extends Route {
 	 * Get all comments from a Chat view
 	 *
 	 * @param viewId The view id
+	 * @param params The query parameters to pass
 	 */
-	comments(viewId: string, params?: Record<string, unknown>) {
-		return this.client.request({
+	comments(viewId: string, params?: GetViewCommentsQuery) {
+		return this.client.request<GetViewCommentsResult>({
 			path: `${this.route}/${viewId}/comment`,
 			params,
 		});
