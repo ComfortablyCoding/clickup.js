@@ -154,7 +154,7 @@ export class Tasks {
 	}
 
 	/**
-	 * Create a dependancy for a task
+	 * Create a dependency for a task i.e. set a task as waiting on or blocking another task.
 	 *
 	 * @param taskId The task id
 	 * @param data The dependency data
@@ -170,7 +170,7 @@ export class Tasks {
 	}
 
 	/**
-	 * Delete a dependancy for a task
+	 * Delete a dependency for a task
 	 *
 	 * @param taskId The task id
 	 * @param options The parameter options to pass in
@@ -184,7 +184,7 @@ export class Tasks {
 	}
 
 	/**
-	 * Add a task link
+	 * Link two task together
 	 *
 	 * @param taskId The task id
 	 * @param linksTo The id of the task to link to
@@ -351,7 +351,7 @@ export class Tasks {
 	 * Get tasks time in status
 	 *
 	 * @param taskId The task id
-	 * @param options The parameter options to pass in
+	 * @param params The query parameters to use
 	 */
 	getTimeInStatus(taskId: string, params?: Record<string, unknown>) {
 		return this.client.request({

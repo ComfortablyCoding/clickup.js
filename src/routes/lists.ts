@@ -114,7 +114,7 @@ export class Lists {
 		return this.client.request({
 			method: 'DELETE',
 			path: `${this.route}/${listId}/guest/${guestId}`,
-			params
+			params,
 		});
 	}
 
@@ -134,11 +134,13 @@ export class Lists {
 	 *
 	 * @param listId The list id
 	 * @param data The task data
+	 * @param params The query parameters to use
 	 */
-	createTask(listId: number, data: Record<string, unknown>) {
+	createTask(listId: number, data: Record<string, unknown>, params?: Record<string, unknown>) {
 		return this.client.request({
 			method: 'POST',
 			path: `${this.route}/${listId}/task`,
+			params,
 			body: JSON.stringify(data),
 		});
 	}
@@ -146,13 +148,13 @@ export class Lists {
 	/**
 	 * Get all tasks in a list
 	 *
-	 * @param {Number} listId The list id
-	 * @param {Object} [options] The parameter options to pass in
+	 * @param listId The list id
+	 * @param params The query parameters to pass
 	 */
-	getTasks(listId: number, options?: Record<string, unknown>) {
+	getTasks(listId: number, params?: Record<string, unknown>) {
 		return this.client.request({
 			path: `${this.route}/${listId}/task`,
-			params: options,
+			params,
 		});
 	}
 
@@ -172,7 +174,7 @@ export class Lists {
 	}
 
 	/**
-	 * Create a view for a list
+	 * Create a List, Board, Calendar, Table, Timeline, Workload, Activity, Map, Chat, or Gantt view for a List
 	 *
 	 * @param listId The list id
 	 * @param data The view data
@@ -186,7 +188,7 @@ export class Lists {
 	}
 
 	/**
-	 * Get all views for a list
+	 * Get the task and page views available for a List. Views and required views are separate responses
 	 *
 	 * @param listId The list id
 	 */

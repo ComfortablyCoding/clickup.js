@@ -146,7 +146,6 @@ export class Teams {
 	 *
 	 * @param teamId The team id
 	 * @param params The query parameters to pass
-	 * @param params.page The page to get
 	 */
 	getFilteredTasks(teamId: number, params?: Record<string, unknown>) {
 		return this.client.request({
@@ -160,7 +159,6 @@ export class Teams {
 	 *
 	 * @param teamId The team id
 	 * @param params The query parameters to pass
-	 * @param params.page The page to get
 	 */
 	getTaskTemplates(teamId: number, params?: Record<string, unknown>) {
 		return this.client.request({
@@ -211,7 +209,7 @@ export class Teams {
 	}
 
 	/**
-	 * Remove a user from a workspace/team.  Only available to enterprise teams
+	 * Remove (deactivate) a user from a workspace/team.  Only available to enterprise teams
 	 *
 	 * @param teamId The team id
 	 * @param userId The team id
@@ -224,7 +222,7 @@ export class Teams {
 	}
 
 	/**
-	 * Create a team view for a team
+	 * Create a List, Board, Calendar, Table, Timeline, Workload, Activity, Map, Chat, or Gantt view at the Everything Level of a Workspace.
 	 *
 	 * @param teamId The team id
 	 * @param data The view data
@@ -238,7 +236,7 @@ export class Teams {
 	}
 
 	/**
-	 * Get all team views for a team
+	 * Get the  task and page views available at the Everything Level of a Workspace.
 	 *
 	 * @param teamId The team id
 	 */
@@ -263,7 +261,7 @@ export class Teams {
 	}
 
 	/**
-	 * Get all webhooks
+	 * Get the webhooks created via the API for a Workspace. This endpoint returns webhooks created by the authenticated user
 	 *
 	 * @param teamId the team id
 	 */
@@ -301,7 +299,7 @@ export class Teams {
 	}
 
 	/**
-	 * Get running time entry
+	 * Get  time entry that's currently tracking time for the authenticated user.
 	 *
 	 * @param teamId The team id
 	 * @param params The query parameters to use
@@ -386,14 +384,13 @@ export class Teams {
 	 * Start a time entry
 	 *
 	 * @param teamId The team id
-	 * @param timerId The timer id
 	 * @param data The time entry data
 	 * @param params The query parameters to use
 	 */
-	startTimeEntry(teamId: number, timerId: number, data: Record<string, unknown>, params?: Record<string, unknown>) {
+	startTimeEntry(teamId: number, data: Record<string, unknown>, params?: Record<string, unknown>) {
 		return this.client.request({
 			method: 'POST',
-			path: `${this.route}/${teamId}/time_entries/start/${timerId}`,
+			path: `${this.route}/${teamId}/time_entries/start`,
 			params,
 			body: JSON.stringify(data),
 		});
@@ -442,6 +439,18 @@ export class Teams {
 	}
 
 	/**
+	 * Update a time entry
+	 *
+	 * @param teamId The team id
+	 * @param timerId The timer id
+	 */
+	getTimeEntryHistory(teamId: number, timerId: number) {
+		return this.client.request({
+			path: `${this.route}/${teamId}/time_entries/${timerId}/history`,
+		});
+	}
+
+	/**
 	 * Retrieve the used, total, and available member and guest seats for a Workspace.
 	 *
 	 * @param teamId The team id
@@ -483,6 +492,20 @@ export class Teams {
 	getCustomRoles(teamId: number) {
 		return this.client.request({
 			path: `${this.route}/${teamId}/customroles`,
+		});
+	}
+
+	/**
+	 * Create a team user group.
+	 *
+	 * @param teamId The team id
+	 * @param data The team data
+	 */
+	createUserGroup(teamId: number, data: Record<string, unknown>) {
+		return this.client.request({
+			method: 'POST',
+			path: `${this.route}/${teamId}/group`,
+			body: JSON.stringify(data),
 		});
 	}
 }

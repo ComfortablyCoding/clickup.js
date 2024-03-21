@@ -109,7 +109,7 @@ export class Folders {
 	}
 
 	/**
-	 * Create a view for a folder
+	 * Create a List, Board, Calendar, Table, Timeline, Workload, Activity, Map, Chat, or Gantt view for a Folder
 	 *
 	 * @param folderId The folder id
 	 * @param data The view data
@@ -123,7 +123,7 @@ export class Folders {
 	}
 
 	/**
-	 * Get all views for a folder
+	 * Get the task and page views available for a Folder.
 	 *
 	 * @param folderId The folder id
 	 */

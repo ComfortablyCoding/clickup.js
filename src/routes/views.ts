@@ -13,7 +13,7 @@ export class Views {
 	}
 
 	/**
-	 * Get a view
+	 * Get information about a specific task or page view
 	 *
 	 * @param viewId The view id
 	 */
@@ -76,11 +76,10 @@ export class Views {
 	}
 
 	/**
-	 * Get all tasks in a view
+	 * Get all visible tasks in a view
 	 *
 	 * @param viewId The view id
 	 * @param params The query parameters to pass
-	 * @param params.page The page to get
 	 */
 	getTasks(viewId: string, params?: Record<string, unknown>) {
 		return this.client.request({

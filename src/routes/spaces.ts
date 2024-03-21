@@ -135,11 +135,13 @@ export class Spaces {
 	 *
 	 * @param spaceId The space id
 	 * @param tagName The tag name
+	 * @param data The space tag data
 	 */
-	updateTag(spaceId: number, tagName: string) {
+	updateTag(spaceId: number, tagName: string, data: Record<string, unknown>) {
 		return this.client.request({
 			method: 'PUT',
 			path: `${this.route}/${spaceId}/tag/${tagName}`,
+			body: JSON.stringify(data),
 		});
 	}
 
@@ -148,16 +150,18 @@ export class Spaces {
 	 *
 	 * @param spaceId The space id
 	 * @param tagName The tag name
+	 * @param data The space tag data
 	 */
-	deleteTag(spaceId: number, tagName: string) {
+	deleteTag(spaceId: number, tagName: string, data: Record<string, unknown>) {
 		return this.client.request({
 			method: 'DELETE',
 			path: `${this.route}/${spaceId}/tag/${tagName}`,
+			body: JSON.stringify(data),
 		});
 	}
 
 	/**
-	 * Create a view for a space
+	 * Create a List, Board, Calendar, Table, Timeline, Workload, Activity, Map, Chat, or Gantt view for a Space
 	 *
 	 * @param spaceId The space id
 	 * @param data The view data
@@ -171,7 +175,7 @@ export class Spaces {
 	}
 
 	/**
-	 * Get all views for a space
+	 * Get the task and page views available for a Space
 	 *
 	 * @param spaceId The space id
 	 */
