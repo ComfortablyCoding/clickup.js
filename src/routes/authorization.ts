@@ -1,9 +1,11 @@
 import { Clickup } from '../client';
+import { Route } from './route';
 
-export class Authorization {
-	private client: Clickup;
+export class Authorization extends Route {
 	constructor(client: Clickup) {
-		this.client = client;
+		super({
+			client,
+		});
 	}
 
 	/**

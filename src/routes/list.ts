@@ -1,15 +1,12 @@
 import { Clickup } from '../client';
+import { Route } from './route';
 
-export class List {
-	private client: Clickup;
-	route: string;
+export class List extends Route {
 	constructor(client: Clickup) {
-		this.client = client;
-
-		/**
-		 * The main route for the collection
-		 */
-		this.route = 'list';
+		super({
+			client,
+			route: 'list',
+		});
 	}
 
 	/**

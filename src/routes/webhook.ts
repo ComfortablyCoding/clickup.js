@@ -1,15 +1,12 @@
 import { Clickup } from '../client';
+import { Route } from './route';
 
-export class Webhook {
-	private client: Clickup;
-	route: string;
+export class Webhook extends Route {
 	constructor(client: Clickup) {
-		this.client = client;
-
-		/**
-		 * The main route for the collection
-		 */
-		this.route = 'webhook';
+		super({
+			client,
+			route: 'webhook',
+		});
 	}
 
 	/**
