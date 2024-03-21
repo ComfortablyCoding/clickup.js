@@ -65,7 +65,7 @@ export class View extends Route {
 	 *
 	 * @param viewId The view id
 	 */
-	getComments(viewId: string, params?: Record<string, unknown>) {
+	comments(viewId: string, params?: Record<string, unknown>) {
 		return this.client.request({
 			path: `${this.route}/${viewId}/comment`,
 			params,
@@ -78,7 +78,7 @@ export class View extends Route {
 	 * @param viewId The view id
 	 * @param params The query parameters to pass
 	 */
-	getTasks(viewId: string, params?: Record<string, unknown>) {
+	tasks(viewId: string, params?: Record<string, unknown>) {
 		return this.client.request({
 			path: `${this.route}/${viewId}/task`,
 			params: { page: 0, ...params },

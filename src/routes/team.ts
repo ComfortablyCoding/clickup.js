@@ -38,7 +38,7 @@ export class Team extends Route {
 	 * @param teamId The team id
 	 * @param params The query parameters to use
 	 */
-	getGoals(teamId: number, params: Record<string, unknown>) {
+	goals(teamId: number, params: Record<string, unknown>) {
 		return this.client.request({
 			path: `${this.route}/${teamId}/goal`,
 			params,
@@ -65,7 +65,7 @@ export class Team extends Route {
 	 * @param teamId The team id
 	 * @param guestId The guest id
 	 */
-	getGuest(teamId: number, guestId: number) {
+	guest(teamId: number, guestId: number) {
 		return this.client.request({
 			path: `${this.route}/${teamId}/guest/${guestId}`,
 		});
@@ -131,7 +131,7 @@ export class Team extends Route {
 	 * @param params The query parameters to pass
 	 * @param params.archived If archived lists should be returned or not
 	 */
-	getSpaces(teamId: number, params?: Record<string, unknown>) {
+	spaces(teamId: number, params?: Record<string, unknown>) {
 		return this.client.request({
 			path: `${this.route}/${teamId}/space`,
 			params,
@@ -144,7 +144,7 @@ export class Team extends Route {
 	 * @param teamId The team id
 	 * @param params The query parameters to pass
 	 */
-	getFilteredTasks(teamId: number, params?: Record<string, unknown>) {
+	filteredTasks(teamId: number, params?: Record<string, unknown>) {
 		return this.client.request({
 			path: `${this.route}/${teamId}/task`,
 			params: { page: 0, ...params },
@@ -157,7 +157,7 @@ export class Team extends Route {
 	 * @param teamId The team id
 	 * @param params The query parameters to pass
 	 */
-	getTaskTemplates(teamId: number, params?: Record<string, unknown>) {
+	taskTemplates(teamId: number, params?: Record<string, unknown>) {
 		return this.client.request({
 			path: `${this.route}/${teamId}/taskTemplate`,
 			params: { page: 0, ...params },
@@ -170,7 +170,7 @@ export class Team extends Route {
 	 * @param teamId The team id
 	 * @param userId The user id
 	 */
-	getUser(teamId: number, userId: number) {
+	user(teamId: number, userId: number) {
 		return this.client.request({
 			path: `${this.route}/${teamId}/user/${userId}`,
 		});
@@ -237,7 +237,7 @@ export class Team extends Route {
 	 *
 	 * @param teamId The team id
 	 */
-	getViews(teamId: number) {
+	views(teamId: number) {
 		return this.client.request({
 			path: `${this.route}/${teamId}/view`,
 		});
@@ -262,7 +262,7 @@ export class Team extends Route {
 	 *
 	 * @param teamId the team id
 	 */
-	getWebhooks(teamId: number) {
+	webhooks(teamId: number) {
 		return this.client.request({
 			path: `${this.route}/${teamId}/webhook`,
 		});
@@ -274,7 +274,7 @@ export class Team extends Route {
 	 * @param teamId The team id
 	 * @param params The query parameters to use
 	 */
-	getTimeEntries(teamId: number, params?: Record<string, unknown>) {
+	timeEntries(teamId: number, params?: Record<string, unknown>) {
 		return this.client.request({
 			path: `${this.route}/${teamId}/time_entries`,
 			params,
@@ -288,7 +288,7 @@ export class Team extends Route {
 	 * @param timerId The timer id
 	 * @param params The query parameters to use
 	 */
-	getSingleTimeEntry(teamId: number, timerId: number, params?: Record<string, unknown>) {
+	timeEntry(teamId: number, timerId: number, params?: Record<string, unknown>) {
 		return this.client.request({
 			path: `${this.route}/${teamId}/time_entries/${timerId}`,
 			params,
@@ -296,12 +296,12 @@ export class Team extends Route {
 	}
 
 	/**
-	 * Get  time entry that's currently tracking time for the authenticated user.
+	 * Get time entry that's currently tracking time for the authenticated user.
 	 *
 	 * @param teamId The team id
 	 * @param params The query parameters to use
 	 */
-	getRunningTimeEntry(teamId: number, params?: Record<string, unknown>) {
+	runningTimeEntry(teamId: number, params?: Record<string, unknown>) {
 		return this.client.request({
 			path: `${this.route}/${teamId}/time_entries/current`,
 			params,
@@ -315,7 +315,7 @@ export class Team extends Route {
 	 * @param data The time entry data
 	 * @param params The query parameters to use
 	 */
-	createTimeEntry(teamId: number, data: Record<string, unknown>, params?: Record<string, unknown>) {
+	addTimeEntry(teamId: number, data: Record<string, unknown>, params?: Record<string, unknown>) {
 		return this.client.request({
 			method: 'POST',
 			path: `${this.route}/${teamId}/time_entries`,
@@ -330,7 +330,7 @@ export class Team extends Route {
 	 * @param teamId The team id
 	 * @param data The time entries data
 	 */
-	removeTagsFromTimeEntries(teamId: number, data: Record<string, unknown>) {
+	removeTimeEntryTags(teamId: number, data: Record<string, unknown>) {
 		return this.client.request({
 			method: 'DELETE',
 			path: `${this.route}/${teamId}/time_entries/tags`,
@@ -343,19 +343,19 @@ export class Team extends Route {
 	 *
 	 * @param teamId The team id
 	 */
-	getAllTagsFromTimeEntries(teamId: number) {
+	timeEntryTags(teamId: number) {
 		return this.client.request({
 			path: `${this.route}/${teamId}/time_entries/tags`,
 		});
 	}
 
 	/**
-	 * Add tags from time entries
+	 * Add a label to time entries
 	 *
 	 * @param teamId The team id
 	 * @param data The time entries and tag data
 	 */
-	addTagsFromTimeEntries(teamId: number, data: Record<string, unknown>) {
+	addTimeEntryTags(teamId: number, data: Record<string, unknown>) {
 		return this.client.request({
 			method: 'POST',
 			path: `${this.route}/${teamId}/time_entries/tags`,
@@ -364,12 +364,12 @@ export class Team extends Route {
 	}
 
 	/**
-	 * Change tag names from time entries
+	 * Rename an time entry label
 	 *
 	 * @param teamId The team id
 	 * @param data The tag data
 	 */
-	changeTagsFromTimeEntries(teamId: number, data: Record<string, unknown>) {
+	editTimeEntryTag(teamId: number, data: Record<string, unknown>) {
 		return this.client.request({
 			method: 'PUT',
 			path: `${this.route}/${teamId}/time_entries/tags`,
@@ -411,7 +411,7 @@ export class Team extends Route {
 	 * @param teamId The team id
 	 * @param timerId The timer id
 	 */
-	deleteTimeEntry(teamId: number, timerId: number) {
+	removeTimeEntry(teamId: number, timerId: number) {
 		return this.client.request({
 			method: 'DELETE',
 			path: `${this.route}/${teamId}/time_entries/${timerId}`,
@@ -426,7 +426,7 @@ export class Team extends Route {
 	 * @param data The time entry data
 	 * @param params The query parameters to use
 	 */
-	updateTimeEntry(teamId: number, timerId: number, data: Record<string, unknown>, params?: Record<string, unknown>) {
+	editTimeEntry(teamId: number, timerId: number, data: Record<string, unknown>, params?: Record<string, unknown>) {
 		return this.client.request({
 			method: 'PUT',
 			path: `${this.route}/${teamId}/time_entries/${timerId}`,
@@ -436,34 +436,34 @@ export class Team extends Route {
 	}
 
 	/**
-	 * Update a time entry
+	 * Get a list of changes made to a time entry
 	 *
 	 * @param teamId The team id
 	 * @param timerId The timer id
 	 */
-	getTimeEntryHistory(teamId: number, timerId: number) {
+	timeEntryHistory(teamId: number, timerId: number) {
 		return this.client.request({
 			path: `${this.route}/${teamId}/time_entries/${timerId}/history`,
 		});
 	}
 
 	/**
-	 * Retrieve the used, total, and available member and guest seats for a Workspace.
+	 * Retrieve the used, total, and available member and guest seats for a team (workspace).
 	 *
 	 * @param teamId The team id
 	 */
-	getWorkspaceSeats(teamId: string) {
+	seats(teamId: string) {
 		return this.client.request({
 			path: `${this.route}/${teamId}/seats`,
 		});
 	}
 
 	/**
-	 * Retrieve the current Plan for the specified Workspace.
+	 * Retrieve the current Plan for the specified team (workspace).
 	 *
 	 * @param teamId The team id
 	 */
-	getWorkspacePlan(teamId: string) {
+	plan(teamId: string) {
 		return this.client.request({
 			path: `${this.route}/${teamId}/plan`,
 		});
@@ -474,7 +474,7 @@ export class Team extends Route {
 	 *
 	 * @param teamId The team id
 	 */
-	getCustomTaskTypes(teamId: number) {
+	customTaskTypes(teamId: number) {
 		return this.client.request({
 			path: `${this.route}/${teamId}/custom_item`,
 		});
@@ -486,7 +486,7 @@ export class Team extends Route {
 	 * @param teamId The team id
 	 * @param params The query parameters to use
 	 */
-	getCustomRoles(teamId: number) {
+	customRoles(teamId: number) {
 		return this.client.request({
 			path: `${this.route}/${teamId}/customroles`,
 		});

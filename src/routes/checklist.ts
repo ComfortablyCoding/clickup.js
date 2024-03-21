@@ -41,7 +41,7 @@ export class Checklist extends Route {
 	 * @param checklistId The checklist id
 	 * @param data The checklist item data
 	 */
-	createChecklistItem(checklistId: string, data: Record<string, unknown>) {
+	addItem(checklistId: string, data: Record<string, unknown>) {
 		return this.client.request({
 			method: 'POST',
 			path: `${this.route}/${checklistId}/checklist_item`,
@@ -56,7 +56,7 @@ export class Checklist extends Route {
 	 * @param checklistItemId The checklist item id
 	 * @param data The checklist item data
 	 */
-	updateChecklistItem(checklistId: string, checklistItemId: string, data: Record<string, unknown>) {
+	editItem(checklistId: string, checklistItemId: string, data: Record<string, unknown>) {
 		return this.client.request({
 			method: 'PUT',
 			path: `${this.route}/${checklistId}/checklist_item/${checklistItemId}`,
@@ -70,7 +70,7 @@ export class Checklist extends Route {
 	 * @param checklistId The checklist id
 	 * @param checklistItemId The checklist item id
 	 */
-	deleteChecklistItem(checklistId: string, checklistItemId: string) {
+	removeItem(checklistId: string, checklistItemId: string) {
 		return this.client.request({
 			method: 'DELETE',
 			path: `${this.route}/${checklistId}/checklist_item/${checklistItemId}`,

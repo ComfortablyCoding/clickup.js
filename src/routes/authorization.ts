@@ -30,7 +30,7 @@ export class Authorization extends Route {
 	/**
 	 * Get the details of the authenticated user's ClickUp account
 	 */
-	getAuthorizedUser() {
+	user() {
 		return this.client.request({
 			path: 'user',
 		});
@@ -39,7 +39,7 @@ export class Authorization extends Route {
 	/**
 	 * Get the teams (workspaces) available to the authenticated user
 	 */
-	getAuthorizedTeams() {
+	teams() {
 		return this.client.request({
 			path: 'team',
 		});

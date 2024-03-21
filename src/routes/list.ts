@@ -65,7 +65,7 @@ export class List extends Route {
 	 *
 	 * @param listId The list id
 	 */
-	getComments(listId: number, params?: Record<string, unknown>) {
+	comments(listId: number, params?: Record<string, unknown>) {
 		return this.client.request({
 			path: `${this.route}/${listId}/comment`,
 			params,
@@ -77,14 +77,14 @@ export class List extends Route {
 	 *
 	 * @param listId The list id
 	 */
-	getAccessibleCustomFields(listId: number) {
+	customFields(listId: number) {
 		return this.client.request({
 			path: `${this.route}/${listId}/field`,
 		});
 	}
 
 	/**
-	 * Share a lit with a guest
+	 * Share a list with a guest
 	 *
 	 * @param listId The list id
 	 * @param guestId The guest id
@@ -120,7 +120,7 @@ export class List extends Route {
 	 *
 	 * @param listId The list id
 	 */
-	getMembers(listId: number) {
+	members(listId: number) {
 		return this.client.request({
 			path: `${this.route}/${listId}/member`,
 		});
@@ -148,7 +148,7 @@ export class List extends Route {
 	 * @param listId The list id
 	 * @param params The query parameters to pass
 	 */
-	getTasks(listId: number, params?: Record<string, unknown>) {
+	tasks(listId: number, params?: Record<string, unknown>) {
 		return this.client.request({
 			path: `${this.route}/${listId}/task`,
 			params,
@@ -189,7 +189,7 @@ export class List extends Route {
 	 *
 	 * @param listId The list id
 	 */
-	getViews(listId: number) {
+	views(listId: number) {
 		return this.client.request({
 			path: `${this.route}/${listId}/view`,
 		});
@@ -201,7 +201,7 @@ export class List extends Route {
 	 * @param listId The list id
 	 * @param taskId The task id
 	 */
-	addTaskToList(listId: number, taskId: string) {
+	addTask(listId: number, taskId: string) {
 		return this.client.request({
 			method: 'POST',
 			path: `${this.route}/${listId}/task/${taskId}`,
@@ -214,21 +214,10 @@ export class List extends Route {
 	 * @param listId The list id
 	 * @param taskId The task id
 	 */
-	removeTaskFromList(listId: number, taskId: string) {
+	removeTask(listId: number, taskId: string) {
 		return this.client.request({
 			method: 'DELETE',
 			path: `${this.route}/${listId}/task/${taskId}`,
-		});
-	}
-
-	/**
-	 * Get list members
-	 *
-	 * @param listId The list id
-	 */
-	getListMembers(listId: number) {
-		return this.client.request({
-			path: `${this.route}/${listId}/member`,
 		});
 	}
 }

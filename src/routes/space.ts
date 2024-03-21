@@ -67,7 +67,7 @@ export class Space extends Route {
 	 * @param params The query parameters to pass
 	 * @param params.archived If archived lists should be returned or not
 	 */
-	getFolders(spaceId: number, params?: Record<string, unknown>) {
+	folders(spaceId: number, params?: Record<string, unknown>) {
 		return this.client.request({
 			path: `${this.route}/${spaceId}/folder`,
 			params,
@@ -95,7 +95,7 @@ export class Space extends Route {
 	 * @param params The query parameters to pass
 	 * @param params.archived If archived lists should be returned or not
 	 */
-	getFolderlessLists(spaceId: number, params?: Record<string, unknown>) {
+	folderlessLists(spaceId: number, params?: Record<string, unknown>) {
 		return this.client.request({
 			path: `${this.route}/${spaceId}/list`,
 			params,
@@ -107,7 +107,7 @@ export class Space extends Route {
 	 *
 	 * @param spaceId The space id
 	 */
-	getTags(spaceId: number) {
+	tags(spaceId: number) {
 		return this.client.request({
 			path: `${this.route}/${spaceId}/tag`,
 		});
@@ -119,7 +119,7 @@ export class Space extends Route {
 	 * @param spaceId The space id
 	 * @param data The space tag data
 	 */
-	createTag(spaceId: number, data: Record<string, unknown>) {
+	addTag(spaceId: number, data: Record<string, unknown>) {
 		return this.client.request({
 			method: 'POST',
 			path: `${this.route}/${spaceId}/tag`,
@@ -134,7 +134,7 @@ export class Space extends Route {
 	 * @param tagName The tag name
 	 * @param data The space tag data
 	 */
-	updateTag(spaceId: number, tagName: string, data: Record<string, unknown>) {
+	editTag(spaceId: number, tagName: string, data: Record<string, unknown>) {
 		return this.client.request({
 			method: 'PUT',
 			path: `${this.route}/${spaceId}/tag/${tagName}`,
@@ -149,7 +149,7 @@ export class Space extends Route {
 	 * @param tagName The tag name
 	 * @param data The space tag data
 	 */
-	deleteTag(spaceId: number, tagName: string, data: Record<string, unknown>) {
+	removeTag(spaceId: number, tagName: string, data: Record<string, unknown>) {
 		return this.client.request({
 			method: 'DELETE',
 			path: `${this.route}/${spaceId}/tag/${tagName}`,
@@ -176,7 +176,7 @@ export class Space extends Route {
 	 *
 	 * @param spaceId The space id
 	 */
-	getViews(spaceId: number) {
+	views(spaceId: number) {
 		return this.client.request({
 			path: `${this.route}/${spaceId}/view`,
 		});

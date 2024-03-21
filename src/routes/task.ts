@@ -90,7 +90,7 @@ export class Task extends Route {
 	 * @param taskId The task id
 	 * @param params The query parameters to use
 	 */
-	getComments(taskId: string, params?: Record<string, unknown>) {
+	comments(taskId: string, params?: Record<string, unknown>) {
 		return this.client.request({
 			path: `${this.route}/${taskId}/comment`,
 			params,
@@ -142,7 +142,7 @@ export class Task extends Route {
 	 * @param fieldId The uuid of the custom field
 	 * @param params The query parameters to use
 	 */
-	deleteCustomFieldValue(taskId: string, fieldId: string, params?: Record<string, unknown>) {
+	removeCustomFieldValue(taskId: string, fieldId: string, params?: Record<string, unknown>) {
 		return this.client.request({
 			method: 'DELETE',
 			path: `${this.route}/${taskId}/field/${fieldId}`,
@@ -172,7 +172,7 @@ export class Task extends Route {
 	 * @param taskId The task id
 	 * @param options The parameter options to pass in
 	 */
-	deleteDependency(taskId: string, params?: Record<string, unknown>) {
+	removeDependency(taskId: string, params?: Record<string, unknown>) {
 		return this.client.request({
 			method: 'DELETE',
 			path: `${this.route}/${taskId}/dependency`,
@@ -202,7 +202,7 @@ export class Task extends Route {
 	 * @param linksTo The id of the task to link to
 	 * @param params The query parameters to use
 	 */
-	deleteTaskLink(taskId: string, linksTo: string, params?: Record<string, unknown>) {
+	removeTaskLink(taskId: string, linksTo: string, params?: Record<string, unknown>) {
 		return this.client.request({
 			method: 'DELETE',
 			path: `${this.route}/${taskId}/link/${linksTo}`,
@@ -247,7 +247,7 @@ export class Task extends Route {
 	 *
 	 * @param taskId The task id
 	 */
-	getMembers(taskId: string) {
+	members(taskId: string) {
 		return this.client.request({
 			path: `${this.route}/${taskId}/member`,
 		});
@@ -290,7 +290,7 @@ export class Task extends Route {
 	 * @param data The time tracking data
 	 * @param params The query parameters to use
 	 */
-	trackTime(taskId: string, data: Record<string, unknown>, params?: Record<string, unknown>) {
+	addTrackedTime(taskId: string, data: Record<string, unknown>, params?: Record<string, unknown>) {
 		return this.client.request({
 			method: 'POST',
 			path: `${this.route}/${taskId}/time`,
@@ -305,7 +305,7 @@ export class Task extends Route {
 	 * @param taskId The task id
 	 * @param params The query parameters to use
 	 */
-	getTrackedTime(taskId: string, params?: Record<string, unknown>) {
+	trackedTime(taskId: string, params?: Record<string, unknown>) {
 		return this.client.request({
 			path: `${this.route}/${taskId}/time`,
 			params,
@@ -336,7 +336,7 @@ export class Task extends Route {
 	 * @param intervalId The interval id
 	 * @param params The query parameters to use
 	 */
-	deleteTrackedTime(taskId: string, intervalId: string, params?: Record<string, unknown>) {
+	removeTrackedTime(taskId: string, intervalId: string, params?: Record<string, unknown>) {
 		return this.client.request({
 			method: 'DELETE',
 			path: `${this.route}/${taskId}/time/${intervalId}`,
@@ -350,7 +350,7 @@ export class Task extends Route {
 	 * @param taskId The task id
 	 * @param params The query parameters to use
 	 */
-	getTimeInStatus(taskId: string, params?: Record<string, unknown>) {
+	timeInStatus(taskId: string, params?: Record<string, unknown>) {
 		return this.client.request({
 			path: `${this.route}/${taskId}/time_in_status`,
 			params,
@@ -362,7 +362,7 @@ export class Task extends Route {
 	 *
 	 * @param options The parameter options to pass in
 	 */
-	getBulkTimeInStatus(params?: Record<string, unknown>) {
+	bulkTimeInStatus(params?: Record<string, unknown>) {
 		return this.client.request({
 			path: `${this.route}/bulk_time_in_status/task_ids`,
 			params,

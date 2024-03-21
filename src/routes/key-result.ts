@@ -15,7 +15,7 @@ export class KeyResult extends Route {
 	 * @param keyResultId The key result id
 	 * @param data The key result data
 	 */
-	updateKeyResult(keyResultId: string, data: Record<string, unknown>) {
+	update(keyResultId: string, data: Record<string, unknown>) {
 		return this.client.request({
 			method: 'PUT',
 			path: `${this.route}/${keyResultId}`,
@@ -28,7 +28,7 @@ export class KeyResult extends Route {
 	 *
 	 * @param keyResultId The key result id
 	 */
-	deleteKeyResult(keyResultId: string) {
+	delete(keyResultId: string) {
 		return this.client.request({
 			method: 'DELETE',
 			path: `${this.route}/${keyResultId}`,

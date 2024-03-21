@@ -40,7 +40,7 @@ export class Group extends Route {
 	 *
 	 * @param groupId The group id
 	 */
-	deleteKeyResult(groupId: string) {
+	delete(groupId: string) {
 		return this.client.request({
 			method: 'DELETE',
 			path: `${this.route}/${groupId}`,

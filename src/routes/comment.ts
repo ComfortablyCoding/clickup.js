@@ -10,7 +10,7 @@ export class Comment extends Route {
 	}
 
 	/**
-	 * Update the content of a task commment, assign a comment, and mark a comment as resolved.
+	 * Update the content of a task comment, assign a comment, and mark a comment as resolved.
 	 *
 	 * @param commentId The comment id
 	 * @param data The comment data

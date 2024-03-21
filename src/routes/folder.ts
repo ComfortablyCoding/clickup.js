@@ -98,7 +98,7 @@ export class Folder extends Route {
 	 * @param params The query parameters to pass
 	 * @param params.archived If archived lists should be returned or not
 	 */
-	getLists(folderId: number, params?: Record<string, unknown>) {
+	lists(folderId: number, params?: Record<string, unknown>) {
 		return this.client.request({
 			path: `${this.route}/${folderId}/list`,
 			params,
@@ -124,7 +124,7 @@ export class Folder extends Route {
 	 *
 	 * @param folderId The folder id
 	 */
-	getViews(folderId: number) {
+	views(folderId: number) {
 		return this.client.request({
 			path: `${this.route}/${folderId}/view`,
 		});
