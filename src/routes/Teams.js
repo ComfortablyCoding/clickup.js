@@ -377,13 +377,12 @@ class Teams {
 	 * Start a time entry
 	 *
 	 * @param {Number} teamId The team id
-	 * @param {Number} timerId The timer id
 	 * @param {Object} data The time entry data
 	 * @param {Object} [options] The parameter options to pass in
 	 */
-	async startTimeEntry(teamId, timerId, data, options) {
+	async startTimeEntry(teamId, data, options) {
 		return this._request.post({
-			endpoint: `${this.route}/${teamId}/time_entries/start/${timerId}`,
+			endpoint: `${this.route}/${teamId}/time_entries/start`,
 			params: options,
 			data,
 		});
