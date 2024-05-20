@@ -1,37 +1,21 @@
 {
+	"$schema": "https://json.schemastore.org/package",
 	"name": "clickup.js",
 	"version": "3.0.4",
 	"description": "A Node.js wrapper for the Clickup API",
-	"main": "src/index.js",
-	"keywords": [
-		"clickup",
-		"clickupjs",
-		"clickup-js",
-		"clickup.js",
-		"api",
-		"wrapper",
-		"wrapper-api"
+	"license": "MIT",
+	"type": "module",
+	"exports": {
+		".": {
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.cjs"
+		}
+	},
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.mjs",
+	"files": [
+		"dist"
 	],
-	"scripts": {
-		"test": "mocha",
-		"lint": "eslint src test --fix",
-		"format": "prettier --write ."
-	},
-	"dependencies": {
-		"form-data": "^4.0.0",
-		"got": "^11.8.2"
-	},
-	"devDependencies": {
-		"chai": "^4.3.4",
-		"eslint": "^8.4.1",
-		"eslint-config-airbnb-base": "^15.0.0",
-		"eslint-config-prettier": "^8.3.0",
-		"eslint-plugin-import": "^2.25.3",
-		"eslint-plugin-prettier": "^4.0.0",
-		"mocha": "^9.1.3",
-		"prettier": "^2.5.1",
-		"sinon": "^12.0.1"
-	},
 	"author": "@ComfortablyCoding",
 	"repository": {
 		"type": "git",
@@ -41,5 +25,31 @@
 	"bugs": {
 		"url": "https://github.com/ComfortablyCoding/clickup.js/issues"
 	},
-	"license": "MIT"
+	"scripts": {
+		"build": "unbuild",
+		"test": "vitest",
+		"lint": "eslint . --fix",
+		"format": "prettier . --write"
+	},
+	"dependencies": {
+		"got": "^14.3.0"
+	},
+	"devDependencies": {
+		"@eslint/js": "^9.3.0",
+		"eslint": "^9.3.0",
+		"eslint-config-prettier": "^9.1.0",
+		"globals": "^15.3.0",
+		"prettier": "^3.2.5",
+		"unbuild": "^2.0.0",
+		"vitest": "^1.6.0"
+	},
+	"keywords": [
+		"clickup",
+		"clickupjs",
+		"clickup-js",
+		"clickup.js",
+		"api",
+		"wrapper",
+		"wrapper-api"
+	]
 }

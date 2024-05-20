@@ -1,0 +1,25 @@
+name: Setup
+description: Install dependencies and build package
+
+runs:
+  using: composite
+  steps:
+    - name: Install Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: "lts/*"
+        check-latest: true
+        registry-url: https://registry.npmjs.org/
+
+    - uses: pnpm/action-setup@v3
+      name: Install pnpm
+      with:
+        run_install: false
+
+    - name: Install dependencies
+      shell: bash
+      run: pnpm install
+
+    - name: Build
+      shell: bash
+      run: pnpm run build

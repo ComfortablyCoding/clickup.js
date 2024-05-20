@@ -1,70 +1,48 @@
-const { assert } = require('chai');
-const { Clickup } = require('../src/index');
-const routes = require('../src/routes');
+import { beforeAll, describe, expect, it } from "vitest";
+import { Clickup } from "../src/index";
 
-const token = 'token';
+let client;
 
-describe('Testing Clickup Client Instance', () => {
-	let clickup;
-	before(() => {
-		clickup = new Clickup(token);
-	});
+beforeAll(() => {
+	client = new Clickup();
+});
 
-	it('should construct a Clickup instance', () => {
-		assert.instanceOf(clickup, Clickup);
-	});
-
-	it('should have default prefix url', () => {
-		const { prefixUrl } = clickup._service.getOptions();
-		assert.strictEqual(prefixUrl, 'https://api.clickup.com/api/v2/');
-	});
-
-	it('should have default headers', () => {
-		const headers = clickup._service.getHeaders();
-		assert.property(headers, 'authorization');
-		assert.property(headers, 'content-type');
-		assert.strictEqual(headers.authorization, token);
-		assert.strictEqual(headers['content-type'], 'application/json');
-	});
-
-	it('should have the default response type', () => {
-		const { responseType } = clickup._service.getOptions();
-		assert.strictEqual(responseType, 'json');
-	});
-
-	it('should instantiate all routes', () => {
-		assert.instanceOf(clickup.authorization, routes.Authorization);
-		assert.instanceOf(clickup.checklists, routes.Checklists);
-		assert.instanceOf(clickup.comments, routes.Comments);
-		assert.instanceOf(clickup.folders, routes.Folders);
-		assert.instanceOf(clickup.goals, routes.Goals);
-		assert.instanceOf(clickup.keyResults, routes.KeyResults);
-		assert.instanceOf(clickup.lists, routes.Lists);
-		assert.instanceOf(clickup.spaces, routes.Spaces);
-		assert.instanceOf(clickup.tasks, routes.Tasks);
-		assert.instanceOf(clickup.teams, routes.Teams);
-		assert.instanceOf(clickup.views, routes.Views);
-		assert.instanceOf(clickup.webhooks, routes.Webhooks);
+describe("client instance", () => {
+	it("constructs an instance", () => {
+		expect(client).instanceOf(Clickup);
 	});
 });
 
-describe('Testing Client Got Options', () => {
-	let clickup;
-	before(() => {
-		clickup = new Clickup(token, {
-			hooks: {
-				beforeRequest: [
-					(options) => {
-						options.headers.foo = 'bar';
-					},
-				],
-			},
-		});
+describe("getRequestURL", () => {
+	it("returns URL instance", () => {
+		const url = client.getRequestURL("list/123/task");
+		expect(url).instanceOf(URL);
 	});
 
-	it('should have beforeRequest hook(s)', () => {
-		const { hooks } = clickup._service.getOptions();
-		assert.isArray(hooks.beforeRequest);
-		assert.lengthOf(hooks.beforeRequest, 1);
+	it("appends path to baseURL path", () => {
+		const url = client.getRequestURL("list/123/task");
+		expect(url.pathname).equal("/api/v2/list/123/task");
+	});
+
+	it("supports basic searchParams", () => {
+		const url = client.getRequestURL("list/123/task", { archived: false });
+		expect(url.searchParams).toEqual(new URLSearchParams([["archived", "false"]]));
+	});
+
+	it("converts [] suffixed key array values to LHS bracket notation", () => {
+		const url = client.getRequestURL("list/123/task", {
+			"statuses[]": ["completed", "in progress"],
+		});
+
+		expect(url.searchParams).toEqual(new URLSearchParams("statuses[]=completed&statuses[]=in progress"));
+	});
+
+	it("converts non [] suffixed key array values to LHS bracket notation", () => {
+		const url = client.getRequestURL("list/123/task", {
+			assignees: [123, 456],
+		});
+
+		const result = new URLSearchParams("assignees[]=123&assignees[]=456");
+		expect(url.searchParams).toEqual(result);
 	});
 });
