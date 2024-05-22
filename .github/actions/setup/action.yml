@@ -15,11 +15,8 @@ runs:
       name: Install pnpm
       with:
         run_install: false
+        version: 9
 
     - name: Install dependencies
       shell: bash
       run: pnpm install
-
-    - name: Build
-      shell: bash
-      run: pnpm run build
