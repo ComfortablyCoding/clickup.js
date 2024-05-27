@@ -147,7 +147,7 @@ export class Clickup {
 
 	/**
 	 * Set the access token
-	 * 
+	 *
 	 * @param {string} token
 	 * @returns {void}
 	 */
