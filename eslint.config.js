@@ -13,6 +13,6 @@ export default [
 	},
 	prettier,
 	{
-		ignores: ["docs/", ".vscode/", "*.yaml", "dist/"],
+		ignores: ["docs/", ".vscode/", "*.yaml", "dist/", ".cache/"],
 	},
 ];
