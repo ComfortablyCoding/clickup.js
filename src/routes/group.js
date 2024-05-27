@@ -10,6 +10,7 @@ export class Group extends Route {
 
 	/**
 	 * Get all user groups within a team
+	 * @see {@link https://clickup.com/api/clickupreference/operation/GetTeams1}
 	 *
 	 * @param {object} [params] The query parameters to use
 	 */
@@ -22,6 +23,7 @@ export class Group extends Route {
 
 	/**
 	 * Update a user group
+	 * @see {@link https://clickup.com/api/clickupreference/operation/UpdateTeam}
 	 *
 	 * @param {string} groupId The group id
 	 * @param {object} data The group data
@@ -36,6 +38,7 @@ export class Group extends Route {
 
 	/**
 	 * Delete a user group
+	 * @see {@link https://clickup.com/api/clickupreference/operation/DeleteTeam}
 	 *
 	 * @param {string} groupId The group id
 	 */

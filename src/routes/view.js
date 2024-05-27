@@ -10,6 +10,7 @@ export class View extends Route {
 
 	/**
 	 * Get information about a specific task or page view
+	 * @see {@link https://clickup.com/api/clickupreference/operation/GetView}
 	 *
 	 * @param {string} viewId The view id
 	 */
@@ -21,6 +22,7 @@ export class View extends Route {
 
 	/**
 	 * Update a view
+	 * @see {@link https://clickup.com/api/clickupreference/operation/UpdateView}
 	 *
 	 * @param {string} viewId The view id
 	 * @param {object} data The view data
@@ -35,6 +37,7 @@ export class View extends Route {
 
 	/**
 	 * Delete a view
+	 * @see {@link https://clickup.com/api/clickupreference/operation/DeleteView}
 	 *
 	 * @param {string} viewId The view id
 	 */
@@ -47,6 +50,7 @@ export class View extends Route {
 
 	/**
 	 * Add a comment on a view
+	 * @see {@link https://clickup.com/api/clickupreference/operation/CreateChatViewComment}
 	 *
 	 * @param {string} viewId The view id
 	 * @param {object} data The comment data
@@ -61,6 +65,7 @@ export class View extends Route {
 
 	/**
 	 * Get all comments from a Chat view
+	 * @see {@link https://clickup.com/api/clickupreference/operation/GetChatViewComments}
 	 *
 	 * @param {string} viewId The view id
 	 * @param {object} [params] The query parameters to pass
@@ -74,6 +79,7 @@ export class View extends Route {
 
 	/**
 	 * Get all visible tasks in a view
+	 * @see {@link https://clickup.com/api/clickupreference/operation/GetViewTasks}
 	 *
 	 * @param {string} viewId The view id
 	 * @param {object} [params] The query parameters to pass

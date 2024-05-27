@@ -10,6 +10,7 @@ export class KeyResult extends Route {
 
 	/**
 	 * Update a key result (target)
+	 * @see {@link https://clickup.com/api/clickupreference/operation/EditKeyResult}
 	 *
 	 * @param {string} keyResultId The key result id
 	 * @param {object} data The key result data
@@ -24,6 +25,7 @@ export class KeyResult extends Route {
 
 	/**
 	 * Delete a key result (target)
+	 * @see {@link https://clickup.com/api/clickupreference/operation/DeleteKeyResult}
 	 *
 	 * @param {string} keyResultId The key result id
 	 */

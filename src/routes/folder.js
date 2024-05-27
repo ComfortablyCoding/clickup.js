@@ -10,6 +10,7 @@ export class Folder extends Route {
 
 	/**
 	 * Get a folder
+	 * @see {@link https://clickup.com/api/clickupreference/operation/GetFolder}
 	 *
 	 * @param {string} folderId The folder id
 	 */
@@ -21,6 +22,7 @@ export class Folder extends Route {
 
 	/**
 	 * Update a folder
+	 * @see {@link https://clickup.com/api/clickupreference/operation/UpdateFolder}
 	 *
 	 * @param {number} folderId The folder id
 	 * @param {object} data The folder data
@@ -35,6 +37,7 @@ export class Folder extends Route {
 
 	/**
 	 * Delete a folder
+	 * @see {@link https://clickup.com/api/clickupreference/operation/DeleteFolder}
 	 *
 	 * @param {number} folderId The folder id
 	 */
@@ -47,6 +50,7 @@ export class Folder extends Route {
 
 	/**
 	 *Add a guest to a folder
+	 * @see {@link https://clickup.com/api/clickupreference/operation/AddGuestToFolder}
 	 *
 	 * @param {number} folderId The folder id
 	 * @param {number} guestId The guest id
@@ -64,6 +68,7 @@ export class Folder extends Route {
 
 	/**
 	 * Remove a guest's access to a folder
+	 * @see {@link https://clickup.com/api/clickupreference/operation/RemoveGuestFromFolder}
 	 *
 	 * @param {number} folderId The folder id
 	 * @param {number} guestId The guest id
@@ -79,6 +84,7 @@ export class Folder extends Route {
 
 	/**
 	 * Create a list
+	 * @see {@link https://clickup.com/api/clickupreference/operation/CreateList}
 	 *
 	 * @param {number} folderId The folder id
 	 * @param {object} data The list data
@@ -93,6 +99,7 @@ export class Folder extends Route {
 
 	/**
 	 * Get all lists within a folder
+	 * @see {@link https://clickup.com/api/clickupreference/operation/GetLists}
 	 *
 	 * @param {number} folderId The folder id
 	 * @param {object} [params] The query parameters to pass
@@ -107,6 +114,7 @@ export class Folder extends Route {
 
 	/**
 	 * Create a List, Board, Calendar, Table, Timeline, Workload, Activity, Map, Chat, or Gantt view for a Folder
+	 * @see {@link https://clickup.com/api/clickupreference/operation/CreateFolderView}
 	 *
 	 * @param {number} folderId The folder id
 	 * @param {object} data The view data
@@ -121,6 +129,7 @@ export class Folder extends Route {
 
 	/**
 	 * Get the task and page views available for a Folder.
+	 * @see {@link https://clickup.com/api/clickupreference/operation/CreateSpaceView}
 	 *
 	 * @param {number} folderId The folder id
 	 */

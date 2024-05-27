@@ -10,6 +10,7 @@ export class Space extends Route {
 
 	/**
 	 * Get a space
+	 * @see {@link https://clickup.com/api/clickupreference/operation/GetSpace/}
 	 *
 	 * @param {number} spaceId The space id
 	 */
@@ -21,6 +22,7 @@ export class Space extends Route {
 
 	/**
 	 * Update a spaces name, set the space color, and enable ClickApps for a space.
+	 * @see {@link https://clickup.com/api/clickupreference/operation/UpdateSpace}
 	 *
 	 * @param {number} spaceId The space id
 	 * @param {object} data The space data
@@ -35,6 +37,7 @@ export class Space extends Route {
 
 	/**
 	 * Delete a space
+	 * @see {@link https://clickup.com/api/clickupreference/operation/DeleteSpace}
 	 *
 	 * @param {number} spaceId The space id
 	 */
@@ -47,6 +50,7 @@ export class Space extends Route {
 
 	/**
 	 * Create a folder in a space
+	 * @see {@link https://clickup.com/api/clickupreference/operation/CreateFolder}
 	 *
 	 * @param {number} spaceId The space id
 	 * @param {object} data The folder data
@@ -61,6 +65,7 @@ export class Space extends Route {
 
 	/**
 	 * Get all folders in a space
+	 * @see {@link https://clickup.com/api/clickupreference/operation/GetFolders}
 	 *
 	 * @param {number} spaceId The space id
 	 * @param {object} [params] The query parameters to pass
@@ -75,6 +80,7 @@ export class Space extends Route {
 
 	/**
 	 * Create a folder-less list
+	 * @see {@link https://clickup.com/api/clickupreference/operation/CreateFolderlessList}
 	 *
 	 * @param {number} spaceId The space id
 	 * @param {object} data The folder-less list data
@@ -89,6 +95,7 @@ export class Space extends Route {
 
 	/**
 	 * Get all folderless lists in a space
+	 * @see {@link https://clickup.com/api/clickupreference/operation/GetFolderlessLists}
 	 *
 	 * @param {number} spaceId The space id
 	 * @param {object} [params] The query parameters to pass
@@ -103,6 +110,7 @@ export class Space extends Route {
 
 	/**
 	 * Get all tags in a space
+	 * @see {@link https://clickup.com/api/clickupreference/operation/GetSpaceTags}
 	 *
 	 * @param {number} spaceId The space id
 	 */
@@ -114,6 +122,7 @@ export class Space extends Route {
 
 	/**
 	 * Create a space tag
+	 * @see {@link https://clickup.com/api/clickupreference/operation/CreateSpaceTag}
 	 *
 	 * @param {number} spaceId The space id
 	 * @param {object} data The space tag data
@@ -128,6 +137,7 @@ export class Space extends Route {
 
 	/**
 	 * Update a space tag
+	 * @see {@link https://clickup.com/api/clickupreference/operation/EditSpaceTag}
 	 *
 	 * @param {number} spaceId The space id
 	 * @param {string} tagName The tag name
@@ -143,6 +153,7 @@ export class Space extends Route {
 
 	/**
 	 * Delete a space tag
+	 * @see {@link https://clickup.com/api/clickupreference/operation/DeleteSpaceTag}
 	 *
 	 * @param {number} spaceId The space id
 	 * @param {string} tagName The tag name
@@ -158,6 +169,7 @@ export class Space extends Route {
 
 	/**
 	 * Create a List, Board, Calendar, Table, Timeline, Workload, Activity, Map, Chat, or Gantt view for a Space
+	 * @see {@link https://clickup.com/api/clickupreference/operation/CreateSpaceView}
 	 *
 	 * @param {number} spaceId The space id
 	 * @param {object} data The view data
@@ -172,6 +184,7 @@ export class Space extends Route {
 
 	/**
 	 * Get the task and page views available for a Space
+	 * @see {@link https://clickup.com/api/clickupreference/operation/GetSpaceViews}
 	 *
 	 * @param {number} spaceId The space id
 	 */

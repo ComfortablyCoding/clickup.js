@@ -10,6 +10,7 @@ export class Checklist extends Route {
 
 	/**
 	 * Update a checklist
+	 * @see {@link https://clickup.com/api/clickupreference/operation/EditChecklist}
 	 *
 	 * @param {string} checklistId The checklist id
 	 * @param {object} data The checklist data
@@ -24,6 +25,7 @@ export class Checklist extends Route {
 
 	/**
 	 * Delete a checklist
+	 * @see {@link https://clickup.com/api/clickupreference/operation/DeleteChecklist}
 	 *
 	 * @param {string} checklistId The checklist id
 	 */
@@ -36,6 +38,7 @@ export class Checklist extends Route {
 
 	/**
 	 * Create a checklist item
+	 * @see {@link https://clickup.com/api/clickupreference/operation/CreateChecklistItem}
 	 *
 	 * @param {string} checklistId The checklist id
 	 * @param {object} data The checklist item data
@@ -50,6 +53,7 @@ export class Checklist extends Route {
 
 	/**
 	 * Update a checklist item
+	 * @see {@link https://clickup.com/api/clickupreference/operation/EditChecklistItem}
 	 *
 	 * @param {string} checklistId The checklist id
 	 * @param {string} checklistItemId The checklist item id
@@ -65,6 +69,7 @@ export class Checklist extends Route {
 
 	/**
 	 * Delete a checklist item
+	 * @see {@link https://clickup.com/api/clickupreference/operation/DeleteChecklistItem}
 	 *
 	 * @param {string} checklistId The checklist id
 	 * @param {string} checklistItemId The checklist item id

@@ -10,6 +10,7 @@ export class Task extends Route {
 
 	/**
 	 * Get a task
+	 * @see {@link https://clickup.com/api/clickupreference/operation/GetTask}
 	 *
 	 * @param {string} taskId The task id
 	 * @param {object} [params] The query parameters to use
@@ -23,6 +24,7 @@ export class Task extends Route {
 
 	/**
 	 * Update a task
+	 * @see {@link https://clickup.com/api/clickupreference/operation/UpdateTask}
 	 *
 	 * @param {string} taskId The task id
 	 * @param {object} data The task data
@@ -39,6 +41,7 @@ export class Task extends Route {
 
 	/**
 	 * Delete a task
+	 * @see {@link https://clickup.com/api/clickupreference/operation/DeleteTask}
 	 *
 	 * @param {string} taskId The task id
 	 * @param {object} [params] The query parameters to use
@@ -53,6 +56,7 @@ export class Task extends Route {
 
 	/**
 	 * Upload a file to a task as an attachment.
+	 * @see {@link https://clickup.com/api/clickupreference/operation/CreateTaskAttachment}
 	 *
 	 * @param {string} taskId The task id
 	 * @param {FormData} attachment The attachments to add
@@ -72,6 +76,7 @@ export class Task extends Route {
 
 	/**
 	 * Add a comment to as task
+	 * @see {@link https://clickup.com/api/clickupreference/operation/CreateTaskComment}
 	 *
 	 * @param {string} taskId The task id
 	 * @param {object} data The comment data
@@ -88,6 +93,7 @@ export class Task extends Route {
 
 	/**
 	 * Get all task comments
+	 * @see {@link https://clickup.com/api/clickupreference/operation/GetTaskComments}
 	 *
 	 * @param {string} taskId The task id
 	 * @param {object} [params] The query parameters to use
@@ -101,6 +107,7 @@ export class Task extends Route {
 
 	/**
 	 * Create a checklist in a task
+	 * @see {@link https://clickup.com/api/clickupreference/operation/CreateChecklist}
 	 *
 	 * @param {string} taskId The task id
 	 * @param {object} data The checklist data
@@ -117,6 +124,7 @@ export class Task extends Route {
 
 	/**
 	 * Add data to a custom field on a task
+	 * @see {@link https://clickup.com/api/clickupreference/operation/SetCustomFieldValue}
 	 *
 	 * @param {string} taskId The task id
 	 * @param {string} fieldId The uuid of the custom field
@@ -134,6 +142,7 @@ export class Task extends Route {
 
 	/**
 	 * Remove a custom field value on a task
+	 * @see {@link https://clickup.com/api/clickupreference/operation/RemoveCustomFieldValue}
 	 *
 	 * @param {string} taskId The task id
 	 * @param {string} fieldId The uuid of the custom field
@@ -149,6 +158,7 @@ export class Task extends Route {
 
 	/**
 	 * Create a dependency for a task i.e. set a task as waiting on or blocking another task.
+	 * @see {@link https://clickup.com/api/clickupreference/operation/AddDependency}
 	 *
 	 * @param {string} taskId The task id
 	 * @param {object} data The dependency data
@@ -165,6 +175,7 @@ export class Task extends Route {
 
 	/**
 	 * Delete a dependency for a task
+	 * @see {@link https://clickup.com/api/clickupreference/operation/DeleteDependency}
 	 *
 	 * @param {string} taskId The task id
 	 * @param {object} [options] The parameter options to pass in
@@ -179,6 +190,7 @@ export class Task extends Route {
 
 	/**
 	 * Link two task together
+	 * @see {@link https://clickup.com/api/clickupreference/operation/AddTaskLink}
 	 *
 	 * @param {string} taskId The task id
 	 * @param {string} linksTo The id of the task to link to
@@ -194,6 +206,7 @@ export class Task extends Route {
 
 	/**
 	 * Delete a task link
+	 * @see {@link https://clickup.com/api/clickupreference/operation/DeleteTaskLink}
 	 *
 	 * @param {string} taskId The task id
 	 * @param {string} linksTo The id of the task to link to
@@ -209,6 +222,7 @@ export class Task extends Route {
 
 	/**
 	 * Share a task with a guest
+	 * @see {@link https://clickup.com/api/clickupreference/operation/AddGuestToTask}
 	 *
 	 * @param {string} taskId The task id
 	 * @param {number} guestId The guest id
@@ -226,6 +240,7 @@ export class Task extends Route {
 
 	/**
 	 * Remove a guest's access to a task
+	 * @see {@link https://clickup.com/api/clickupreference/operation/RemoveGuestFromTask}
 	 *
 	 * @param {string} taskId The task id
 	 * @param {number} guestId The guest id
@@ -241,6 +256,7 @@ export class Task extends Route {
 
 	/**
 	 * Get all members who have access to a task
+	 * @see {@link https://clickup.com/api/clickupreference/operation/GetTaskMembers}
 	 *
 	 * @param {string} taskId The task id
 	 */
@@ -252,6 +268,7 @@ export class Task extends Route {
 
 	/**
 	 * Add a tag to a task
+	 * @see {@link https://clickup.com/api/clickupreference/operation/AddTagToTask}
 	 *
 	 * @param {string} taskId The task id
 	 * @param {string} tagName The tag name
@@ -267,6 +284,7 @@ export class Task extends Route {
 
 	/**
 	 * Remove a tag from a task
+	 * @see {@link https://clickup.com/api/clickupreference/operation/RemoveTagFromTask}
 	 *
 	 * @param {string} taskId The task id
 	 * @param {string} tagName The tag name
@@ -282,6 +300,7 @@ export class Task extends Route {
 
 	/**
 	 * Track time for a task (Time Tracking Legacy API)
+	 * @see {@link https://clickup.com/api/clickupreference/operation/Tracktime}
 	 *
 	 * @param {string} taskId The task id
 	 * @param {object} data The time tracking data
@@ -298,6 +317,7 @@ export class Task extends Route {
 
 	/**
 	 * Get tracked time for a task (Time Tracking Legacy API)
+	 * @see {@link https://clickup.com/api/clickupreference/operation/Gettrackedtime}
 	 *
 	 * @param {string} taskId The task id
 	 * @param {object} [params] The query parameters to use
@@ -311,6 +331,7 @@ export class Task extends Route {
 
 	/**
 	 * Edit tracked time for a task (Time Tracking Legacy API)
+	 * @see {@link https://clickup.com/api/clickupreference/operation/Edittimetracked}
 	 *
 	 * @param {string} taskId The task id
 	 * @param {string} intervalId The interval id
@@ -328,6 +349,7 @@ export class Task extends Route {
 
 	/**
 	 * Delete tracked time for a task
+	 * @see {@link https://clickup.com/api/clickupreference/operation/Deletetimetracked}
 	 *
 	 * @param {string} taskId The task id
 	 * @param {string} intervalId The interval id
@@ -343,6 +365,7 @@ export class Task extends Route {
 
 	/**
 	 * Get tasks time in status
+	 * @see {@link https://clickup.com/api/clickupreference/operation/GetTask'sTimeinStatus}
 	 *
 	 * @param {string} taskId The task id
 	 * @param {object} [params] The query parameters to use
@@ -356,6 +379,7 @@ export class Task extends Route {
 
 	/**
 	 * Get bulk tasks time in status
+	 * @see {@link https://clickup.com/api/clickupreference/operation/GetBulkTasks'TimeinStatus}
 	 *
 	 * @param {object} params The query parameters to use
 	 */

@@ -10,6 +10,7 @@ export class Webhook extends Route {
 
 	/**
 	 * Update a webhook
+	 * @see {@link https://clickup.com/api/clickupreference/operation/UpdateWebhook}
 	 *
 	 * @param {string} webhookId The webhook id
 	 * @param {object} data The webhook data
@@ -24,6 +25,7 @@ export class Webhook extends Route {
 
 	/**
 	 * Delete a webhook
+	 * @see {@link https://clickup.com/api/clickupreference/operation/DeleteWebhook}
 	 *
 	 * @param {string} webhookId The webhook id
 	 */

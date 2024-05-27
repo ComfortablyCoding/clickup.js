@@ -9,9 +9,11 @@ export class Authorization extends Route {
 
 	/**
 	 * Get the access token for the given client
+	 * @see {@link https://clickup.com/api/clickupreference/operation/GetAccessToken}
+	 *
 	 * @param {object} params The query parameters to pass
-	 * @param {string} params.clientId The Oauth app client id
-	 * @param {string} params.clientSecret The Oauth app client secret
+	 * @param {string} params.client_id The Oauth app client id
+	 * @param {string} params.client_secret The Oauth app client secret
 	 * @param {string} params.code The code given in redirect url
 	 */
 	accessToken(params) {
@@ -24,6 +26,7 @@ export class Authorization extends Route {
 
 	/**
 	 * Get the details of the authenticated user's ClickUp account
+	 * @see {@link https://clickup.com/api/clickupreference/operation/GetAuthorizedUser}
 	 */
 	user() {
 		return this.client.request({
@@ -33,6 +36,7 @@ export class Authorization extends Route {
 
 	/**
 	 * Get the teams (workspaces) available to the authenticated user
+	 * @see {@link https://clickup.com/api/clickupreference/operation/GetAuthorizedTeams}
 	 */
 	teams() {
 		return this.client.request({

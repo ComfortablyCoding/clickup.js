@@ -19,6 +19,7 @@ export class Team extends Route {
 
 	/**
 	 * Create a goal
+	 * @see {@link https://clickup.com/api/clickupreference/operation/CreateGoal}
 	 *
 	 * @param {number} teamId The team id
 	 * @param {object} data Goal data
@@ -33,6 +34,7 @@ export class Team extends Route {
 
 	/**
 	 * Get all goals for a team
+	 * @see {@link https://clickup.com/api/clickupreference/operation/GetGoals}
 	 *
 	 * @param {number} teamId The team id
 	 * @param {object} params The query parameters to use
@@ -46,6 +48,7 @@ export class Team extends Route {
 
 	/**
 	 * Invite a guest to a team (workspace)
+	 * @see {@link https://clickup.com/api/clickupreference/operation/InviteGuestToWorkspace}
 	 *
 	 * @param {number} teamId The team id
 	 * @param {object} data The guest data
@@ -60,6 +63,7 @@ export class Team extends Route {
 
 	/**
 	 * Get information about a team (workspace) guest
+	 * @see {@link https://clickup.com/api/clickupreference/operation/GetGuest}
 	 *
 	 * @param {number} teamId The team id
 	 * @param {number} guestId The guest id
@@ -72,6 +76,7 @@ export class Team extends Route {
 
 	/**
 	 * Edit a guest in a team (workspace)
+	 * @see {@link https://clickup.com/api/clickupreference/operation/EditGuestOnWorkspace}
 	 *
 	 * @param {number} teamId The team id
 	 * @param {number} guestId The guest id
@@ -87,6 +92,7 @@ export class Team extends Route {
 
 	/**
 	 * Remove a guest from a team (workspace)
+	 * @see {@link https://clickup.com/api/clickupreference/operation/RemoveGuestFromWorkspace}
 	 *
 	 * @param {number} teamId The team id
 	 * @param {number} guestId The guest id
@@ -100,6 +106,7 @@ export class Team extends Route {
 
 	/**
 	 * Get the tasks, lists, and folders that have been shared with the authenticated user
+	 * @see {@link https://clickup.com/api/clickupreference/operation/SharedHierarchy}
 	 *
 	 * @param {number} teamId The team id
 	 */
@@ -111,6 +118,7 @@ export class Team extends Route {
 
 	/**
 	 * Create a space for a team (workspace)
+	 * @see {@link https://clickup.com/api/clickupreference/operation/CreateSpace}
 	 *
 	 * @param {number} teamId The team id
 	 * @param {object} data The space data
@@ -125,6 +133,7 @@ export class Team extends Route {
 
 	/**
 	 * Get available spaces for a team (workspace)
+	 * @see {@link https://clickup.com/api/clickupreference/operation/GetSpaces}
 	 *
 	 * @param {number} teamId The team id
 	 * @param {object} [params] The query parameters to pass
@@ -139,6 +148,7 @@ export class Team extends Route {
 
 	/**
 	 * Get filtered tasks for a team
+	 * @see {@link https://clickup.com/api/clickupreference/operation/GetFilteredTeamTasks}
 	 *
 	 * @param {number} teamId The team id
 	 * @param {object} [params] The query parameters to pass
@@ -152,6 +162,7 @@ export class Team extends Route {
 
 	/**
 	 * Get task templates for a team
+	 * @see {@link https://clickup.com/api/clickupreference/operation/GetTaskTemplates}
 	 *
 	 * @param {number} teamId The team id
 	 * @param {object} [params] The query parameters to pass
@@ -165,6 +176,7 @@ export class Team extends Route {
 
 	/**
 	 * Get a user for a team. Only available to enterprise teams
+	 * @see {@link https://clickup.com/api/clickupreference/operation/GetUser}
 	 *
 	 * @param {number} teamId The team id
 	 * @param {number} userId The user id
@@ -177,6 +189,7 @@ export class Team extends Route {
 
 	/**
 	 * Invite a user to a workspace/team. Only available to enterprise teams
+	 * @see {@link https://clickup.com/api/clickupreference/operation/InviteUserToWorkspace}
 	 *
 	 * @param {number} teamId The team id
 	 * @param {object} data The user data
@@ -191,6 +204,7 @@ export class Team extends Route {
 
 	/**
 	 * Edit a user for a workspace/team.  Only available to enterprise teams
+	 * @see {@link https://clickup.com/api/clickupreference/operation/EditUserOnWorkspace}
 	 *
 	 * @param {number} teamId The team id
 	 * @param {number} userId The user id
@@ -206,6 +220,7 @@ export class Team extends Route {
 
 	/**
 	 * Remove (deactivate) a user from a workspace/team.  Only available to enterprise teams
+	 * @see {@link https://clickup.com/api/clickupreference/operation/RemoveUserFromWorkspace}
 	 *
 	 * @param {number} teamId The team id
 	 * @param {number} userId The team id
@@ -220,6 +235,7 @@ export class Team extends Route {
 	/**
 	 * Create a List, Board, Calendar, Table, Timeline, Workload, Activity, Map, Chat,
 	 * or Gantt view at the Everything Level of a Workspace.
+	 * @see {@link https://clickup.com/api/clickupreference/operation/CreateTeamView}
 	 *
 	 * @param {number} teamId The team id
 	 * @param {object} data The view data
@@ -234,6 +250,7 @@ export class Team extends Route {
 
 	/**
 	 * Get the  task and page views available at the Everything Level of a Workspace.
+	 * @see {@link https://clickup.com/api/clickupreference/operation/GetTeamViews}
 	 *
 	 * @param {number} teamId The team id
 	 */
@@ -245,6 +262,7 @@ export class Team extends Route {
 
 	/**
 	 * Create a webhook
+	 * @see {@link https://clickup.com/api/clickupreference/operation/CreateWebhook}
 	 *
 	 * @param {number} teamId The team id
 	 * @param {object} data The webhook data
@@ -260,6 +278,7 @@ export class Team extends Route {
 	/**
 	 * Get the webhooks created via the API for a Workspace.
 	 * This endpoint returns webhooks created by the authenticated user
+	 * @see {@link https://clickup.com/api/clickupreference/operation/GetWebhooks}
 	 *
 	 * @param {number} teamId the team id
 	 */
@@ -271,6 +290,7 @@ export class Team extends Route {
 
 	/**
 	 * Get time entries within a data range
+	 * @see {@link https://clickup.com/api/clickupreference/operation/Gettimeentrieswithinadaterange}
 	 *
 	 * @param {number} teamId The team id
 	 * @param {object} [params] The query parameters to use
@@ -284,9 +304,10 @@ export class Team extends Route {
 
 	/**
 	 * Get a single time entry
+	 * @see {@link https://clickup.com/api/clickupreference/operation/Getsingulartimeentry}
 	 *
 	 * @param {number} teamId The team id
-	 * @param {number} timerId The timer id
+	 * @param {string} timerId The timer id
 	 * @param {object} [params] The query parameters to use
 	 */
 	timeEntry(teamId, timerId, params) {
@@ -298,6 +319,7 @@ export class Team extends Route {
 
 	/**
 	 * Get time entry that's currently tracking time for the authenticated user.
+	 * @see {@link https://clickup.com/api/clickupreference/operation/Getrunningtimeentry}
 	 *
 	 * @param {number} teamId The team id
 	 * @param {object} [params] The query parameters to use
@@ -311,6 +333,7 @@ export class Team extends Route {
 
 	/**
 	 * Create a time entry
+	 * @see {@link https://clickup.com/api/clickupreference/operation/Createatimeentry}
 	 *
 	 * @param {number} teamId The team id
 	 * @param {object} data The time entry data
@@ -327,6 +350,7 @@ export class Team extends Route {
 
 	/**
 	 * Remove tags from time entries
+	 * @see {@link https://clickup.com/api/clickupreference/operation/Removetagsfromtimeentries}
 	 *
 	 * @param {number} teamId The team id
 	 * @param {object} data The time entries data
@@ -341,6 +365,7 @@ export class Team extends Route {
 
 	/**
 	 * Get all tags from time entries
+	 * @see {@link https://clickup.com/api/clickupreference/operation/Getalltagsfromtimeentries}
 	 *
 	 * @param {number} teamId The team id
 	 */
@@ -352,6 +377,7 @@ export class Team extends Route {
 
 	/**
 	 * Add a label to time entries
+	 * @see {@link https://clickup.com/api/clickupreference/operation/Addtagsfromtimeentries}
 	 *
 	 * @param {number} teamId The team id
 	 * @param {object} data The time entries and tag data
@@ -366,6 +392,7 @@ export class Team extends Route {
 
 	/**
 	 * Rename an time entry label
+	 * @see {@link https://clickup.com/api/clickupreference/operation/Changetagnamesfromtimeentries}
 	 *
 	 * @param {number} teamId The team id
 	 * @param {object} data The tag data
@@ -380,6 +407,7 @@ export class Team extends Route {
 
 	/**
 	 * Start a time entry
+	 * @see {@link https://clickup.com/api/clickupreference/operation/StartatimeEntry}
 	 *
 	 * @param {number} teamId The team id
 	 * @param {object} data The time entry data
@@ -396,6 +424,7 @@ export class Team extends Route {
 
 	/**
 	 * Stop a time entry
+	 * @see {@link https://clickup.com/api/clickupreference/operation/StopatimeEntry}
 	 *
 	 * @param {number} teamId The team id
 	 */
@@ -408,6 +437,7 @@ export class Team extends Route {
 
 	/**
 	 * Delete a time entry
+	 * @see {@link https://clickup.com/api/clickupreference/operation/DeleteatimeEntry}
 	 *
 	 * @param {number} teamId The team id
 	 * @param {number} timerId The timer id
@@ -421,6 +451,7 @@ export class Team extends Route {
 
 	/**
 	 * Update a time entry
+	 * @see {@link https://clickup.com/api/clickupreference/operation/UpdateatimeEntry}
 	 *
 	 * @param {number} teamId The team id
 	 * @param {number} timerId The timer id
@@ -438,9 +469,10 @@ export class Team extends Route {
 
 	/**
 	 * Get a list of changes made to a time entry
+	 * @see {@link https://clickup.com/api/clickupreference/operation/Gettimeentryhistory}
 	 *
 	 * @param {number} teamId The team id
-	 * @param {number} timerId The timer id
+	 * @param {string} timerId The timer id
 	 */
 	timeEntryHistory(teamId, timerId) {
 		return this.client.request({
@@ -450,6 +482,7 @@ export class Team extends Route {
 
 	/**
 	 * Retrieve the used, total, and available member and guest seats for a team (workspace).
+	 * @see {@link https://clickup.com/api/clickupreference/operation/GetWorkspaceseats}
 	 *
 	 * @param {string} teamId The team id
 	 */
@@ -461,6 +494,7 @@ export class Team extends Route {
 
 	/**
 	 * Retrieve the current Plan for the specified team (workspace).
+	 * @see {@link https://clickup.com/api/clickupreference/operation/GetWorkspaceplan}
 	 *
 	 * @param {string} teamId The team id
 	 */
@@ -472,6 +506,7 @@ export class Team extends Route {
 
 	/**
 	 * Get the custom task types available in a team (workspace).
+	 * @see {@link https://clickup.com/api/clickupreference/operation/GetCustomItems}
 	 *
 	 * @param {string} teamId The team id
 	 */
@@ -483,6 +518,7 @@ export class Team extends Route {
 
 	/**
 	 * Get the custom roles available in a team (workspace).
+	 * @see {@link https://clickup.com/api/clickupreference/operation/GetCustomRoles}
 	 *
 	 * @param {string} teamId The team id
 	 * @param {object} [params] The query parameters to use
@@ -496,8 +532,9 @@ export class Team extends Route {
 
 	/**
 	 * Create a team user group.
+	 * @see {@link https://clickup.com/api/clickupreference/operation/CreateTeam}
 	 *
-	 * @param {string} teamId The team id
+	 * @param {number} teamId The team id
 	 * @param {object} data The team data
 	 */
 	createUserGroup(teamId, data) {

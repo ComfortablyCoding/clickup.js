@@ -10,6 +10,7 @@ export class Comment extends Route {
 
 	/**
 	 * Update the content of a task comment, assign a comment, and mark a comment as resolved.
+	 * @see {@link https://clickup.com/api/clickupreference/operation/UpdateComment}
 	 *
 	 * @param {number} commentId The comment id
 	 * @param {object} data The comment data
@@ -24,6 +25,7 @@ export class Comment extends Route {
 
 	/**
 	 * Delete a comment
+	 * @see {@link https://clickup.com/api/clickupreference/operation/DeleteComment}
 	 *
 	 * @param {number} commentId The comment id
 	 */

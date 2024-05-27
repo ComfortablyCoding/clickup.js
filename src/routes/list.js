@@ -10,6 +10,7 @@ export class List extends Route {
 
 	/**
 	 * Get a list
+	 * @see {@link https://clickup.com/api/clickupreference/operation/GetList}
 	 *
 	 * @param {number} listId The list id
 	 */
@@ -21,6 +22,7 @@ export class List extends Route {
 
 	/**
 	 * Update a list
+	 * @see {@link https://clickup.com/api/clickupreference/operation/UpdateList}
 	 *
 	 * @param {string} listId The list id
 	 * @param {object} data The list data
@@ -35,6 +37,7 @@ export class List extends Route {
 
 	/**
 	 * Delete a list
+	 * @see {@link https://clickup.com/api/clickupreference/operation/DeleteList}
 	 *
 	 * @param {number} listId The list id
 	 */
@@ -47,6 +50,7 @@ export class List extends Route {
 
 	/**
 	 * Add a comment to a list
+	 * @see {@link https://clickup.com/api/clickupreference/operation/CreateListComment}
 	 *
 	 * @param {string} listId The list id
 	 * @param {object} data The comment data
@@ -61,6 +65,7 @@ export class List extends Route {
 
 	/**
 	 * Get all comments added to a list
+	 * @see {@link https://clickup.com/api/clickupreference/operation/GetListComments}
 	 *
 	 * @param {number} listId The list id
 	 * @param {object} [params] The query parameters to use
@@ -74,6 +79,7 @@ export class List extends Route {
 
 	/**
 	 * Get all Custom Fields available on tasks in a specific list
+	 * @see {@link https://clickup.com/api/clickupreference/operation/GetAccessibleCustomFields}
 	 *
 	 * @param {number} listId The list id
 	 */
@@ -85,6 +91,7 @@ export class List extends Route {
 
 	/**
 	 * Share a list with a guest
+	 * @see {@link https://clickup.com/api/clickupreference/operation/AddGuestToList}
 	 *
 	 * @param {number} listId The list id
 	 * @param {number} guestId The guest id
@@ -102,6 +109,7 @@ export class List extends Route {
 
 	/**
 	 * Remove a guest's access to a list
+	 * @see {@link https://clickup.com/api/clickupreference/operation/RemoveGuestFromList}
 	 *
 	 * @param {number} listId The list id
 	 * @param {number} guestId The guest id
@@ -117,6 +125,7 @@ export class List extends Route {
 
 	/**
 	 * Get all members of a list
+	 * @see {@link https://clickup.com/api/clickupreference/operation/GetListMembers}
 	 *
 	 * @param {number} listId The list id
 	 */
@@ -128,6 +137,7 @@ export class List extends Route {
 
 	/**
 	 * Create a task
+	 * @see {@link https://clickup.com/api/clickupreference/operation/CreateTask}
 	 *
 	 * @param {number} listId The list id
 	 * @param {object} data The task data
@@ -144,6 +154,7 @@ export class List extends Route {
 
 	/**
 	 * Get all tasks in a list
+	 * @see {@link https://clickup.com/api/clickupreference/operation/GetTasks}
 	 *
 	 * @param {number} listId The list id
 	 * @param {object} params The query parameters to pass
@@ -157,6 +168,7 @@ export class List extends Route {
 
 	/**
 	 * Create a task from a template
+	 * @see {@link https://clickup.com/api/clickupreference/operation/CreateTaskFromTemplate/#tag/Task-Templates/operation/CreateTaskFromTemplat}
 	 *
 	 * @param {number} listId The list id
 	 * @param {string} templateId The template id
@@ -172,6 +184,7 @@ export class List extends Route {
 
 	/**
 	 * Create a List, Board, Calendar, Table, Timeline, Workload, Activity, Map, Chat, or Gantt view for a List
+	 * @see {@link https://clickup.com/api/clickupreference/operation/CreateListView}
 	 *
 	 * @param {number} listId The list id
 	 * @param {object} data The view data
@@ -186,6 +199,7 @@ export class List extends Route {
 
 	/**
 	 * Get the task and page views available for a List. Views and required views are separate responses
+	 * @see {@link https://clickup.com/api/clickupreference/operation/GetListViews}
 	 *
 	 * @param {number} listId The list id
 	 */
@@ -197,6 +211,7 @@ export class List extends Route {
 
 	/**
 	 * Add task to a list
+	 * @see {@link https://clickup.com/api/clickupreference/operation/AddTaskToList}
 	 *
 	 * @param {number} listId The list id
 	 * @param {string} taskId The task id
@@ -210,6 +225,7 @@ export class List extends Route {
 
 	/**
 	 * Remove a task from a list
+	 * @see {@link https://clickup.com/api/clickupreference/operation/RemoveTaskFromList}
 	 *
 	 * @param {number} listId The list id
 	 * @param {string} taskId The task id

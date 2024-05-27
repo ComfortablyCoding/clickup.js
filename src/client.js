@@ -147,6 +147,7 @@ export class Clickup {
 
 	/**
 	 * Set the access token
+	 * 
 	 * @param {string} token
 	 * @returns {void}
 	 */
@@ -155,7 +156,6 @@ export class Clickup {
 	}
 
 	/**
-	 * @private
 	 *
 	 * @param {object} options
 	 * @param {string} [options.method] The request method
