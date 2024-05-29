@@ -25,15 +25,21 @@ const defaultOptions = {
 	},
 };
 
+/**
+ * @class
+ */
 export class Clickup {
 	/**
 	 *  Creates a client instance that connects to the Clickup API
 	 *
 	 * @constructor
-	 * @param {string} token Clickup API Access Token
-	 * @param {object} options Clickup Constructor options
+	 * @param {object} [options] Clickup Constructor options
+	 * @param {string} [options.token] Clickup Access Token
+	 * @param {object} [options.request] The request options
+	 * @param {string} [options.request.prefixUrl=https://api.clickup.com/api/v2/] The clickup API URL
+	 * @param {object} [options.request.hooks] The request hooks @see {@link https://github.com/sindresorhus/got/blob/main/documentation/9-hooks.md}
 	 */
-	constructor(options) {
+	constructor(options = {}) {
 		this.options = { ...defaultOptions, ...options };
 
 		this.token = this.options.token || process.env["CLICKUP_TOKEN"] || null;

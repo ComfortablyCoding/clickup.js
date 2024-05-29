@@ -29,9 +29,11 @@
 		"build": "unbuild",
 		"test": "vitest",
 		"lint": "eslint . --fix",
-		"format": "prettier . --write"
+		"format": "prettier . --write",
+		"docs:generate": "documentation build src/** -f html --github -o docs"
 	},
 	"dependencies": {
+		"documentation": "^14.0.3",
 		"got": "^14.3.0"
 	},
 	"devDependencies": {

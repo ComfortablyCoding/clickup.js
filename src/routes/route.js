@@ -1,6 +1,10 @@
+/**
+ * @class
+ */
 export class Route {
 	/**
 	 * The main route for the collection
+	 * @constructor
 	 * @param {object} options
 	 * @param {import('../client').Clickup} options.client The clickup client instance
 	 * @param {string} options.route The route path
