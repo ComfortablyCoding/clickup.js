@@ -26,7 +26,7 @@ export class Webhook extends Route {
 	update(webhookId, data) {
 		return this.client.request({
 			method: "PUT",
-			path: `${this.route}/${webhookId}`,
+			path: `/${this.version}/${this.route}/${webhookId}`,
 			body: JSON.stringify(data),
 		});
 	}
@@ -40,7 +40,7 @@ export class Webhook extends Route {
 	delete(webhookId) {
 		return this.client.request({
 			method: "DELETE",
-			path: `${this.route}/${webhookId}`,
+			path: `/${this.version}/${this.route}/${webhookId}`,
 		});
 	}
 }

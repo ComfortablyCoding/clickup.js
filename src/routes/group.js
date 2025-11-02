@@ -24,7 +24,7 @@ export class Group extends Route {
 	 */
 	get(params) {
 		return this.client.request({
-			path: `${this.route}`,
+			path: `/${this.version}/${this.route}`,
 			params,
 		});
 	}
@@ -39,7 +39,7 @@ export class Group extends Route {
 	update(groupId, data) {
 		return this.client.request({
 			method: "PUT",
-			path: `${this.route}/${groupId}`,
+			path: `/${this.version}/${this.route}/${groupId}`,
 			body: JSON.stringify(data),
 		});
 	}
@@ -53,7 +53,7 @@ export class Group extends Route {
 	delete(groupId) {
 		return this.client.request({
 			method: "DELETE",
-			path: `${this.route}/${groupId}`,
+			path: `/${this.version}/${this.route}/${groupId}`,
 		});
 	}
 }

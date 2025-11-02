@@ -24,7 +24,7 @@ export class Goal extends Route {
 	 */
 	get(goalId) {
 		return this.client.request({
-			path: `${this.route}/${goalId}`,
+			path: `/${this.version}/${this.route}/${goalId}`,
 		});
 	}
 
@@ -38,7 +38,7 @@ export class Goal extends Route {
 	update(goalId, data) {
 		return this.client.request({
 			method: "PUT",
-			path: `${this.route}/${goalId}`,
+			path: `/${this.version}/${this.route}/${goalId}`,
 			body: JSON.stringify(data),
 		});
 	}
@@ -52,7 +52,7 @@ export class Goal extends Route {
 	delete(goalId) {
 		return this.client.request({
 			method: "DELETE",
-			path: `${this.route}/${goalId}`,
+			path: `/${this.version}/${this.route}/${goalId}`,
 		});
 	}
 
@@ -66,7 +66,7 @@ export class Goal extends Route {
 	addKeyResult(goalId, data) {
 		return this.client.request({
 			method: "POST",
-			path: `${this.route}/${goalId}/key_result`,
+			path: `/${this.version}/${this.route}/${goalId}/key_result`,
 			body: JSON.stringify(data),
 		});
 	}

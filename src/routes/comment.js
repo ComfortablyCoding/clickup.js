@@ -26,7 +26,7 @@ export class Comment extends Route {
 	update(commentId, data) {
 		return this.client.request({
 			method: "PUT",
-			path: `${this.route}/${commentId}`,
+			path: `/${this.version}/${this.route}/${commentId}`,
 			body: JSON.stringify(data),
 		});
 	}
@@ -40,7 +40,7 @@ export class Comment extends Route {
 	delete(commentId) {
 		return this.client.request({
 			method: "DELETE",
-			path: `${this.route}/${commentId}`,
+			path: `/${this.version}/${this.route}/${commentId}`,
 		});
 	}
 
@@ -52,7 +52,7 @@ export class Comment extends Route {
 	 */
 	replies(commentId) {
 		return this.client.request({
-			path: `${this.route}/${commentId}/reply`,
+			path: `/${this.version}/${this.route}/${commentId}/reply`,
 		});
 	}
 
@@ -66,7 +66,7 @@ export class Comment extends Route {
 	addReply(commentId, data) {
 		return this.client.request({
 			method: "POST",
-			path: `${this.route}/${commentId}/reply`,
+			path: `/${this.version}/${this.route}/${commentId}/reply`,
 			body: JSON.stringify(data),
 		});
 	}

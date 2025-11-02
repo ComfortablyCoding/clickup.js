@@ -24,7 +24,7 @@ export class Folder extends Route {
 	 */
 	get(folderId) {
 		return this.client.request({
-			path: `${this.route}/${folderId}`,
+			path: `/${this.version}/${this.route}/${folderId}`,
 		});
 	}
 
@@ -38,7 +38,7 @@ export class Folder extends Route {
 	update(folderId, data) {
 		return this.client.request({
 			method: "PUT",
-			path: `${this.route}/${folderId}`,
+			path: `/${this.version}/${this.route}/${folderId}`,
 			body: JSON.stringify(data),
 		});
 	}
@@ -52,7 +52,7 @@ export class Folder extends Route {
 	delete(folderId) {
 		return this.client.request({
 			method: "DELETE",
-			path: `${this.route}/${folderId}`,
+			path: `/${this.version}/${this.route}/${folderId}`,
 		});
 	}
 
@@ -68,7 +68,7 @@ export class Folder extends Route {
 	addGuest(folderId, guestId, data, params) {
 		return this.client.request({
 			method: "POST",
-			path: `${this.route}/${folderId}/guest/${guestId}`,
+			path: `/${this.version}/${this.route}/${folderId}/guest/${guestId}`,
 			params,
 			body: JSON.stringify(data),
 		});
@@ -85,7 +85,7 @@ export class Folder extends Route {
 	removeGuest(folderId, guestId, params) {
 		return this.client.request({
 			method: "DELETE",
-			path: `${this.route}/${folderId}/guest/${guestId}`,
+			path: `/${this.version}/${this.route}/${folderId}/guest/${guestId}`,
 			params,
 		});
 	}
@@ -100,7 +100,7 @@ export class Folder extends Route {
 	createList(folderId, data) {
 		return this.client.request({
 			method: "POST",
-			path: `${this.route}/${folderId}/list`,
+			path: `/${this.version}/${this.route}/${folderId}/list`,
 			body: JSON.stringify(data),
 		});
 	}
@@ -115,7 +115,7 @@ export class Folder extends Route {
 	 */
 	lists(folderId, params) {
 		return this.client.request({
-			path: `${this.route}/${folderId}/list`,
+			path: `/${this.version}/${this.route}/${folderId}/list`,
 			params,
 		});
 	}
@@ -130,7 +130,7 @@ export class Folder extends Route {
 	createView(folderId, data) {
 		return this.client.request({
 			method: "POST",
-			path: `${this.route}/${folderId}/view`,
+			path: `/${this.version}/${this.route}/${folderId}/view`,
 			body: JSON.stringify(data),
 		});
 	}
@@ -143,7 +143,7 @@ export class Folder extends Route {
 	 */
 	views(folderId) {
 		return this.client.request({
-			path: `${this.route}/${folderId}/view`,
+			path: `/${this.version}/${this.route}/${folderId}/view`,
 		});
 	}
 
@@ -155,7 +155,7 @@ export class Folder extends Route {
 	 */
 	customFields(folderId) {
 		return this.client.request({
-			path: `${this.route}/${folderId}/field`,
+			path: `/${this.version}/${this.route}/${folderId}/field`,
 		});
 	}
 }

@@ -26,7 +26,7 @@ export class Checklist extends Route {
 	update(checklistId, data) {
 		return this.client.request({
 			method: "PUT",
-			path: `${this.route}/${checklistId}`,
+			path: `/${this.version}/${this.route}/${checklistId}`,
 			body: JSON.stringify(data),
 		});
 	}
@@ -40,7 +40,7 @@ export class Checklist extends Route {
 	delete(checklistId) {
 		return this.client.request({
 			method: "DELETE",
-			path: `${this.route}/${checklistId}`,
+			path: `/${this.version}/${this.route}/${checklistId}`,
 		});
 	}
 
@@ -54,7 +54,7 @@ export class Checklist extends Route {
 	addItem(checklistId, data) {
 		return this.client.request({
 			method: "POST",
-			path: `${this.route}/${checklistId}/checklist_item`,
+			path: `/${this.version}/${this.route}/${checklistId}/checklist_item`,
 			body: JSON.stringify(data),
 		});
 	}
@@ -70,7 +70,7 @@ export class Checklist extends Route {
 	editItem(checklistId, checklistItemId, data) {
 		return this.client.request({
 			method: "PUT",
-			path: `${this.route}/${checklistId}/checklist_item/${checklistItemId}`,
+			path: `/${this.version}/${this.route}/${checklistId}/checklist_item/${checklistItemId}`,
 			body: JSON.stringify(data),
 		});
 	}
@@ -85,7 +85,7 @@ export class Checklist extends Route {
 	removeItem(checklistId, checklistItemId) {
 		return this.client.request({
 			method: "DELETE",
-			path: `${this.route}/${checklistId}/checklist_item/${checklistItemId}`,
+			path: `/${this.version}/${this.route}/${checklistId}/checklist_item/${checklistItemId}`,
 		});
 	}
 }

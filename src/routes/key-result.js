@@ -26,7 +26,7 @@ export class KeyResult extends Route {
 	update(keyResultId, data) {
 		return this.client.request({
 			method: "PUT",
-			path: `${this.route}/${keyResultId}`,
+			path: `/${this.version}/${this.route}/${keyResultId}`,
 			body: JSON.stringify(data),
 		});
 	}
@@ -40,7 +40,7 @@ export class KeyResult extends Route {
 	delete(keyResultId) {
 		return this.client.request({
 			method: "DELETE",
-			path: `${this.route}/${keyResultId}`,
+			path: `/${this.version}/${this.route}/${keyResultId}`,
 		});
 	}
 }

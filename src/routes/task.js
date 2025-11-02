@@ -25,7 +25,7 @@ export class Task extends Route {
 	 */
 	get(taskId, params) {
 		return this.client.request({
-			path: `${this.route}/${taskId}`,
+			path: `/${this.version}/${this.route}/${taskId}`,
 			params,
 		});
 	}
@@ -41,7 +41,7 @@ export class Task extends Route {
 	update(taskId, data, params) {
 		return this.client.request({
 			method: "PUT",
-			path: `${this.route}/${taskId}`,
+			path: `/${this.version}/${this.route}/${taskId}`,
 			params,
 			body: JSON.stringify(data),
 		});
@@ -57,7 +57,7 @@ export class Task extends Route {
 	delete(taskId, params) {
 		return this.client.request({
 			method: "DELETE",
-			path: `${this.route}/${taskId}`,
+			path: `/${this.version}/${this.route}/${taskId}`,
 			params,
 		});
 	}
@@ -76,7 +76,7 @@ export class Task extends Route {
 			headers: {
 				"Content-Type": "multipart/form-data",
 			},
-			path: `${this.route}/${taskId}/attachment`,
+			path: `/${this.version}/${this.route}/${taskId}/attachment`,
 			params,
 			body: attachment,
 		});
@@ -93,7 +93,7 @@ export class Task extends Route {
 	addComment(taskId, data, params) {
 		return this.client.request({
 			method: "POST",
-			path: `${this.route}/${taskId}/comment`,
+			path: `/${this.version}/${this.route}/${taskId}/comment`,
 			params,
 			body: JSON.stringify(data),
 		});
@@ -108,7 +108,7 @@ export class Task extends Route {
 	 */
 	comments(taskId, params) {
 		return this.client.request({
-			path: `${this.route}/${taskId}/comment`,
+			path: `/${this.version}/${this.route}/${taskId}/comment`,
 			params,
 		});
 	}
@@ -124,7 +124,7 @@ export class Task extends Route {
 	AddChecklist(taskId, data, params) {
 		return this.client.request({
 			method: "POST",
-			path: `${this.route}/${taskId}/checklist`,
+			path: `/${this.version}/${this.route}/${taskId}/checklist`,
 			params,
 			body: JSON.stringify(data),
 		});
@@ -142,7 +142,7 @@ export class Task extends Route {
 	addCustomFieldValue(taskId, fieldId, data, params) {
 		return this.client.request({
 			method: "POST",
-			path: `${this.route}/${taskId}/field/${fieldId}`,
+			path: `/${this.version}/${this.route}/${taskId}/field/${fieldId}`,
 			params,
 			body: JSON.stringify(data),
 		});
@@ -159,7 +159,7 @@ export class Task extends Route {
 	removeCustomFieldValue(taskId, fieldId, params) {
 		return this.client.request({
 			method: "DELETE",
-			path: `${this.route}/${taskId}/field/${fieldId}`,
+			path: `/${this.version}/${this.route}/${taskId}/field/${fieldId}`,
 			params,
 		});
 	}
@@ -175,7 +175,7 @@ export class Task extends Route {
 	addDependency(taskId, data, params) {
 		return this.client.request({
 			method: "POST",
-			path: `${this.route}/${taskId}/dependency`,
+			path: `/${this.version}/${this.route}/${taskId}/dependency`,
 			params,
 			body: JSON.stringify(data),
 		});
@@ -191,7 +191,7 @@ export class Task extends Route {
 	removeDependency(taskId, params) {
 		return this.client.request({
 			method: "DELETE",
-			path: `${this.route}/${taskId}/dependency`,
+			path: `/${this.version}/${this.route}/${taskId}/dependency`,
 			params,
 		});
 	}
@@ -207,7 +207,7 @@ export class Task extends Route {
 	addTaskLink(taskId, linksTo, params) {
 		return this.client.request({
 			method: "POST",
-			path: `${this.route}/${taskId}/link/${linksTo}`,
+			path: `/${this.version}/${this.route}/${taskId}/link/${linksTo}`,
 			params,
 		});
 	}
@@ -223,7 +223,7 @@ export class Task extends Route {
 	removeTaskLink(taskId, linksTo, params) {
 		return this.client.request({
 			method: "DELETE",
-			path: `${this.route}/${taskId}/link/${linksTo}`,
+			path: `/${this.version}/${this.route}/${taskId}/link/${linksTo}`,
 			params,
 		});
 	}
@@ -240,7 +240,7 @@ export class Task extends Route {
 	addGuest(taskId, guestId, data, params) {
 		return this.client.request({
 			method: "POST",
-			path: `${this.route}/${taskId}/guest/${guestId}`,
+			path: `/${this.version}/${this.route}/${taskId}/guest/${guestId}`,
 			params,
 			body: JSON.stringify(data),
 		});
@@ -257,7 +257,7 @@ export class Task extends Route {
 	removeGuest(taskId, guestId, params) {
 		return this.client.request({
 			method: "DELETE",
-			path: `${this.route}/${taskId}/guest/${guestId}`,
+			path: `/${this.version}/${this.route}/${taskId}/guest/${guestId}`,
 			params,
 		});
 	}
@@ -270,7 +270,7 @@ export class Task extends Route {
 	 */
 	members(taskId) {
 		return this.client.request({
-			path: `${this.route}/${taskId}/member`,
+			path: `/${this.version}/${this.route}/${taskId}/member`,
 		});
 	}
 
@@ -285,7 +285,7 @@ export class Task extends Route {
 	addTag(taskId, tagName, params) {
 		return this.client.request({
 			method: "POST",
-			path: `${this.route}/${taskId}/tag/${tagName}`,
+			path: `/${this.version}/${this.route}/${taskId}/tag/${tagName}`,
 			params,
 		});
 	}
@@ -301,7 +301,7 @@ export class Task extends Route {
 	removeTag(taskId, tagName, params) {
 		return this.client.request({
 			method: "DELETE",
-			path: `${this.route}/${taskId}/tag/${tagName}`,
+			path: `/${this.version}/${this.route}/${taskId}/tag/${tagName}`,
 			params,
 		});
 	}
@@ -317,7 +317,7 @@ export class Task extends Route {
 	addTrackedTime(taskId, data, params) {
 		return this.client.request({
 			method: "POST",
-			path: `${this.route}/${taskId}/time`,
+			path: `/${this.version}/${this.route}/${taskId}/time`,
 			params,
 			body: JSON.stringify(data),
 		});
@@ -332,7 +332,7 @@ export class Task extends Route {
 	 */
 	trackedTime(taskId, params) {
 		return this.client.request({
-			path: `${this.route}/${taskId}/time`,
+			path: `/${this.version}/${this.route}/${taskId}/time`,
 			params,
 		});
 	}
@@ -349,7 +349,7 @@ export class Task extends Route {
 	editTrackedTime(taskId, intervalId, data, params) {
 		return this.client.request({
 			method: "PUT",
-			path: `${this.route}/${taskId}/time/${intervalId}`,
+			path: `/${this.version}/${this.route}/${taskId}/time/${intervalId}`,
 			params,
 			body: JSON.stringify(data),
 		});
@@ -366,7 +366,7 @@ export class Task extends Route {
 	removeTrackedTime(taskId, intervalId, params) {
 		return this.client.request({
 			method: "DELETE",
-			path: `${this.route}/${taskId}/time/${intervalId}`,
+			path: `/${this.version}/${this.route}/${taskId}/time/${intervalId}`,
 			params,
 		});
 	}
@@ -380,7 +380,7 @@ export class Task extends Route {
 	 */
 	timeInStatus(taskId, params) {
 		return this.client.request({
-			path: `${this.route}/${taskId}/time_in_status`,
+			path: `/${this.version}/${this.route}/${taskId}/time_in_status`,
 			params,
 		});
 	}
@@ -393,7 +393,7 @@ export class Task extends Route {
 	 */
 	bulkTimeInStatus(params) {
 		return this.client.request({
-			path: `${this.route}/bulk_time_in_status/task_ids`,
+			path: `/${this.version}/${this.route}/bulk_time_in_status/task_ids`,
 			params,
 		});
 	}

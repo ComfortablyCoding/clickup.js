@@ -24,7 +24,7 @@ export class List extends Route {
 	 */
 	get(listId) {
 		return this.client.request({
-			path: `${this.route}/${listId}`,
+			path: `/${this.version}/${this.route}/${listId}`,
 		});
 	}
 
@@ -38,7 +38,7 @@ export class List extends Route {
 	update(listId, data) {
 		return this.client.request({
 			method: "PUT",
-			path: `${this.route}/${listId}`,
+			path: `/${this.version}/${this.route}/${listId}`,
 			body: JSON.stringify(data),
 		});
 	}
@@ -52,7 +52,7 @@ export class List extends Route {
 	delete(listId) {
 		return this.client.request({
 			method: "DELETE",
-			path: `${this.route}/${listId}`,
+			path: `/${this.version}/${this.route}/${listId}`,
 		});
 	}
 
@@ -66,7 +66,7 @@ export class List extends Route {
 	addComment(listId, data) {
 		return this.client.request({
 			method: "POST",
-			path: `${this.route}/${listId}/comment`,
+			path: `/${this.version}/${this.route}/${listId}/comment`,
 			body: JSON.stringify(data),
 		});
 	}
@@ -80,7 +80,7 @@ export class List extends Route {
 	 */
 	comments(listId, params) {
 		return this.client.request({
-			path: `${this.route}/${listId}/comment`,
+			path: `/${this.version}/${this.route}/${listId}/comment`,
 			params,
 		});
 	}
@@ -93,7 +93,7 @@ export class List extends Route {
 	 */
 	customFields(listId) {
 		return this.client.request({
-			path: `${this.route}/${listId}/field`,
+			path: `/${this.version}/${this.route}/${listId}/field`,
 		});
 	}
 
@@ -109,7 +109,7 @@ export class List extends Route {
 	addGuest(listId, guestId, data, params) {
 		return this.client.request({
 			method: "POST",
-			path: `${this.route}/${listId}/guest/${guestId}`,
+			path: `/${this.version}/${this.route}/${listId}/guest/${guestId}`,
 			params,
 			body: JSON.stringify(data),
 		});
@@ -126,7 +126,7 @@ export class List extends Route {
 	removeGuest(listId, guestId, params) {
 		return this.client.request({
 			method: "DELETE",
-			path: `${this.route}/${listId}/guest/${guestId}`,
+			path: `/${this.version}/${this.route}/${listId}/guest/${guestId}`,
 			params,
 		});
 	}
@@ -139,7 +139,7 @@ export class List extends Route {
 	 */
 	members(listId) {
 		return this.client.request({
-			path: `${this.route}/${listId}/member`,
+			path: `/${this.version}/${this.route}/${listId}/member`,
 		});
 	}
 
@@ -154,7 +154,7 @@ export class List extends Route {
 	createTask(listId, data, params) {
 		return this.client.request({
 			method: "POST",
-			path: `${this.route}/${listId}/task`,
+			path: `/${this.version}/${this.route}/${listId}/task`,
 			params,
 			body: JSON.stringify(data),
 		});
@@ -169,7 +169,7 @@ export class List extends Route {
 	 */
 	tasks(listId, params) {
 		return this.client.request({
-			path: `${this.route}/${listId}/task`,
+			path: `/${this.version}/${this.route}/${listId}/task`,
 			params,
 		});
 	}
@@ -185,7 +185,7 @@ export class List extends Route {
 	createTaskFromTemplate(listId, templateId, data) {
 		return this.client.request({
 			method: "POST",
-			path: `${this.route}/${listId}/taskTemplate/${templateId}`,
+			path: `/${this.version}/${this.route}/${listId}/taskTemplate/${templateId}`,
 			body: JSON.stringify(data),
 		});
 	}
@@ -200,7 +200,7 @@ export class List extends Route {
 	createView(listId, data) {
 		return this.client.request({
 			method: "POST",
-			path: `${this.route}/${listId}/view`,
+			path: `/${this.version}/${this.route}/${listId}/view`,
 			body: JSON.stringify(data),
 		});
 	}
@@ -213,7 +213,7 @@ export class List extends Route {
 	 */
 	views(listId) {
 		return this.client.request({
-			path: `${this.route}/${listId}/view`,
+			path: `/${this.version}/${this.route}/${listId}/view`,
 		});
 	}
 
@@ -227,7 +227,7 @@ export class List extends Route {
 	addTask(listId, taskId) {
 		return this.client.request({
 			method: "POST",
-			path: `${this.route}/${listId}/task/${taskId}`,
+			path: `/${this.version}/${this.route}/${listId}/task/${taskId}`,
 		});
 	}
 
@@ -241,7 +241,7 @@ export class List extends Route {
 	removeTask(listId, taskId) {
 		return this.client.request({
 			method: "DELETE",
-			path: `${this.route}/${listId}/task/${taskId}`,
+			path: `/${this.version}/${this.route}/${listId}/task/${taskId}`,
 		});
 	}
 }

@@ -24,7 +24,7 @@ export class View extends Route {
 	 */
 	get(viewId) {
 		return this.client.request({
-			path: `${this.route}/${viewId}`,
+			path: `/${this.version}/${this.route}/${viewId}`,
 		});
 	}
 
@@ -38,7 +38,7 @@ export class View extends Route {
 	update(viewId, data) {
 		return this.client.request({
 			method: "PUT",
-			path: `${this.route}/${viewId}`,
+			path: `/${this.version}/${this.route}/${viewId}`,
 			body: JSON.stringify(data),
 		});
 	}
@@ -52,7 +52,7 @@ export class View extends Route {
 	delete(viewId) {
 		return this.client.request({
 			method: "DELETE",
-			path: `${this.route}/${viewId}`,
+			path: `/${this.version}/${this.route}/${viewId}`,
 		});
 	}
 
@@ -66,7 +66,7 @@ export class View extends Route {
 	addComment(viewId, data) {
 		return this.client.request({
 			method: "POST",
-			path: `${this.route}/${viewId}/comment`,
+			path: `/${this.version}/${this.route}/${viewId}/comment`,
 			body: JSON.stringify(data),
 		});
 	}
@@ -80,7 +80,7 @@ export class View extends Route {
 	 */
 	comments(viewId, params) {
 		return this.client.request({
-			path: `${this.route}/${viewId}/comment`,
+			path: `/${this.version}/${this.route}/${viewId}/comment`,
 			params,
 		});
 	}
@@ -94,7 +94,7 @@ export class View extends Route {
 	 */
 	tasks(viewId, params) {
 		return this.client.request({
-			path: `${this.route}/${viewId}/task`,
+			path: `/${this.version}/${this.route}/${viewId}/task`,
 			params: { page: 0, ...params },
 		});
 	}
