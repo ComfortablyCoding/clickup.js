@@ -57,13 +57,13 @@ export class Goal extends Route {
 	}
 
 	/**
-	 * Create a key result (target)
+	 * Add a key result (target)
 	 * @see {@link https://clickup.com/api/clickupreference/operation/CreateKeyResult}
 	 *
 	 * @param {string} goalId The goal id
 	 * @param {object} data The key result data
 	 */
-	createKeyResult(goalId, data) {
+	addKeyResult(goalId, data) {
 		return this.client.request({
 			method: "POST",
 			path: `${this.route}/${goalId}/key_result`,

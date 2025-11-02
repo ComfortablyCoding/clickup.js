@@ -16,39 +16,40 @@ export class Authorization extends Route {
 	}
 
 	/**
-	 * Get the access token for the given client
-	 * @see {@link https://clickup.com/api/clickupreference/operation/GetAccessToken}
+	 * Create an access token for the given client
 	 *
 	 * @param {object} params The query parameters to pass
-	 * @param {string} params.client_id The OAuth app client id
-	 * @param {string} params.client_secret The OAuth app client secret
+	 * @param {string} params.clientId The OAuth app client id
+	 * @param {string} params.clientSecret The OAuth app client secret
 	 * @param {string} params.code The code given in redirect url
 	 */
-	accessToken(params) {
+	createToken(params) {
 		return this.client.request({
 			method: "POST",
-			path: "oauth/token",
-			params,
+			path: "/oauth/token",
+			params: {
+				client_id: params.clientId,
+				client_secret: params.clientSecret,
+				code: params.code,
+			},
 		});
 	}
 
 	/**
 	 * Get the details of the authenticated user's ClickUp account
-	 * @see {@link https://clickup.com/api/clickupreference/operation/GetAuthorizedUser}
 	 */
 	user() {
 		return this.client.request({
-			path: "user",
+			path: "/user",
 		});
 	}
 
 	/**
 	 * Get the teams (workspaces) available to the authenticated user
-	 * @see {@link https://clickup.com/api/clickupreference/operation/GetAuthorizedTeams}
 	 */
 	teams() {
 		return this.client.request({
-			path: "team",
+			path: "/team",
 		});
 	}
 }

@@ -146,4 +146,16 @@ export class Folder extends Route {
 			path: `${this.route}/${folderId}/view`,
 		});
 	}
+
+	/**
+	 * Get all Custom Fields available in a folder
+
+	 *
+	 * @param {number} folderId The folder id
+	 */
+	customFields(folderId) {
+		return this.client.request({
+			path: `${this.route}/${folderId}/field`,
+		});
+	}
 }

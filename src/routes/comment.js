@@ -45,28 +45,29 @@ export class Comment extends Route {
 	}
 
 	/**
-	 * Get threaded comments
+	 * Get comment thread/replies
 	 * @see {@link https://clickup.com/api/clickupreference/operation/GetThreadedComments}
 	 *
 	 * @param {number} commentId The comment id
 	 */
-	threaded(commentId) {
+	replies(commentId) {
 		return this.client.request({
 			path: `${this.route}/${commentId}/reply`,
 		});
 	}
 
 	/**
-	 * Create a threaded comment
+	 * Add a reply comment
 	 * @see {@link https://clickup.com/api/clickupreference/operation/CreateThreadedComment}
 	 *
 	 * @param {number} commentId The comment id
 	 * @param {object} data The comment data
 	 */
-	createThread(commentId) {
+	addReply(commentId, data) {
 		return this.client.request({
 			method: "POST",
 			path: `${this.route}/${commentId}/reply`,
+			body: JSON.stringify(data),
 		});
 	}
 }

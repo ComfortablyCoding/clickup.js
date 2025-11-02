@@ -539,17 +539,29 @@ export class Team extends Route {
 	}
 
 	/**
-	 * Create a team user group.
+	 * Add a team user group.
 	 * @see {@link https://clickup.com/api/clickupreference/operation/CreateTeam}
 	 *
 	 * @param {number} teamId The team id
 	 * @param {object} data The team data
 	 */
-	createUserGroup(teamId, data) {
+	addUserGroup(teamId, data) {
 		return this.client.request({
 			method: "POST",
 			path: `${this.route}/${teamId}/group`,
 			body: JSON.stringify(data),
+		});
+	}
+
+	/**
+	 * Get all Custom Fields available in a team (workspace)
+
+	 *
+	 * @param {number} teamId The team id
+	 */
+	customFields(teamId) {
+		return this.client.request({
+			path: `${this.route}/${teamId}/field`,
 		});
 	}
 }

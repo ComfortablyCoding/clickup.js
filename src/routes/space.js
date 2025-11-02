@@ -201,4 +201,16 @@ export class Space extends Route {
 			path: `${this.route}/${spaceId}/view`,
 		});
 	}
+
+	/**
+	 * Get all Custom Fields available in a space
+
+	 *
+	 * @param {number} spaceId The space id
+	 */
+	customFields(spaceId) {
+		return this.client.request({
+			path: `${this.route}/${spaceId}/field`,
+		});
+	}
 }

@@ -114,14 +114,14 @@ export class Task extends Route {
 	}
 
 	/**
-	 * Create a checklist in a task
+	 * Add a checklist in a task
 	 * @see {@link https://clickup.com/api/clickupreference/operation/CreateChecklist}
 	 *
 	 * @param {string} taskId The task id
 	 * @param {object} data The checklist data
 	 * @param {object} [params] The query parameters to use
 	 */
-	createChecklist(taskId, data, params) {
+	AddChecklist(taskId, data, params) {
 		return this.client.request({
 			method: "POST",
 			path: `${this.route}/${taskId}/checklist`,
