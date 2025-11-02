@@ -36,31 +36,23 @@ const { body } = await clickup.task.get("9hz");
 console.log(body);
 ```
 
-## Caveats
+## API Parity
 
-The library is structured to match classes with their respective routes, **NOT** how they are sectioned in the Clickup API docs. For example adding a guest to a task is under the `Task` class instead of the `Guest` class as its route is via `/task`.
+The library mirrors ClickUp's API structure:
+
+- `clickup.task.*` – Task operations (create, get, update, delete, comments).
+- `clickup.list.*` – List operations.
+- `clickup.folder.*` – Folder operations.
+- `clickup.space.*` – Space operations.
+- `clickup.team.*`– Team/Workspaces.
+- `clickup.webhook.*` – Webhook management.
+- `clickup.user.*` – User info.
+- `clickup.goal.*` – Goals (if enabled).
+- And more – explore via the [API docs](https://clickup-js.netlify.app).
 
 ## Documentation
 
 You can view the libraries full API at [clickup.js docs](https://clickup-js.netlify.app)
-
-## Features
-
-The available features are:
-
-- `Authorization`
-- `Checklist`
-- `Comment`
-- `Folder`
-- `Goal`
-- `Group`
-- `KeyResult`
-- `List`
-- `Space`
-- `Task`
-- `Team`
-- `View`
-- `Webhook`
 
 ## Disclaimer
 

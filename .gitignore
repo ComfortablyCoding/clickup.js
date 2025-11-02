@@ -33,4 +33,6 @@ cache
 
 # build
 dist
-docs
+
+# autogen docs
+docs/api.md
