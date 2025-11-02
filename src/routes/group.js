@@ -20,12 +20,12 @@ export class Group extends Route {
 	 * Get all user groups within a team
 	 * @see {@link https://clickup.com/api/clickupreference/operation/GetTeams1}
 	 *
-	 * @param {object} [params] The query parameters to use
+	 * @param {object} [options] The query parameters to use
 	 */
-	get(params) {
+	get(options) {
 		return this.client.request({
 			path: `/${this.version}/${this.route}`,
-			params,
+			query: options,,
 		});
 	}
 

@@ -18,19 +18,19 @@ export class Authorization extends Route {
 	/**
 	 * Create an access token for the given client
 	 *
-	 * @param {object} params The query parameters to pass
-	 * @param {string} params.clientId The OAuth app client id
-	 * @param {string} params.clientSecret The OAuth app client secret
-	 * @param {string} params.code The code given in redirect url
+	 * @param {object} options The query parameters to pass
+	 * @param {string} options.clientId The OAuth app client id
+	 * @param {string} options.clientSecret The OAuth app client secret
+	 * @param {string} options.code The code given in redirect url
 	 */
-	createToken(params) {
+	createToken(options) {
 		return this.client.request({
 			method: "POST",
 			path: "/oauth/token",
-			params: {
-				client_id: params.clientId,
-				client_secret: params.clientSecret,
-				code: params.code,
+			query: {
+				client_id: options.clientId,
+				client_secret: options.clientSecret,
+				code: options.code,
 			},
 		});
 	}

@@ -21,12 +21,12 @@ export class Task extends Route {
 	 * @see {@link https://clickup.com/api/clickupreference/operation/GetTask}
 	 *
 	 * @param {string} taskId The task id
-	 * @param {object} [params] The query parameters to use
+	 * @param {object} [options] The query parameters to use
 	 */
-	get(taskId, params) {
+	get(taskId, options) {
 		return this.client.request({
 			path: `/${this.version}/${this.route}/${taskId}`,
-			params,
+			query: options,
 		});
 	}
 
@@ -36,13 +36,13 @@ export class Task extends Route {
 	 *
 	 * @param {string} taskId The task id
 	 * @param {object} data The task data
-	 * @param {object} [params] The query parameters to use
+	 * @param {object} [options] The query parameters to use
 	 */
-	update(taskId, data, params) {
+	update(taskId, data, options) {
 		return this.client.request({
 			method: "PUT",
 			path: `/${this.version}/${this.route}/${taskId}`,
-			params,
+			query: options,
 			body: JSON.stringify(data),
 		});
 	}
@@ -52,13 +52,13 @@ export class Task extends Route {
 	 * @see {@link https://clickup.com/api/clickupreference/operation/DeleteTask}
 	 *
 	 * @param {string} taskId The task id
-	 * @param {object} [params] The query parameters to use
+	 * @param {object} [options] The query parameters to use
 	 */
-	delete(taskId, params) {
+	delete(taskId, options) {
 		return this.client.request({
 			method: "DELETE",
 			path: `/${this.version}/${this.route}/${taskId}`,
-			params,
+			query: options,
 		});
 	}
 
@@ -68,16 +68,16 @@ export class Task extends Route {
 	 *
 	 * @param {string} taskId The task id
 	 * @param {FormData} attachment The attachments to add
-	 * @param {object} [params] The query parameters to use
+	 * @param {object} [options] The query parameters to use
 	 */
-	addAttachment(taskId, attachment, params) {
+	addAttachment(taskId, attachment, options) {
 		return this.client.request({
 			method: "POST",
 			headers: {
 				"Content-Type": "multipart/form-data",
 			},
 			path: `/${this.version}/${this.route}/${taskId}/attachment`,
-			params,
+			query: options,
 			body: attachment,
 		});
 	}
@@ -88,13 +88,13 @@ export class Task extends Route {
 	 *
 	 * @param {string} taskId The task id
 	 * @param {object} data The comment data
-	 * @param {object} [params] The query parameters to use
+	 * @param {object} [options] The query parameters to use
 	 */
-	addComment(taskId, data, params) {
+	addComment(taskId, data, options) {
 		return this.client.request({
 			method: "POST",
 			path: `/${this.version}/${this.route}/${taskId}/comment`,
-			params,
+			query: options,
 			body: JSON.stringify(data),
 		});
 	}
@@ -104,12 +104,12 @@ export class Task extends Route {
 	 * @see {@link https://clickup.com/api/clickupreference/operation/GetTaskComments}
 	 *
 	 * @param {string} taskId The task id
-	 * @param {object} [params] The query parameters to use
+	 * @param {object} [options] The query parameters to use
 	 */
-	comments(taskId, params) {
+	comments(taskId, options) {
 		return this.client.request({
 			path: `/${this.version}/${this.route}/${taskId}/comment`,
-			params,
+			query: options,
 		});
 	}
 
@@ -119,13 +119,13 @@ export class Task extends Route {
 	 *
 	 * @param {string} taskId The task id
 	 * @param {object} data The checklist data
-	 * @param {object} [params] The query parameters to use
+	 * @param {object} [options] The query parameters to use
 	 */
-	AddChecklist(taskId, data, params) {
+	AddChecklist(taskId, data, options) {
 		return this.client.request({
 			method: "POST",
 			path: `/${this.version}/${this.route}/${taskId}/checklist`,
-			params,
+			query: options,
 			body: JSON.stringify(data),
 		});
 	}
@@ -137,13 +137,13 @@ export class Task extends Route {
 	 * @param {string} taskId The task id
 	 * @param {string} fieldId The uuid of the custom field
 	 * @param {object} data The custom field data
-	 * @param {object} [params] The query parameters to use
+	 * @param {object} [options] The query parameters to use
 	 */
-	addCustomFieldValue(taskId, fieldId, data, params) {
+	addCustomFieldValue(taskId, fieldId, data, options) {
 		return this.client.request({
 			method: "POST",
 			path: `/${this.version}/${this.route}/${taskId}/field/${fieldId}`,
-			params,
+			query: options,
 			body: JSON.stringify(data),
 		});
 	}
@@ -154,13 +154,13 @@ export class Task extends Route {
 	 *
 	 * @param {string} taskId The task id
 	 * @param {string} fieldId The uuid of the custom field
-	 * @param {object} [params] The query parameters to use
+	 * @param {object} [options] The query parameters to use
 	 */
-	removeCustomFieldValue(taskId, fieldId, params) {
+	removeCustomFieldValue(taskId, fieldId, options) {
 		return this.client.request({
 			method: "DELETE",
 			path: `/${this.version}/${this.route}/${taskId}/field/${fieldId}`,
-			params,
+			query: options,
 		});
 	}
 
@@ -170,13 +170,13 @@ export class Task extends Route {
 	 *
 	 * @param {string} taskId The task id
 	 * @param {object} data The dependency data
-	 * @param {object} [params] The query parameters to use
+	 * @param {object} [options] The query parameters to use
 	 */
-	addDependency(taskId, data, params) {
+	addDependency(taskId, data, options) {
 		return this.client.request({
 			method: "POST",
 			path: `/${this.version}/${this.route}/${taskId}/dependency`,
-			params,
+			query: options,
 			body: JSON.stringify(data),
 		});
 	}
@@ -188,11 +188,11 @@ export class Task extends Route {
 	 * @param {string} taskId The task id
 	 * @param {object} [options] The parameter options to pass in
 	 */
-	removeDependency(taskId, params) {
+	removeDependency(taskId, options) {
 		return this.client.request({
 			method: "DELETE",
 			path: `/${this.version}/${this.route}/${taskId}/dependency`,
-			params,
+			query: options,
 		});
 	}
 
@@ -202,13 +202,13 @@ export class Task extends Route {
 	 *
 	 * @param {string} taskId The task id
 	 * @param {string} linksTo The id of the task to link to
-	 * @param {object} [params] The query parameters to use
+	 * @param {object} [options] The query parameters to use
 	 */
-	addTaskLink(taskId, linksTo, params) {
+	addTaskLink(taskId, linksTo, options) {
 		return this.client.request({
 			method: "POST",
 			path: `/${this.version}/${this.route}/${taskId}/link/${linksTo}`,
-			params,
+			query: options,
 		});
 	}
 
@@ -218,13 +218,13 @@ export class Task extends Route {
 	 *
 	 * @param {string} taskId The task id
 	 * @param {string} linksTo The id of the task to link to
-	 * @param {object} [params] The query parameters to use
+	 * @param {object} [options] The query parameters to use
 	 */
-	removeTaskLink(taskId, linksTo, params) {
+	removeTaskLink(taskId, linksTo, options) {
 		return this.client.request({
 			method: "DELETE",
 			path: `/${this.version}/${this.route}/${taskId}/link/${linksTo}`,
-			params,
+			query: options,
 		});
 	}
 
@@ -235,13 +235,13 @@ export class Task extends Route {
 	 * @param {string} taskId The task id
 	 * @param {number} guestId The guest id
 	 * @param {object} data The guest data
-	 * @param {object} [params] The query parameters to use
+	 * @param {object} [options] The query parameters to use
 	 */
-	addGuest(taskId, guestId, data, params) {
+	addGuest(taskId, guestId, data, options) {
 		return this.client.request({
 			method: "POST",
 			path: `/${this.version}/${this.route}/${taskId}/guest/${guestId}`,
-			params,
+			query: options,
 			body: JSON.stringify(data),
 		});
 	}
@@ -252,13 +252,13 @@ export class Task extends Route {
 	 *
 	 * @param {string} taskId The task id
 	 * @param {number} guestId The guest id
-	 * @param {object} [params] The query parameters to use
+	 * @param {object} [options] The query parameters to use
 	 */
-	removeGuest(taskId, guestId, params) {
+	removeGuest(taskId, guestId, options) {
 		return this.client.request({
 			method: "DELETE",
 			path: `/${this.version}/${this.route}/${taskId}/guest/${guestId}`,
-			params,
+			query: options,
 		});
 	}
 
@@ -280,13 +280,13 @@ export class Task extends Route {
 	 *
 	 * @param {string} taskId The task id
 	 * @param {string} tagName The tag name
-	 * @param {object} [params] The query parameters to use
+	 * @param {object} [options] The query parameters to use
 	 */
-	addTag(taskId, tagName, params) {
+	addTag(taskId, tagName, options) {
 		return this.client.request({
 			method: "POST",
 			path: `/${this.version}/${this.route}/${taskId}/tag/${tagName}`,
-			params,
+			query: options,
 		});
 	}
 
@@ -296,13 +296,13 @@ export class Task extends Route {
 	 *
 	 * @param {string} taskId The task id
 	 * @param {string} tagName The tag name
-	 * @param {object} [params] The query parameters to use
+	 * @param {object} [options] The query parameters to use
 	 */
-	removeTag(taskId, tagName, params) {
+	removeTag(taskId, tagName, options) {
 		return this.client.request({
 			method: "DELETE",
 			path: `/${this.version}/${this.route}/${taskId}/tag/${tagName}`,
-			params,
+			query: options,
 		});
 	}
 
@@ -312,13 +312,13 @@ export class Task extends Route {
 	 *
 	 * @param {string} taskId The task id
 	 * @param {object} data The time tracking data
-	 * @param {object} [params] The query parameters to use
+	 * @param {object} [options] The query parameters to use
 	 */
-	addTrackedTime(taskId, data, params) {
+	addTrackedTime(taskId, data, options) {
 		return this.client.request({
 			method: "POST",
 			path: `/${this.version}/${this.route}/${taskId}/time`,
-			params,
+			query: options,
 			body: JSON.stringify(data),
 		});
 	}
@@ -328,12 +328,12 @@ export class Task extends Route {
 	 * @see {@link https://clickup.com/api/clickupreference/operation/Gettrackedtime}
 	 *
 	 * @param {string} taskId The task id
-	 * @param {object} [params] The query parameters to use
+	 * @param {object} [options] The query parameters to use
 	 */
-	trackedTime(taskId, params) {
+	trackedTime(taskId, options) {
 		return this.client.request({
 			path: `/${this.version}/${this.route}/${taskId}/time`,
-			params,
+			query: options,
 		});
 	}
 
@@ -344,13 +344,13 @@ export class Task extends Route {
 	 * @param {string} taskId The task id
 	 * @param {string} intervalId The interval id
 	 * @param {object} data The time tracking data
-	 * @param {object} [params] The query parameters to use
+	 * @param {object} [options] The query parameters to use
 	 */
-	editTrackedTime(taskId, intervalId, data, params) {
+	editTrackedTime(taskId, intervalId, data, options) {
 		return this.client.request({
 			method: "PUT",
 			path: `/${this.version}/${this.route}/${taskId}/time/${intervalId}`,
-			params,
+			query: options,
 			body: JSON.stringify(data),
 		});
 	}
@@ -361,13 +361,13 @@ export class Task extends Route {
 	 *
 	 * @param {string} taskId The task id
 	 * @param {string} intervalId The interval id
-	 * @param {object} [params] The query parameters to use
+	 * @param {object} [options] The query parameters to use
 	 */
-	removeTrackedTime(taskId, intervalId, params) {
+	removeTrackedTime(taskId, intervalId, options) {
 		return this.client.request({
 			method: "DELETE",
 			path: `/${this.version}/${this.route}/${taskId}/time/${intervalId}`,
-			params,
+			query: options,
 		});
 	}
 
@@ -376,12 +376,12 @@ export class Task extends Route {
 	 * @see {@link https://clickup.com/api/clickupreference/operation/GetTask'sTimeinStatus}
 	 *
 	 * @param {string} taskId The task id
-	 * @param {object} [params] The query parameters to use
+	 * @param {object} [options] The query parameters to use
 	 */
-	timeInStatus(taskId, params) {
+	timeInStatus(taskId, options) {
 		return this.client.request({
 			path: `/${this.version}/${this.route}/${taskId}/time_in_status`,
-			params,
+			query: options,
 		});
 	}
 
@@ -389,12 +389,12 @@ export class Task extends Route {
 	 * Get bulk tasks time in status
 	 * @see {@link https://clickup.com/api/clickupreference/operation/GetBulkTasks'TimeinStatus}
 	 *
-	 * @param {object} params The query parameters to use
+	 * @param {object} options The query parameters to use
 	 */
-	bulkTimeInStatus(params) {
+	bulkTimeInStatus(options) {
 		return this.client.request({
 			path: `/${this.version}/${this.route}/bulk_time_in_status/task_ids`,
-			params,
+			query: options,
 		});
 	}
 }

@@ -76,13 +76,13 @@ export class Space extends Route {
 	 * @see {@link https://clickup.com/api/clickupreference/operation/GetFolders}
 	 *
 	 * @param {number} spaceId The space id
-	 * @param {object} [params] The query parameters to pass
-	 * @param {boolean} params.archived If archived lists should be returned or not
+	 * @param {object} [options] The query parameters to pass
+	 * @param {boolean} options.archived If archived lists should be returned or not
 	 */
-	folders(spaceId, params) {
+	folders(spaceId, options) {
 		return this.client.request({
 			path: `/${this.version}/${this.route}/${spaceId}/folder`,
-			params,
+			query: options,,
 		});
 	}
 
@@ -106,13 +106,13 @@ export class Space extends Route {
 	 * @see {@link https://clickup.com/api/clickupreference/operation/GetFolderlessLists}
 	 *
 	 * @param {number} spaceId The space id
-	 * @param {object} [params] The query parameters to pass
-	 * @param {boolean} params.archived If archived lists should be returned or not
+	 * @param {object} [options] The query parameters to pass
+	 * @param {boolean} options.archived If archived lists should be returned or not
 	 */
-	folderlessLists(spaceId, params) {
+	folderlessLists(spaceId, options) {
 		return this.client.request({
 			path: `/${this.version}/${this.route}/${spaceId}/list`,
-			params,
+			query: options,,
 		});
 	}
 

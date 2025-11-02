@@ -76,12 +76,12 @@ export class List extends Route {
 	 * @see {@link https://clickup.com/api/clickupreference/operation/GetListComments}
 	 *
 	 * @param {number} listId The list id
-	 * @param {object} [params] The query parameters to use
+	 * @param {object} [options] The query parameters to use
 	 */
-	comments(listId, params) {
+	comments(listId, options) {
 		return this.client.request({
 			path: `/${this.version}/${this.route}/${listId}/comment`,
-			params,
+			query: options,
 		});
 	}
 
@@ -104,13 +104,13 @@ export class List extends Route {
 	 * @param {number} listId The list id
 	 * @param {number} guestId The guest id
 	 * @param {object} data The guest data
-	 * @param {object} [params] The query parameters to use
+	 * @param {object} [options] The query parameters to use
 	 */
-	addGuest(listId, guestId, data, params) {
+	addGuest(listId, guestId, data, options) {
 		return this.client.request({
 			method: "POST",
 			path: `/${this.version}/${this.route}/${listId}/guest/${guestId}`,
-			params,
+			query: options,
 			body: JSON.stringify(data),
 		});
 	}
@@ -121,13 +121,13 @@ export class List extends Route {
 	 *
 	 * @param {number} listId The list id
 	 * @param {number} guestId The guest id
-	 * @param {object} params The query parameters to use
+	 * @param {object} options The query parameters to use
 	 */
-	removeGuest(listId, guestId, params) {
+	removeGuest(listId, guestId, options) {
 		return this.client.request({
 			method: "DELETE",
 			path: `/${this.version}/${this.route}/${listId}/guest/${guestId}`,
-			params,
+			query: options,
 		});
 	}
 
@@ -149,13 +149,13 @@ export class List extends Route {
 	 *
 	 * @param {number} listId The list id
 	 * @param {object} data The task data
-	 * @param {object} [params] The query parameters to use
+	 * @param {object} [options] The query parameters to use
 	 */
-	createTask(listId, data, params) {
+	createTask(listId, data, options) {
 		return this.client.request({
 			method: "POST",
 			path: `/${this.version}/${this.route}/${listId}/task`,
-			params,
+			query: options,
 			body: JSON.stringify(data),
 		});
 	}
@@ -165,12 +165,12 @@ export class List extends Route {
 	 * @see {@link https://clickup.com/api/clickupreference/operation/GetTasks}
 	 *
 	 * @param {number} listId The list id
-	 * @param {object} params The query parameters to pass
+	 * @param {object} options The query parameters to pass
 	 */
-	tasks(listId, params) {
+	tasks(listId, options) {
 		return this.client.request({
 			path: `/${this.version}/${this.route}/${listId}/task`,
-			params,
+			query: options,
 		});
 	}
 

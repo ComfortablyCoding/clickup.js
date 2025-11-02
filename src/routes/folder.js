@@ -63,13 +63,13 @@ export class Folder extends Route {
 	 * @param {number} folderId The folder id
 	 * @param {number} guestId The guest id
 	 * @param {object} data The guest data
-	 * @param {object} [params] The query parameters to use
+	 * @param {object} [options] The query parameters to use
 	 */
-	addGuest(folderId, guestId, data, params) {
+	addGuest(folderId, guestId, data, options) {
 		return this.client.request({
 			method: "POST",
 			path: `/${this.version}/${this.route}/${folderId}/guest/${guestId}`,
-			params,
+			query: options,
 			body: JSON.stringify(data),
 		});
 	}
@@ -80,13 +80,13 @@ export class Folder extends Route {
 	 *
 	 * @param {number} folderId The folder id
 	 * @param {number} guestId The guest id
-	 * @param {object} [params] The query parameters to use
+	 * @param {object} [options] The query parameters to use
 	 */
-	removeGuest(folderId, guestId, params) {
+	removeGuest(folderId, guestId, options) {
 		return this.client.request({
 			method: "DELETE",
 			path: `/${this.version}/${this.route}/${folderId}/guest/${guestId}`,
-			params,
+			query: options,
 		});
 	}
 
@@ -110,13 +110,13 @@ export class Folder extends Route {
 	 * @see {@link https://clickup.com/api/clickupreference/operation/GetLists}
 	 *
 	 * @param {number} folderId The folder id
-	 * @param {object} [params] The query parameters to pass
-	 * @param {boolean} params.archived If archived lists should be returned or not
+	 * @param {object} [options] The query parameters to pass
+	 * @param {boolean} options.archived If archived lists should be returned or not
 	 */
-	lists(folderId, params) {
+	lists(folderId, options) {
 		return this.client.request({
 			path: `/${this.version}/${this.route}/${folderId}/list`,
-			params,
+			query: options,
 		});
 	}
 

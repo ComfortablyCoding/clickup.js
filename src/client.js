@@ -14,6 +14,8 @@ import Team from "./routes/team.js";
 import View from "./routes/view.js";
 import Webhook from "./routes/webhook.js";
 
+import { camelToSnakeCase } from "./utils/camelToSnakeCase.js";
+
 /**
  * The default globals supplied to the client
  */
@@ -165,7 +167,7 @@ export class Clickup {
 	 * @param {string} [options.method] The request method
 	 * @param {string} [options.path] The request url path
 	 * @param {object} [options.headers] The request headers
-	 * @param {object} [options.params] The request parameters
+	 * @param {object} [options.query] The request parameters
 	 * @param {object} [options.body] The request body
 	 */
 	async request(options) {
@@ -204,7 +206,7 @@ export class Clickup {
 			fetchOptions.hooks = this.options.request.hooks;
 		}
 
-		const requestURL = this.getRequestURL(options.path, options.params);
+		const requestURL = this.getRequestURL(options.path, options.query);
 
 		try {
 			const response = await got(requestURL, fetchOptions).json();
@@ -216,31 +218,28 @@ export class Clickup {
 	 * @private
 	 *
 	 * @param {string} path The request URL path
-	 * @param {object} [params] The request URL parameters
+	 * @param {object} [query] The request URL parameters
 	 * @returns {URL}
 	 */
-	getRequestURL(path, params) {
+	getRequestURL(path, query) {
 		const url = new URL(path, this.options.request.prefixUrl);
 
-		if (params) {
-			for (let key in params) {
-				if (Object.prototype.hasOwnProperty.call(params, key)) {
-					const value = params[key];
+		for (let [key, value] in Object.entries(query ?? {})) {
+			// convert camel case key to snake_case
+			key = camelToSnakeCase(key);
 
-					if (Array.isArray(value)) {
-						// LHS bracket notation requires array values to have a key value pair per element.
-						// Each key must be suffixed by []
-						if (!key.endsWith("[]")) {
-							key += "[]";
-						}
-
-						for (const entry of value) {
-							url.searchParams.append(key, entry);
-						}
-					} else {
-						url.searchParams.set(key, value);
-					}
+			if (Array.isArray(value)) {
+				// LHS bracket notation requires array values to have a key value pair per element.
+				// Each key must be suffixed by []
+				if (!key.endsWith("[]")) {
+					key += "[]";
 				}
+
+				for (const entry of value) {
+					url.searchParams.append(key, entry);
+				}
+			} else {
+				url.searchParams.set(key, value);
 			}
 		}
 

@@ -76,12 +76,12 @@ export class View extends Route {
 	 * @see {@link https://clickup.com/api/clickupreference/operation/GetChatViewComments}
 	 *
 	 * @param {string} viewId The view id
-	 * @param {object} [params] The query parameters to pass
+	 * @param {object} [options] The query parameters to pass
 	 */
-	comments(viewId, params) {
+	comments(viewId, options) {
 		return this.client.request({
 			path: `/${this.version}/${this.route}/${viewId}/comment`,
-			params,
+			query: options,,
 		});
 	}
 
@@ -90,12 +90,12 @@ export class View extends Route {
 	 * @see {@link https://clickup.com/api/clickupreference/operation/GetViewTasks}
 	 *
 	 * @param {string} viewId The view id
-	 * @param {object} [params] The query parameters to pass
+	 * @param {object} [options] The query parameters to pass
 	 */
-	tasks(viewId, params) {
+	tasks(viewId, options) {
 		return this.client.request({
 			path: `/${this.version}/${this.route}/${viewId}/task`,
-			params: { page: 0, ...params },
+			query: { page: 0, ...options },
 		});
 	}
 }

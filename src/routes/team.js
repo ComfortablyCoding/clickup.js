@@ -45,12 +45,12 @@ export class Team extends Route {
 	 * @see {@link https://clickup.com/api/clickupreference/operation/GetGoals}
 	 *
 	 * @param {number} teamId The team id
-	 * @param {object} params The query parameters to use
+	 * @param {object} options The query parameters to use
 	 */
-	goals(teamId, params) {
+	goals(teamId, options) {
 		return this.client.request({
 			path: `/${this.version}/${this.route}/${teamId}/goal`,
-			params,
+			query: options,
 		});
 	}
 
@@ -144,13 +144,13 @@ export class Team extends Route {
 	 * @see {@link https://clickup.com/api/clickupreference/operation/GetSpaces}
 	 *
 	 * @param {number} teamId The team id
-	 * @param {object} [params] The query parameters to pass
-	 * @param {boolean} params.archived If archived lists should be returned or not
+	 * @param {object} [options] The query parameters to pass
+	 * @param {boolean} options.archived If archived lists should be returned or not
 	 */
-	spaces(teamId, params) {
+	spaces(teamId, options) {
 		return this.client.request({
 			path: `/${this.version}/${this.route}/${teamId}/space`,
-			params,
+			query: options,
 		});
 	}
 
@@ -159,12 +159,12 @@ export class Team extends Route {
 	 * @see {@link https://clickup.com/api/clickupreference/operation/GetFilteredTeamTasks}
 	 *
 	 * @param {number} teamId The team id
-	 * @param {object} [params] The query parameters to pass
+	 * @param {object} [options] The query parameters to pass
 	 */
-	filteredTasks(teamId, params) {
+	filteredTasks(teamId, options) {
 		return this.client.request({
 			path: `/${this.version}/${this.route}/${teamId}/task`,
-			params: { page: 0, ...params },
+			query: { page: 0, ...options },
 		});
 	}
 
@@ -173,12 +173,12 @@ export class Team extends Route {
 	 * @see {@link https://clickup.com/api/clickupreference/operation/GetTaskTemplates}
 	 *
 	 * @param {number} teamId The team id
-	 * @param {object} [params] The query parameters to pass
+	 * @param {object} [options] The query parameters to pass
 	 */
-	taskTemplates(teamId, params) {
+	taskTemplates(teamId, options) {
 		return this.client.request({
 			path: `/${this.version}/${this.route}/${teamId}/taskTemplate`,
-			params: { page: 0, ...params },
+			query: { page: 0, ...options },
 		});
 	}
 
@@ -301,12 +301,12 @@ export class Team extends Route {
 	 * @see {@link https://clickup.com/api/clickupreference/operation/Gettimeentrieswithinadaterange}
 	 *
 	 * @param {number} teamId The team id
-	 * @param {object} [params] The query parameters to use
+	 * @param {object} [options] The query parameters to use
 	 */
-	timeEntries(teamId, params) {
+	timeEntries(teamId, options) {
 		return this.client.request({
 			path: `/${this.version}/${this.route}/${teamId}/time_entries`,
-			params,
+			query: options,
 		});
 	}
 
@@ -316,12 +316,12 @@ export class Team extends Route {
 	 *
 	 * @param {number} teamId The team id
 	 * @param {string} timerId The timer id
-	 * @param {object} [params] The query parameters to use
+	 * @param {object} [options] The query parameters to use
 	 */
-	timeEntry(teamId, timerId, params) {
+	timeEntry(teamId, timerId, options) {
 		return this.client.request({
 			path: `/${this.version}/${this.route}/${teamId}/time_entries/${timerId}`,
-			params,
+			query: options,
 		});
 	}
 
@@ -330,12 +330,12 @@ export class Team extends Route {
 	 * @see {@link https://clickup.com/api/clickupreference/operation/Getrunningtimeentry}
 	 *
 	 * @param {number} teamId The team id
-	 * @param {object} [params] The query parameters to use
+	 * @param {object} [options] The query parameters to use
 	 */
-	runningTimeEntry(teamId, params) {
+	runningTimeEntry(teamId, options) {
 		return this.client.request({
 			path: `/${this.version}/${this.route}/${teamId}/time_entries/current`,
-			params,
+			query: options,
 		});
 	}
 
@@ -345,13 +345,13 @@ export class Team extends Route {
 	 *
 	 * @param {number} teamId The team id
 	 * @param {object} data The time entry data
-	 * @param {object} [params] The query parameters to use
+	 * @param {object} [options] The query parameters to use
 	 */
-	addTimeEntry(teamId, data, params) {
+	addTimeEntry(teamId, data, options) {
 		return this.client.request({
 			method: "POST",
 			path: `/${this.version}/${this.route}/${teamId}/time_entries`,
-			params,
+			query: options,
 			body: JSON.stringify(data),
 		});
 	}
@@ -419,13 +419,13 @@ export class Team extends Route {
 	 *
 	 * @param {number} teamId The team id
 	 * @param {object} data The time entry data
-	 * @param {object} [params] The query parameters to use
+	 * @param {object} [options] The query parameters to use
 	 */
-	startTimeEntry(teamId, data, params) {
+	startTimeEntry(teamId, data, options) {
 		return this.client.request({
 			method: "POST",
 			path: `/${this.version}/${this.route}/${teamId}/time_entries/start`,
-			params,
+			query: options,
 			body: JSON.stringify(data),
 		});
 	}
@@ -464,13 +464,13 @@ export class Team extends Route {
 	 * @param {number} teamId The team id
 	 * @param {number} timerId The timer id
 	 * @param {object} data The time entry data
-	 * @param {object} [params] The query parameters to use
+	 * @param {object} [options] The query parameters to use
 	 */
-	editTimeEntry(teamId, timerId, data, params) {
+	editTimeEntry(teamId, timerId, data, options) {
 		return this.client.request({
 			method: "PUT",
 			path: `/${this.version}/${this.route}/${teamId}/time_entries/${timerId}`,
-			params,
+			query: options,
 			body: JSON.stringify(data),
 		});
 	}
@@ -529,12 +529,12 @@ export class Team extends Route {
 	 * @see {@link https://clickup.com/api/clickupreference/operation/GetCustomRoles}
 	 *
 	 * @param {string} teamId The team id
-	 * @param {object} [params] The query parameters to use
+	 * @param {object} [options] The query parameters to use
 	 */
-	customRoles(teamId, params) {
+	customRoles(teamId, options) {
 		return this.client.request({
 			path: `/${this.version}/${this.route}/${teamId}/customroles`,
-			params,
+			query: options,
 		});
 	}
 
