@@ -156,7 +156,7 @@ export class Clickup {
 	 * @returns {void}
 	 */
 	seToken(token) {
-		this.accessToken = token;
+		this.token = token;
 	}
 
 	/**
