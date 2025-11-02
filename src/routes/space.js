@@ -24,7 +24,7 @@ export default class Space extends Route {
 	 */
 	get(spaceId) {
 		return this.client.request({
-			path: `/${this.version}/${this.route}/${spaceId}`,
+			path: `${this.version}/${this.route}/${spaceId}`,
 		});
 	}
 
@@ -38,8 +38,8 @@ export default class Space extends Route {
 	update(spaceId, data) {
 		return this.client.request({
 			method: "PUT",
-			path: `/${this.version}/${this.route}/${spaceId}`,
 			body: JSON.stringify(data),
+			path: `${this.version}/${this.route}/${spaceId}`,
 		});
 	}
 
@@ -52,7 +52,7 @@ export default class Space extends Route {
 	delete(spaceId) {
 		return this.client.request({
 			method: "DELETE",
-			path: `/${this.version}/${this.route}/${spaceId}`,
+			path: `${this.version}/${this.route}/${spaceId}`,
 		});
 	}
 
@@ -66,8 +66,8 @@ export default class Space extends Route {
 	createFolder(spaceId, data) {
 		return this.client.request({
 			method: "POST",
-			path: `/${this.version}/${this.route}/${spaceId}/folder`,
 			body: JSON.stringify(data),
+			path: `${this.version}/${this.route}/${spaceId}/folder`,
 		});
 	}
 
@@ -81,8 +81,8 @@ export default class Space extends Route {
 	 */
 	folders(spaceId, options) {
 		return this.client.request({
-			path: `/${this.version}/${this.route}/${spaceId}/folder`,
 			query: options,,
+			path: `${this.version}/${this.route}/${spaceId}/folder`,
 		});
 	}
 
@@ -96,8 +96,8 @@ export default class Space extends Route {
 	createFolderlessList(spaceId, data) {
 		return this.client.request({
 			method: "POST",
-			path: `/${this.version}/${this.route}/${spaceId}/list`,
 			body: JSON.stringify(data),
+			path: `${this.version}/${this.route}/${spaceId}/list`,
 		});
 	}
 
@@ -111,8 +111,8 @@ export default class Space extends Route {
 	 */
 	folderlessLists(spaceId, options) {
 		return this.client.request({
-			path: `/${this.version}/${this.route}/${spaceId}/list`,
 			query: options,,
+			path: `${this.version}/${this.route}/${spaceId}/list`,
 		});
 	}
 
@@ -124,7 +124,7 @@ export default class Space extends Route {
 	 */
 	tags(spaceId) {
 		return this.client.request({
-			path: `/${this.version}/${this.route}/${spaceId}/tag`,
+			path: `${this.version}/${this.route}/${spaceId}/tag`,
 		});
 	}
 
@@ -138,8 +138,8 @@ export default class Space extends Route {
 	addTag(spaceId, data) {
 		return this.client.request({
 			method: "POST",
-			path: `/${this.version}/${this.route}/${spaceId}/tag`,
 			body: JSON.stringify(data),
+			path: `${this.version}/${this.route}/${spaceId}/tag`,
 		});
 	}
 
@@ -154,8 +154,8 @@ export default class Space extends Route {
 	editTag(spaceId, tagName, data) {
 		return this.client.request({
 			method: "PUT",
-			path: `/${this.version}/${this.route}/${spaceId}/tag/${tagName}`,
 			body: JSON.stringify(data),
+			path: `${this.version}/${this.route}/${spaceId}/tag/${tagName}`,
 		});
 	}
 
@@ -170,8 +170,8 @@ export default class Space extends Route {
 	removeTag(spaceId, tagName, data) {
 		return this.client.request({
 			method: "DELETE",
-			path: `/${this.version}/${this.route}/${spaceId}/tag/${tagName}`,
 			body: JSON.stringify(data),
+			path: `${this.version}/${this.route}/${spaceId}/tag/${tagName}`,
 		});
 	}
 
@@ -185,8 +185,8 @@ export default class Space extends Route {
 	createView(spaceId, data) {
 		return this.client.request({
 			method: "POST",
-			path: `/${this.version}/${this.route}/${spaceId}/view`,
 			body: JSON.stringify(data),
+			path: `${this.version}/${this.route}/${spaceId}/view`,
 		});
 	}
 
@@ -198,7 +198,7 @@ export default class Space extends Route {
 	 */
 	views(spaceId) {
 		return this.client.request({
-			path: `/${this.version}/${this.route}/${spaceId}/view`,
+			path: `${this.version}/${this.route}/${spaceId}/view`,
 		});
 	}
 
@@ -210,7 +210,7 @@ export default class Space extends Route {
 	 */
 	customFields(spaceId) {
 		return this.client.request({
-			path: `/${this.version}/${this.route}/${spaceId}/field`,
+			path: `${this.version}/${this.route}/${spaceId}/field`,
 		});
 	}
 }

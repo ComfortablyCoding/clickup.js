@@ -24,7 +24,7 @@ export default class Folder extends Route {
 	 */
 	get(folderId) {
 		return this.client.request({
-			path: `/${this.version}/${this.route}/${folderId}`,
+			path: `${this.version}/${this.route}/${folderId}`,
 		});
 	}
 
@@ -38,8 +38,8 @@ export default class Folder extends Route {
 	update(folderId, data) {
 		return this.client.request({
 			method: "PUT",
-			path: `/${this.version}/${this.route}/${folderId}`,
 			body: JSON.stringify(data),
+			path: `${this.version}/${this.route}/${folderId}`,
 		});
 	}
 
@@ -52,7 +52,7 @@ export default class Folder extends Route {
 	delete(folderId) {
 		return this.client.request({
 			method: "DELETE",
-			path: `/${this.version}/${this.route}/${folderId}`,
+			path: `${this.version}/${this.route}/${folderId}`,
 		});
 	}
 
@@ -68,7 +68,7 @@ export default class Folder extends Route {
 	addGuest(folderId, guestId, data, options) {
 		return this.client.request({
 			method: "POST",
-			path: `/${this.version}/${this.route}/${folderId}/guest/${guestId}`,
+			path: `${this.version}/${this.route}/${folderId}/guest/${guestId}`,
 			query: options,
 			body: JSON.stringify(data),
 		});
@@ -85,7 +85,7 @@ export default class Folder extends Route {
 	removeGuest(folderId, guestId, options) {
 		return this.client.request({
 			method: "DELETE",
-			path: `/${this.version}/${this.route}/${folderId}/guest/${guestId}`,
+			path: `${this.version}/${this.route}/${folderId}/guest/${guestId}`,
 			query: options,
 		});
 	}
@@ -100,8 +100,8 @@ export default class Folder extends Route {
 	createList(folderId, data) {
 		return this.client.request({
 			method: "POST",
-			path: `/${this.version}/${this.route}/${folderId}/list`,
 			body: JSON.stringify(data),
+			path: `${this.version}/${this.route}/${folderId}/list`,
 		});
 	}
 
@@ -115,7 +115,7 @@ export default class Folder extends Route {
 	 */
 	lists(folderId, options) {
 		return this.client.request({
-			path: `/${this.version}/${this.route}/${folderId}/list`,
+			path: `${this.version}/${this.route}/${folderId}/list`,
 			query: options,
 		});
 	}
@@ -130,8 +130,8 @@ export default class Folder extends Route {
 	createView(folderId, data) {
 		return this.client.request({
 			method: "POST",
-			path: `/${this.version}/${this.route}/${folderId}/view`,
 			body: JSON.stringify(data),
+			path: `${this.version}/${this.route}/${folderId}/view`,
 		});
 	}
 
@@ -143,7 +143,7 @@ export default class Folder extends Route {
 	 */
 	views(folderId) {
 		return this.client.request({
-			path: `/${this.version}/${this.route}/${folderId}/view`,
+			path: `${this.version}/${this.route}/${folderId}/view`,
 		});
 	}
 
@@ -155,7 +155,7 @@ export default class Folder extends Route {
 	 */
 	customFields(folderId) {
 		return this.client.request({
-			path: `/${this.version}/${this.route}/${folderId}/field`,
+			path: `${this.version}/${this.route}/${folderId}/field`,
 		});
 	}
 }

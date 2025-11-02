@@ -24,7 +24,7 @@ export default class List extends Route {
 	 */
 	get(listId) {
 		return this.client.request({
-			path: `/${this.version}/${this.route}/${listId}`,
+			path: `${this.version}/${this.route}/${listId}`,
 		});
 	}
 
@@ -38,8 +38,8 @@ export default class List extends Route {
 	update(listId, data) {
 		return this.client.request({
 			method: "PUT",
-			path: `/${this.version}/${this.route}/${listId}`,
 			body: JSON.stringify(data),
+			path: `${this.version}/${this.route}/${listId}`,
 		});
 	}
 
@@ -52,7 +52,7 @@ export default class List extends Route {
 	delete(listId) {
 		return this.client.request({
 			method: "DELETE",
-			path: `/${this.version}/${this.route}/${listId}`,
+			path: `${this.version}/${this.route}/${listId}`,
 		});
 	}
 
@@ -66,8 +66,8 @@ export default class List extends Route {
 	addComment(listId, data) {
 		return this.client.request({
 			method: "POST",
-			path: `/${this.version}/${this.route}/${listId}/comment`,
 			body: JSON.stringify(data),
+			path: `${this.version}/${this.route}/${listId}/comment`,
 		});
 	}
 
@@ -80,7 +80,7 @@ export default class List extends Route {
 	 */
 	comments(listId, options) {
 		return this.client.request({
-			path: `/${this.version}/${this.route}/${listId}/comment`,
+			path: `${this.version}/${this.route}/${listId}/comment`,
 			query: options,
 		});
 	}
@@ -93,7 +93,7 @@ export default class List extends Route {
 	 */
 	customFields(listId) {
 		return this.client.request({
-			path: `/${this.version}/${this.route}/${listId}/field`,
+			path: `${this.version}/${this.route}/${listId}/field`,
 		});
 	}
 
@@ -109,7 +109,7 @@ export default class List extends Route {
 	addGuest(listId, guestId, data, options) {
 		return this.client.request({
 			method: "POST",
-			path: `/${this.version}/${this.route}/${listId}/guest/${guestId}`,
+			path: `${this.version}/${this.route}/${listId}/guest/${guestId}`,
 			query: options,
 			body: JSON.stringify(data),
 		});
@@ -126,7 +126,7 @@ export default class List extends Route {
 	removeGuest(listId, guestId, options) {
 		return this.client.request({
 			method: "DELETE",
-			path: `/${this.version}/${this.route}/${listId}/guest/${guestId}`,
+			path: `${this.version}/${this.route}/${listId}/guest/${guestId}`,
 			query: options,
 		});
 	}
@@ -139,7 +139,7 @@ export default class List extends Route {
 	 */
 	members(listId) {
 		return this.client.request({
-			path: `/${this.version}/${this.route}/${listId}/member`,
+			path: `${this.version}/${this.route}/${listId}/member`,
 		});
 	}
 
@@ -154,7 +154,7 @@ export default class List extends Route {
 	createTask(listId, data, options) {
 		return this.client.request({
 			method: "POST",
-			path: `/${this.version}/${this.route}/${listId}/task`,
+			path: `${this.version}/${this.route}/${listId}/task`,
 			query: options,
 			body: JSON.stringify(data),
 		});
@@ -169,7 +169,7 @@ export default class List extends Route {
 	 */
 	tasks(listId, options) {
 		return this.client.request({
-			path: `/${this.version}/${this.route}/${listId}/task`,
+			path: `${this.version}/${this.route}/${listId}/task`,
 			query: options,
 		});
 	}
@@ -185,8 +185,8 @@ export default class List extends Route {
 	createTaskFromTemplate(listId, templateId, data) {
 		return this.client.request({
 			method: "POST",
-			path: `/${this.version}/${this.route}/${listId}/taskTemplate/${templateId}`,
 			body: JSON.stringify(data),
+			path: `${this.version}/${this.route}/${listId}/taskTemplate/${templateId}`,
 		});
 	}
 
@@ -200,8 +200,8 @@ export default class List extends Route {
 	createView(listId, data) {
 		return this.client.request({
 			method: "POST",
-			path: `/${this.version}/${this.route}/${listId}/view`,
 			body: JSON.stringify(data),
+			path: `${this.version}/${this.route}/${listId}/view`,
 		});
 	}
 
@@ -213,7 +213,7 @@ export default class List extends Route {
 	 */
 	views(listId) {
 		return this.client.request({
-			path: `/${this.version}/${this.route}/${listId}/view`,
+			path: `${this.version}/${this.route}/${listId}/view`,
 		});
 	}
 
@@ -227,7 +227,7 @@ export default class List extends Route {
 	addTask(listId, taskId) {
 		return this.client.request({
 			method: "POST",
-			path: `/${this.version}/${this.route}/${listId}/task/${taskId}`,
+			path: `${this.version}/${this.route}/${listId}/task/${taskId}`,
 		});
 	}
 
@@ -241,7 +241,7 @@ export default class List extends Route {
 	removeTask(listId, taskId) {
 		return this.client.request({
 			method: "DELETE",
-			path: `/${this.version}/${this.route}/${listId}/task/${taskId}`,
+			path: `${this.version}/${this.route}/${listId}/task/${taskId}`,
 		});
 	}
 }
