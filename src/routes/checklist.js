@@ -26,8 +26,8 @@ export default class Checklist extends Route {
 	update(checklistId, data) {
 		return this.client.request({
 			method: "PUT",
-			body: JSON.stringify(data),
 			path: `${this.version}/${this.route}/${checklistId}`,
+			body: data,
 		});
 	}
 
@@ -54,8 +54,8 @@ export default class Checklist extends Route {
 	addItem(checklistId, data) {
 		return this.client.request({
 			method: "POST",
-			body: JSON.stringify(data),
 			path: `${this.version}/${this.route}/${checklistId}/checklist_item`,
+			body: data,
 		});
 	}
 
@@ -70,8 +70,8 @@ export default class Checklist extends Route {
 	editItem(checklistId, checklistItemId, data) {
 		return this.client.request({
 			method: "PUT",
-			body: JSON.stringify(data),
 			path: `${this.version}/${this.route}/${checklistId}/checklist_item/${checklistItemId}`,
+			body: data,
 		});
 	}
 

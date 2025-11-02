@@ -38,8 +38,8 @@ export default class List extends Route {
 	update(listId, data) {
 		return this.client.request({
 			method: "PUT",
-			body: JSON.stringify(data),
 			path: `${this.version}/${this.route}/${listId}`,
+			body: data,
 		});
 	}
 
@@ -66,8 +66,8 @@ export default class List extends Route {
 	addComment(listId, data) {
 		return this.client.request({
 			method: "POST",
-			body: JSON.stringify(data),
 			path: `${this.version}/${this.route}/${listId}/comment`,
+			body: data,
 		});
 	}
 
@@ -111,7 +111,7 @@ export default class List extends Route {
 			method: "POST",
 			path: `${this.version}/${this.route}/${listId}/guest/${guestId}`,
 			query: options,
-			body: JSON.stringify(data),
+			body: data,
 		});
 	}
 
@@ -156,7 +156,7 @@ export default class List extends Route {
 			method: "POST",
 			path: `${this.version}/${this.route}/${listId}/task`,
 			query: options,
-			body: JSON.stringify(data),
+			body: data,
 		});
 	}
 
@@ -185,8 +185,8 @@ export default class List extends Route {
 	createTaskFromTemplate(listId, templateId, data) {
 		return this.client.request({
 			method: "POST",
-			body: JSON.stringify(data),
 			path: `${this.version}/${this.route}/${listId}/taskTemplate/${templateId}`,
+			body: data,
 		});
 	}
 
@@ -200,8 +200,8 @@ export default class List extends Route {
 	createView(listId, data) {
 		return this.client.request({
 			method: "POST",
-			body: JSON.stringify(data),
 			path: `${this.version}/${this.route}/${listId}/view`,
+			body: data,
 		});
 	}
 

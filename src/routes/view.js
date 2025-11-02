@@ -24,7 +24,7 @@ export default class View extends Route {
 	 */
 	get(viewId) {
 		return this.client.request({
-			path: `/${this.version}/${this.route}/${viewId}`,
+			path: `${this.version}/${this.route}/${viewId}`,
 		});
 	}
 
@@ -38,8 +38,8 @@ export default class View extends Route {
 	update(viewId, data) {
 		return this.client.request({
 			method: "PUT",
-			path: `/${this.version}/${this.route}/${viewId}`,
-			body: JSON.stringify(data),
+			path: `${this.version}/${this.route}/${viewId}`,
+			body: data,
 		});
 	}
 
@@ -52,7 +52,7 @@ export default class View extends Route {
 	delete(viewId) {
 		return this.client.request({
 			method: "DELETE",
-			path: `/${this.version}/${this.route}/${viewId}`,
+			path: `${this.version}/${this.route}/${viewId}`,
 		});
 	}
 
@@ -66,8 +66,8 @@ export default class View extends Route {
 	addComment(viewId, data) {
 		return this.client.request({
 			method: "POST",
-			path: `/${this.version}/${this.route}/${viewId}/comment`,
-			body: JSON.stringify(data),
+			path: `${this.version}/${this.route}/${viewId}/comment`,
+			body: data,
 		});
 	}
 
@@ -80,8 +80,8 @@ export default class View extends Route {
 	 */
 	comments(viewId, options) {
 		return this.client.request({
-			path: `/${this.version}/${this.route}/${viewId}/comment`,
-			query: options,,
+			path: `${this.version}/${this.route}/${viewId}/comment`,
+			query: options,
 		});
 	}
 
@@ -94,7 +94,7 @@ export default class View extends Route {
 	 */
 	tasks(viewId, options) {
 		return this.client.request({
-			path: `/${this.version}/${this.route}/${viewId}/task`,
+			path: `${this.version}/${this.route}/${viewId}/task`,
 			query: { page: 0, ...options },
 		});
 	}

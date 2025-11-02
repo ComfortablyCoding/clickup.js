@@ -26,8 +26,8 @@ export default class KeyResult extends Route {
 	update(keyResultId, data) {
 		return this.client.request({
 			method: "PUT",
-			body: JSON.stringify(data),
 			path: `${this.version}/${this.route}/${keyResultId}`,
+			body: data,
 		});
 	}
 

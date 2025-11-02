@@ -38,8 +38,8 @@ export default class Folder extends Route {
 	update(folderId, data) {
 		return this.client.request({
 			method: "PUT",
-			body: JSON.stringify(data),
 			path: `${this.version}/${this.route}/${folderId}`,
+			body: data,
 		});
 	}
 
@@ -70,7 +70,7 @@ export default class Folder extends Route {
 			method: "POST",
 			path: `${this.version}/${this.route}/${folderId}/guest/${guestId}`,
 			query: options,
-			body: JSON.stringify(data),
+			body: data,
 		});
 	}
 
@@ -100,8 +100,8 @@ export default class Folder extends Route {
 	createList(folderId, data) {
 		return this.client.request({
 			method: "POST",
-			body: JSON.stringify(data),
 			path: `${this.version}/${this.route}/${folderId}/list`,
+			body: data,
 		});
 	}
 
@@ -130,8 +130,8 @@ export default class Folder extends Route {
 	createView(folderId, data) {
 		return this.client.request({
 			method: "POST",
-			body: JSON.stringify(data),
 			path: `${this.version}/${this.route}/${folderId}/view`,
+			body: data,
 		});
 	}
 

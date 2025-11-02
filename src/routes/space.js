@@ -38,8 +38,8 @@ export default class Space extends Route {
 	update(spaceId, data) {
 		return this.client.request({
 			method: "PUT",
-			body: JSON.stringify(data),
 			path: `${this.version}/${this.route}/${spaceId}`,
+			body: data,
 		});
 	}
 
@@ -66,8 +66,8 @@ export default class Space extends Route {
 	createFolder(spaceId, data) {
 		return this.client.request({
 			method: "POST",
-			body: JSON.stringify(data),
 			path: `${this.version}/${this.route}/${spaceId}/folder`,
+			body: data,
 		});
 	}
 
@@ -81,8 +81,8 @@ export default class Space extends Route {
 	 */
 	folders(spaceId, options) {
 		return this.client.request({
-			query: options,,
 			path: `${this.version}/${this.route}/${spaceId}/folder`,
+			query: options,
 		});
 	}
 
@@ -96,8 +96,8 @@ export default class Space extends Route {
 	createFolderlessList(spaceId, data) {
 		return this.client.request({
 			method: "POST",
-			body: JSON.stringify(data),
 			path: `${this.version}/${this.route}/${spaceId}/list`,
+			body: data,
 		});
 	}
 
@@ -111,8 +111,8 @@ export default class Space extends Route {
 	 */
 	folderlessLists(spaceId, options) {
 		return this.client.request({
-			query: options,,
 			path: `${this.version}/${this.route}/${spaceId}/list`,
+			query: options,
 		});
 	}
 
@@ -138,8 +138,8 @@ export default class Space extends Route {
 	addTag(spaceId, data) {
 		return this.client.request({
 			method: "POST",
-			body: JSON.stringify(data),
 			path: `${this.version}/${this.route}/${spaceId}/tag`,
+			body: data,
 		});
 	}
 
@@ -154,8 +154,8 @@ export default class Space extends Route {
 	editTag(spaceId, tagName, data) {
 		return this.client.request({
 			method: "PUT",
-			body: JSON.stringify(data),
 			path: `${this.version}/${this.route}/${spaceId}/tag/${tagName}`,
+			body: data,
 		});
 	}
 
@@ -170,8 +170,8 @@ export default class Space extends Route {
 	removeTag(spaceId, tagName, data) {
 		return this.client.request({
 			method: "DELETE",
-			body: JSON.stringify(data),
 			path: `${this.version}/${this.route}/${spaceId}/tag/${tagName}`,
+			body: data,
 		});
 	}
 
@@ -185,8 +185,8 @@ export default class Space extends Route {
 	createView(spaceId, data) {
 		return this.client.request({
 			method: "POST",
-			body: JSON.stringify(data),
 			path: `${this.version}/${this.route}/${spaceId}/view`,
+			body: data,
 		});
 	}
 

@@ -38,8 +38,8 @@ export default class Goal extends Route {
 	update(goalId, data) {
 		return this.client.request({
 			method: "PUT",
-			body: JSON.stringify(data),
 			path: `${this.version}/${this.route}/${goalId}`,
+			body: data,
 		});
 	}
 
@@ -66,8 +66,8 @@ export default class Goal extends Route {
 	addKeyResult(goalId, data) {
 		return this.client.request({
 			method: "POST",
-			body: JSON.stringify(data),
 			path: `${this.version}/${this.route}/${goalId}/key_result`,
+			body: data,
 		});
 	}
 }

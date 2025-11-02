@@ -26,8 +26,8 @@ export default class Comment extends Route {
 	update(commentId, data) {
 		return this.client.request({
 			method: "PUT",
-			body: JSON.stringify(data),
 			path: `${this.version}/${this.route}/${commentId}`,
+			body: data,
 		});
 	}
 
@@ -66,8 +66,8 @@ export default class Comment extends Route {
 	addReply(commentId, data) {
 		return this.client.request({
 			method: "POST",
-			body: JSON.stringify(data),
 			path: `${this.version}/${this.route}/${commentId}/reply`,
+			body: data,
 		});
 	}
 }

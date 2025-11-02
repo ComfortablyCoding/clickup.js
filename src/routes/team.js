@@ -21,7 +21,7 @@ export default class Team extends Route {
 	 */
 	get() {
 		return this.client.request({
-			path: `/${this.version}/${this.route}`,
+			path: `${this.version}/${this.route}`,
 		});
 	}
 
@@ -35,8 +35,8 @@ export default class Team extends Route {
 	createGoal(teamId, data) {
 		return this.client.request({
 			method: "POST",
-			path: `/${this.version}/${this.route}/${teamId}/goal`,
-			body: JSON.stringify(data),
+			path: `${this.version}/${this.route}/${teamId}/goal`,
+			body: data,
 		});
 	}
 
@@ -49,7 +49,7 @@ export default class Team extends Route {
 	 */
 	goals(teamId, options) {
 		return this.client.request({
-			path: `/${this.version}/${this.route}/${teamId}/goal`,
+			path: `${this.version}/${this.route}/${teamId}/goal`,
 			query: options,
 		});
 	}
@@ -64,8 +64,8 @@ export default class Team extends Route {
 	inviteGuest(teamId, data) {
 		return this.client.request({
 			method: "POST",
-			path: `/${this.version}/${this.route}/${teamId}/guest`,
-			body: JSON.stringify(data),
+			path: `${this.version}/${this.route}/${teamId}/guest`,
+			body: data,
 		});
 	}
 
@@ -78,7 +78,7 @@ export default class Team extends Route {
 	 */
 	guest(teamId, guestId) {
 		return this.client.request({
-			path: `/${this.version}/${this.route}/${teamId}/guest/${guestId}`,
+			path: `${this.version}/${this.route}/${teamId}/guest/${guestId}`,
 		});
 	}
 
@@ -93,8 +93,8 @@ export default class Team extends Route {
 	editGuest(teamId, guestId, data) {
 		return this.client.request({
 			method: "PUT",
-			path: `/${this.version}/${this.route}/${teamId}/guest/${guestId}`,
-			body: JSON.stringify(data),
+			path: `${this.version}/${this.route}/${teamId}/guest/${guestId}`,
+			body: data,
 		});
 	}
 
@@ -108,7 +108,7 @@ export default class Team extends Route {
 	removeGuest(teamId, guestId) {
 		return this.client.request({
 			method: "DELETE",
-			path: `/${this.version}/${this.route}/${teamId}/guest/${guestId}`,
+			path: `${this.version}/${this.route}/${teamId}/guest/${guestId}`,
 		});
 	}
 
@@ -120,7 +120,7 @@ export default class Team extends Route {
 	 */
 	sharedHierarchy(teamId) {
 		return this.client.request({
-			path: `/${this.version}/${this.route}/${teamId}/shared`,
+			path: `${this.version}/${this.route}/${teamId}/shared`,
 		});
 	}
 
@@ -134,8 +134,8 @@ export default class Team extends Route {
 	createSpace(teamId, data) {
 		return this.client.request({
 			method: "POST",
-			path: `/${this.version}/${this.route}/${teamId}/space`,
-			body: JSON.stringify(data),
+			path: `${this.version}/${this.route}/${teamId}/space`,
+			body: data,
 		});
 	}
 
@@ -149,7 +149,7 @@ export default class Team extends Route {
 	 */
 	spaces(teamId, options) {
 		return this.client.request({
-			path: `/${this.version}/${this.route}/${teamId}/space`,
+			path: `${this.version}/${this.route}/${teamId}/space`,
 			query: options,
 		});
 	}
@@ -163,7 +163,7 @@ export default class Team extends Route {
 	 */
 	filteredTasks(teamId, options) {
 		return this.client.request({
-			path: `/${this.version}/${this.route}/${teamId}/task`,
+			path: `${this.version}/${this.route}/${teamId}/task`,
 			query: { page: 0, ...options },
 		});
 	}
@@ -177,7 +177,7 @@ export default class Team extends Route {
 	 */
 	taskTemplates(teamId, options) {
 		return this.client.request({
-			path: `/${this.version}/${this.route}/${teamId}/taskTemplate`,
+			path: `${this.version}/${this.route}/${teamId}/taskTemplate`,
 			query: { page: 0, ...options },
 		});
 	}
@@ -191,7 +191,7 @@ export default class Team extends Route {
 	 */
 	user(teamId, userId) {
 		return this.client.request({
-			path: `/${this.version}/${this.route}/${teamId}/user/${userId}`,
+			path: `${this.version}/${this.route}/${teamId}/user/${userId}`,
 		});
 	}
 
@@ -205,8 +205,8 @@ export default class Team extends Route {
 	inviteUser(teamId, data) {
 		return this.client.request({
 			method: "POST",
-			path: `/${this.version}/${this.route}/${teamId}/user`,
-			body: JSON.stringify(data),
+			path: `${this.version}/${this.route}/${teamId}/user`,
+			body: data,
 		});
 	}
 
@@ -221,8 +221,8 @@ export default class Team extends Route {
 	editUser(teamId, userId, data) {
 		return this.client.request({
 			method: "PUT",
-			path: `/${this.version}/${this.route}/${teamId}/user/${userId}`,
-			body: JSON.stringify(data),
+			path: `${this.version}/${this.route}/${teamId}/user/${userId}`,
+			body: data,
 		});
 	}
 
@@ -236,7 +236,7 @@ export default class Team extends Route {
 	removeUser(teamId, userId) {
 		return this.client.request({
 			method: "DELETE",
-			path: `/${this.version}/${this.route}/${teamId}/user/${userId}`,
+			path: `${this.version}/${this.route}/${teamId}/user/${userId}`,
 		});
 	}
 
@@ -251,8 +251,8 @@ export default class Team extends Route {
 	createView(teamId, data) {
 		return this.client.request({
 			method: "POST",
-			path: `/${this.version}/${this.route}/${teamId}/view`,
-			body: JSON.stringify(data),
+			path: `${this.version}/${this.route}/${teamId}/view`,
+			body: data,
 		});
 	}
 
@@ -264,7 +264,7 @@ export default class Team extends Route {
 	 */
 	views(teamId) {
 		return this.client.request({
-			path: `/${this.version}/${this.route}/${teamId}/view`,
+			path: `${this.version}/${this.route}/${teamId}/view`,
 		});
 	}
 
@@ -278,8 +278,8 @@ export default class Team extends Route {
 	createWebhook(teamId, data) {
 		return this.client.request({
 			method: "POST",
-			path: `/${this.version}/${this.route}/${teamId}/webhook`,
-			body: JSON.stringify(data),
+			path: `${this.version}/${this.route}/${teamId}/webhook`,
+			body: data,
 		});
 	}
 
@@ -292,7 +292,7 @@ export default class Team extends Route {
 	 */
 	webhooks(teamId) {
 		return this.client.request({
-			path: `/${this.version}/${this.route}/${teamId}/webhook`,
+			path: `${this.version}/${this.route}/${teamId}/webhook`,
 		});
 	}
 
@@ -305,7 +305,7 @@ export default class Team extends Route {
 	 */
 	timeEntries(teamId, options) {
 		return this.client.request({
-			path: `/${this.version}/${this.route}/${teamId}/time_entries`,
+			path: `${this.version}/${this.route}/${teamId}/time_entries`,
 			query: options,
 		});
 	}
@@ -320,7 +320,7 @@ export default class Team extends Route {
 	 */
 	timeEntry(teamId, timerId, options) {
 		return this.client.request({
-			path: `/${this.version}/${this.route}/${teamId}/time_entries/${timerId}`,
+			path: `${this.version}/${this.route}/${teamId}/time_entries/${timerId}`,
 			query: options,
 		});
 	}
@@ -334,7 +334,7 @@ export default class Team extends Route {
 	 */
 	runningTimeEntry(teamId, options) {
 		return this.client.request({
-			path: `/${this.version}/${this.route}/${teamId}/time_entries/current`,
+			path: `${this.version}/${this.route}/${teamId}/time_entries/current`,
 			query: options,
 		});
 	}
@@ -350,9 +350,9 @@ export default class Team extends Route {
 	addTimeEntry(teamId, data, options) {
 		return this.client.request({
 			method: "POST",
-			path: `/${this.version}/${this.route}/${teamId}/time_entries`,
+			path: `${this.version}/${this.route}/${teamId}/time_entries`,
 			query: options,
-			body: JSON.stringify(data),
+			body: data,
 		});
 	}
 
@@ -366,8 +366,8 @@ export default class Team extends Route {
 	removeTimeEntryTags(teamId, data) {
 		return this.client.request({
 			method: "DELETE",
-			path: `/${this.version}/${this.route}/${teamId}/time_entries/tags`,
-			body: JSON.stringify(data),
+			path: `${this.version}/${this.route}/${teamId}/time_entries/tags`,
+			body: data,
 		});
 	}
 
@@ -379,7 +379,7 @@ export default class Team extends Route {
 	 */
 	timeEntryTags(teamId) {
 		return this.client.request({
-			path: `/${this.version}/${this.route}/${teamId}/time_entries/tags`,
+			path: `${this.version}/${this.route}/${teamId}/time_entries/tags`,
 		});
 	}
 
@@ -393,8 +393,8 @@ export default class Team extends Route {
 	addTimeEntryTags(teamId, data) {
 		return this.client.request({
 			method: "POST",
-			path: `/${this.version}/${this.route}/${teamId}/time_entries/tags`,
-			body: JSON.stringify(data),
+			path: `${this.version}/${this.route}/${teamId}/time_entries/tags`,
+			body: data,
 		});
 	}
 
@@ -408,8 +408,8 @@ export default class Team extends Route {
 	editTimeEntryTag(teamId, data) {
 		return this.client.request({
 			method: "PUT",
-			path: `/${this.version}/${this.route}/${teamId}/time_entries/tags`,
-			body: JSON.stringify(data),
+			path: `${this.version}/${this.route}/${teamId}/time_entries/tags`,
+			body: data,
 		});
 	}
 
@@ -424,9 +424,9 @@ export default class Team extends Route {
 	startTimeEntry(teamId, data, options) {
 		return this.client.request({
 			method: "POST",
-			path: `/${this.version}/${this.route}/${teamId}/time_entries/start`,
+			path: `${this.version}/${this.route}/${teamId}/time_entries/start`,
 			query: options,
-			body: JSON.stringify(data),
+			body: data,
 		});
 	}
 
@@ -439,7 +439,7 @@ export default class Team extends Route {
 	stopTimeEntry(teamId) {
 		return this.client.request({
 			method: "POST",
-			path: `/${this.version}/${this.route}/${teamId}/time_entries/stop`,
+			path: `${this.version}/${this.route}/${teamId}/time_entries/stop`,
 		});
 	}
 
@@ -453,7 +453,7 @@ export default class Team extends Route {
 	removeTimeEntry(teamId, timerId) {
 		return this.client.request({
 			method: "DELETE",
-			path: `/${this.version}/${this.route}/${teamId}/time_entries/${timerId}`,
+			path: `${this.version}/${this.route}/${teamId}/time_entries/${timerId}`,
 		});
 	}
 
@@ -469,9 +469,9 @@ export default class Team extends Route {
 	editTimeEntry(teamId, timerId, data, options) {
 		return this.client.request({
 			method: "PUT",
-			path: `/${this.version}/${this.route}/${teamId}/time_entries/${timerId}`,
+			path: `${this.version}/${this.route}/${teamId}/time_entries/${timerId}`,
 			query: options,
-			body: JSON.stringify(data),
+			body: data,
 		});
 	}
 
@@ -484,7 +484,7 @@ export default class Team extends Route {
 	 */
 	timeEntryHistory(teamId, timerId) {
 		return this.client.request({
-			path: `/${this.version}/${this.route}/${teamId}/time_entries/${timerId}/history`,
+			path: `${this.version}/${this.route}/${teamId}/time_entries/${timerId}/history`,
 		});
 	}
 
@@ -496,7 +496,7 @@ export default class Team extends Route {
 	 */
 	seats(teamId) {
 		return this.client.request({
-			path: `/${this.version}/${this.route}/${teamId}/seats`,
+			path: `${this.version}/${this.route}/${teamId}/seats`,
 		});
 	}
 
@@ -508,7 +508,7 @@ export default class Team extends Route {
 	 */
 	plan(teamId) {
 		return this.client.request({
-			path: `/${this.version}/${this.route}/${teamId}/plan`,
+			path: `${this.version}/${this.route}/${teamId}/plan`,
 		});
 	}
 
@@ -520,7 +520,7 @@ export default class Team extends Route {
 	 */
 	customTaskTypes(teamId) {
 		return this.client.request({
-			path: `/${this.version}/${this.route}/${teamId}/custom_item`,
+			path: `${this.version}/${this.route}/${teamId}/custom_item`,
 		});
 	}
 
@@ -533,7 +533,7 @@ export default class Team extends Route {
 	 */
 	customRoles(teamId, options) {
 		return this.client.request({
-			path: `/${this.version}/${this.route}/${teamId}/customroles`,
+			path: `${this.version}/${this.route}/${teamId}/customroles`,
 			query: options,
 		});
 	}
@@ -548,8 +548,8 @@ export default class Team extends Route {
 	addUserGroup(teamId, data) {
 		return this.client.request({
 			method: "POST",
-			path: `/${this.version}/${this.route}/${teamId}/group`,
-			body: JSON.stringify(data),
+			path: `${this.version}/${this.route}/${teamId}/group`,
+			body: data,
 		});
 	}
 
@@ -561,7 +561,7 @@ export default class Team extends Route {
 	 */
 	customFields(teamId) {
 		return this.client.request({
-			path: `/${this.version}/${this.route}/${teamId}/field`,
+			path: `${this.version}/${this.route}/${teamId}/field`,
 		});
 	}
 }
