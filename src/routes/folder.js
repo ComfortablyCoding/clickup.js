@@ -4,7 +4,7 @@ import { Route } from "./route.js";
  * @class
  * @extends Route
  */
-export class Folder extends Route {
+export default class Folder extends Route {
 	/**
 	 * @constructor
 	 * @param {import('../client.js').Clickup} client
