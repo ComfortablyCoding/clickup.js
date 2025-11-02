@@ -19,7 +19,7 @@ import Webhook from "./routes/webhook.js";
  */
 const defaultOptions = {
 	request: {
-		prefixUrl: "https://api.clickup.com/api/v2/",
+		prefixUrl: "https://api.clickup.com/api",
 	},
 };
 
@@ -34,7 +34,7 @@ export class Clickup {
 	 * @param {object} [options] Clickup Constructor options
 	 * @param {string} [options.token] Clickup Access Token
 	 * @param {object} [options.request] The request options
-	 * @param {string} [options.request.prefixUrl=https://api.clickup.com/api/v2/] The clickup API URL
+	 * @param {string} [options.request.prefixUrl=https://api.clickup.com/api] The clickup API URL
 	 * @param {object} [options.request.hooks] The request hooks @see {@link https://github.com/sindresorhus/got/blob/main/documentation/9-hooks.md}
 	 */
 	constructor(options = {}) {
