@@ -1,20 +1,18 @@
 import got from "got";
 
-import {
-	Authorization,
-	Checklist,
-	Comment,
-	Folder,
-	Goal,
-	Group,
-	KeyResult,
-	List,
-	Space,
-	Task,
-	Team,
-	View,
-	Webhook,
-} from "./routes/index.js";
+import Authorization from "./routes/authorization.js";
+import Checklist from "./routes/checklist.js";
+import Comment from "./routes/comment.js";
+import Folder from "./routes/folder.js";
+import Goal from "./routes/goal.js";
+import Group from "./routes/group.js";
+import KeyResult from "./routes/key-result.js";
+import List from "./routes/list.js";
+import Space from "./routes/space.js";
+import Task from "./routes/task.js";
+import Team from "./routes/team.js";
+import View from "./routes/view.js";
+import Webhook from "./routes/webhook.js";
 
 /**
  * The default globals supplied to the client
