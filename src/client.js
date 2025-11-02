@@ -187,7 +187,17 @@ export class Clickup {
 		}
 
 		if (options.body) {
-			fetchOptions.body = options.body;
+			const body = {};
+			// convert camel case key to snake_case
+			if (fetchOptions.headers["Content-Type"] === "application/json") {
+				for (const [key, value] of Object.entries(options.body)) {
+					body[camelToSnakeCase(key)] = value;
+				}
+			} else {
+				body = options.body;
+			}
+
+			fetchOptions.body = body;
 		}
 
 		if (this.options.request.hooks) {
