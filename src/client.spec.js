@@ -174,7 +174,9 @@ describe("client", () => {
 
 			const client = new Clickup();
 
-			await expect(client.request({ path: "/v2/test" })).rejects.toThrow(new ClickupAPIError(429, "Too Many Requests"));
+			await expect(client.request({ path: "/v2/test" })).rejects.toThrow(
+				new ClickupAPIError({ status: 429, message: "Too Many Requests" }),
+			);
 		});
 
 		test("should rethrow non-FetchError", async () => {

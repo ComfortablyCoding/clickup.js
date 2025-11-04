@@ -235,7 +235,11 @@ export class Clickup {
 				return data;
 			} catch (error) {
 				if (error instanceof FetchError) {
-					throw new ClickupAPIError(error.status, error.statusText);
+					throw new ClickupAPIError({
+						status: error.status,
+						message: `${error.statusText}${error.data?.err ? `: ${error.data.err}` : ""}`,
+						code: error.data?.code,
+					});
 				}
 
 				throw error;
