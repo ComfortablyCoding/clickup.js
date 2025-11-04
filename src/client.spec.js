@@ -42,7 +42,7 @@ describe("client", () => {
 			expect(ofetch).toHaveBeenCalledWith(
 				expect.any(URL),
 				expect.objectContaining({
-					headers: expect.objectContaining({ Authorization: "Bearer MY_CONSTRUCTOR_TOKEN" }),
+					headers: expect.objectContaining({ Authorization: "MY_CONSTRUCTOR_TOKEN" }),
 				}),
 			);
 		});
@@ -56,7 +56,7 @@ describe("client", () => {
 			expect(ofetch).toHaveBeenCalledWith(
 				expect.any(URL),
 				expect.objectContaining({
-					headers: expect.objectContaining({ Authorization: "Bearer MY_ENV_TOKEN" }),
+					headers: expect.objectContaining({ Authorization: "MY_ENV_TOKEN" }),
 				}),
 			);
 
@@ -72,7 +72,7 @@ describe("client", () => {
 			expect(ofetch).toHaveBeenCalledWith(
 				expect.any(URL),
 				expect.objectContaining({
-					headers: expect.objectContaining({ Authorization: "Bearer MY_SET_TOKEN" }),
+					headers: expect.objectContaining({ Authorization: "MY_SET_TOKEN" }),
 				}),
 			);
 		});

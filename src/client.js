@@ -199,7 +199,7 @@ export class Clickup {
 		}
 
 		if (this.token) {
-			fetchOptions.headers.Authorization = `Bearer ${this.token}`;
+			fetchOptions.headers.Authorization = this.token;
 		}
 
 		if (options.body) {
