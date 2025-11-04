@@ -27,7 +27,7 @@ export default class Authorization extends Route {
 	createToken(options) {
 		return this.client.request({
 			method: "POST",
-			path: "/oauth/token",
+			path: `${this.version}/oauth/token`,
 			query: {
 				client_id: options.clientId,
 				client_secret: options.clientSecret,
@@ -41,7 +41,7 @@ export default class Authorization extends Route {
 	 */
 	user() {
 		return this.client.request({
-			path: "/user",
+			path: `${this.version}/user`,
 		});
 	}
 
@@ -50,7 +50,7 @@ export default class Authorization extends Route {
 	 */
 	teams() {
 		return this.client.request({
-			path: "/team",
+			path: `${this.version}/team`,
 		});
 	}
 }
