@@ -11,6 +11,8 @@ runs:
 
     # Trusted publishing requires npm 11.5.1 or later is installed
     - name: update npm
+      # required for composite actions
+      shell: bash
       run: npm install -g npm@11.5.1
 
     - name: setup pnpm
@@ -20,4 +22,6 @@ runs:
         version: 10
 
     - name: install dependencies
+      # required for composite actions
+      shell: bash
       run: pnpm install
