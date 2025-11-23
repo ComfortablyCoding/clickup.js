@@ -36,3 +36,4 @@ dist
 
 # autogen docs
 docs/api.md
+docs/changelog.md
