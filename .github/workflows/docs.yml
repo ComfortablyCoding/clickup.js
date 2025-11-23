@@ -22,6 +22,8 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: setup environment
         uses: ./.github/actions/setup
@@ -35,7 +37,7 @@ jobs:
       - name: upload
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./docs/.vitepress/dist
+          path: docs/.vitepress/dist
 
   # Deployment job
   deploy:
