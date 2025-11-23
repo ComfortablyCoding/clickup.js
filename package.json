@@ -30,8 +30,9 @@
 		"test": "vitest",
 		"lint": "eslint . --fix",
 		"format": "prettier . --write",
-		"docs:generate": "jsdoc2md src/**/*.js > docs/api.md",
+		"docs:generate-api": "jsdoc2md src/**/*.js > docs/api.md",
 		"docs:build": "vitepress build docs",
+		"docs:deploy": "pnpm run docs:generate-api && pnpm run docs:build",
 		"docs:dev": "vitepress dev docs",
 		"docs:preview": "vitepress preview docs"
 	},
