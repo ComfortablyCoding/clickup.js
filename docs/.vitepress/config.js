@@ -4,6 +4,7 @@ import path from "path";
 
 export default defineConfig({
 	title: "clickup.js",
+	base: "/clickup.js/",
 	description: "A Node.js wrapper for the Clickup API",
 	themeConfig: {
 		nav: [
