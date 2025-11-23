@@ -79,6 +79,6 @@ async function addComment() {
 addComment();
 ```
 
-::: note
+::: info
 Check out the documentation for the [full list of available APIs](/api).
 :::

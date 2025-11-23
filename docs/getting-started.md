@@ -29,9 +29,9 @@ import { createClickup } from "clickup.js";
 const clickup = createClickup("YOUR_PERSONAL_TOKEN");
 
 const tokenResponse = await clickup.authorization.createToken({
- clientId: "YOUR_CLIENT_ID",
- clientSecret: "YOUR_CLIENT_SECRET",
- code: "AUTHORIZATION_CODE",
+	clientId: "YOUR_CLIENT_ID",
+	clientSecret: "YOUR_CLIENT_SECRET",
+	code: "AUTHORIZATION_CODE",
 });
 
 // Set the token for all future authenticated requests
@@ -80,6 +80,6 @@ console.log(teams);
 
 This retrieves basic information about the teams you're part of.
 
-::: note
+::: info
 Explore more methods: The SDK provides intuitive access to all ClickUp API endpoints. Check the full list of available methods in the [API reference](/api).
 :::
