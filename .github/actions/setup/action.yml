@@ -1,22 +1,23 @@
 name: Setup
-description: Install dependencies and build package
 
 runs:
   using: composite
   steps:
-    - name: Install Node.js
+    - name: setup Node
       uses: actions/setup-node@v4
       with:
-        node-version: "lts/*"
-        check-latest: true
+        node-version: 24
         registry-url: https://registry.npmjs.org/
 
-    - uses: pnpm/action-setup@v3
-      name: Install pnpm
+    # Trusted publishing requires npm 11.5.1 or later is installed
+    - name: update npm
+      run: npm install -g npm@11.5.1
+
+    - name: setup pnpm
+      uses: pnpm/action-setup@v3
       with:
         run_install: false
-        version: 9
+        version: 10
 
-    - name: Install dependencies
-      shell: bash
+    - name: install dependencies
       run: pnpm install

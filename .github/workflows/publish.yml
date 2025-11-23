@@ -1,23 +1,25 @@
-name: Publish
+name: Publish Package
+
+permissions:
+  id-token: write # Required for OIDC
+  contents: read
 
 on:
   release:
     types: [published]
 
 jobs:
-  publish-npm:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
         uses: actions/checkout@v4
 
-      - name: setup
+      - name: setup environment
         uses: ./.github/actions/setup
 
-      - name: publish to npm
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NPM_CONFIG_PROVENANCE: true
-        run: |
-          pnpm publish \
-            --access=public \
+      - name: test
+        run: pnpm test
+
+      - name: publish
+        run: pnpm publish
