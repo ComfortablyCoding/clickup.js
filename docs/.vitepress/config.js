@@ -13,10 +13,10 @@ export default defineConfig({
 		],
 
 		sidebar: [
+			{ text: "Getting Started", link: "/getting-started" },
 			{
 				text: "Documentation",
 				items: [
-					{ text: "Example", link: "/examples" },
 					{ text: "Example", link: "/examples" },
 					{ text: "API Reference", link: "/api" },
 				],
