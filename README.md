@@ -48,11 +48,11 @@ The library mirrors ClickUp's API structure:
 - `clickup.webhook.*` – Webhook management.
 - `clickup.user.*` – User info.
 - `clickup.goal.*` – Goals (if enabled).
-- And more – explore via the [API docs](https://clickup-js.netlify.app).
+- And more – explore via the [API docs](https://comfortablycoding.github.io/clickup.js).
 
 ## Documentation
 
-You can view the libraries full API at [clickup.js docs](https://clickup-js.netlify.app)
+You can view the libraries full API at [clickup.js docs](https://comfortablycoding.github.io/clickup.js)
 
 ## Disclaimer
 
