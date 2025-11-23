@@ -1,0 +1,25 @@
+name: Publish Package
+
+permissions:
+  id-token: write # Required for OIDC
+  contents: read
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: setup environment
+        uses: ./.github/actions/setup
+
+      - name: test
+        run: pnpm test
+
+      - name: publish
+        run: pnpm publish

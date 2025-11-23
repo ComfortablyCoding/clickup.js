@@ -1,0 +1,74 @@
+import { Route } from "../route.js";
+
+/**
+ * @module
+ * @class
+ * @extends Route
+ */
+export default class Comment extends Route {
+	/**
+	 * @constructor
+	 * @param {Clickup} client
+	 */
+	constructor(client) {
+		super({
+			client,
+			route: "comment",
+		});
+	}
+
+	/**
+	 * Update the content of a task comment, assign a comment, and mark a comment as resolved.
+	 * @see {@link https://clickup.com/api/clickupreference/operation/UpdateComment}
+	 *
+	 * @param {number} commentId The comment id
+	 * @param {object} data The comment data
+	 */
+	update(commentId, data) {
+		return this.client.request({
+			method: "PUT",
+			path: `${this.version}/${this.route}/${commentId}`,
+			body: data,
+		});
+	}
+
+	/**
+	 * Delete a comment
+	 * @see {@link https://clickup.com/api/clickupreference/operation/DeleteComment}
+	 *
+	 * @param {number} commentId The comment id
+	 */
+	delete(commentId) {
+		return this.client.request({
+			method: "DELETE",
+			path: `${this.version}/${this.route}/${commentId}`,
+		});
+	}
+
+	/**
+	 * Get comment thread/replies
+	 * @see {@link https://clickup.com/api/clickupreference/operation/GetThreadedComments}
+	 *
+	 * @param {number} commentId The comment id
+	 */
+	replies(commentId) {
+		return this.client.request({
+			path: `${this.version}/${this.route}/${commentId}/reply`,
+		});
+	}
+
+	/**
+	 * Add a reply comment
+	 * @see {@link https://clickup.com/api/clickupreference/operation/CreateThreadedComment}
+	 *
+	 * @param {number} commentId The comment id
+	 * @param {object} data The comment data
+	 */
+	addReply(commentId, data) {
+		return this.client.request({
+			method: "POST",
+			path: `${this.version}/${this.route}/${commentId}/reply`,
+			body: data,
+		});
+	}
+}

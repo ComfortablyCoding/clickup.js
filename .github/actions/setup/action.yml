@@ -1,0 +1,27 @@
+name: Setup
+
+runs:
+  using: composite
+  steps:
+    - name: setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: 24
+        registry-url: https://registry.npmjs.org/
+
+    # Trusted publishing requires npm 11.5.1 or later is installed
+    - name: update npm
+      # required for composite actions
+      shell: bash
+      run: npm install -g npm@11.5.1
+
+    - name: setup pnpm
+      uses: pnpm/action-setup@v3
+      with:
+        run_install: false
+        version: 10
+
+    - name: install dependencies
+      # required for composite actions
+      shell: bash
+      run: pnpm install
