@@ -22,4 +22,4 @@ jobs:
         run: pnpm test
 
       - name: publish
-        run: pnpm publish
+        run: pnpm publish --access public --no-git-checks
