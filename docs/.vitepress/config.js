@@ -25,7 +25,7 @@ export default defineConfig({
 			{ text: "Changelog", link: "/changelog" },
 		],
 
-		socialLinks: [{ icon: "github", link: '"https://github.com/ComfortablyCoding/clickup.js' }],
+		socialLinks: [{ icon: "github", link: "https://github.com/ComfortablyCoding/clickup.js" }],
 	},
 	vite: {
 		plugins: [
