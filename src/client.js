@@ -217,7 +217,7 @@ export class Clickup {
 		}
 
 		if (this.options.hooks?.onRequest) {
-			await this.options.hooks.onRequest(fetchOptions);
+			await this.options.hooks.onRequest({ request: fetchOptions });
 		}
 
 		const { path, query, ...ofetchOptions } = fetchOptions;
@@ -229,7 +229,7 @@ export class Clickup {
 				let data = await ofetch(requestURL, ofetchOptions);
 
 				if (this.options.hooks?.onResponse) {
-					data = await this.options.hooks.onResponse(data);
+					data = await this.options.hooks.onResponse({ request: fetchOptions, data });
 				}
 
 				return data;

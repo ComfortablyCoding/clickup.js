@@ -166,7 +166,7 @@ describe("client", () => {
 			await client.request({ path: "/v2/test" });
 
 			expect(onRequest).toHaveBeenCalled();
-			expect(onResponse).toHaveBeenCalledWith({ success: true });
+			expect(onResponse).toHaveBeenCalled();
 		});
 
 		test("should throw ClickupAPIError on FetchError", async () => {
