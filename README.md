@@ -40,15 +40,15 @@ console.log(task);
 
 The library mirrors ClickUp's API structure:
 
-- `clickup.task.*` – Task operations (create, get, update, delete, comments).
-- `clickup.list.*` – List operations.
-- `clickup.folder.*` – Folder operations.
-- `clickup.space.*` – Space operations.
-- `clickup.team.*`– Team/Workspaces.
-- `clickup.webhook.*` – Webhook management.
-- `clickup.user.*` – User info.
-- `clickup.goal.*` – Goals (if enabled).
-- And more – explore via the [API docs](https://comfortablycoding.github.io/clickup.js).
+- `clickup.task.*` – Task operations
+- `clickup.list.*` – List operations
+- `clickup.folder.*` – Folder operations
+- `clickup.space.*` – Space operations
+- `clickup.team.*`– Team/Workspaces
+- `clickup.webhook.*` – Webhook management
+- `clickup.user.*` – User info
+- `clickup.goal.*` – Goals
+- And more! Explore via the [API docs](https://comfortablycoding.github.io/clickup.js).
 
 ## Documentation
 
