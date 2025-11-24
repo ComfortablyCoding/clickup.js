@@ -27,13 +27,13 @@ pnpm add clickup.js
 ## Quick Start
 
 ```js
-import { Clickup } from "clickup.js";
+import { createClickup } from "clickup.js";
 const token = "..."; // API access token
-const clickup = new Clickup({ token });
+const clickup = createClickup({ token });
 
 // get a specific task
-const { body } = await clickup.task.get("9hz");
-console.log(body);
+const task = await clickup.task.get("9hz");
+console.log(task);
 ```
 
 ## API Parity
