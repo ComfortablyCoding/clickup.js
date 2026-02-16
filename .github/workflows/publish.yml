@@ -21,5 +21,8 @@ jobs:
       - name: test
         run: pnpm test
 
+      - name: build
+        run: pnpm build
+
       - name: publish
         run: pnpm publish --access public --no-git-checks
