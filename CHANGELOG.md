@@ -2,6 +2,12 @@
 
 All notable changes will be documented in this file.
 
+## [Unreleased]
+
+## Changed
+
+- The publish process now includes a build step so generated files are present at publish time.
+
 ## 4.0.0
 
 **This release contains backwards-incompatible changes.**
