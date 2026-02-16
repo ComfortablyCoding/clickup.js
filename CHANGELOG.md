@@ -4,7 +4,7 @@ All notable changes will be documented in this file.
 
 ## [Unreleased]
 
-## Changed
+### **Changed**
 
 - The publish process now includes a build step so generated files are present at publish time.
 
@@ -12,12 +12,12 @@ All notable changes will be documented in this file.
 
 **This release contains backwards-incompatible changes.**
 
-## **Added**
+### **Added**
 
 - Automatic and configurable **rate limiting** to prevent API overuse and ensure compliance with ClickUp’s rate limits.
 - New client instantiation entry point: **`createClickup()`** for clearer configuration and future extensibility.
 
-## **Changed**
+### **Changed**
 
 - Replaced **`got`** with **`ofetch`** as the internal HTTP client for a lighter, modern, ESM-friendly implementation.
 - Normalized all API errors via the new **`ClickupAPIError`** class, providing consistent error structures and improved debugging.
