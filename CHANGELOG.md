@@ -7,6 +7,7 @@ All notable changes will be documented in this file.
 ### **Changed**
 
 - The publish process now includes a build step so generated files are present at publish time.
+- Updated project dependencies to their latest compatible versions for security, performance, and compatibility improvements.
 
 ## 4.0.0
 
