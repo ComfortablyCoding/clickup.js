@@ -88,7 +88,7 @@ describe("client", () => {
 	});
 
 	describe("request", () => {
-		test("should make GET request with default headers", async () => {
+		test("should make GET request", async () => {
 			const client = new Clickup();
 
 			await client.request({ path: "" });
@@ -97,9 +97,6 @@ describe("client", () => {
 				new URL("https://api.clickup.com/api/"),
 				expect.objectContaining({
 					method: "GET",
-					headers: {
-						"Content-Type": "application/json",
-					},
 				}),
 			);
 		});
@@ -118,10 +115,9 @@ describe("client", () => {
 				new URL("https://api.clickup.com/api/v2/test?page=1"),
 				expect.objectContaining({
 					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
+					headers: expect.objectContaining({
 						"X-Custom": "value",
-					},
+					}),
 				}),
 			);
 		});
@@ -194,67 +190,6 @@ describe("client", () => {
 			const client = new Clickup();
 
 			await expect(client.request({ path: "/v2/test" })).rejects.toThrow("Network failure");
-		});
-	});
-
-	describe("buildRequestUrl", () => {
-		const client = new Clickup();
-
-		test("should return URL instance", () => {
-			const url = client.buildRequestUrl("https://api.clickup.com/api/", "v2/list/123/task");
-			expect(url).instanceOf(URL);
-		});
-
-		test("should append path to baseURL path", () => {
-			const url = client.buildRequestUrl("https://api.clickup.com/api/", "v2/list/123/task");
-			expect(url.pathname).equal("/api/v2/list/123/task");
-		});
-
-		test("supports basic searchParams", () => {
-			const url = client.buildRequestUrl("https://api.clickup.com/api", "v2/list/123/task", { archived: false });
-			expect(url.searchParams.get("archived")).toEqual("false");
-		});
-
-		test("should convert camelCase query keys to snake_case", () => {
-			const url = client.buildRequestUrl("https://api.clickup.com/api", "v2/list/123/task", {
-				orderBy: "id",
-				includeClosed: true,
-			});
-
-			expect(url.searchParams.get("order_by")).toBeDefined();
-			expect(url.searchParams.get("orderBy")).toBeNull();
-			expect(url.searchParams.get("include_closed")).toBeDefined();
-			expect(url.searchParams.get("includeClosed")).toBeNull();
-		});
-
-		test("should suffix non [] suffixed keys with [] for array values", () => {
-			const url = client.buildRequestUrl("https://api.clickup.com/api", "v2/list/123/task", {
-				assignees: [123, 456],
-			});
-
-			expect(url.searchParams.getAll("assignees[]")).toEqual(["123", "456"]);
-		});
-
-		test("should convert [] suffixed key array values to LHS bracket notation", () => {
-			const url = client.buildRequestUrl("https://api.clickup.com/api", "v2/list/123/task", {
-				"statuses[]": ["completed", "in progress"],
-			});
-
-			expect(url.searchParams.getAll("statuses[]").length).toEqual(2);
-		});
-	});
-
-	describe("cameltoSnakeCase", () => {
-		const client = new Clickup();
-
-		test.each([
-			["userId", "user_id"],
-			["isActive", "is_active"],
-			["dueDateGt", "due_date_gt"],
-			["snake_case", "snake_case"],
-			["", ""],
-		])("should camelCase $0 to snake_case $1", (k, v) => {
-			expect(client.cameltoSnakeCase(k)).toBe(v);
 		});
 	});
 });

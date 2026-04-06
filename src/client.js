@@ -15,6 +15,7 @@ import View from "./routes/view.js";
 import Webhook from "./routes/webhook.js";
 import { FetchError, ofetch } from "ofetch";
 import { ClickupAPIError } from "./error.js";
+import { buildRequestUrl, camelToSnakeCase } from "./utils.js";
 
 /**
  * The default globals supplied to the client
@@ -194,11 +195,6 @@ export class Clickup {
 			fetchOptions.headers = options.headers;
 		}
 
-		// default response type to json
-		if ("Content-Type" in fetchOptions.headers === false) {
-			fetchOptions.headers["Content-Type"] = "application/json";
-		}
-
 		if (this.token) {
 			fetchOptions.headers.Authorization = this.token;
 		}
@@ -207,10 +203,9 @@ export class Clickup {
 			fetchOptions.body = options.body;
 
 			if (!(options.body instanceof FormData)) {
-				// convert camel case key to snake_case
 				const body = {};
 				for (const [key, value] of Object.entries(options.body)) {
-					body[this.cameltoSnakeCase(key)] = value;
+					body[camelToSnakeCase(key)] = value;
 				}
 
 				fetchOptions.body = body;
@@ -223,7 +218,7 @@ export class Clickup {
 
 		const { path, query, ...ofetchOptions } = fetchOptions;
 
-		const requestURL = this.buildRequestUrl(this.options.request.prefixUrl, path, query);
+		const requestURL = buildRequestUrl(this.options.request.prefixUrl, path, query);
 
 		return this.queue.add(async () => {
 			try {
@@ -246,48 +241,5 @@ export class Clickup {
 				throw error;
 			}
 		});
-	}
-
-	/**
-	 *
-	 * @param {string} prefixUrl The base URL
-	 * @param {string} path The request URL path
-	 * @param {object} [query] The request URL parameters
-	 * @returns {URL}
-	 */
-	buildRequestUrl(prefixUrl, path, query) {
-		const url = new URL(path, prefixUrl);
-
-		for (let [key, value] of Object.entries(query ?? {})) {
-			// convert camel case key to snake_case
-			key = this.cameltoSnakeCase(key);
-
-			if (Array.isArray(value)) {
-				// LHS bracket notation requires array values to have a key value pair per element.
-				// Each key must be suffixed by []
-				if (!key.endsWith("[]")) {
-					key += "[]";
-				}
-
-				for (const entry of value) {
-					url.searchParams.append(key, entry);
-				}
-			} else {
-				url.searchParams.set(key, value);
-			}
-		}
-
-		return url;
-	}
-
-	/**
-	 *
-	 * Convert a camel case string to snake case
-	 *
-	 * @param {string} value
-	 * @returns {string}
-	 */
-	cameltoSnakeCase(value) {
-		return value.replace(/([A-Z])/g, "_$1").toLowerCase();
 	}
 }
