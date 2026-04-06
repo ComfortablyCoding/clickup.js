@@ -84,7 +84,7 @@ export default class Task extends Route {
 	}
 
 	/**
-	 * Add a comment to as task
+	 * Add a comment to a task
 	 * @see {@link https://clickup.com/api/clickupreference/operation/CreateTaskComment}
 	 *
 	 * @param {string} taskId The task id
@@ -122,7 +122,7 @@ export default class Task extends Route {
 	 * @param {object} data The checklist data
 	 * @param {object} [options] The query parameters to use
 	 */
-	AddChecklist(taskId, data, options) {
+	addChecklist(taskId, data, options) {
 		return this.client.request({
 			method: "POST",
 			path: `${this.version}/${this.route}/${taskId}/checklist`,
@@ -198,7 +198,7 @@ export default class Task extends Route {
 	}
 
 	/**
-	 * Link two task together
+	 * Link two tasks together
 	 * @see {@link https://clickup.com/api/clickupreference/operation/AddTaskLink}
 	 *
 	 * @param {string} taskId The task id

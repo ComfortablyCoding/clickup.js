@@ -33,6 +33,15 @@ describe("client", () => {
 		});
 	});
 
+	describe("options", () => {
+		test("should deep merge request options with defaults", () => {
+			const client = new Clickup({ request: { timeout: 5000 } });
+
+			expect(client.options.request.timeout).toBe(5000);
+			expect(client.options.request.prefixUrl).toBe("https://api.clickup.com/api/");
+		});
+	});
+
 	describe("token handling", () => {
 		test("should use token from constructor", async () => {
 			const client = new Clickup({ token: "MY_CONSTRUCTOR_TOKEN" });
@@ -63,9 +72,9 @@ describe("client", () => {
 			delete process.env.CLICKUP_TOKEN;
 		});
 
-		test("should use seToken() to override", async () => {
+		test("should use setToken() to override", async () => {
 			const client = new Clickup({ token: "MY_CONSTRUCTOR_TOKEN" });
-			client.seToken("MY_SET_TOKEN");
+			client.setToken("MY_SET_TOKEN");
 
 			await client.request({ path: "" });
 

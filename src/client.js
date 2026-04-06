@@ -1,3 +1,4 @@
+import { defu } from "defu";
 import PQueue from "p-queue";
 import Authorization from "./routes/authorization.js";
 import Checklist from "./routes/checklist.js";
@@ -24,7 +25,7 @@ const defaultOptions = {
 	},
 	rateLimit: {
 		requests: 100,
-		interval: 60_00,
+		interval: 60_000,
 	},
 	hooks: {},
 };
@@ -41,11 +42,11 @@ export class Clickup {
 	 * @param {string} [options.token] Clickup Access Token
 	 * @param {object} [options.request] The request options
 	 * @param {string} [options.request.prefixUrl=https://api.clickup.com/api] The clickup API URL
-	 * @param {string} [options.rateLimit] The clickup API URL
+	 * @param {object} [options.rateLimit] The rate limit config
 	 * @param {object} [options.hooks] The hooks for extending functionality
 	 */
 	constructor(options = {}) {
-		this.options = { ...defaultOptions, ...options };
+		this.options = defu(options, defaultOptions);
 
 		this.queue = new PQueue({
 			concurrency: options.rateLimit?.requests ?? 100,
@@ -111,7 +112,7 @@ export class Clickup {
 		 * @type {KeyResult}
 		 * @public
 		 */
-		this.keyResults = new KeyResult(this);
+		this.keyResult = new KeyResult(this);
 
 		/**
 		 * list
@@ -168,7 +169,7 @@ export class Clickup {
 	 * @param {string} token
 	 * @returns {void}
 	 */
-	seToken(token) {
+	setToken(token) {
 		this.token = token;
 	}
 

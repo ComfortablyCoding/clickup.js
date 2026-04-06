@@ -2,7 +2,7 @@ export class ClickupAPIError extends Error {
 	constructor(options = {}) {
 		super(options.message);
 		this.name = "ClickupAPIError";
-		this.satus = options.status;
+		this.status = options.status;
 		this.code = options.code ?? null;
 
 		// Set the prototype explicitly for instanceof checks
