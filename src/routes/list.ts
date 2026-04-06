@@ -1,4 +1,5 @@
-import { Route } from "../route.js";
+import { Route } from "../route.ts";
+import type { Clickup } from "../client.ts";
 
 /**
  * @module
@@ -10,7 +11,7 @@ export default class List extends Route {
 	 * @constructor
 	 * @param {Clickup} client
 	 */
-	constructor(client) {
+	constructor(client: Clickup) {
 		super({
 			client,
 			route: "list",
@@ -23,7 +24,7 @@ export default class List extends Route {
 	 *
 	 * @param {number} listId The list id
 	 */
-	get(listId) {
+	get(listId: number): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${listId}`,
 		});
@@ -36,7 +37,7 @@ export default class List extends Route {
 	 * @param {string} listId The list id
 	 * @param {object} data The list data
 	 */
-	update(listId, data) {
+	update(listId: string, data: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "PUT",
 			path: `${this.version}/${this.route}/${listId}`,
@@ -50,7 +51,7 @@ export default class List extends Route {
 	 *
 	 * @param {number} listId The list id
 	 */
-	delete(listId) {
+	delete(listId: number): Promise<unknown> {
 		return this.client.request({
 			method: "DELETE",
 			path: `${this.version}/${this.route}/${listId}`,
@@ -64,7 +65,7 @@ export default class List extends Route {
 	 * @param {string} listId The list id
 	 * @param {object} data The comment data
 	 */
-	addComment(listId, data) {
+	addComment(listId: string, data: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "POST",
 			path: `${this.version}/${this.route}/${listId}/comment`,
@@ -79,7 +80,7 @@ export default class List extends Route {
 	 * @param {number} listId The list id
 	 * @param {object} [options] The query parameters to use
 	 */
-	comments(listId, options) {
+	comments(listId: number, options?: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${listId}/comment`,
 			query: options,
@@ -92,7 +93,7 @@ export default class List extends Route {
 	 *
 	 * @param {number} listId The list id
 	 */
-	customFields(listId) {
+	customFields(listId: number): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${listId}/field`,
 		});
@@ -107,7 +108,12 @@ export default class List extends Route {
 	 * @param {object} data The guest data
 	 * @param {object} [options] The query parameters to use
 	 */
-	addGuest(listId, guestId, data, options) {
+	addGuest(
+		listId: number,
+		guestId: number,
+		data: Record<string, unknown>,
+		options?: Record<string, unknown>,
+	): Promise<unknown> {
 		return this.client.request({
 			method: "POST",
 			path: `${this.version}/${this.route}/${listId}/guest/${guestId}`,
@@ -124,7 +130,7 @@ export default class List extends Route {
 	 * @param {number} guestId The guest id
 	 * @param {object} options The query parameters to use
 	 */
-	removeGuest(listId, guestId, options) {
+	removeGuest(listId: number, guestId: number, options: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "DELETE",
 			path: `${this.version}/${this.route}/${listId}/guest/${guestId}`,
@@ -138,7 +144,7 @@ export default class List extends Route {
 	 *
 	 * @param {number} listId The list id
 	 */
-	members(listId) {
+	members(listId: number): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${listId}/member`,
 		});
@@ -152,7 +158,7 @@ export default class List extends Route {
 	 * @param {object} data The task data
 	 * @param {object} [options] The query parameters to use
 	 */
-	createTask(listId, data, options) {
+	createTask(listId: number, data: Record<string, unknown>, options?: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "POST",
 			path: `${this.version}/${this.route}/${listId}/task`,
@@ -168,7 +174,7 @@ export default class List extends Route {
 	 * @param {number} listId The list id
 	 * @param {object} options The query parameters to pass
 	 */
-	tasks(listId, options) {
+	tasks(listId: number, options: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${listId}/task`,
 			query: options,
@@ -183,7 +189,7 @@ export default class List extends Route {
 	 * @param {string} templateId The template id
 	 * @param {object} data The task data
 	 */
-	createTaskFromTemplate(listId, templateId, data) {
+	createTaskFromTemplate(listId: number, templateId: string, data: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "POST",
 			path: `${this.version}/${this.route}/${listId}/taskTemplate/${templateId}`,
@@ -198,7 +204,7 @@ export default class List extends Route {
 	 * @param {number} listId The list id
 	 * @param {object} data The view data
 	 */
-	createView(listId, data) {
+	createView(listId: number, data: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "POST",
 			path: `${this.version}/${this.route}/${listId}/view`,
@@ -212,7 +218,7 @@ export default class List extends Route {
 	 *
 	 * @param {number} listId The list id
 	 */
-	views(listId) {
+	views(listId: number): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${listId}/view`,
 		});
@@ -225,7 +231,7 @@ export default class List extends Route {
 	 * @param {number} listId The list id
 	 * @param {string} taskId The task id
 	 */
-	addTask(listId, taskId) {
+	addTask(listId: number, taskId: string): Promise<unknown> {
 		return this.client.request({
 			method: "POST",
 			path: `${this.version}/${this.route}/${listId}/task/${taskId}`,
@@ -239,7 +245,7 @@ export default class List extends Route {
 	 * @param {number} listId The list id
 	 * @param {string} taskId The task id
 	 */
-	removeTask(listId, taskId) {
+	removeTask(listId: number, taskId: string): Promise<unknown> {
 		return this.client.request({
 			method: "DELETE",
 			path: `${this.version}/${this.route}/${listId}/task/${taskId}`,

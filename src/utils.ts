@@ -4,7 +4,7 @@
  * @param {string} value
  * @returns {string}
  */
-export function camelToSnakeCase(value) {
+export function camelToSnakeCase(value: string): string {
 	return value.replace(/([A-Z])/g, "_$1").toLowerCase();
 }
 
@@ -13,10 +13,10 @@ export function camelToSnakeCase(value) {
  *
  * @param {string} prefixUrl The base URL
  * @param {string} path The request URL path
- * @param {object} [query] The request URL parameters
+ * @param {Record<string, unknown>} [query] The request URL parameters
  * @returns {URL}
  */
-export function buildRequestUrl(prefixUrl, path, query) {
+export function buildRequestUrl(prefixUrl: string, path: string, query?: Record<string, unknown>): URL {
 	const url = new URL(path, prefixUrl);
 
 	for (let [key, value] of Object.entries(query ?? {})) {
@@ -30,10 +30,10 @@ export function buildRequestUrl(prefixUrl, path, query) {
 			}
 
 			for (const entry of value) {
-				url.searchParams.append(key, entry);
+				url.searchParams.append(key, String(entry));
 			}
 		} else {
-			url.searchParams.set(key, value);
+			url.searchParams.set(key, String(value));
 		}
 	}
 

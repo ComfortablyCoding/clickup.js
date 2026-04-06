@@ -1,4 +1,5 @@
-import { Route } from "../route.js";
+import { Route } from "../route.ts";
+import type { Clickup } from "../client.ts";
 
 /**
  * @module
@@ -10,7 +11,7 @@ export default class Team extends Route {
 	 * @constructor
 	 * @param {Clickup} client
 	 */
-	constructor(client) {
+	constructor(client: Clickup) {
 		super({
 			client,
 			route: "team",
@@ -20,7 +21,7 @@ export default class Team extends Route {
 	/**
 	 * Get teams
 	 */
-	get() {
+	get(): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}`,
 		});
@@ -33,7 +34,7 @@ export default class Team extends Route {
 	 * @param {number} teamId The team id
 	 * @param {object} data Goal data
 	 */
-	createGoal(teamId, data) {
+	createGoal(teamId: number, data: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "POST",
 			path: `${this.version}/${this.route}/${teamId}/goal`,
@@ -48,7 +49,7 @@ export default class Team extends Route {
 	 * @param {number} teamId The team id
 	 * @param {object} options The query parameters to use
 	 */
-	goals(teamId, options) {
+	goals(teamId: number, options: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${teamId}/goal`,
 			query: options,
@@ -62,7 +63,7 @@ export default class Team extends Route {
 	 * @param {number} teamId The team id
 	 * @param {object} data The guest data
 	 */
-	inviteGuest(teamId, data) {
+	inviteGuest(teamId: number, data: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "POST",
 			path: `${this.version}/${this.route}/${teamId}/guest`,
@@ -77,7 +78,7 @@ export default class Team extends Route {
 	 * @param {number} teamId The team id
 	 * @param {number} guestId The guest id
 	 */
-	guest(teamId, guestId) {
+	guest(teamId: number, guestId: number): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${teamId}/guest/${guestId}`,
 		});
@@ -91,7 +92,7 @@ export default class Team extends Route {
 	 * @param {number} guestId The guest id
 	 * @param {object} data The guest data
 	 */
-	editGuest(teamId, guestId, data) {
+	editGuest(teamId: number, guestId: number, data: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "PUT",
 			path: `${this.version}/${this.route}/${teamId}/guest/${guestId}`,
@@ -106,7 +107,7 @@ export default class Team extends Route {
 	 * @param {number} teamId The team id
 	 * @param {number} guestId The guest id
 	 */
-	removeGuest(teamId, guestId) {
+	removeGuest(teamId: number, guestId: number): Promise<unknown> {
 		return this.client.request({
 			method: "DELETE",
 			path: `${this.version}/${this.route}/${teamId}/guest/${guestId}`,
@@ -119,7 +120,7 @@ export default class Team extends Route {
 	 *
 	 * @param {number} teamId The team id
 	 */
-	sharedHierarchy(teamId) {
+	sharedHierarchy(teamId: number): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${teamId}/shared`,
 		});
@@ -132,7 +133,7 @@ export default class Team extends Route {
 	 * @param {number} teamId The team id
 	 * @param {object} data The space data
 	 */
-	createSpace(teamId, data) {
+	createSpace(teamId: number, data: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "POST",
 			path: `${this.version}/${this.route}/${teamId}/space`,
@@ -148,7 +149,7 @@ export default class Team extends Route {
 	 * @param {object} [options] The query parameters to pass
 	 * @param {boolean} options.archived If archived lists should be returned or not
 	 */
-	spaces(teamId, options) {
+	spaces(teamId: number, options?: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${teamId}/space`,
 			query: options,
@@ -162,7 +163,7 @@ export default class Team extends Route {
 	 * @param {number} teamId The team id
 	 * @param {object} [options] The query parameters to pass
 	 */
-	filteredTasks(teamId, options) {
+	filteredTasks(teamId: number, options?: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${teamId}/task`,
 			query: { page: 0, ...options },
@@ -176,7 +177,7 @@ export default class Team extends Route {
 	 * @param {number} teamId The team id
 	 * @param {object} [options] The query parameters to pass
 	 */
-	taskTemplates(teamId, options) {
+	taskTemplates(teamId: number, options?: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${teamId}/taskTemplate`,
 			query: { page: 0, ...options },
@@ -190,7 +191,7 @@ export default class Team extends Route {
 	 * @param {number} teamId The team id
 	 * @param {number} userId The user id
 	 */
-	user(teamId, userId) {
+	user(teamId: number, userId: number): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${teamId}/user/${userId}`,
 		});
@@ -203,7 +204,7 @@ export default class Team extends Route {
 	 * @param {number} teamId The team id
 	 * @param {object} data The user data
 	 */
-	inviteUser(teamId, data) {
+	inviteUser(teamId: number, data: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "POST",
 			path: `${this.version}/${this.route}/${teamId}/user`,
@@ -219,7 +220,7 @@ export default class Team extends Route {
 	 * @param {number} userId The user id
 	 * @param {object} data The user data
 	 */
-	editUser(teamId, userId, data) {
+	editUser(teamId: number, userId: number, data: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "PUT",
 			path: `${this.version}/${this.route}/${teamId}/user/${userId}`,
@@ -234,7 +235,7 @@ export default class Team extends Route {
 	 * @param {number} teamId The team id
 	 * @param {number} userId The team id
 	 */
-	removeUser(teamId, userId) {
+	removeUser(teamId: number, userId: number): Promise<unknown> {
 		return this.client.request({
 			method: "DELETE",
 			path: `${this.version}/${this.route}/${teamId}/user/${userId}`,
@@ -249,7 +250,7 @@ export default class Team extends Route {
 	 * @param {number} teamId The team id
 	 * @param {object} data The view data
 	 */
-	createView(teamId, data) {
+	createView(teamId: number, data: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "POST",
 			path: `${this.version}/${this.route}/${teamId}/view`,
@@ -263,7 +264,7 @@ export default class Team extends Route {
 	 *
 	 * @param {number} teamId The team id
 	 */
-	views(teamId) {
+	views(teamId: number): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${teamId}/view`,
 		});
@@ -276,7 +277,7 @@ export default class Team extends Route {
 	 * @param {number} teamId The team id
 	 * @param {object} data The webhook data
 	 */
-	createWebhook(teamId, data) {
+	createWebhook(teamId: number, data: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "POST",
 			path: `${this.version}/${this.route}/${teamId}/webhook`,
@@ -291,7 +292,7 @@ export default class Team extends Route {
 	 *
 	 * @param {number} teamId the team id
 	 */
-	webhooks(teamId) {
+	webhooks(teamId: number): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${teamId}/webhook`,
 		});
@@ -304,7 +305,7 @@ export default class Team extends Route {
 	 * @param {number} teamId The team id
 	 * @param {object} [options] The query parameters to use
 	 */
-	timeEntries(teamId, options) {
+	timeEntries(teamId: number, options?: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${teamId}/time_entries`,
 			query: options,
@@ -319,7 +320,7 @@ export default class Team extends Route {
 	 * @param {string} timerId The timer id
 	 * @param {object} [options] The query parameters to use
 	 */
-	timeEntry(teamId, timerId, options) {
+	timeEntry(teamId: number, timerId: string, options?: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${teamId}/time_entries/${timerId}`,
 			query: options,
@@ -333,7 +334,7 @@ export default class Team extends Route {
 	 * @param {number} teamId The team id
 	 * @param {object} [options] The query parameters to use
 	 */
-	runningTimeEntry(teamId, options) {
+	runningTimeEntry(teamId: number, options?: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${teamId}/time_entries/current`,
 			query: options,
@@ -348,7 +349,7 @@ export default class Team extends Route {
 	 * @param {object} data The time entry data
 	 * @param {object} [options] The query parameters to use
 	 */
-	addTimeEntry(teamId, data, options) {
+	addTimeEntry(teamId: number, data: Record<string, unknown>, options?: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "POST",
 			path: `${this.version}/${this.route}/${teamId}/time_entries`,
@@ -364,7 +365,7 @@ export default class Team extends Route {
 	 * @param {number} teamId The team id
 	 * @param {object} data The time entries data
 	 */
-	removeTimeEntryTags(teamId, data) {
+	removeTimeEntryTags(teamId: number, data: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "DELETE",
 			path: `${this.version}/${this.route}/${teamId}/time_entries/tags`,
@@ -378,7 +379,7 @@ export default class Team extends Route {
 	 *
 	 * @param {number} teamId The team id
 	 */
-	timeEntryTags(teamId) {
+	timeEntryTags(teamId: number): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${teamId}/time_entries/tags`,
 		});
@@ -391,7 +392,7 @@ export default class Team extends Route {
 	 * @param {number} teamId The team id
 	 * @param {object} data The time entries and tag data
 	 */
-	addTimeEntryTags(teamId, data) {
+	addTimeEntryTags(teamId: number, data: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "POST",
 			path: `${this.version}/${this.route}/${teamId}/time_entries/tags`,
@@ -406,7 +407,7 @@ export default class Team extends Route {
 	 * @param {number} teamId The team id
 	 * @param {object} data The tag data
 	 */
-	editTimeEntryTag(teamId, data) {
+	editTimeEntryTag(teamId: number, data: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "PUT",
 			path: `${this.version}/${this.route}/${teamId}/time_entries/tags`,
@@ -422,7 +423,7 @@ export default class Team extends Route {
 	 * @param {object} data The time entry data
 	 * @param {object} [options] The query parameters to use
 	 */
-	startTimeEntry(teamId, data, options) {
+	startTimeEntry(teamId: number, data: Record<string, unknown>, options?: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "POST",
 			path: `${this.version}/${this.route}/${teamId}/time_entries/start`,
@@ -437,7 +438,7 @@ export default class Team extends Route {
 	 *
 	 * @param {number} teamId The team id
 	 */
-	stopTimeEntry(teamId) {
+	stopTimeEntry(teamId: number): Promise<unknown> {
 		return this.client.request({
 			method: "POST",
 			path: `${this.version}/${this.route}/${teamId}/time_entries/stop`,
@@ -451,7 +452,7 @@ export default class Team extends Route {
 	 * @param {number} teamId The team id
 	 * @param {number} timerId The timer id
 	 */
-	removeTimeEntry(teamId, timerId) {
+	removeTimeEntry(teamId: number, timerId: number): Promise<unknown> {
 		return this.client.request({
 			method: "DELETE",
 			path: `${this.version}/${this.route}/${teamId}/time_entries/${timerId}`,
@@ -467,7 +468,12 @@ export default class Team extends Route {
 	 * @param {object} data The time entry data
 	 * @param {object} [options] The query parameters to use
 	 */
-	editTimeEntry(teamId, timerId, data, options) {
+	editTimeEntry(
+		teamId: number,
+		timerId: number,
+		data: Record<string, unknown>,
+		options?: Record<string, unknown>,
+	): Promise<unknown> {
 		return this.client.request({
 			method: "PUT",
 			path: `${this.version}/${this.route}/${teamId}/time_entries/${timerId}`,
@@ -483,7 +489,7 @@ export default class Team extends Route {
 	 * @param {number} teamId The team id
 	 * @param {string} timerId The timer id
 	 */
-	timeEntryHistory(teamId, timerId) {
+	timeEntryHistory(teamId: number, timerId: string): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${teamId}/time_entries/${timerId}/history`,
 		});
@@ -495,7 +501,7 @@ export default class Team extends Route {
 	 *
 	 * @param {string} teamId The team id
 	 */
-	seats(teamId) {
+	seats(teamId: string): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${teamId}/seats`,
 		});
@@ -507,7 +513,7 @@ export default class Team extends Route {
 	 *
 	 * @param {string} teamId The team id
 	 */
-	plan(teamId) {
+	plan(teamId: string): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${teamId}/plan`,
 		});
@@ -519,7 +525,7 @@ export default class Team extends Route {
 	 *
 	 * @param {string} teamId The team id
 	 */
-	customTaskTypes(teamId) {
+	customTaskTypes(teamId: string): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${teamId}/custom_item`,
 		});
@@ -532,7 +538,7 @@ export default class Team extends Route {
 	 * @param {string} teamId The team id
 	 * @param {object} [options] The query parameters to use
 	 */
-	customRoles(teamId, options) {
+	customRoles(teamId: string, options?: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${teamId}/customroles`,
 			query: options,
@@ -546,7 +552,7 @@ export default class Team extends Route {
 	 * @param {number} teamId The team id
 	 * @param {object} data The team data
 	 */
-	addUserGroup(teamId, data) {
+	addUserGroup(teamId: number, data: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "POST",
 			path: `${this.version}/${this.route}/${teamId}/group`,
@@ -560,7 +566,7 @@ export default class Team extends Route {
 	 *
 	 * @param {number} teamId The team id
 	 */
-	customFields(teamId) {
+	customFields(teamId: number): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${teamId}/field`,
 		});

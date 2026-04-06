@@ -1,0 +1,12 @@
+{
+	"$schema": "https://typedoc.org/schema.json",
+	"entryPoints": ["src/index.ts", "src/routes/*.ts"],
+	"tsconfig": "tsconfig.docs.json",
+	"plugin": ["typedoc-plugin-markdown"],
+	"out": "docs/api",
+	"readme": "none",
+	"excludePrivate": true,
+	"excludeInternal": true,
+	"outputFileStrategy": "modules",
+	"flattenOutputFiles": true
+}

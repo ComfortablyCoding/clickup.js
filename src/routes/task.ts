@@ -1,4 +1,5 @@
-import { Route } from "../route.js";
+import { Route } from "../route.ts";
+import type { Clickup } from "../client.ts";
 
 /**
  * @module
@@ -10,7 +11,7 @@ export default class Task extends Route {
 	 * @constructor
 	 * @param {Clickup} client
 	 */
-	constructor(client) {
+	constructor(client: Clickup) {
 		super({
 			client,
 			route: "task",
@@ -24,7 +25,7 @@ export default class Task extends Route {
 	 * @param {string} taskId The task id
 	 * @param {object} [options] The query parameters to use
 	 */
-	get(taskId, options) {
+	get(taskId: string, options?: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${taskId}`,
 			query: options,
@@ -39,7 +40,7 @@ export default class Task extends Route {
 	 * @param {object} data The task data
 	 * @param {object} [options] The query parameters to use
 	 */
-	update(taskId, data, options) {
+	update(taskId: string, data: Record<string, unknown>, options?: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "PUT",
 			path: `${this.version}/${this.route}/${taskId}`,
@@ -55,7 +56,7 @@ export default class Task extends Route {
 	 * @param {string} taskId The task id
 	 * @param {object} [options] The query parameters to use
 	 */
-	delete(taskId, options) {
+	delete(taskId: string, options?: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "DELETE",
 			path: `${this.version}/${this.route}/${taskId}`,
@@ -71,7 +72,7 @@ export default class Task extends Route {
 	 * @param {FormData} attachment The attachments to add
 	 * @param {object} [options] The query parameters to use
 	 */
-	addAttachment(taskId, attachment, options) {
+	addAttachment(taskId: string, attachment: FormData, options?: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "POST",
 			headers: {
@@ -91,7 +92,7 @@ export default class Task extends Route {
 	 * @param {object} data The comment data
 	 * @param {object} [options] The query parameters to use
 	 */
-	addComment(taskId, data, options) {
+	addComment(taskId: string, data: Record<string, unknown>, options?: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "POST",
 			path: `${this.version}/${this.route}/${taskId}/comment`,
@@ -107,7 +108,7 @@ export default class Task extends Route {
 	 * @param {string} taskId The task id
 	 * @param {object} [options] The query parameters to use
 	 */
-	comments(taskId, options) {
+	comments(taskId: string, options?: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${taskId}/comment`,
 			query: options,
@@ -122,7 +123,7 @@ export default class Task extends Route {
 	 * @param {object} data The checklist data
 	 * @param {object} [options] The query parameters to use
 	 */
-	addChecklist(taskId, data, options) {
+	addChecklist(taskId: string, data: Record<string, unknown>, options?: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "POST",
 			path: `${this.version}/${this.route}/${taskId}/checklist`,
@@ -140,7 +141,12 @@ export default class Task extends Route {
 	 * @param {object} data The custom field data
 	 * @param {object} [options] The query parameters to use
 	 */
-	addCustomFieldValue(taskId, fieldId, data, options) {
+	addCustomFieldValue(
+		taskId: string,
+		fieldId: string,
+		data: Record<string, unknown>,
+		options?: Record<string, unknown>,
+	): Promise<unknown> {
 		return this.client.request({
 			method: "POST",
 			path: `${this.version}/${this.route}/${taskId}/field/${fieldId}`,
@@ -157,7 +163,7 @@ export default class Task extends Route {
 	 * @param {string} fieldId The uuid of the custom field
 	 * @param {object} [options] The query parameters to use
 	 */
-	removeCustomFieldValue(taskId, fieldId, options) {
+	removeCustomFieldValue(taskId: string, fieldId: string, options?: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "DELETE",
 			path: `${this.version}/${this.route}/${taskId}/field/${fieldId}`,
@@ -173,7 +179,7 @@ export default class Task extends Route {
 	 * @param {object} data The dependency data
 	 * @param {object} [options] The query parameters to use
 	 */
-	addDependency(taskId, data, options) {
+	addDependency(taskId: string, data: Record<string, unknown>, options?: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "POST",
 			path: `${this.version}/${this.route}/${taskId}/dependency`,
@@ -189,7 +195,7 @@ export default class Task extends Route {
 	 * @param {string} taskId The task id
 	 * @param {object} [options] The parameter options to pass in
 	 */
-	removeDependency(taskId, options) {
+	removeDependency(taskId: string, options?: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "DELETE",
 			path: `${this.version}/${this.route}/${taskId}/dependency`,
@@ -205,7 +211,7 @@ export default class Task extends Route {
 	 * @param {string} linksTo The id of the task to link to
 	 * @param {object} [options] The query parameters to use
 	 */
-	addTaskLink(taskId, linksTo, options) {
+	addTaskLink(taskId: string, linksTo: string, options?: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "POST",
 			path: `${this.version}/${this.route}/${taskId}/link/${linksTo}`,
@@ -221,7 +227,7 @@ export default class Task extends Route {
 	 * @param {string} linksTo The id of the task to link to
 	 * @param {object} [options] The query parameters to use
 	 */
-	removeTaskLink(taskId, linksTo, options) {
+	removeTaskLink(taskId: string, linksTo: string, options?: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "DELETE",
 			path: `${this.version}/${this.route}/${taskId}/link/${linksTo}`,
@@ -238,7 +244,12 @@ export default class Task extends Route {
 	 * @param {object} data The guest data
 	 * @param {object} [options] The query parameters to use
 	 */
-	addGuest(taskId, guestId, data, options) {
+	addGuest(
+		taskId: string,
+		guestId: number,
+		data: Record<string, unknown>,
+		options?: Record<string, unknown>,
+	): Promise<unknown> {
 		return this.client.request({
 			method: "POST",
 			path: `${this.version}/${this.route}/${taskId}/guest/${guestId}`,
@@ -255,7 +266,7 @@ export default class Task extends Route {
 	 * @param {number} guestId The guest id
 	 * @param {object} [options] The query parameters to use
 	 */
-	removeGuest(taskId, guestId, options) {
+	removeGuest(taskId: string, guestId: number, options?: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "DELETE",
 			path: `${this.version}/${this.route}/${taskId}/guest/${guestId}`,
@@ -269,7 +280,7 @@ export default class Task extends Route {
 	 *
 	 * @param {string} taskId The task id
 	 */
-	members(taskId) {
+	members(taskId: string): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${taskId}/member`,
 		});
@@ -283,7 +294,7 @@ export default class Task extends Route {
 	 * @param {string} tagName The tag name
 	 * @param {object} [options] The query parameters to use
 	 */
-	addTag(taskId, tagName, options) {
+	addTag(taskId: string, tagName: string, options?: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "POST",
 			path: `${this.version}/${this.route}/${taskId}/tag/${tagName}`,
@@ -299,7 +310,7 @@ export default class Task extends Route {
 	 * @param {string} tagName The tag name
 	 * @param {object} [options] The query parameters to use
 	 */
-	removeTag(taskId, tagName, options) {
+	removeTag(taskId: string, tagName: string, options?: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "DELETE",
 			path: `${this.version}/${this.route}/${taskId}/tag/${tagName}`,
@@ -315,7 +326,7 @@ export default class Task extends Route {
 	 * @param {object} data The time tracking data
 	 * @param {object} [options] The query parameters to use
 	 */
-	addTrackedTime(taskId, data, options) {
+	addTrackedTime(taskId: string, data: Record<string, unknown>, options?: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "POST",
 			path: `${this.version}/${this.route}/${taskId}/time`,
@@ -331,7 +342,7 @@ export default class Task extends Route {
 	 * @param {string} taskId The task id
 	 * @param {object} [options] The query parameters to use
 	 */
-	trackedTime(taskId, options) {
+	trackedTime(taskId: string, options?: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${taskId}/time`,
 			query: options,
@@ -347,7 +358,12 @@ export default class Task extends Route {
 	 * @param {object} data The time tracking data
 	 * @param {object} [options] The query parameters to use
 	 */
-	editTrackedTime(taskId, intervalId, data, options) {
+	editTrackedTime(
+		taskId: string,
+		intervalId: string,
+		data: Record<string, unknown>,
+		options?: Record<string, unknown>,
+	): Promise<unknown> {
 		return this.client.request({
 			method: "PUT",
 			path: `${this.version}/${this.route}/${taskId}/time/${intervalId}`,
@@ -364,7 +380,7 @@ export default class Task extends Route {
 	 * @param {string} intervalId The interval id
 	 * @param {object} [options] The query parameters to use
 	 */
-	removeTrackedTime(taskId, intervalId, options) {
+	removeTrackedTime(taskId: string, intervalId: string, options?: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "DELETE",
 			path: `${this.version}/${this.route}/${taskId}/time/${intervalId}`,
@@ -379,7 +395,7 @@ export default class Task extends Route {
 	 * @param {string} taskId The task id
 	 * @param {object} [options] The query parameters to use
 	 */
-	timeInStatus(taskId, options) {
+	timeInStatus(taskId: string, options?: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${taskId}/time_in_status`,
 			query: options,
@@ -392,7 +408,7 @@ export default class Task extends Route {
 	 *
 	 * @param {object} options The query parameters to use
 	 */
-	bulkTimeInStatus(options) {
+	bulkTimeInStatus(options: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/bulk_time_in_status/task_ids`,
 			query: options,

@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { buildRequestUrl, camelToSnakeCase } from "./utils.js";
+import { buildRequestUrl, camelToSnakeCase } from "./utils.ts";
 
 describe("utils", () => {
 	describe("camelToSnakeCase", () => {

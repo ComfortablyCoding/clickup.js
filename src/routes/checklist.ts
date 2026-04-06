@@ -1,4 +1,5 @@
-import { Route } from "../route.js";
+import { Route } from "../route.ts";
+import type { Clickup } from "../client.ts";
 
 /**
  * @module
@@ -10,7 +11,7 @@ export default class Checklist extends Route {
 	 * @constructor
 	 * @param {Clickup} client
 	 */
-	constructor(client) {
+	constructor(client: Clickup) {
 		super({
 			client,
 			route: "checklist",
@@ -24,7 +25,7 @@ export default class Checklist extends Route {
 	 * @param {string} checklistId The checklist id
 	 * @param {object} data The checklist data
 	 */
-	update(checklistId, data) {
+	update(checklistId: string, data: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "PUT",
 			path: `${this.version}/${this.route}/${checklistId}`,
@@ -38,7 +39,7 @@ export default class Checklist extends Route {
 	 *
 	 * @param {string} checklistId The checklist id
 	 */
-	delete(checklistId) {
+	delete(checklistId: string): Promise<unknown> {
 		return this.client.request({
 			method: "DELETE",
 			path: `${this.version}/${this.route}/${checklistId}`,
@@ -52,7 +53,7 @@ export default class Checklist extends Route {
 	 * @param {string} checklistId The checklist id
 	 * @param {object} data The checklist item data
 	 */
-	addItem(checklistId, data) {
+	addItem(checklistId: string, data: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "POST",
 			path: `${this.version}/${this.route}/${checklistId}/checklist_item`,
@@ -68,7 +69,7 @@ export default class Checklist extends Route {
 	 * @param {string} checklistItemId The checklist item id
 	 * @param {object} data The checklist item data
 	 */
-	editItem(checklistId, checklistItemId, data) {
+	editItem(checklistId: string, checklistItemId: string, data: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "PUT",
 			path: `${this.version}/${this.route}/${checklistId}/checklist_item/${checklistItemId}`,
@@ -83,7 +84,7 @@ export default class Checklist extends Route {
 	 * @param {string} checklistId The checklist id
 	 * @param {string} checklistItemId The checklist item id
 	 */
-	removeItem(checklistId, checklistItemId) {
+	removeItem(checklistId: string, checklistItemId: string): Promise<unknown> {
 		return this.client.request({
 			method: "DELETE",
 			path: `${this.version}/${this.route}/${checklistId}/checklist_item/${checklistItemId}`,

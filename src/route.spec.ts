@@ -1,6 +1,6 @@
 import { describe, test, expect } from "vitest";
-import { Route } from "./route.js";
-import { Clickup } from "./client.js";
+import { Route } from "./route.ts";
+import { Clickup } from "./client.ts";
 
 describe("Route", () => {
 	test("should create a Route instance with defaults", () => {

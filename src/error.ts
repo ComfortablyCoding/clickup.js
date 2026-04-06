@@ -1,5 +1,10 @@
+import type { ClickupAPIErrorOptions } from "./types.ts";
+
 export class ClickupAPIError extends Error {
-	constructor(options = {}) {
+	status?: number;
+	code: string | null;
+
+	constructor(options: ClickupAPIErrorOptions = {}) {
 		super(options.message);
 		this.name = "ClickupAPIError";
 		this.status = options.status;

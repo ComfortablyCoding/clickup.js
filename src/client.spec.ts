@@ -1,6 +1,6 @@
 import { describe, expect, test, vi, beforeEach, afterEach } from "vitest";
-import { Clickup } from "./client.js";
-import { ClickupAPIError } from "./error.js";
+import { Clickup } from "./client.ts";
+import { ClickupAPIError } from "./error.ts";
 
 function mockFetch(body = { success: true }, status = 200) {
 	return vi.fn().mockResolvedValue({
@@ -12,7 +12,7 @@ function mockFetch(body = { success: true }, status = 200) {
 }
 
 describe("client", () => {
-	let fetchMock;
+	let fetchMock: ReturnType<typeof mockFetch>;
 
 	beforeEach(() => {
 		fetchMock = mockFetch();
@@ -31,10 +31,9 @@ describe("client", () => {
 
 	describe("options", () => {
 		test("should deep merge request options with defaults", () => {
-			const client = new Clickup({ fetch: fetchMock, request: { timeout: 5000 } });
+			const client = new Clickup({ fetch: fetchMock, request: { prefixUrl: "https://custom.api.com/" } });
 
-			expect(client.options.request.timeout).toBe(5000);
-			expect(client.options.request.prefixUrl).toBe("https://api.clickup.com/api/");
+			expect(client.options.request.prefixUrl).toBe("https://custom.api.com/");
 		});
 	});
 

@@ -1,4 +1,5 @@
-import { Route } from "../route.js";
+import { Route } from "../route.ts";
+import type { Clickup } from "../client.ts";
 
 /**
  * @module
@@ -10,7 +11,7 @@ export default class Group extends Route {
 	 * @constructor
 	 * @param {Clickup} client
 	 */
-	constructor(client) {
+	constructor(client: Clickup) {
 		super({
 			client,
 			route: "group",
@@ -23,7 +24,7 @@ export default class Group extends Route {
 	 *
 	 * @param {object} [options] The query parameters to use
 	 */
-	get(options) {
+	get(options?: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}`,
 			query: options,
@@ -37,7 +38,7 @@ export default class Group extends Route {
 	 * @param {string} groupId The group id
 	 * @param {object} data The group data
 	 */
-	update(groupId, data) {
+	update(groupId: string, data: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "PUT",
 			path: `${this.version}/${this.route}/${groupId}`,
@@ -51,7 +52,7 @@ export default class Group extends Route {
 	 *
 	 * @param {string} groupId The group id
 	 */
-	delete(groupId) {
+	delete(groupId: string): Promise<unknown> {
 		return this.client.request({
 			method: "DELETE",
 			path: `${this.version}/${this.route}/${groupId}`,

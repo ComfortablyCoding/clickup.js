@@ -1,4 +1,5 @@
-import { Route } from "../route.js";
+import { Route } from "../route.ts";
+import type { Clickup } from "../client.ts";
 
 /**
  * @module
@@ -10,7 +11,7 @@ export default class Comment extends Route {
 	 * @constructor
 	 * @param {Clickup} client
 	 */
-	constructor(client) {
+	constructor(client: Clickup) {
 		super({
 			client,
 			route: "comment",
@@ -24,7 +25,7 @@ export default class Comment extends Route {
 	 * @param {number} commentId The comment id
 	 * @param {object} data The comment data
 	 */
-	update(commentId, data) {
+	update(commentId: number, data: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "PUT",
 			path: `${this.version}/${this.route}/${commentId}`,
@@ -38,7 +39,7 @@ export default class Comment extends Route {
 	 *
 	 * @param {number} commentId The comment id
 	 */
-	delete(commentId) {
+	delete(commentId: number): Promise<unknown> {
 		return this.client.request({
 			method: "DELETE",
 			path: `${this.version}/${this.route}/${commentId}`,
@@ -51,7 +52,7 @@ export default class Comment extends Route {
 	 *
 	 * @param {number} commentId The comment id
 	 */
-	replies(commentId) {
+	replies(commentId: number): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${commentId}/reply`,
 		});
@@ -64,7 +65,7 @@ export default class Comment extends Route {
 	 * @param {number} commentId The comment id
 	 * @param {object} data The comment data
 	 */
-	addReply(commentId, data) {
+	addReply(commentId: number, data: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "POST",
 			path: `${this.version}/${this.route}/${commentId}/reply`,

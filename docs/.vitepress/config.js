@@ -10,7 +10,7 @@ export default defineConfig({
 		nav: [
 			{ text: "Home", link: "/" },
 			{ text: "Examples", link: "/examples" },
-			{ text: "API", link: "/api" },
+			{ text: "API", link: "/api/" },
 		],
 
 		sidebar: [
@@ -19,7 +19,7 @@ export default defineConfig({
 				text: "Documentation",
 				items: [
 					{ text: "Example", link: "/examples" },
-					{ text: "API Reference", link: "/api" },
+					{ text: "API Reference", link: "/api/" },
 				],
 			},
 			{ text: "Changelog", link: "/changelog" },

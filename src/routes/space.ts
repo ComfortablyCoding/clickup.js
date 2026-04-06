@@ -1,4 +1,5 @@
-import { Route } from "../route.js";
+import { Route } from "../route.ts";
+import type { Clickup } from "../client.ts";
 
 /**
  * @module
@@ -10,7 +11,7 @@ export default class Space extends Route {
 	 * @constructor
 	 * @param {Clickup} client
 	 */
-	constructor(client) {
+	constructor(client: Clickup) {
 		super({
 			client,
 			route: "space",
@@ -23,7 +24,7 @@ export default class Space extends Route {
 	 *
 	 * @param {number} spaceId The space id
 	 */
-	get(spaceId) {
+	get(spaceId: number): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${spaceId}`,
 		});
@@ -36,7 +37,7 @@ export default class Space extends Route {
 	 * @param {number} spaceId The space id
 	 * @param {object} data The space data
 	 */
-	update(spaceId, data) {
+	update(spaceId: number, data: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "PUT",
 			path: `${this.version}/${this.route}/${spaceId}`,
@@ -50,7 +51,7 @@ export default class Space extends Route {
 	 *
 	 * @param {number} spaceId The space id
 	 */
-	delete(spaceId) {
+	delete(spaceId: number): Promise<unknown> {
 		return this.client.request({
 			method: "DELETE",
 			path: `${this.version}/${this.route}/${spaceId}`,
@@ -64,7 +65,7 @@ export default class Space extends Route {
 	 * @param {number} spaceId The space id
 	 * @param {object} data The folder data
 	 */
-	createFolder(spaceId, data) {
+	createFolder(spaceId: number, data: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "POST",
 			path: `${this.version}/${this.route}/${spaceId}/folder`,
@@ -80,7 +81,7 @@ export default class Space extends Route {
 	 * @param {object} [options] The query parameters to pass
 	 * @param {boolean} options.archived If archived lists should be returned or not
 	 */
-	folders(spaceId, options) {
+	folders(spaceId: number, options?: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${spaceId}/folder`,
 			query: options,
@@ -94,7 +95,7 @@ export default class Space extends Route {
 	 * @param {number} spaceId The space id
 	 * @param {object} data The folder-less list data
 	 */
-	createFolderlessList(spaceId, data) {
+	createFolderlessList(spaceId: number, data: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "POST",
 			path: `${this.version}/${this.route}/${spaceId}/list`,
@@ -110,7 +111,7 @@ export default class Space extends Route {
 	 * @param {object} [options] The query parameters to pass
 	 * @param {boolean} options.archived If archived lists should be returned or not
 	 */
-	folderlessLists(spaceId, options) {
+	folderlessLists(spaceId: number, options?: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${spaceId}/list`,
 			query: options,
@@ -123,7 +124,7 @@ export default class Space extends Route {
 	 *
 	 * @param {number} spaceId The space id
 	 */
-	tags(spaceId) {
+	tags(spaceId: number): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${spaceId}/tag`,
 		});
@@ -136,7 +137,7 @@ export default class Space extends Route {
 	 * @param {number} spaceId The space id
 	 * @param {object} data The space tag data
 	 */
-	addTag(spaceId, data) {
+	addTag(spaceId: number, data: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "POST",
 			path: `${this.version}/${this.route}/${spaceId}/tag`,
@@ -152,7 +153,7 @@ export default class Space extends Route {
 	 * @param {string} tagName The tag name
 	 * @param {object} data The space tag data
 	 */
-	editTag(spaceId, tagName, data) {
+	editTag(spaceId: number, tagName: string, data: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "PUT",
 			path: `${this.version}/${this.route}/${spaceId}/tag/${tagName}`,
@@ -168,7 +169,7 @@ export default class Space extends Route {
 	 * @param {string} tagName The tag name
 	 * @param {object} data The space tag data
 	 */
-	removeTag(spaceId, tagName, data) {
+	removeTag(spaceId: number, tagName: string, data: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "DELETE",
 			path: `${this.version}/${this.route}/${spaceId}/tag/${tagName}`,
@@ -183,7 +184,7 @@ export default class Space extends Route {
 	 * @param {number} spaceId The space id
 	 * @param {object} data The view data
 	 */
-	createView(spaceId, data) {
+	createView(spaceId: number, data: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "POST",
 			path: `${this.version}/${this.route}/${spaceId}/view`,
@@ -197,7 +198,7 @@ export default class Space extends Route {
 	 *
 	 * @param {number} spaceId The space id
 	 */
-	views(spaceId) {
+	views(spaceId: number): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${spaceId}/view`,
 		});
@@ -209,7 +210,7 @@ export default class Space extends Route {
 	 *
 	 * @param {number} spaceId The space id
 	 */
-	customFields(spaceId) {
+	customFields(spaceId: number): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${spaceId}/field`,
 		});

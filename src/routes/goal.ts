@@ -1,4 +1,5 @@
-import { Route } from "../route.js";
+import { Route } from "../route.ts";
+import type { Clickup } from "../client.ts";
 
 /**
  * @module
@@ -10,7 +11,7 @@ export default class Goal extends Route {
 	 * @constructor
 	 * @param {Clickup} client
 	 */
-	constructor(client) {
+	constructor(client: Clickup) {
 		super({
 			client,
 			route: "goal",
@@ -23,7 +24,7 @@ export default class Goal extends Route {
 	 *
 	 * @param {string} goalId The goal id
 	 */
-	get(goalId) {
+	get(goalId: string): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${goalId}`,
 		});
@@ -36,7 +37,7 @@ export default class Goal extends Route {
 	 * @param {string} goalId The goal id
 	 * @param {object} data The goal data
 	 */
-	update(goalId, data) {
+	update(goalId: string, data: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "PUT",
 			path: `${this.version}/${this.route}/${goalId}`,
@@ -50,7 +51,7 @@ export default class Goal extends Route {
 	 *
 	 * @param {string} goalId The goal id
 	 */
-	delete(goalId) {
+	delete(goalId: string): Promise<unknown> {
 		return this.client.request({
 			method: "DELETE",
 			path: `${this.version}/${this.route}/${goalId}`,
@@ -64,7 +65,7 @@ export default class Goal extends Route {
 	 * @param {string} goalId The goal id
 	 * @param {object} data The key result data
 	 */
-	addKeyResult(goalId, data) {
+	addKeyResult(goalId: string, data: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "POST",
 			path: `${this.version}/${this.route}/${goalId}/key_result`,

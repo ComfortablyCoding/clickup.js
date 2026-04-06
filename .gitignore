@@ -35,5 +35,5 @@ cache
 dist
 
 # autogen docs
-docs/api.md
+docs/api/
 docs/changelog.md

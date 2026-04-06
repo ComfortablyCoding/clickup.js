@@ -1,4 +1,5 @@
-import { Route } from "../route.js";
+import { Route } from "../route.ts";
+import type { Clickup } from "../client.ts";
 
 /**
  * @module
@@ -10,7 +11,7 @@ export default class Authorization extends Route {
 	 * @constructor
 	 * @param {Clickup} client
 	 */
-	constructor(client) {
+	constructor(client: Clickup) {
 		super({
 			client,
 		});
@@ -24,7 +25,7 @@ export default class Authorization extends Route {
 	 * @param {string} options.clientSecret The OAuth app client secret
 	 * @param {string} options.code The code given in redirect url
 	 */
-	createToken(options) {
+	createToken(options: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "POST",
 			path: `${this.version}/oauth/token`,
@@ -39,7 +40,7 @@ export default class Authorization extends Route {
 	/**
 	 * Get the details of the authenticated user's ClickUp account
 	 */
-	user() {
+	user(): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/user`,
 		});
@@ -48,7 +49,7 @@ export default class Authorization extends Route {
 	/**
 	 * Get the teams (workspaces) available to the authenticated user
 	 */
-	teams() {
+	teams(): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/team`,
 		});

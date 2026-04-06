@@ -1,4 +1,5 @@
-import { Route } from "../route.js";
+import { Route } from "../route.ts";
+import type { Clickup } from "../client.ts";
 
 /**
  * @module
@@ -10,7 +11,7 @@ export default class View extends Route {
 	 * @constructor
 	 * @param {Clickup} client
 	 */
-	constructor(client) {
+	constructor(client: Clickup) {
 		super({
 			client,
 			route: "view",
@@ -23,7 +24,7 @@ export default class View extends Route {
 	 *
 	 * @param {string} viewId The view id
 	 */
-	get(viewId) {
+	get(viewId: string): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${viewId}`,
 		});
@@ -36,7 +37,7 @@ export default class View extends Route {
 	 * @param {string} viewId The view id
 	 * @param {object} data The view data
 	 */
-	update(viewId, data) {
+	update(viewId: string, data: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "PUT",
 			path: `${this.version}/${this.route}/${viewId}`,
@@ -50,7 +51,7 @@ export default class View extends Route {
 	 *
 	 * @param {string} viewId The view id
 	 */
-	delete(viewId) {
+	delete(viewId: string): Promise<unknown> {
 		return this.client.request({
 			method: "DELETE",
 			path: `${this.version}/${this.route}/${viewId}`,
@@ -64,7 +65,7 @@ export default class View extends Route {
 	 * @param {string} viewId The view id
 	 * @param {object} data The comment data
 	 */
-	addComment(viewId, data) {
+	addComment(viewId: string, data: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "POST",
 			path: `${this.version}/${this.route}/${viewId}/comment`,
@@ -79,7 +80,7 @@ export default class View extends Route {
 	 * @param {string} viewId The view id
 	 * @param {object} [options] The query parameters to pass
 	 */
-	comments(viewId, options) {
+	comments(viewId: string, options?: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${viewId}/comment`,
 			query: options,
@@ -93,7 +94,7 @@ export default class View extends Route {
 	 * @param {string} viewId The view id
 	 * @param {object} [options] The query parameters to pass
 	 */
-	tasks(viewId, options) {
+	tasks(viewId: string, options?: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${viewId}/task`,
 			query: { page: 0, ...options },

@@ -1,4 +1,5 @@
-import { Route } from "../route.js";
+import { Route } from "../route.ts";
+import type { Clickup } from "../client.ts";
 
 /**
  * @module
@@ -10,7 +11,7 @@ export default class Webhook extends Route {
 	 * @constructor
 	 * @param {Clickup} client
 	 */
-	constructor(client) {
+	constructor(client: Clickup) {
 		super({
 			client,
 			route: "webhook",
@@ -24,7 +25,7 @@ export default class Webhook extends Route {
 	 * @param {string} webhookId The webhook id
 	 * @param {object} data The webhook data
 	 */
-	update(webhookId, data) {
+	update(webhookId: string, data: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "PUT",
 			path: `${this.version}/${this.route}/${webhookId}`,
@@ -38,7 +39,7 @@ export default class Webhook extends Route {
 	 *
 	 * @param {string} webhookId The webhook id
 	 */
-	delete(webhookId) {
+	delete(webhookId: string): Promise<unknown> {
 		return this.client.request({
 			method: "DELETE",
 			path: `${this.version}/${this.route}/${webhookId}`,

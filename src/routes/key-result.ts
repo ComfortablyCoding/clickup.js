@@ -1,4 +1,5 @@
-import { Route } from "../route.js";
+import { Route } from "../route.ts";
+import type { Clickup } from "../client.ts";
 
 /**
  * @module
@@ -10,7 +11,7 @@ export default class KeyResult extends Route {
 	 * @constructor
 	 * @param {Clickup} client
 	 */
-	constructor(client) {
+	constructor(client: Clickup) {
 		super({
 			client,
 			route: "key_result",
@@ -24,7 +25,7 @@ export default class KeyResult extends Route {
 	 * @param {string} keyResultId The key result id
 	 * @param {object} data The key result data
 	 */
-	update(keyResultId, data) {
+	update(keyResultId: string, data: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "PUT",
 			path: `${this.version}/${this.route}/${keyResultId}`,
@@ -38,7 +39,7 @@ export default class KeyResult extends Route {
 	 *
 	 * @param {string} keyResultId The key result id
 	 */
-	delete(keyResultId) {
+	delete(keyResultId: string): Promise<unknown> {
 		return this.client.request({
 			method: "DELETE",
 			path: `${this.version}/${this.route}/${keyResultId}`,

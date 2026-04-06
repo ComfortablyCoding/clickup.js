@@ -1,4 +1,5 @@
-import { Route } from "../route.js";
+import { Route } from "../route.ts";
+import type { Clickup } from "../client.ts";
 
 /**
  * @module
@@ -10,7 +11,7 @@ export default class Folder extends Route {
 	 * @constructor
 	 * @param {Clickup} client
 	 */
-	constructor(client) {
+	constructor(client: Clickup) {
 		super({
 			client,
 			route: "folder",
@@ -23,7 +24,7 @@ export default class Folder extends Route {
 	 *
 	 * @param {string} folderId The folder id
 	 */
-	get(folderId) {
+	get(folderId: string): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${folderId}`,
 		});
@@ -36,7 +37,7 @@ export default class Folder extends Route {
 	 * @param {number} folderId The folder id
 	 * @param {object} data The folder data
 	 */
-	update(folderId, data) {
+	update(folderId: number, data: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "PUT",
 			path: `${this.version}/${this.route}/${folderId}`,
@@ -50,7 +51,7 @@ export default class Folder extends Route {
 	 *
 	 * @param {number} folderId The folder id
 	 */
-	delete(folderId) {
+	delete(folderId: number): Promise<unknown> {
 		return this.client.request({
 			method: "DELETE",
 			path: `${this.version}/${this.route}/${folderId}`,
@@ -66,7 +67,12 @@ export default class Folder extends Route {
 	 * @param {object} data The guest data
 	 * @param {object} [options] The query parameters to use
 	 */
-	addGuest(folderId, guestId, data, options) {
+	addGuest(
+		folderId: number,
+		guestId: number,
+		data: Record<string, unknown>,
+		options?: Record<string, unknown>,
+	): Promise<unknown> {
 		return this.client.request({
 			method: "POST",
 			path: `${this.version}/${this.route}/${folderId}/guest/${guestId}`,
@@ -83,7 +89,7 @@ export default class Folder extends Route {
 	 * @param {number} guestId The guest id
 	 * @param {object} [options] The query parameters to use
 	 */
-	removeGuest(folderId, guestId, options) {
+	removeGuest(folderId: number, guestId: number, options?: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "DELETE",
 			path: `${this.version}/${this.route}/${folderId}/guest/${guestId}`,
@@ -98,7 +104,7 @@ export default class Folder extends Route {
 	 * @param {number} folderId The folder id
 	 * @param {object} data The list data
 	 */
-	createList(folderId, data) {
+	createList(folderId: number, data: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "POST",
 			path: `${this.version}/${this.route}/${folderId}/list`,
@@ -114,7 +120,7 @@ export default class Folder extends Route {
 	 * @param {object} [options] The query parameters to pass
 	 * @param {boolean} options.archived If archived lists should be returned or not
 	 */
-	lists(folderId, options) {
+	lists(folderId: number, options?: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${folderId}/list`,
 			query: options,
@@ -128,7 +134,7 @@ export default class Folder extends Route {
 	 * @param {number} folderId The folder id
 	 * @param {object} data The view data
 	 */
-	createView(folderId, data) {
+	createView(folderId: number, data: Record<string, unknown>): Promise<unknown> {
 		return this.client.request({
 			method: "POST",
 			path: `${this.version}/${this.route}/${folderId}/view`,
@@ -142,7 +148,7 @@ export default class Folder extends Route {
 	 *
 	 * @param {number} folderId The folder id
 	 */
-	views(folderId) {
+	views(folderId: number): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${folderId}/view`,
 		});
@@ -154,7 +160,7 @@ export default class Folder extends Route {
 	 *
 	 * @param {number} folderId The folder id
 	 */
-	customFields(folderId) {
+	customFields(folderId: number): Promise<unknown> {
 		return this.client.request({
 			path: `${this.version}/${this.route}/${folderId}/field`,
 		});
