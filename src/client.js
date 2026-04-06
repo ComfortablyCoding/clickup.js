@@ -1,5 +1,5 @@
 import { defu } from "defu";
-import PQueue from "p-queue";
+import { pRateLimit } from "p-ratelimit";
 import Authorization from "./routes/authorization.js";
 import Checklist from "./routes/checklist.js";
 import Comment from "./routes/comment.js";
@@ -13,7 +13,6 @@ import Task from "./routes/task.js";
 import Team from "./routes/team.js";
 import View from "./routes/view.js";
 import Webhook from "./routes/webhook.js";
-import { FetchError, ofetch } from "ofetch";
 import { ClickupAPIError } from "./error.js";
 import { buildRequestUrl, camelToSnakeCase } from "./utils.js";
 
@@ -43,18 +42,21 @@ export class Clickup {
 	 * @param {string} [options.token] Clickup Access Token
 	 * @param {object} [options.request] The request options
 	 * @param {string} [options.request.prefixUrl=https://api.clickup.com/api] The clickup API URL
+	 * @param {Function} [options.fetch] Custom fetch implementation (defaults to globalThis.fetch)
 	 * @param {object} [options.rateLimit] The rate limit config
+	 * @param {object} [options.rateLimit.requests] The number of requests allowed during the interval
+	 * @param {object} [options.rateLimit.interval] The interval over which the requests cap is applied
 	 * @param {object} [options.hooks] The hooks for extending functionality
 	 */
 	constructor(options = {}) {
 		this.options = defu(options, defaultOptions);
 
-		this.queue = new PQueue({
-			concurrency: options.rateLimit?.requests ?? 100,
-			interval: options.rateLimit?.interval ?? 60_000,
-			carryoverConcurrencyCount: true,
+		this.limiter = pRateLimit({
+			interval: this.options.rateLimit.interval,
+			rate: this.options.rateLimit.requests,
 		});
 
+		this.fetch = options.fetch ?? globalThis.fetch;
 		this.token = this.options.token ?? process.env["CLICKUP_TOKEN"] ?? null;
 
 		// routes
@@ -184,15 +186,13 @@ export class Clickup {
 	 * @param {object} [options.body] The request body
 	 */
 	async request(options) {
-		let fetchOptions = {
+		const fetchOptions = {
 			method: options.method ?? "GET",
-			path: options.path,
-			query: options.query,
-			headers: {},
+			headers: { ...options.headers },
 		};
 
-		if (options.headers) {
-			fetchOptions.headers = options.headers;
+		if (!("Content-Type" in fetchOptions.headers)) {
+			fetchOptions.headers["Content-Type"] = "application/json";
 		}
 
 		if (this.token) {
@@ -200,15 +200,14 @@ export class Clickup {
 		}
 
 		if (options.body) {
-			fetchOptions.body = options.body;
-
-			if (!(options.body instanceof FormData)) {
+			if (options.body instanceof FormData) {
+				fetchOptions.body = options.body;
+			} else {
 				const body = {};
 				for (const [key, value] of Object.entries(options.body)) {
 					body[camelToSnakeCase(key)] = value;
 				}
-
-				fetchOptions.body = body;
+				fetchOptions.body = JSON.stringify(body);
 			}
 		}
 
@@ -216,30 +215,30 @@ export class Clickup {
 			await this.options.hooks.onRequest({ request: fetchOptions });
 		}
 
-		const { path, query, ...ofetchOptions } = fetchOptions;
+		const url = buildRequestUrl(this.options.request.prefixUrl, options.path, options.query);
 
-		const requestURL = buildRequestUrl(this.options.request.prefixUrl, path, query);
+		return this.limiter(async () => {
+			const response = await this.fetch(url, fetchOptions);
 
-		return this.queue.add(async () => {
-			try {
-				let data = await ofetch(requestURL, ofetchOptions);
-
-				if (this.options.hooks?.onResponse) {
-					data = await this.options.hooks.onResponse({ request: fetchOptions, data });
-				}
-
-				return data;
-			} catch (error) {
-				if (error instanceof FetchError) {
-					throw new ClickupAPIError({
-						status: error.status,
-						message: `${error.statusText}${error.data?.err ? `: ${error.data.err}` : ""}`,
-						code: error.data?.code,
-					});
-				}
-
-				throw error;
+			if (!response.ok) {
+				const data = await response.json().catch(() => null);
+				throw new ClickupAPIError({
+					status: response.status,
+					message: `${response.statusText}${data?.err ? `: ${data.err}` : ""}`,
+					code: data?.ECODE ?? null,
+				});
 			}
+
+			let data = await response.json();
+
+			if (this.options.hooks?.onResponse) {
+				data = await this.options.hooks.onResponse({
+					request: fetchOptions,
+					data,
+				});
+			}
+
+			return data;
 		});
 	}
 }
