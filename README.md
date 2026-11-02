@@ -1,59 +1,36 @@
 # clickup.js
 
-A Node.js wrapper for the [Clickup API](https://clickup.com/api).
+[![npm](https://img.shields.io/npm/v/clickup.js?style=flat-square)](https://www.npmjs.com/package/clickup.js)
+[![CI](https://img.shields.io/github/actions/workflow/status/ComfortablyCoding/clickup.js/ci.yml?branch=main&style=flat-square)](https://github.com/ComfortablyCoding/clickup.js/actions/workflows/ci.yml)
 
-[![Downloads](https://img.shields.io/npm/dm/clickup.js.svg?style=for-the-badge)](https://www.npmjs.com/package/clickup.js)
-[![Install size](https://img.shields.io/bundlephobia/min/clickup.js?style=for-the-badge)](https://packagephobia.now.sh/result?p=clickup.js)
-![Package version](https://img.shields.io/github/package-json/v/ComfortablyCoding/clickup.js?style=for-the-badge)
+A typed client for the [ClickUp API](https://developer.clickup.com). It has no dependencies and runs on Node 26+, Bun, Deno, Workers and in the browser.
 
-## Install
+**This is an unofficial client, not affiliated with ClickUp.**
 
 ```sh
 npm install clickup.js
 ```
 
-or
+```ts
+import { createClickUp } from "clickup.js";
 
-```sh
-yarn add clickup.js
+// Reads CLICKUP_TOKEN from the environment, or pass { token: "pk_..." }
+const clickup = createClickUp({ workspace: { id: 1234567 } });
+
+const task = await clickup.task.get({ task_id: "86a1b2c3d" });
+await clickup.list.createTask({
+	list_id: 901234,
+	name: "Ship v5",
+	priority: 2,
+});
 ```
 
-or
+The **[documentation](https://comfortablycoding.github.io/clickup.js/)** has a getting started guide, more examples and the full API reference.
 
-```sh
-pnpm add clickup.js
-```
+## Contributing
 
-## Quick Start
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
-```js
-import { createClickup } from "clickup.js";
-const token = "..."; // API access token
-const clickup = createClickup({ token });
+## License
 
-// get a specific task
-const task = await clickup.task.get("9hz");
-console.log(task);
-```
-
-## API Parity
-
-The library mirrors ClickUp's API structure:
-
-- `clickup.task.*` – Task operations
-- `clickup.list.*` – List operations
-- `clickup.folder.*` – Folder operations
-- `clickup.space.*` – Space operations
-- `clickup.team.*`– Team/Workspaces
-- `clickup.webhook.*` – Webhook management
-- `clickup.user.*` – User info
-- `clickup.goal.*` – Goals
-- And more! Explore via the [API docs](https://comfortablycoding.github.io/clickup.js).
-
-## Documentation
-
-You can view the libraries full API at [clickup.js docs](https://comfortablycoding.github.io/clickup.js)
-
-## Disclaimer
-
-The [clickup.js](https://github.com/ComfortablyCoding/clickup.js) package is **unofficial** and therefor not endorsed or affiliated with ClickUp or it's subsidiaries.
+[MIT](LICENSE)
