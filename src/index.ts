@@ -1,5 +1,5 @@
 /**
- * The client: `createClickUp`, its options and types, and `ClickUpError`.
+ * The client: `createClickUp`, its options and types, `pages` and `ClickUpError`.
  *
  * @module clickup.js
  * @mergeModuleWith <project>
@@ -14,6 +14,7 @@ export {
 	type WorkspaceOptions,
 } from "./client.ts";
 export { ClickUpError, type ClickUpErrorOptions } from "./error.ts";
+export { pages } from "./pages.ts";
 export type { ClickUpResponseBody } from "./transport/request.ts";
 export type { ClickUpRequestInput } from "./transport/http.ts";
 export type {
