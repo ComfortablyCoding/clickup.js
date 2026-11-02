@@ -1,0 +1,12 @@
+{
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"extends": "../tsconfig.json",
+	// Only what differs from ../tsconfig.json: the scripts run on Node, so they get its types. They're a
+	// separate program because `types` applies to every file in one, and src/ must not see Node's globals.
+	"compilerOptions": {
+		"types": ["node"]
+	},
+	"include": ["."],
+	// Rendered output that's compared as text; its imports only resolve from src/generated/
+	"exclude": ["__snapshots__"]
+}

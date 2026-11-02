@@ -1,46 +1,40 @@
 import { defineConfig } from "vitepress";
-import fs from "fs";
-import path from "path";
 
 export default defineConfig({
 	title: "clickup.js",
 	base: "/clickup.js/",
-	description: "A Node.js wrapper for the Clickup API",
+	description: "A typed client for the ClickUp API",
 	themeConfig: {
 		nav: [
 			{ text: "Home", link: "/" },
+			{ text: "Getting Started", link: "/getting-started" },
 			{ text: "Examples", link: "/examples" },
 			{ text: "API", link: "/api" },
 		],
 
 		sidebar: [
 			{ text: "Getting Started", link: "/getting-started" },
+			{ text: "Naming", link: "/naming" },
+
 			{
 				text: "Documentation",
+				items: [{ text: "Examples", link: "/examples" }],
+			},
+			{
+				text: "API Reference",
 				items: [
-					{ text: "Example", link: "/examples" },
-					{ text: "API Reference", link: "/api" },
+					{ text: "Methods", link: "/api" },
+					{ text: "Client", link: "/api/reference/" },
+					{ text: "Webhooks", link: "/api/reference/clickup.js/webhooks" },
 				],
 			},
 			{ text: "Changelog", link: "/changelog" },
 		],
-
-		socialLinks: [{ icon: "github", link: "https://github.com/ComfortablyCoding/clickup.js" }],
-	},
-	vite: {
-		plugins: [
+		search: { provider: "local" },
+		socialLinks: [
 			{
-				name: "copy-changelog",
-				apply: "build",
-				buildStart() {
-					const rootChangelog = path.resolve(process.cwd(), "CHANGELOG.md");
-					const target = path.resolve(process.cwd(), "docs/changelog.md");
-
-					if (fs.existsSync(rootChangelog)) {
-						fs.copyFileSync(rootChangelog, target);
-						console.log("✓ Moved CHANGELOG.md into docs/changelog.md");
-					}
-				},
+				icon: "github",
+				link: "https://github.com/ComfortablyCoding/clickup.js",
 			},
 		],
 	},

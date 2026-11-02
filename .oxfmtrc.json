@@ -4,5 +4,14 @@
 	"semi": true,
 	"singleQuote": false,
 	"useTabs": true,
-	"printWidth": 120
+	"printWidth": 120,
+	"ignorePatterns": [
+		"dist/",
+		"docs/.vitepress/cache/",
+		"docs/.vitepress/dist/",
+		"src/generated/",
+		"**/__snapshots__/",
+		"spec/",
+		"pnpm-lock.yaml"
+	]
 }

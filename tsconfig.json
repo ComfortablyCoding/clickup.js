@@ -1,0 +1,25 @@
+{
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"compilerOptions": {
+		"target": "esnext",
+		"lib": ["esnext", "webworker"],
+		"types": [],
+		"module": "nodenext",
+		"moduleResolution": "nodenext",
+		"moduleDetection": "force",
+		"allowImportingTsExtensions": true,
+		"verbatimModuleSyntax": true,
+		"erasableSyntaxOnly": true,
+		"isolatedDeclarations": true,
+		"declaration": true,
+		"noEmit": true,
+		"strict": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noFallthroughCasesInSwitch": true,
+		"noUncheckedSideEffectImports": true,
+		"skipLibCheck": true,
+		"resolveJsonModule": true
+	},
+	"include": ["src", "test"]
+}

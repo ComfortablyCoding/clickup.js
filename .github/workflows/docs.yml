@@ -8,7 +8,7 @@ on:
 
 permissions:
   contents: read
-  # Required for pushing content to pages
+  # Needed to deploy to GitHub Pages
   pages: write
   id-token: write
 
@@ -21,25 +21,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+        uses: actions/checkout@v7
 
       - name: setup environment
         uses: ./.github/actions/setup
 
       - name: setup page
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
 
       - name: build docs
-        run: pnpm run docs:deploy
+        run: pnpm docs:build
 
       - name: upload
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: docs/.vitepress/dist
 
-  # Deployment job
   deploy:
     environment:
       name: github-pages
@@ -49,4 +46,4 @@ jobs:
     steps:
       - name: deploy
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
