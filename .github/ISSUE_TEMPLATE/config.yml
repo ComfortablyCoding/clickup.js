@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Question
+    url: https://github.com/ComfortablyCoding/clickup.js/discussions
+    about: Ask how to do something with clickup.js.
+  - name: ClickUp API problem
+    url: https://feedback.clickup.com
+    about: The ClickUp API itself returns something wrong or undocumented.

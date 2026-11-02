@@ -1,0 +1,33 @@
+name: Bug report
+description: Something in clickup.js isn't working as it should.
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what you expected, and what happened instead. If an error was thrown, include its `message`, and for a `ClickUpError` its `status`, `code`, `method` and `url`.
+    validations:
+      required: true
+  - type: textarea
+    id: code
+    attributes:
+      label: Code to reproduce it
+      description: The smallest snippet that shows the problem. Leave out your token.
+      render: ts
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: clickup.js version
+      placeholder: 5.0.0
+    validations:
+      required: true
+  - type: input
+    id: runtime
+    attributes:
+      label: Runtime and version
+      placeholder: Node 26.1, Bun 1.3, Chrome 140, ...
+    validations:
+      required: true
