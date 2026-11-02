@@ -1,9 +1,15 @@
 {
 	"$schema": "./node_modules/oxlint/configuration_schema.json",
-	"plugins": ["typescript", "unicorn", "oxc"],
+	"plugins": ["typescript", "unicorn", "oxc", "vitest"],
 	"categories": {
 		"correctness": "error"
 	},
-	"rules": {},
-	"ignorePatterns": ["docs/", "dist/", ".cache/"]
+	"ignorePatterns": [
+		"dist/",
+		"docs/.vitepress/cache/",
+		"docs/.vitepress/dist/",
+		"src/generated/",
+		"**/__snapshots__/",
+		"spec/"
+	]
 }

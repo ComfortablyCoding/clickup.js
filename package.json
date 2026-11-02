@@ -2,17 +2,15 @@
 	"$schema": "https://json.schemastore.org/package",
 	"name": "clickup.js",
 	"version": "4.0.2",
-	"description": "A javascript wrapper for the Clickup API",
+	"description": "A typed ClickUp API client for any JavaScript runtime",
 	"keywords": [
-		"api",
+		"api-client",
 		"clickup",
-		"clickup-js",
-		"clickup.js",
-		"clickupjs",
-		"wrapper",
-		"wrapper-api"
+		"clickup-api",
+		"sdk",
+		"typescript"
 	],
-	"homepage": "https://github.com/ComfortablyCoding/clickup.js#readme",
+	"homepage": "https://comfortablycoding.github.io/clickup.js/",
 	"bugs": {
 		"url": "https://github.com/ComfortablyCoding/clickup.js/issues"
 	},
@@ -20,40 +18,45 @@
 	"author": "@ComfortablyCoding",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/ComfortablyCoding/clickup.js.git"
+		"url": "git+https://github.com/ComfortablyCoding/clickup.js.git"
 	},
 	"files": [
 		"dist"
 	],
 	"type": "module",
-	"module": "./dist/index.mjs",
+	"sideEffects": false,
 	"exports": {
-		".": {
-			"import": "./dist/index.mjs"
-		}
+		".": "./dist/index.js",
+		"./package.json": "./package.json"
 	},
 	"scripts": {
-		"build": "tsdown",
-		"test": "vitest",
+		"codegen": "node scripts/generate.ts",
+		"build": "pnpm codegen && tsdown",
+		"test": "pnpm codegen && vitest",
+		"typecheck": "pnpm codegen && tsc && tsc -p scripts",
 		"lint": "oxlint --fix",
-		"format": "oxfmt --write",
-		"docs:generate-api": "jsdoc2md src/**/*.js > docs/api.md",
-		"docs:build": "vitepress build docs",
-		"docs:deploy": "pnpm run docs:generate-api && pnpm run docs:build",
-		"docs:dev": "vitepress dev docs",
-		"docs:preview": "vitepress preview docs"
-	},
-	"dependencies": {
-		"defu": "^6.1.6",
-		"p-ratelimit": "^1.0.1"
+		"lint:check": "oxlint",
+		"format": "oxfmt",
+		"format:check": "oxfmt --check",
+		"spec:check": "validate-api spec/openapi.yaml",
+		"docs:dev": "pnpm codegen && typedoc && vitepress dev docs",
+		"docs:build": "pnpm codegen && typedoc && vitepress build docs"
 	},
 	"devDependencies": {
-		"jsdoc": "^4.0.5",
-		"jsdoc-to-markdown": "^9.1.3",
-		"oxfmt": "^0.43.0",
-		"oxlint": "^1.58.0",
-		"tsdown": "^0.21.7",
-		"vitepress": "2.0.0-alpha.12",
-		"vitest": "^4.0.18"
-	}
+		"@hey-api/openapi-ts": "0.99.0",
+		"@seriousme/openapi-schema-validator": "2.11.0",
+		"@types/node": "26.6.6",
+		"oxfmt": "0.75.0",
+		"oxlint": "1.90.0",
+		"tsdown": "0.23.4",
+		"typedoc": "0.28.20",
+		"typedoc-plugin-markdown": "4.14.1",
+		"typescript": "6.0.3",
+		"vitepress": "2.0.0-alpha.20",
+		"vitest": "5.0.5"
+	},
+	"engines": {
+		"node": ">=26"
+	},
+	"packageManager": "pnpm@12.16.1"
 }
