@@ -1,7 +1,7 @@
 name: Publish Package
 
 permissions:
-  id-token: write # Required for OIDC
+  id-token: write # Needed for npm's trusted publishing (OIDC)
   contents: read
 
 on:
@@ -13,13 +13,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: setup environment
         uses: ./.github/actions/setup
 
-      - name: test
-        run: pnpm test
+      - name: check
+        run: pnpm lint:check && pnpm format:check && pnpm spec:check && pnpm typecheck && pnpm vitest run
 
       - name: build
         run: pnpm build
