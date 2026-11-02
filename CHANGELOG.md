@@ -2,7 +2,7 @@
 
 All notable changes to clickup.js are documented here.
 
-## Unreleased
+## 5.0.0
 
 **This release contains backwards-incompatible changes.**
 

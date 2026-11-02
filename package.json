@@ -1,7 +1,7 @@
 {
 	"$schema": "https://json.schemastore.org/package",
 	"name": "clickup.js",
-	"version": "4.0.2",
+	"version": "5.0.0",
 	"description": "A typed ClickUp API client for any JavaScript runtime",
 	"keywords": [
 		"api-client",
