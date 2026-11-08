@@ -47,14 +47,14 @@
 		"@hey-api/openapi-ts": "0.99.0",
 		"@seriousme/openapi-schema-validator": "2.11.0",
 		"@types/node": "26.6.6",
-		"oxfmt": "0.75.0",
-		"oxlint": "1.90.0",
-		"tsdown": "0.23.4",
+		"oxfmt": "0.77.0",
+		"oxlint": "1.92.0",
+		"tsdown": "0.23.7",
 		"typedoc": "0.28.20",
 		"typedoc-plugin-markdown": "4.14.1",
 		"typescript": "6.0.3",
 		"vitepress": "2.0.0-alpha.20",
-		"vitest": "5.0.5"
+		"vitest": "5.1.0"
 	},
 	"engines": {
 		"node": ">=26"
