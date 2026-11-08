@@ -31,10 +31,10 @@
 		"./package.json": "./package.json"
 	},
 	"scripts": {
-		"codegen": "node scripts/generate.ts",
+		"codegen": "node codegen/generate.ts",
 		"build": "pnpm codegen && tsdown",
 		"test": "pnpm codegen && vitest",
-		"typecheck": "pnpm codegen && tsc && tsc -p scripts",
+		"typecheck": "pnpm codegen && tsc && tsc -p codegen",
 		"lint": "oxlint --fix",
 		"lint:check": "oxlint",
 		"format": "oxfmt",

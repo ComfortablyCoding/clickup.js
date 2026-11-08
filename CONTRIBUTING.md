@@ -22,7 +22,7 @@ pnpm lint:check && pnpm format:check && pnpm spec:check && pnpm typecheck && pnp
 
 ```
 spec/openapi.yaml     the hand-edited spec everything is generated from
-scripts/              the generator: generate.ts runs it, spec.ts reads the spec, method.ts describes each method, and render.ts renders the routes, samples and method reference
+codegen/              the generator: generate.ts runs it, spec.ts reads the spec, method.ts describes each method, and render.ts renders the routes, samples and method reference
 src/index.ts          the package's exports
 src/client.ts         createClickUp and its options
 src/route.ts          turns a method call into a request
@@ -62,7 +62,7 @@ Unit tests (`*.test.ts`) and type tests (`*.test-d.ts`, using `expectTypeOf`) si
 The generated code is snapshot tested, with whole files kept in `__snapshots__/` folders:
 
 - `src/__snapshots__/routes.json` has every method's route, as generated from the spec.
-- `scripts/__snapshots__/` has each generated module, rendered for a few example methods.
+- `codegen/__snapshots__/` has each generated module, rendered for a few example methods.
 
 Any change to the spec or the generator fails these until you run `pnpm test -u` to rewrite them. That way, the snapshot diff shows the change's effect in review, and a method or param disappearing there means a breaking change. Formatting and linting skip these files, since they're compared byte for byte.
 
