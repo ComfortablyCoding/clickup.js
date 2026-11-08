@@ -1,0 +1,37 @@
+{
+	"$schema": "https://typedoc.org/schema.json",
+	"entryPoints": ["src/index.ts", "src/webhooks/index.ts"],
+	"plugin": ["typedoc-plugin-markdown"],
+	"out": "docs/api/reference",
+	"readme": "none",
+	"excludePrivate": true,
+	"excludeInternal": true,
+	"outputFileStrategy": "modules",
+	"hidePageHeader": true,
+	"hideBreadcrumbs": true,
+	"validation": {
+		"notDocumented": true
+	},
+	"treatWarningsAsErrors": true,
+	"externalPattern": ["**/node_modules/**", "**/src/generated/**"],
+	"excludeExternals": true,
+	"intentionallyNotExported": [
+		"MethodArgs",
+		"MethodId",
+		"MethodTypeMap",
+		"Namespaces",
+		"PaginatedMethodId",
+		"SentEventName",
+		"SetOptional",
+		"Webhooks",
+		"WorkspaceMethod"
+	],
+	"parametersFormat": "table",
+	"interfacePropertiesFormat": "table",
+	"classPropertiesFormat": "table",
+	"typeDeclarationFormat": "table",
+	"useCodeBlocks": true,
+	"disableSources": true,
+	"entryFileName": "index",
+	"tsconfig": "tsconfig.docs.json"
+}

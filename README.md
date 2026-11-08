@@ -1,59 +1,50 @@
 # clickup.js
 
-A Node.js wrapper for the [Clickup API](https://clickup.com/api).
+[![npm](https://img.shields.io/npm/v/clickup.js?style=flat-square)](https://www.npmjs.com/package/clickup.js)
+[![CI](https://img.shields.io/github/actions/workflow/status/ComfortablyCoding/clickup.js/ci.yml?branch=main&style=flat-square)](https://github.com/ComfortablyCoding/clickup.js/actions/workflows/ci.yml)
 
-[![Downloads](https://img.shields.io/npm/dm/clickup.js.svg?style=for-the-badge)](https://www.npmjs.com/package/clickup.js)
-[![Install size](https://img.shields.io/bundlephobia/min/clickup.js?style=for-the-badge)](https://packagephobia.now.sh/result?p=clickup.js)
-![Package version](https://img.shields.io/github/package-json/v/ComfortablyCoding/clickup.js?style=for-the-badge)
+A runtime-agnostic TypeScript SDK for the [ClickUp API](https://developer.clickup.com).
 
-## Install
+**Note:** This is an unofficial SDK and is not affiliated with, or endorsed by, ClickUp.
+
+## Installation
 
 ```sh
 npm install clickup.js
 ```
 
-or
+## Quick start
 
-```sh
-yarn add clickup.js
+Get a [personal API token](https://developer.clickup.com/docs/authentication#personal-token) for individual use, or complete ClickUp's [OAuth flow](https://developer.clickup.com/docs/authentication#oauth-flow) for an app or integration; then pass the resulting token when creating the client:
+
+```ts
+import { createClickUp } from "clickup.js";
+
+const clickup = createClickUp({ token: "<your-clickup-token>" });
+
+// Retrieve a task
+const task = await clickup.task.get({ task_id: "86a1b2c3d" });
+
+// Create a task in a list
+await clickup.list.createTask({
+	list_id: 901234,
+	name: "Ship v5",
+	priority: 2,
+});
 ```
 
-or
-
-```sh
-pnpm add clickup.js
-```
-
-## Quick Start
-
-```js
-import { createClickup } from "clickup.js";
-const token = "..."; // API access token
-const clickup = createClickup({ token });
-
-// get a specific task
-const task = await clickup.task.get("9hz");
-console.log(task);
-```
-
-## API Parity
-
-The library mirrors ClickUp's API structure:
-
-- `clickup.task.*` – Task operations
-- `clickup.list.*` – List operations
-- `clickup.folder.*` – Folder operations
-- `clickup.space.*` – Space operations
-- `clickup.team.*`– Team/Workspaces
-- `clickup.webhook.*` – Webhook management
-- `clickup.user.*` – User info
-- `clickup.goal.*` – Goals
-- And more! Explore via the [API docs](https://comfortablycoding.github.io/clickup.js).
+If `token` is omitted, the client uses `process.env.CLICKUP_TOKEN` where available.
 
 ## Documentation
 
-You can view the libraries full API at [clickup.js docs](https://comfortablycoding.github.io/clickup.js)
+Examples, API reference, and more: **[documentation](https://comfortablycoding.github.io/clickup.js/)**.
 
-## Disclaimer
+## Contributing
 
-The [clickup.js](https://github.com/ComfortablyCoding/clickup.js) package is **unofficial** and therefor not endorsed or affiliated with ClickUp or it's subsidiaries.
+Contributions, bug reports, and feature requests are welcome.
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for any development or contribution guidelines.
+
+## License
+
+[MIT](LICENSE)

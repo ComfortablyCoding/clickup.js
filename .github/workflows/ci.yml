@@ -1,0 +1,38 @@
+name: CI
+
+permissions:
+  contents: read
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: setup environment
+        uses: ./.github/actions/setup
+
+      - name: lint
+        run: pnpm lint:check
+
+      - name: format
+        run: pnpm format:check
+
+      - name: validate spec
+        run: pnpm spec:check
+
+      # Runs pnpm codegen first, so the tests after it have the generated code
+      - name: typecheck
+        run: pnpm typecheck
+
+      - name: test
+        run: pnpm vitest run
+
+      - name: build
+        run: pnpm build
